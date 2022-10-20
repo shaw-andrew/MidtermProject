@@ -14,10 +14,10 @@
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/FIXME?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
-			<property name="javax.persistence.jdbc.user" value="FIXME" />
+				value="jdbc:mysql://localhost:3306/cmmsdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
+			<property name="javax.persistence.jdbc.user" value="cmmsadmin" />
 			<property name="javax.persistence.jdbc.password"
-				value="FIXME" />
+				value="cmmsadmin" />
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />
 

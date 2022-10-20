@@ -1,6 +1,7 @@
 package com.skilldistillery.cmms.entities;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,11 +18,12 @@ class UserTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
+	private User user;
 
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("CMMS");
+		emf = Persistence.createEntityManagerFactory("JPACMMS");
 		
 	}
 
@@ -34,17 +36,20 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
+		user = em.find(User.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
+		user = null;
 		
 	}
 	
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void test_User_entity_mapping() {
+		assertNotNull(user);
+		assertEquals("admin", user.getUsername());
 	}
 
 }
