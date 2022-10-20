@@ -8,5 +8,7 @@
 </head>
 <body>
 Maint.
+
+${SMOKETEST }
 </body>
 </html>
