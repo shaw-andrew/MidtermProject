@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Staff {
@@ -32,6 +34,9 @@ public class Staff {
 	@Column(name = "supervised_location_id")
 	private int supervisedLocationId;
 	
+	@ManyToMany (mappedBy = "staff")
+	private List<Certification> certifications;
+	
 	public Staff() {}
 
 	public Staff(int id, String firstName, String lastName, int locationId, int userId, int managerId,
@@ -45,6 +50,8 @@ public class Staff {
 		this.managerId = managerId;
 		this.supervisedLocationId = supervisedLocationId;
 	}
+	
+	
 
 	public int getId() {
 		return id;

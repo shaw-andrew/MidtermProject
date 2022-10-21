@@ -1,6 +1,7 @@
 package com.skilldistillery.cmms.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,41 +15,39 @@ import org.junit.jupiter.api.Test;
 
 class CertificationTest {
 
-
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Certification certification;
 
-	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPACMMS");
-		
+
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		emf.close();
-		
+
 	}
 
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		certification = em.find(Certification.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
-		
+		certification = null;
+
 	}
-	
+
 	@Test
 	void test_User_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
+		assertNotNull(certification);
+		assertEquals("general maintenance", certification.getName());
 	}
 
 }

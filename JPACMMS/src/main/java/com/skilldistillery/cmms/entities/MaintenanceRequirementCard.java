@@ -1,10 +1,13 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Table(name = "maintenance_requirement_card")
@@ -14,23 +17,26 @@ public class MaintenanceRequirementCard {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String description;
-	
-	@Column(name="number_of_techs")
+
+	@Column(name = "number_of_techs")
 	private int numberOfTechs;
-	
-	@Column(name="training_video_id")
+
+	@Column(name = "training_video_id")
 	private String trainingVideoId;
-	
-	@Column(name="estimated_duration_in_hours")
+
+	@Column(name = "estimated_duration_in_hours")
 	private double estimatedDurationInHours;
-	
-	@Column(name="frequency_id")
+
+	@Column(name = "frequency_id")
 	private int frequencyId;
-	
-	@Column(name="equipment_type_id")
+
+	@Column(name = "equipment_type_id")
 	private int equipmentTypeId;
+
+	@ManyToMany(mappedBy = "cards")
+	private List<Certification> certifications;
 
 	public MaintenanceRequirementCard() {
 		super();
@@ -112,6 +118,5 @@ public class MaintenanceRequirementCard {
 				+ estimatedDurationInHours + ", frequencyId=" + frequencyId + ", equipmentTypeId=" + equipmentTypeId
 				+ "]";
 	}
-	
-	
+
 }
