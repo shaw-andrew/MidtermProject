@@ -10,10 +10,10 @@
 <%--Edit the file nav.jsp to change nav links --%>
 <%@ include file="nav.jsp" %>
 <h2>Log In</h2>
-INVALID CREDENTIALS
+
 <form action="login.do" method="POST">
     <%-- Error messages --%>
-    <input type="text" name="userName">
+    <input type="text" name="username">
     <input type="password" name="password"/>
     <input type="submit" value="Log In" > 
 </form>

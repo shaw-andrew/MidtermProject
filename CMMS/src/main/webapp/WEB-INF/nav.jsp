@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <nav>
-    <a href="index.do">Home</a>
+    <a href="home.do">Home</a>
     <c:choose>
     <c:when test="${not empty loggedInUser }"> 
     <a href="account.do">Account</a>

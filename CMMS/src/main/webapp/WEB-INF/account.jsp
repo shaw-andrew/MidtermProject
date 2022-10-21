@@ -16,7 +16,7 @@
 <c:choose>
 <c:when test="${not empty sessionScope.loggedInUser}"> 
 <h4>First name: <c:out value="${loggedInUser.role}"/></h4>
-<h4>Last name:<c:out value="${loggedInUser.active}"/></h4><br>
+<%-- <h4>Last name:<c:out value="${loggedInUser.active}"/></h4><br> --%>
 User ID: <c:out value="${loggedInUser.id }"/><br>
 Data: <c:out value="${loggedInUser }"/>
 

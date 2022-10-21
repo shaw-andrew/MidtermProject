@@ -24,22 +24,23 @@ public class UserController {
 		return "home";
 	}
 
-//	@RequestMapping(path = "account.do", method = RequestMethod.GET)
-//    public String accountView(HttpSession session) {
-//        if (session.getAttribute("loggedInUser") != null) {
-//            return "account";
-//        } else
-//            return "login";
-//    }
+	@RequestMapping(path = "account.do", method = RequestMethod.GET)
+	public String accountView(HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "account";
+		} else
+			return "login";
+	}
 
-//	 @RequestMapping(path = "login.do", method = RequestMethod.GET)
-//	    public String displayLogin(HttpSession session) {
-//	        if (session.getAttribute("loggedInUser") != null) {
-//	            return "index";
-//	        } else {
-//	            return "login";
-//	        }
-//	    }
+	@RequestMapping(path = "login.do", method = RequestMethod.GET)
+	public String displayLogin(HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "home";
+		} else {
+			return "login";
+		}
+	}
+
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String Login(User user, HttpSession session) {
 		user = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
@@ -54,7 +55,7 @@ public class UserController {
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("loggedInUser");
-		return "index";
+		return "home";
 	}
 
 }

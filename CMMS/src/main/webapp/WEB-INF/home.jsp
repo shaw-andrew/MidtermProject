@@ -3,17 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Log In</title>
 <title>Maintenance Management</title>
 </head>
 <body>
-WELCOME, LOGIN PLEASE
-<h2>Log In</h2>
-<form action="login.do" method="POST">
-    <%-- Error messages --%>
-    <input type="text" name="userName">
-    <input type="password" name="password"/>
-    <input type="submit" value="Log In" > 
-</form>
+<%@ include file="nav.jsp" %>
+<h2> Welcome to the site</h2>
+
 </body>
 </html>
