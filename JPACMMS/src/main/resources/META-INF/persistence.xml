@@ -9,6 +9,14 @@
 <!-- entities -->
 
 		<class>com.skilldistillery.cmms.entities.User</class>
+		<class>com.skilldistillery.cmms.entities.Staff</class>
+		<class>com.skilldistillery.cmms.entities.Training</class>
+		<class>com.skilldistillery.cmms.entities.Frequency</class>
+		<class>com.skilldistillery.cmms.entities.Certification</class>
+		<class>com.skilldistillery.cmms.entities.CardHasCertification</class>
+		<class>com.skilldistillery.cmms.entities.CertificationHasStaff</class>
+		<class>com.skilldistillery.cmms.entities.Location</class>
+		<class>com.skilldistillery.cmms.entities.MaintenanceRequirementCard</class>
 
 <!-- /entities -->
 
