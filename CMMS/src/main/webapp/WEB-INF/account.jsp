@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Account</title>
+<title>@Autowired - Account</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
 <%--Edit the file nav.jsp to change nav links --%>
 <jsp:include page="navbar.jsp" />
 <main class="container-fluid">
-<h2>Your Details</h2>
+<h2>@Autowired - Your Details</h2>
 
 <%-- Output user details --%>
 <c:choose>
