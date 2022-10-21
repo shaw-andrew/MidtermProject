@@ -17,6 +17,14 @@
 		<class>com.skilldistillery.cmms.entities.CertificationHasStaff</class>
 		<class>com.skilldistillery.cmms.entities.Location</class>
 		<class>com.skilldistillery.cmms.entities.MaintenanceRequirementCard</class>
+		<class>com.skilldistillery.cmms.entities.MaintenanceItem</class>
+		<class>com.skilldistillery.cmms.entities.CardHasTool</class>
+		<class>com.skilldistillery.cmms.entities.CardHasPart</class>
+		<class>com.skilldistillery.cmms.entities.CardHasSafety</class>
+		<class>com.skilldistillery.cmms.entities.EquipmentType</class>
+		<class>com.skilldistillery.cmms.entities.Tool</class>
+		<class>com.skilldistillery.cmms.entities.Part</class>
+		<class>com.skilldistillery.cmms.entities.Equipment</class>
 
 <!-- /entities -->
 
