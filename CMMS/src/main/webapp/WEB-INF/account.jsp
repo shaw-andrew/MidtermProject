@@ -6,10 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Account</title>
+<jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
 <%--Edit the file nav.jsp to change nav links --%>
-<%@ include file="nav.jsp" %>
+<jsp:include page="navbar.jsp" />
+<main class="container-fluid">
 <h2>Your Details</h2>
 
 <%-- Output user details --%>
@@ -25,5 +27,7 @@ Data: <c:out value="${loggedInUser }"/>
 <h2>User not logged in.</h2>
 </c:otherwise>
 </c:choose>
+</main>
+<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>
