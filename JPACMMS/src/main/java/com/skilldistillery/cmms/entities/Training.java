@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Training {
@@ -16,23 +18,26 @@ public class Training {
 	@Column(name = "video_url")
 	private String videoURL;
 	
-	@Column(name = "mrc_id")
-	private int mrcId;
+	@ManyToOne
+	@JoinColumn(name = "mrc_id")
+	private MaintenanceRequirementCard mrc;
 	
+
 	private String category;
 	
 	private String description;
 	
 	public Training() {}
 	
-	public Training(int id, String videoURL, int mrcId, String category, String description) {
+	public Training(int id, String videoURL, MaintenanceRequirementCard mrc, String category, String description) {
 		super();
 		this.id = id;
 		this.videoURL = videoURL;
-		this.mrcId = mrcId;
+		this.mrc = mrc;
 		this.category = category;
 		this.description = description;
 	}
+
 
 	public int getId() {
 		return id;
@@ -50,12 +55,12 @@ public class Training {
 		this.videoURL = videoURL;
 	}
 
-	public int getMrcId() {
-		return mrcId;
+	public MaintenanceRequirementCard getMrc() {
+		return mrc;
 	}
 
-	public void setMrcId(int mrcId) {
-		this.mrcId = mrcId;
+	public void setMrc(MaintenanceRequirementCard mrc) {
+		this.mrc = mrc;
 	}
 
 	public String getCategory() {
@@ -76,7 +81,7 @@ public class Training {
 
 	@Override
 	public String toString() {
-		return "Training [id=" + id + ", videoURL=" + videoURL + ", mrcId=" + mrcId + ", category=" + category
+		return "Training [id=" + id + ", videoURL=" + videoURL + ", mrcId=" + mrc + ", category=" + category
 				+ ", description=" + description + "]";
 	}
 	
