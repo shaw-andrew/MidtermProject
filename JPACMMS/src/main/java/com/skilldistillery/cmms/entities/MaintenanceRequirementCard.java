@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Table(name = "maintenance_requirement_card")
@@ -28,9 +30,10 @@ public class MaintenanceRequirementCard {
 
 	@Column(name = "estimated_duration_in_hours")
 	private double estimatedDurationInHours;
-
-	@Column(name = "frequency_id")
-	private int frequencyId;
+	
+	@ManyToOne
+	@JoinColumn (name = "frequency_id")
+	private Frequency frequencyId;
 
 	@Column(name = "equipment_type_id")
 	private int equipmentTypeId;
@@ -53,7 +56,7 @@ public class MaintenanceRequirementCard {
 	}
 
 	public MaintenanceRequirementCard(int id, String description, int numberOfTechs, String trainingVideoId,
-			double estimatedDurationInHours, int frequencyId, int equipmentTypeId) {
+			double estimatedDurationInHours, Frequency frequencyId, int equipmentTypeId) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -104,11 +107,11 @@ public class MaintenanceRequirementCard {
 		this.estimatedDurationInHours = estimatedDurationInHours;
 	}
 
-	public int getFrequencyId() {
+	public Frequency getFrequencyId() {
 		return frequencyId;
 	}
 
-	public void setFrequencyId(int frequencyId) {
+	public void setFrequencyId(Frequency frequencyId) {
 		this.frequencyId = frequencyId;
 	}
 

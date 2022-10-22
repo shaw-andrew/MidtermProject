@@ -17,7 +17,7 @@ class FrequencyTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Frequency frequency;
 
 	
 	@BeforeAll
@@ -35,20 +35,19 @@ class FrequencyTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		frequency = em.find(Frequency.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
 		
 	}
 	
 	@Test
 	void test_User_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
+		assertNotNull(frequency);
+		assertEquals("daily", frequency.getName());
 	}
 
 }

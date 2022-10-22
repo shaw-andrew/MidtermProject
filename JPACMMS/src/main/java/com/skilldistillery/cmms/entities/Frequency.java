@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Frequency {
@@ -15,6 +17,11 @@ public class Frequency {
 	private String name;
 
 	private String description;
+	
+
+	public Frequency() {
+		super();
+	}
 
 	public Frequency(int id, String name, String description) {
 		super();
