@@ -37,7 +37,16 @@ public class MaintenanceRequirementCard {
 
 	@ManyToMany(mappedBy = "cards")
 	private List<Certification> certifications;
-
+	
+	@ManyToMany(mappedBy = "cards")
+	private List<Safety> safety;
+	
+	@ManyToMany(mappedBy = "cards")
+	private List<Part> parts;
+	
+	@ManyToMany(mappedBy = "cards")
+	private List<Tool> tools;
+	
 	public MaintenanceRequirementCard() {
 		super();
 		// TODO Auto-generated constructor stub

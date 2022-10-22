@@ -1,9 +1,14 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Safety {
@@ -15,6 +20,12 @@ public class Safety {
 	private String category;
 
 	private String description;
+	
+	@ManyToMany
+	@JoinTable (name = "card_has_safety", 
+				joinColumns = @JoinColumn (name = "safety_id"),
+				inverseJoinColumns = @JoinColumn (name = "maintenance_requirement_card_id"))
+	private List<MaintenanceRequirementCard> cards;
 
 	public Safety() {
 		super();
