@@ -17,7 +17,7 @@ class LocationTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Location location;
 
 	
 	@BeforeAll
@@ -35,20 +35,26 @@ class LocationTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		location = em.find(Location.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		location = null;
 		
 	}
 	
 	@Test
-	void test_User_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
+	void test_Location_entity_mapping() {
+		assertNotNull(location);
+		assertEquals("123 A St.", location.getStreet());
+	}
+	
+	@Test
+	void test_Location_to_Staff() {
+		assertNotNull(location);
+		assertTrue( location.getStaff() != null &&location.getStaff().size() >0);
 	}
 
 }

@@ -1,9 +1,12 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Frequency {
@@ -15,6 +18,15 @@ public class Frequency {
 	private String name;
 
 	private String description;
+	
+	@OneToMany (mappedBy = "frequency")
+	private List<MaintenanceRequirementCard> cards;
+	
+	
+
+	public Frequency() {
+		super();
+	}
 
 	public Frequency(int id, String name, String description) {
 		super();

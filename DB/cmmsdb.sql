@@ -512,7 +512,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `training` (`id`, `category`, `video_url`, `description`, `mrc_id`) VALUES (1, 'general', 'abc', NULL, NULL);
+INSERT INTO `training` (`id`, `category`, `video_url`, `description`, `mrc_id`) VALUES (1, 'general', 'abc', NULL, 1);
 
 COMMIT;
 
