@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -16,9 +18,12 @@ public class User {
 	private Boolean enabled;
 	private String role;
 
+	@OneToOne
+	(mappedBy = "user")
+	private Staff staff;
+
 	public User() {
 		super();
-
 	}
 
 	public User(int id, String username, String password, Boolean enabled, String role) {
@@ -29,7 +34,6 @@ public class User {
 		this.enabled = enabled;
 		this.role = role;
 	}
-
 
 	public int getId() {
 		return id;
@@ -70,11 +74,19 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+
+	public Staff getStaff() {
+		return staff;
+	}
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
 				+ ", role=" + role + "]";
 	}
-	
-	}
+
+}

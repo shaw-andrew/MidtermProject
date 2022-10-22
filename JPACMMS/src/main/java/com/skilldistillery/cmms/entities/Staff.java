@@ -8,36 +8,44 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Staff {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name = "first_name")
 	private String firstName;
-	
+
 	@Column(name = "last_name")
 	private String lastName;
-	
+
 	@Column(name = "location_id")
 	private int locationId;
-	
-	@Column(name = "user_id")
-	private int userId;
-	
+
+//	@Column(name = "user_id")
+//	private int userId;
+
 	@Column(name = "manager_id")
 	private int managerId;
-	
+
 	@Column(name = "supervised_location_id")
 	private int supervisedLocationId;
-	
-	@ManyToMany (mappedBy = "staff")
+
+	@OneToOne
+	@JoinColumn
+	(name = "user_id")
+	private User user;
+
+	@ManyToMany(mappedBy = "staff")
 	private List<Certification> certifications;
-	
-	public Staff() {}
+
+	public Staff() {
+	}
 
 	public Staff(int id, String firstName, String lastName, int locationId, int userId, int managerId,
 			int supervisedLocationId) {
@@ -46,12 +54,10 @@ public class Staff {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.locationId = locationId;
-		this.userId = userId;
+//		this.userId = userId;
 		this.managerId = managerId;
 		this.supervisedLocationId = supervisedLocationId;
 	}
-	
-	
 
 	public int getId() {
 		return id;
@@ -85,13 +91,13 @@ public class Staff {
 		this.locationId = locationId;
 	}
 
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+//	public int getUserId() {
+//		return userId;
+//	}
+//
+//	public void setUserId(int userId) {
+//		this.userId = userId;
+//	}
 
 	public int getManagerId() {
 		return managerId;
@@ -109,20 +115,36 @@ public class Staff {
 		this.supervisedLocationId = supervisedLocationId;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Certification> getCertifications() {
+		return certifications;
+	}
+
+	public void setCertifications(List<Certification> certifications) {
+		this.certifications = certifications;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(firstName, id, lastName, locationId, managerId, supervisedLocationId, userId);
+		return Objects.hash(firstName, id, lastName, locationId, managerId, supervisedLocationId 
+//				, userId
+				);
 	}
 
 	@Override
 	public String toString() {
 		return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", locationId=" + locationId
-				+ ", userId=" + userId + ", managerId=" + managerId + ", supervisedLocationId=" + supervisedLocationId
+				+ 
+//				", userId=" + userId + 
+				", managerId=" + managerId + ", supervisedLocationId=" + supervisedLocationId
 				+ "]";
 	}
-	
-	
-	
-	
-	
+
 }
