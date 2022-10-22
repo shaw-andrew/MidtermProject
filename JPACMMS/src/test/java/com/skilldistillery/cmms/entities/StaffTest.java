@@ -50,5 +50,10 @@ class StaffTest {
 		assertNotNull(staff);
 		assertEquals("John", staff.getFirstName());
 	}
+	@Test
+	void test_User_staff_mapping() {
+		assertNotNull(staff);
+		assertEquals("admin", staff.getUser().getUsername());
+	}
 
 }

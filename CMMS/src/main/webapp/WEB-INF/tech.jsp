@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>@Autowired - Log In</title>
+<title>@Autowired - All Staff Table</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -16,19 +16,13 @@
 				<div class="col"></div>
 				<div class="col-6">
 					<br>
-					<h2>@Autowired - Please Log In To Access Our Site</h2>
+					<hr>
+					<h2>@Autowired - Technician table</h2>
 					<br>
 					<hr>
 					<br>
-
-					<form action="login.do" method="POST">
-						<%-- Error messages --%>
-						<label for="userName" class="form-label">Username</label> 
-						<input type="text" id="userName" name="username" required/>
-						<label for="password" class="form-label">Password</label> 
-						<input type="password" id="password" name="password" required/><br> 
-						<input type="submit" class="btn btn-primary" value="Log In">
-					</form>
+					All data about all technicians. Maybe their name can be an href to upcoming jobs?
+					
 				</div>
 				<div class="col"></div>
 			</div>
