@@ -12,12 +12,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class FrequencyTest {
+class EquipmentTypeTest {
 
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Frequency frequency;
+	private EquipmentType equipmentType;
 
 	
 	@BeforeAll
@@ -35,22 +35,33 @@ class FrequencyTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		frequency = em.find(Frequency.class, 1);
+		equipmentType = em.find(EquipmentType.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		frequency = null;
+		equipmentType = null;
 		
 	}
 	
 	@Test
-	void test_User_entity_mapping() {
-		assertNotNull(frequency);
-		assertEquals("daily", frequency.getName());
+	void test_Equipment_Type_entity_mapping() {
+		assertNotNull(equipmentType);
+		assertEquals("mechanical", equipmentType.getName());
 	}
 	
+	@Test
+	void test_Equipment_Type_to_Equipment() {
+		assertNotNull(equipmentType);
+		assertTrue( equipmentType.getEquipment() != null &&equipmentType.getEquipment().size() >0);
+	}
+
+	@Test
+	void test_Equipment_Type_to_Staff_Supervisor() {
+		assertNotNull(equipmentType);
+		assertTrue( equipmentType.getMrc() != null &&equipmentType.getMrc().size() >0);
+	}
+	
+
 }
-
-

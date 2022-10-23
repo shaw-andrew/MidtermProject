@@ -41,27 +41,33 @@ class LocationTest {
 		em.close();
 		location = null;
 
+
 	}
 
-	@Test
-	void test_Location_entity_mapping() {
-		assertNotNull(location);
-		assertEquals(1, location.getId());
-		assertEquals("123 A St.", location.getStreet());
-		assertEquals("Denver", location.getCity());
-		assertEquals("CO", location.getStateAbbrev());
-		assertEquals(80205, location.getZipCode());
-	}
-	
-	@Test
-	void test_Location_To_Staff_entity_mapping() {
-		assertNotNull(location);
-		assertEquals(2, location.getStaff().size());
-	}
 	
 	@Test
 	void test_Location_To_Equipment_entity_mapping() {
 		assertNotNull(location);
+		
+	}
+	
+	@Test
+	void test_Location_entity_mapping() {
+		assertNotNull(location);
+		assertEquals("123 A St.", location.getStreet());
+	}
+	
+	@Test
+	void test_Location_to_Staff() {
+		assertNotNull(location);
+		assertTrue( location.getStaff() != null &&location.getStaff().size() >0);
+
 	}
 
+	@Test
+	void test_Location_to_Staff_Supervisor() {
+		assertNotNull(location);
+		assertTrue( location.getSupervisingStaff() != null &&location.getSupervisingStaff().size() >0);
+	}
+	
 }

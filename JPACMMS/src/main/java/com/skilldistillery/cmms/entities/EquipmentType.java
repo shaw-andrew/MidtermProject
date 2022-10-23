@@ -1,10 +1,15 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Table(name = "equipment_type")
 @Entity
 public class EquipmentType {
 
@@ -20,19 +25,28 @@ public class EquipmentType {
 	private String manufacturer;
 	
 	private int year;
+	
+	@OneToMany(mappedBy = "equipmentType")
+	private List<Equipment> equipment;
+	
+	@OneToMany(mappedBy = "equipmentType")
+	private List<MaintenanceRequirementCard> mrc;
 
 	public EquipmentType() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public EquipmentType(int id, String name, String model, String manufacturer, int year) {
+	public EquipmentType(int id, String name, String model, String manufacturer, int year, List<Equipment> equipment,
+			List<MaintenanceRequirementCard> mrc) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.model = model;
 		this.manufacturer = manufacturer;
 		this.year = year;
+		this.equipment = equipment;
+		this.mrc = mrc;
 	}
 
 	public int getId() {
@@ -75,12 +89,28 @@ public class EquipmentType {
 		this.year = year;
 	}
 
+	public List<Equipment> getEquipment() {
+		return equipment;
+	}
+
+	public void setEquipment(List<Equipment> equipment) {
+		this.equipment = equipment;
+	}
+
+	public List<MaintenanceRequirementCard> getMrc() {
+		return mrc;
+	}
+
+	public void setMrc(List<MaintenanceRequirementCard> mrc) {
+		this.mrc = mrc;
+	}
+
 	@Override
 	public String toString() {
 		return "EquipmentType [id=" + id + ", name=" + name + ", model=" + model + ", manufacturer=" + manufacturer
-				+ ", year=" + year + "]";
+				+ ", year=" + year + ", equipment=" + equipment + ", mrc=" + mrc + "]";
 	}
-	
+
 	
 	
 }

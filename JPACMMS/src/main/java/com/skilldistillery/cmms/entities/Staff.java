@@ -1,7 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,19 +25,33 @@ public class Staff {
 	@Column(name = "last_name")
 	private String lastName;
 
+
 	@ManyToOne
 	@JoinColumn(name="location_id")
 	private Location location;
 	
+
+	
+
+
+
 //	@Column(name = "user_id")
 //	private int userId;
-
+	
 	@Column(name = "manager_id")
-	private int managerId;
+
+
 
 	@ManyToOne
 	@JoinColumn(name = "supervised_location_id")
 	private Integer supervisedLocationId;
+
+	private Integer managerId;
+	
+	@ManyToOne
+	@JoinColumn(name = "supervised_location_id")
+	private Location supervisedLocation;
+
 
 	@OneToOne
 	@JoinColumn
@@ -54,16 +67,23 @@ public class Staff {
 
 	@ManyToMany(mappedBy = "staff")
 	private List<Certification> certifications;
+	
+	@OneToMany(mappedBy = "staff")
+	private List<Staff> staff;
 
 	public Staff() {
 	}
 
-	public Staff(int id, String firstName, String lastName, int locationId, int managerId, int supervisedLocationId,
-			User user, int supervisorId, Location location, List<Certification> certifications) {
+
+
+	public Staff(int id, String firstName, String lastName, Location location, Integer managerId,
+			Location supervisedLocation, User user, List<Certification> certifications, List<Staff> staff) {
+
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+
 //		this.locationId = locationId;
 		this.managerId = managerId;
 		this.supervisedLocationId = supervisedLocationId;
@@ -71,6 +91,14 @@ public class Staff {
 		this.supervisorId = supervisorId;
 		this.location = location;
 		this.certifications = certifications;
+
+		this.location = location;
+		this.managerId = managerId;
+		this.supervisedLocation = supervisedLocation;
+		this.user = user;
+		this.certifications = certifications;
+		this.staff = staff;
+
 	}
 
 	public int getId() {
@@ -97,36 +125,36 @@ public class Staff {
 		this.lastName = lastName;
 	}
 
-//	public int getLocationId() {
-//		return locationId;
-//	}
-//
-//	public void setLocationId(int locationId) {
-//		this.locationId = locationId;
-//	}
+	public Location getLocation() {
+		return location;
+	}
 
-//	public int getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(int userId) {
-//		this.userId = userId;
-//	}
+	public void setLocation(Location location) {
+		this.location = location;
+	}
 
-	public int getManagerId() {
+
+	public Integer getManagerId() {
 		return managerId;
 	}
 
-	public void setManagerId(int managerId) {
+	public void setManagerId(Integer managerId) {
 		this.managerId = managerId;
 	}
+
 
 	public Integer getSupervisedLocationId() {
 		return supervisedLocationId;
 	}
 
-	public void setSupervisedLocationId(Integer supervisedLocationId) {
-		this.supervisedLocationId = supervisedLocationId;
+
+	public Location getSupervisedLocation() {
+		return supervisedLocation;
+	}
+
+	public void setSupervisedLocation(Location supervisedLocation) {
+		this.supervisedLocation = supervisedLocation;
+
 	}
 
 	public User getUser() {
@@ -145,6 +173,7 @@ public class Staff {
 		this.certifications = certifications;
 	}
 
+
 	public int getSupervisorId() {
 		return supervisorId;
 	}
@@ -153,13 +182,7 @@ public class Staff {
 		this.supervisorId = supervisorId;
 	}
 
-	public Location getLocation() {
-		return location;
-	}
 
-	public void setLocation(Location location) {
-		this.location = location;
-	}
 	
 
 	public Location getSupervisorLocation() {
@@ -170,23 +193,33 @@ public class Staff {
 		this.supervisorLocation = supervisorLocation;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(firstName, id, lastName, 
-//				locationId, 
-				managerId, supervisedLocationId 
-//				, userId
-				);
+
+	public List<Staff> getStaff() {
+		return staff;
+	}
+
+	public void setStaff(List<Staff> staff) {
+		this.staff = staff;
+
 	}
 
 	@Override
 	public String toString() {
+
 		return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", locationId="
 	
 //				locationId
 				+ ", managerId=" + managerId + ", supervisedLocationId=" + supervisedLocationId + ", user=" + user
 				+ ", supervisorId=" + supervisorId + ", location=" + location + ", certifications=" + certifications
 				+ "]";
+
+		return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", location=" + location
+				+ ", managerId=" + managerId + ", supervisedLocation=" + supervisedLocation + ", user=" + user
+				+ ", certifications=" + certifications + ", staff=" + staff + "]";
+
 	}
 
+	
+	
+	
 }

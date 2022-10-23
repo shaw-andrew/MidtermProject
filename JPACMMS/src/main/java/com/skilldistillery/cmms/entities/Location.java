@@ -33,19 +33,42 @@ public class Location {
 	@Column(name = "zip_code")
 	private int zipCode;
 	
+
 	@Column(name = "supervised_location_id")
 	private int supervisedLocationId;
 	
 	@Column(name = "location_id")
 	private int locationId;
 
+
+	@OneToMany (mappedBy = "supervisedLocation")
+	private List<Staff> supervisingStaff;
+	
+	@OneToMany (mappedBy = "location")
+	private List<Equipment> equipment;
+
+	public List<Equipment> getEquipment() {
+		return equipment;
+	}
+
+	public void setEquipment(List<Equipment> equipment) {
+		this.equipment = equipment;
+	}
+
+
 	public Location() {
 		super();
 
 	}
 
-	public Location(int id, String street, String street2, Staff staff, String city, String stateAbbrev, int zipCode,
-			int supervisedLocationId, int locationId) {
+
+
+	public void setStaff(List<Staff> staff) {
+		this.staff = staff;
+	}
+
+	public Location(int id, String street, String street2, String city, String stateAbbrev, int zipCode) {
+
 		super();
 		this.id = id;
 		this.street = street;
@@ -106,6 +129,7 @@ public class Location {
 		this.zipCode = zipCode;
 	}
 	
+
 	public int getSupervisedLocationId() {
 		return supervisedLocationId;
 	}
@@ -136,9 +160,13 @@ public class Location {
 	public List<Staff> getStaff() {
 		return staff;
 	}
+	public List<Staff> getSupervisingStaff() {
+		return supervisingStaff;
+	}
 
-	public void setStaff(List<Staff> staff) {
-		this.staff = staff;
+	public void setSupervisingStaff(List<Staff> supervisingStaff) {
+		this.supervisingStaff = supervisingStaff;
+
 	}
 
 	@Override
