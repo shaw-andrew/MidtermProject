@@ -52,6 +52,8 @@ public class Staff {
 
 	public Staff() {
 	}
+	
+	
 
 	public Staff(int id, String firstName, String lastName, Location location, Integer managerId,
 			Location supervisedLocation, User user, List<Certification> certifications, List<Staff> staff) {
