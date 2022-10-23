@@ -14,16 +14,15 @@
 		<%--Edit the file nav.jsp to change nav links --%>
 		<div class="container text-center">
 			<div class="row">
-				<div class="col"></div>
-				<div class="col-6">
+				<div class="col-2"></div>
+				<div class="col-8">
 					<br>
 					<hr>
 					<h2>@Autowired - Maintenance Item Detail</h2>
 					<br>
 					<hr>
 					<br>
-					
-							<hr>
+	
 		<table class="table table-striped table-hover">
 			<thead class="table-dark">
 				<tr>
@@ -56,7 +55,7 @@
 		</table>
 
 				</div>
-				<div class="col"></div>
+				<div class="col-2"></div>
 			</div>
 		</div>
 	</main>
