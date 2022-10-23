@@ -39,7 +39,6 @@
 						<td>${Equipment.description}</td>
 						<td>${Equipment.location}</td>
 						<td>${Equipment.task}</td>
-						
 					</tr>
 				</c:forEach>
 			</tbody>
