@@ -58,7 +58,7 @@ class EquipmentTypeTest {
 	}
 
 	@Test
-	void test_Equipment_Type_to_Staff_Supervisor() {
+	void test_Equipment_Type_to_MRC() {
 		assertNotNull(equipmentType);
 		assertTrue( equipmentType.getMrc() != null &&equipmentType.getMrc().size() >0);
 	}
