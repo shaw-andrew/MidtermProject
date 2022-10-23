@@ -29,18 +29,11 @@ public class Staff {
 	@ManyToOne
 	@JoinColumn(name="location_id")
 	private Location location;
-	
-
-	
-
-
 
 //	@Column(name = "user_id")
 //	private int userId;
 	
 	@Column(name = "manager_id")
-
-
 
 	@ManyToOne
 	@JoinColumn(name = "supervised_location_id")
@@ -205,13 +198,6 @@ public class Staff {
 
 	@Override
 	public String toString() {
-
-		return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", locationId="
-	
-//				locationId
-				+ ", managerId=" + managerId + ", supervisedLocationId=" + supervisedLocationId + ", user=" + user
-				+ ", supervisorId=" + supervisorId + ", location=" + location + ", certifications=" + certifications
-				+ "]";
 
 		return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", location=" + location
 				+ ", managerId=" + managerId + ", supervisedLocation=" + supervisedLocation + ", user=" + user
