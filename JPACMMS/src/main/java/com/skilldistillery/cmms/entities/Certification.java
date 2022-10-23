@@ -45,7 +45,6 @@ public class Certification {
 		this.description = description;
 	}
 	
-	
 	public void addMRC(MaintenanceRequirementCard mrc) {
 		if (cards == null) {
 			cards = new ArrayList<>();
