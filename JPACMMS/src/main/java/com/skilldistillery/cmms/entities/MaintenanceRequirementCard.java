@@ -41,8 +41,9 @@ public class MaintenanceRequirementCard {
 	@JoinColumn(name = "frequency_id")
 	private Frequency frequency;
 
-	@Column(name = "equipment_type_id")
-	private int equipmentTypeId;
+	@ManyToOne
+	@JoinColumn(name = "equipment_type_id")
+	private EquipmentType equipmentType;
 
 	@ManyToMany(mappedBy = "cards")
 	private List<Certification> certifications;
@@ -56,16 +57,18 @@ public class MaintenanceRequirementCard {
 	@ManyToMany(mappedBy = "cards")
 	private List<Tool> tools;
 	
+	@OneToMany(mappedBy = "mrc")
+	private List<MaintenanceItem> tasks;
+	
 	public MaintenanceRequirementCard() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
 	public MaintenanceRequirementCard(int id, String description, int numberOfTechs, String trainingVideoId,
-			List<Training> trainings, double estimatedDurationInHours, Frequency frequency, int equipmentTypeId,
-			List<Certification> certifications, List<Safety> safety, List<Part> parts, List<Tool> tools) {
+			List<Training> trainings, double estimatedDurationInHours, Frequency frequency, EquipmentType equipmentType,
+			List<Certification> certifications, List<Safety> safety, List<Part> parts, List<Tool> tools,
+			List<MaintenanceItem> tasks) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -74,14 +77,13 @@ public class MaintenanceRequirementCard {
 		this.trainings = trainings;
 		this.estimatedDurationInHours = estimatedDurationInHours;
 		this.frequency = frequency;
-		this.equipmentTypeId = equipmentTypeId;
+		this.equipmentType = equipmentType;
 		this.certifications = certifications;
 		this.safety = safety;
 		this.parts = parts;
 		this.tools = tools;
+		this.tasks = tasks;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -139,12 +141,12 @@ public class MaintenanceRequirementCard {
 		this.frequency = frequency;
 	}
 
-	public int getEquipmentTypeId() {
-		return equipmentTypeId;
+	public EquipmentType getEquipmentType() {
+		return equipmentType;
 	}
 
-	public void setEquipmentTypeId(int equipmentTypeId) {
-		this.equipmentTypeId = equipmentTypeId;
+	public void setEquipmentType(EquipmentType equipmentType) {
+		this.equipmentType = equipmentType;
 	}
 
 	public List<Certification> getCertifications() {
@@ -179,5 +181,21 @@ public class MaintenanceRequirementCard {
 		this.tools = tools;
 	}
 
+	public List<MaintenanceItem> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<MaintenanceItem> tasks) {
+		this.tasks = tasks;
+	}
+
+	@Override
+	public String toString() {
+		return "MaintenanceRequirementCard [id=" + id + ", description=" + description + ", numberOfTechs="
+				+ numberOfTechs + ", trainingVideoId=" + trainingVideoId + ", trainings=" + trainings
+				+ ", estimatedDurationInHours=" + estimatedDurationInHours + ", frequency=" + frequency
+				+ ", equipmentType=" + equipmentType + ", certifications=" + certifications + ", safety=" + safety
+				+ ", parts=" + parts + ", tools=" + tools + ", tasks=" + tasks + "]";
+	}
 
 }

@@ -183,7 +183,7 @@ DROP TABLE IF EXISTS `maintenance_item` ;
 CREATE TABLE IF NOT EXISTS `maintenance_item` (
   `id` INT NOT NULL,
   `completion_date` DATETIME NULL,
-  `actual_duration_in_hours` DOUBLE NULL,
+  `actual_duration_in_hours` DOUBLE NULL DEFAULT 0,
   `tech_notes` VARCHAR(200) NULL,
   `schedule_start_date` DATETIME NULL,
   `maintenance_requirement_card_id` INT NOT NULL,
@@ -431,7 +431,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (1, 'mechanical', NULL, NULL, NULL);
+INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (1, 'mechanical', NULL, NULL, 2000);
 
 COMMIT;
 
@@ -492,7 +492,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (1, NULL, NULL, NULL, NULL, 1, 1, NULL, 2);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (1, NULL, 0, NULL, NULL, 1, 1, NULL, 2);
 
 COMMIT;
 

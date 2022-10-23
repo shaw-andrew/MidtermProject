@@ -50,7 +50,7 @@ class TrainingTest {
 	@Test
 	void test_Training_entity_mapping() {
 		assertNotNull(training);
-		assertEquals("daily", training.getCategory());
+		assertEquals("general", training.getCategory());
 	}
 	
 	@Test

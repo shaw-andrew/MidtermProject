@@ -1,7 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -31,12 +31,13 @@ public class Staff {
 
 //	@Column(name = "user_id")
 //	private int userId;
-
+	
 	@Column(name = "manager_id")
 	private Integer managerId;
-
-	@Column(name = "supervised_location_id")
-	private Integer supervisedLocationId;
+	
+	@ManyToOne
+	@JoinColumn(name = "supervised_location_id")
+	private Location supervisedLocation;
 
 	@OneToOne
 	@JoinColumn
@@ -45,21 +46,25 @@ public class Staff {
 
 	@ManyToMany(mappedBy = "staff")
 	private List<Certification> certifications;
+	
+	@OneToMany(mappedBy = "staff")
+	private List<Staff> staff;
 
 	public Staff() {
 	}
 
 	public Staff(int id, String firstName, String lastName, Location location, Integer managerId,
-			Integer supervisedLocationId, User user, List<Certification> certifications) {
+			Location supervisedLocation, User user, List<Certification> certifications, List<Staff> staff) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.location = location;
 		this.managerId = managerId;
-		this.supervisedLocationId = supervisedLocationId;
+		this.supervisedLocation = supervisedLocation;
 		this.user = user;
 		this.certifications = certifications;
+		this.staff = staff;
 	}
 
 	public int getId() {
@@ -102,12 +107,12 @@ public class Staff {
 		this.managerId = managerId;
 	}
 
-	public Integer getSupervisedLocationId() {
-		return supervisedLocationId;
+	public Location getSupervisedLocation() {
+		return supervisedLocation;
 	}
 
-	public void setSupervisedLocationId(Integer supervisedLocationId) {
-		this.supervisedLocationId = supervisedLocationId;
+	public void setSupervisedLocation(Location supervisedLocation) {
+		this.supervisedLocation = supervisedLocation;
 	}
 
 	public User getUser() {
@@ -126,12 +131,22 @@ public class Staff {
 		this.certifications = certifications;
 	}
 
+	public List<Staff> getStaff() {
+		return staff;
+	}
+
+	public void setStaff(List<Staff> staff) {
+		this.staff = staff;
+	}
+
 	@Override
 	public String toString() {
 		return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", location=" + location
-				+ ", managerId=" + managerId + ", supervisedLocationId=" + supervisedLocationId + ", user=" + user
-				+ ", certifications=" + certifications + "]";
+				+ ", managerId=" + managerId + ", supervisedLocation=" + supervisedLocation + ", user=" + user
+				+ ", certifications=" + certifications + ", staff=" + staff + "]";
 	}
 
-
+	
+	
+	
 }

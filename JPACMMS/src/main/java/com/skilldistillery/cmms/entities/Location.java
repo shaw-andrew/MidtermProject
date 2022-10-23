@@ -31,6 +31,20 @@ public class Location {
 	
 	@OneToMany (mappedBy = "location")
 	private List<Staff> staff;
+	
+	@OneToMany (mappedBy = "supervisedLocation")
+	private List<Staff> supervisingStaff;
+	
+	@OneToMany (mappedBy = "location")
+	private List<Equipment> equipment;
+
+	public List<Equipment> getEquipment() {
+		return equipment;
+	}
+
+	public void setEquipment(List<Equipment> equipment) {
+		this.equipment = equipment;
+	}
 
 	public Location() {
 		super();
@@ -101,6 +115,16 @@ public class Location {
 
 	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
+	}
+	
+	
+
+	public List<Staff> getSupervisingStaff() {
+		return supervisingStaff;
+	}
+
+	public void setSupervisingStaff(List<Staff> supervisingStaff) {
+		this.supervisingStaff = supervisingStaff;
 	}
 
 	@Override

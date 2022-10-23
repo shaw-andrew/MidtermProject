@@ -12,12 +12,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class LocationTest {
+class MaintenanceItemTest {
 
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Location location;
+	private MaintenanceItem maintenanceItem;
 
 	
 	@BeforeAll
@@ -35,32 +35,31 @@ class LocationTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		location = em.find(Location.class, 1);
+		maintenanceItem = em.find(MaintenanceItem.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		location = null;
+		maintenanceItem = null;
 		
 	}
 	
 	@Test
-	void test_Location_entity_mapping() {
-		assertNotNull(location);
-		assertEquals("123 A St.", location.getStreet());
+	void test_Maintenance_Item_entity_mapping() {
+		assertNotNull(maintenanceItem);
 	}
 	
 	@Test
-	void test_Location_to_Staff() {
-		assertNotNull(location);
-		assertTrue( location.getStaff() != null &&location.getStaff().size() >0);
+	void test_Maintenance_Item_to_Staff() {
+		assertNotNull(maintenanceItem);
+		assertEquals("Jane", maintenanceItem.getStaff().getFirstName());
 	}
 
 	@Test
-	void test_Location_to_Staff_Supervisor() {
-		assertNotNull(location);
-		assertTrue( location.getSupervisingStaff() != null &&location.getSupervisingStaff().size() >0);
+	void test_Maintenance_Item_To_MRC() {
+		assertNotNull(maintenanceItem);
+		assertEquals("test maintenance", maintenanceItem.getMrc().getDescription());
 	}
 	
 }
