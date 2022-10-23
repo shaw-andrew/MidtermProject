@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -44,6 +45,23 @@ public class Part {
 		this.description = description;
 		this.cost = cost;
 		this.partNumber = partNumber;
+	}
+	
+	public void addMRC(MaintenanceRequirementCard mrc) {
+		if (cards == null) {
+			cards = new ArrayList<>();
+		}
+		if (!cards.contains(mrc)) {
+			cards.add(mrc);
+			mrc.addPart(this);
+		}
+	}
+
+	public void removeMRC(MaintenanceRequirementCard mrc) {
+		if (cards != null && cards.contains(mrc)) {
+			cards.remove(mrc);
+			mrc.removePart(this);
+		}
 	}
 
 	public int getId() {

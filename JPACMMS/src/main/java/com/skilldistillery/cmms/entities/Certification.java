@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -45,8 +46,39 @@ public class Certification {
 	}
 	
 	
+	public void addMRC(MaintenanceRequirementCard mrc) {
+		if (cards == null) {
+			cards = new ArrayList<>();
+		}
+		if (!cards.contains(mrc)) {
+			cards.add(mrc);
+			mrc.addCertification(this);
+		}
+	}
+
+	public void removeMRC(MaintenanceRequirementCard mrc) {
+		if (cards != null && cards.contains(mrc)) {
+			cards.remove(mrc);
+			mrc.removeCertification(this);
+		}
+	}
 	
-	
+	public void addStaff(Staff emp) {
+		if (staff == null) {
+			staff = new ArrayList<>();
+		}
+		if (!staff.contains(emp)) {
+			staff.add(emp);
+			emp.addCertification(this);
+		}
+	}
+
+	public void removeStaff(Staff emp) {
+		if (staff != null && cards.contains(emp)) {
+			staff.remove(emp);
+			emp.removeCertification(this);
+		}
+	}
 
 	public int getId() {
 		return id;

@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -29,6 +30,23 @@ public class Tool {
 	public Tool() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void addMRC(MaintenanceRequirementCard mrc) {
+		if (cards == null) {
+			cards = new ArrayList<>();
+		}
+		if (!cards.contains(mrc)) {
+			cards.add(mrc);
+			mrc.addTool(this);
+		}
+	}
+
+	public void removeMRC(MaintenanceRequirementCard mrc) {
+		if (cards != null && cards.contains(mrc)) {
+			cards.remove(mrc);
+			mrc.removeTool(this);
+		}
 	}
 
 	public Tool(int id, String name) {

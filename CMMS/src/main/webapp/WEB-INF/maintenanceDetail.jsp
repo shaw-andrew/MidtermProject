@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,38 @@
 					<br>
 					<hr>
 					<br>
+					
+							<hr>
+		<table class="table table-striped table-hover">
+			<thead class="table-dark">
+				<tr>
+					<th>Equipment ID</th>
+					<th>Task Name</th>
+					<th>Scheduled Start Date</th>
+					<th>Scheduled End Date</th>
+					<th>MRC ID</th>
+					<th>Staff ID</th>
+					<th>Completion Date</th>
+					<th>Actual Duration</th>
+					<th>Tech Notes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="maintenanceItem" items="${maintenanceItem}">
+					<tr>
+						<td>${maintenanceItem.equipmentId}</td>
+						<td><a href="getPark.do?pid=${maintenanceItem.id }">${maintenanceItem.name}</a></td>
+						<td>${maintenanceItem.scheduledStartDate}</td>
+						<td>${maintenanceItem.scheduledEndDate}</td>
+						<td>${maintenanceItem.mrcId}</td>
+						<td>${maintenanceItem.staffId}</td>
+						<td>${maintenanceItem.completionDate}</td>
+						<td>${maintenanceItem.actualDuration}</td>
+						<td>${maintenanceItem.techNotes}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
 				</div>
 				<div class="col"></div>

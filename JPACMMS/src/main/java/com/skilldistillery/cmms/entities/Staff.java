@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -63,6 +64,23 @@ public Staff(int id, String firstName, String lastName, Location location, Integ
 	this.supervisedLocation = supervisedLocation;
 	this.user = user;
 	this.certifications = certifications;
+}
+
+public void addCertification(Certification certification) {
+	if (certifications == null) {
+		certifications = new ArrayList<>();
+	}
+	if (!certifications.contains(certification)) {
+		certifications.add(certification);
+		certification.addStaff(this);
+	}
+}
+
+public void removeCertification(Certification certification) {
+	if (certifications != null && certifications.contains(certification)) {
+		certifications.remove(certification);
+		certification.removeStaff(this);
+	}
 }
 
 public int getId() {
