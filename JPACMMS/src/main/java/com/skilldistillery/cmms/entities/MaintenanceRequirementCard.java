@@ -37,23 +37,24 @@ public class MaintenanceRequirementCard {
 
 	@ManyToMany(mappedBy = "cards")
 	private List<Certification> certifications;
-	
+
 	@ManyToMany(mappedBy = "cards")
 	private List<Safety> safety;
-	
+
 	@ManyToMany(mappedBy = "cards")
 	private List<Part> parts;
-	
+
 	@ManyToMany(mappedBy = "cards")
 	private List<Tool> tools;
-	
+
 	public MaintenanceRequirementCard() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public MaintenanceRequirementCard(int id, String description, int numberOfTechs, String trainingVideoId,
-			double estimatedDurationInHours, int frequencyId, int equipmentTypeId) {
+			double estimatedDurationInHours, int frequencyId, int equipmentTypeId, List<Certification> certifications,
+			List<Safety> safety, List<Part> parts, List<Tool> tools) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -62,6 +63,10 @@ public class MaintenanceRequirementCard {
 		this.estimatedDurationInHours = estimatedDurationInHours;
 		this.frequencyId = frequencyId;
 		this.equipmentTypeId = equipmentTypeId;
+		this.certifications = certifications;
+		this.safety = safety;
+		this.parts = parts;
+		this.tools = tools;
 	}
 
 	public int getId() {
@@ -120,11 +125,44 @@ public class MaintenanceRequirementCard {
 		this.equipmentTypeId = equipmentTypeId;
 	}
 
+	public List<Certification> getCertifications() {
+		return certifications;
+	}
+
+	public void setCertifications(List<Certification> certifications) {
+		this.certifications = certifications;
+	}
+
+	public List<Safety> getSafety() {
+		return safety;
+	}
+
+	public void setSafety(List<Safety> safety) {
+		this.safety = safety;
+	}
+
+	public List<Part> getParts() {
+		return parts;
+	}
+
+	public void setParts(List<Part> parts) {
+		this.parts = parts;
+	}
+
+	public List<Tool> getTools() {
+		return tools;
+	}
+
+	public void setTools(List<Tool> tools) {
+		this.tools = tools;
+	}
+
 	@Override
 	public String toString() {
 		return "MaintenanceRequirementCard [id=" + id + ", description=" + description + ", numberOfTechs="
 				+ numberOfTechs + ", trainingVideoId=" + trainingVideoId + ", estimatedDurationInHours="
 				+ estimatedDurationInHours + ", frequencyId=" + frequencyId + ", equipmentTypeId=" + equipmentTypeId
+				+ ", certifications=" + certifications + ", safety=" + safety + ", parts=" + parts + ", tools=" + tools
 				+ "]";
 	}
 

@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -24,22 +26,31 @@ public class Staff {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name = "location_id")
-	private int locationId;
-
+	@ManyToOne
+	@JoinColumn(name="location_id")
+	private Location location;
+	
 //	@Column(name = "user_id")
 //	private int userId;
 
 	@Column(name = "manager_id")
 	private int managerId;
 
-	@Column(name = "supervised_location_id")
-	private int supervisedLocationId;
+	@ManyToOne
+	@JoinColumn(name = "supervised_location_id")
+	private Integer supervisedLocationId;
 
 	@OneToOne
 	@JoinColumn
 	(name = "user_id")
 	private User user;
+	
+	@Column(name="supervisor_id")
+	private int supervisorId;
+	
+	@ManyToOne
+	@JoinColumn(name = "supervisor_id")
+	private Location supervisorLocation;
 
 	@ManyToMany(mappedBy = "staff")
 	private List<Certification> certifications;
@@ -47,16 +58,19 @@ public class Staff {
 	public Staff() {
 	}
 
-	public Staff(int id, String firstName, String lastName, int locationId, int userId, int managerId,
-			int supervisedLocationId) {
+	public Staff(int id, String firstName, String lastName, int locationId, int managerId, int supervisedLocationId,
+			User user, int supervisorId, Location location, List<Certification> certifications) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.locationId = locationId;
-//		this.userId = userId;
+//		this.locationId = locationId;
 		this.managerId = managerId;
 		this.supervisedLocationId = supervisedLocationId;
+		this.user = user;
+		this.supervisorId = supervisorId;
+		this.location = location;
+		this.certifications = certifications;
 	}
 
 	public int getId() {
@@ -83,13 +97,13 @@ public class Staff {
 		this.lastName = lastName;
 	}
 
-	public int getLocationId() {
-		return locationId;
-	}
-
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
-	}
+//	public int getLocationId() {
+//		return locationId;
+//	}
+//
+//	public void setLocationId(int locationId) {
+//		this.locationId = locationId;
+//	}
 
 //	public int getUserId() {
 //		return userId;
@@ -107,11 +121,11 @@ public class Staff {
 		this.managerId = managerId;
 	}
 
-	public int getSupervisedLocationId() {
+	public Integer getSupervisedLocationId() {
 		return supervisedLocationId;
 	}
 
-	public void setSupervisedLocationId(int supervisedLocationId) {
+	public void setSupervisedLocationId(Integer supervisedLocationId) {
 		this.supervisedLocationId = supervisedLocationId;
 	}
 
@@ -131,19 +145,47 @@ public class Staff {
 		this.certifications = certifications;
 	}
 
+	public int getSupervisorId() {
+		return supervisorId;
+	}
+
+	public void setSupervisorId(int supervisorId) {
+		this.supervisorId = supervisorId;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+	
+
+	public Location getSupervisorLocation() {
+		return supervisorLocation;
+	}
+
+	public void setSupervisorLocation(Location supervisorLocation) {
+		this.supervisorLocation = supervisorLocation;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(firstName, id, lastName, locationId, managerId, supervisedLocationId 
+		return Objects.hash(firstName, id, lastName, 
+//				locationId, 
+				managerId, supervisedLocationId 
 //				, userId
 				);
 	}
 
 	@Override
 	public String toString() {
-		return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", locationId=" + locationId
-				+ 
-//				", userId=" + userId + 
-				", managerId=" + managerId + ", supervisedLocationId=" + supervisedLocationId
+		return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", locationId="
+	
+//				locationId
+				+ ", managerId=" + managerId + ", supervisedLocationId=" + supervisedLocationId + ", user=" + user
+				+ ", supervisorId=" + supervisorId + ", location=" + location + ", certifications=" + certifications
 				+ "]";
 	}
 

@@ -56,6 +56,7 @@ class LocationTest {
 	@Test
 	void test_Location_To_Staff_entity_mapping() {
 		assertNotNull(location);
+		assertEquals(2, location.getStaff().size());
 	}
 	
 	@Test

@@ -88,6 +88,7 @@ public class Equipment {
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
+	
 
 	@Override
 	public String toString() {
