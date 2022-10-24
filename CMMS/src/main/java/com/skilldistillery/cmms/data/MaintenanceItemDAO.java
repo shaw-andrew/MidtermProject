@@ -1,5 +1,13 @@
 package com.skilldistillery.cmms.data;
 
-public interface MaintenanceItemDAO {
+import java.util.List;
 
+import com.skilldistillery.cmms.entities.MaintenanceItem;
+
+
+public interface MaintenanceItemDAO {
+	
+	MaintenanceItem findById(int maintenanceItemId);
+
+	List<MaintenanceItem> findAll();
 }

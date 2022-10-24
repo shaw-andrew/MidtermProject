@@ -2,16 +2,21 @@ package com.skilldistillery.cmms.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.cmms.data.MaintenanceItemDAO;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
 import com.skilldistillery.cmms.entities.User;
 
 @Controller
 public class SupervisorController {
+	
+	@Autowired
+	private MaintenanceItemDAO taskDao;
 	
 	
 	
@@ -26,9 +31,10 @@ public class SupervisorController {
 	}
 	
 	@RequestMapping(path = "supMaintenance.do", method = RequestMethod.GET)
-	public String viewSupervisorMaintenance(HttpSession session, Integer maintenanceItemId, Model model) {
+	public String viewSupervisorMaintenance(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
-			MaintenanceItem task = maintenanceItemDao.findById(maintenanceItemId);
+			//MaintenanceItem MainItem = taskDao.findAll();
+			model.addAttribute("MaintenanceItems", taskDao.findAll());
 			return "supMaintenance";
 		} else
 			return "login";
