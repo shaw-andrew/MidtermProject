@@ -16,19 +16,17 @@
 			<ul class="navbar-nav">
 			
 			<c:choose>
-			<c:when test="${not empty supervisor }">
+			<c:when test="${loggedInUser.role == 'supervisor' }">
 				<li class="nav-item"><a class="nav-link active" href="supervisor.do">Home</a></li>
+				<li class="nav-item"><a class="nav-link active" href="supervisor.do">My Location</a></li>
 			</c:when>
 			<c:otherwise>
 				<li class="nav-item"><a class="nav-link active" href="login.do">Home</a></li>
 			</c:otherwise>
 			</c:choose>		
-					
-				<%-- <li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="home.do">Home</a></li> --%>
-
 				<c:choose>
 					<c:when test="${not empty loggedInUser }">
+						<li class="nav-item"><a class="nav-link active" href="maintenance.do">My To-Do List</a></li>
 						<!-- <li class="nav-item"><a class="nav-link active" href="supervisor.do">Tasks</a>
 
 						</li> -->
