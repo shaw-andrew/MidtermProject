@@ -2,14 +2,29 @@ package com.skilldistillery.cmms.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-public class TechnicianController {
+import com.skilldistillery.cmms.data.ToolDAO;
+import com.skilldistillery.cmms.entities.Tool;
 
+@Controller
+public class TechnicianController {
+	
+	@Autowired
+	private ToolDAO tooldao;
+	
+	
+	//goes to tools jsp and from there they can view tools needed for job, tasks, and parts
+	//has to find tools using the dao
 	@RequestMapping(path = "tools.do", method = RequestMethod.GET)
-	public String toolView(HttpSession session) {
+	public String toolView(HttpSession session, Integer toolId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
+			Tool tool = tooldao.findById(toolId);
+			model.addAttribute("tool",tool);
 			return "tools";
 		} else
 			return "login";
@@ -38,6 +53,8 @@ public class TechnicianController {
 		} else
 			return "login";
 	}
+	
+	
 
 	@RequestMapping(path = "equipment.do", method = RequestMethod.GET)
 	public String equipmentView(HttpSession session) {
@@ -46,6 +63,9 @@ public class TechnicianController {
 		} else
 			return "login";
 	}
+	
+	
+	//tools, training , maintenance , maintenance details
 
 	
 }
