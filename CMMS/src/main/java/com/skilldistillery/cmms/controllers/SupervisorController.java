@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.cmms.entities.MaintenanceItem;
 import com.skilldistillery.cmms.entities.User;
 
 @Controller
@@ -24,10 +25,11 @@ public class SupervisorController {
 			return "login";
 	}
 	
-	@RequestMapping(path = "maintenance.do", method = RequestMethod.GET)
-	public String viewSupervisorMaintenance(HttpSession session) {
+	@RequestMapping(path = "supMaintenance.do", method = RequestMethod.GET)
+	public String viewSupervisorMaintenance(HttpSession session, Integer maintenanceItemId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "maintenance";
+			MaintenanceItem task = maintenanceItemDao.findById(maintenanceItemId);
+			return "supMaintenance";
 		} else
 			return "login";
 	}
