@@ -1,5 +1,8 @@
 package com.skilldistillery.cmms.controllers;
 
+import java.util.Collections;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +35,15 @@ public class SupervisorController {
 	
 	@RequestMapping(path = "supMaintenance.do", method = RequestMethod.GET)
 	public String viewSupervisorMaintenance(HttpSession session, Model model) {
+		MaintenanceItem item = null;
 		if (session.getAttribute("loggedInUser") != null) {
-			//MaintenanceItem MainItem = taskDao.findAll();
-			model.addAttribute("MaintenanceItems", taskDao.findAll());
+			List<MaintenanceItem> tasks = taskDao.findAll();
+			
+			Collections.sort(tasks,  item.getCompletionDate() );
+			for(MaintenanceItem task : tasks) {
+				
+			}
+			model.addAttribute("MaintenanceItems", tasks);
 			return "supMaintenance";
 		} else
 			return "login";
