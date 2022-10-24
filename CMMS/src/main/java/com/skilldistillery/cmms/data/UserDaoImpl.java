@@ -43,8 +43,12 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User updateUser(int userId, User user) {
-		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public List<User> findAll(){
+		String jpql = "SELECT user FROM User user";
+		return em.createQuery(jpql, User.class).getResultList();
 	}
 
 }
