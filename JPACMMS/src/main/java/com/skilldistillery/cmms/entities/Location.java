@@ -15,11 +15,15 @@ public class Location {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 
 	private String street;
 
 	@Column(name = "street_2")
 	private String street2;
+	
+	@OneToMany(mappedBy="location")
+	private List<Staff> staff;
 
 	private String city;
 
@@ -29,9 +33,14 @@ public class Location {
 	@Column(name = "zip_code")
 	private int zipCode;
 	
-	@OneToMany (mappedBy = "location")
-	private List<Staff> staff;
+
+	@Column(name = "supervised_location_id")
+	private int supervisedLocationId;
 	
+	@Column(name = "location_id")
+	private int locationId;
+
+
 	@OneToMany (mappedBy = "supervisedLocation")
 	private List<Staff> supervisingStaff;
 	
@@ -46,27 +55,30 @@ public class Location {
 		this.equipment = equipment;
 	}
 
+
 	public Location() {
 		super();
 
 	}
 
-	public List<Staff> getStaff() {
-		return staff;
-	}
+
 
 	public void setStaff(List<Staff> staff) {
 		this.staff = staff;
 	}
 
 	public Location(int id, String street, String street2, String city, String stateAbbrev, int zipCode) {
+
 		super();
 		this.id = id;
 		this.street = street;
 		this.street2 = street2;
+//		this.staff = staff;
 		this.city = city;
 		this.stateAbbrev = stateAbbrev;
 		this.zipCode = zipCode;
+		this.supervisedLocationId = supervisedLocationId;
+		this.locationId = locationId;
 	}
 
 	public int getId() {
@@ -117,20 +129,51 @@ public class Location {
 		this.zipCode = zipCode;
 	}
 	
+
+	public int getSupervisedLocationId() {
+		return supervisedLocationId;
+	}
+
+	public void setSupervisedLocationId(int supervisedLocationId) {
+		this.supervisedLocationId = supervisedLocationId;
+	}
+
+	public int getLocationId() {
+		return locationId;
+	}
+
+	public void setLocationId(int locationId) {
+		this.locationId = locationId;
+	}
+	
+	
 	
 
+//	public Staff getStaff() {
+//		return staff;
+//	}
+//
+//	public void setStaff(Staff staff) {
+//		this.staff = staff;
+//	}
+
+	public List<Staff> getStaff() {
+		return staff;
+	}
 	public List<Staff> getSupervisingStaff() {
 		return supervisingStaff;
 	}
 
 	public void setSupervisingStaff(List<Staff> supervisingStaff) {
 		this.supervisingStaff = supervisingStaff;
+
 	}
 
 	@Override
 	public String toString() {
 		return "Location [id=" + id + ", street=" + street + ", street2=" + street2 + ", city=" + city
-				+ ", stateAbbrev=" + stateAbbrev + ", zipCode=" + zipCode + "]";
+				+ ", stateAbbrev=" + stateAbbrev + ", zipCode=" + zipCode + ", supervisedLocationId="
+				+ supervisedLocationId + ", locationId=" + locationId + "]";
 	}
 
 	
