@@ -257,10 +257,36 @@ public class MaintenanceRequirementCard {
 
 	@Override
 	public String toString() {
-		return "MaintenanceRequirementCard [id=" + id + ", description=" + description + ", numberOfTechs="
-				+ numberOfTechs + ", trainingVideoId=" + trainingVideoId + ", estimatedDurationInHours="
-				+ estimatedDurationInHours + ", frequency=" + frequency + ", equipmentType=" + equipmentType
-				+ ", safety=" + safety + "]";
+		String periodicity;
+		if(frequency.getName().equals("daily")) {
+			periodicity = "D";
+		}
+		else if (frequency.getName().equals("weekly")) {
+			periodicity = "W";
+		}
+		else if (frequency.getName().equals("monthly")) {
+			periodicity = "M";
+		}
+		else if (frequency.getName().equals("quarterly")) {
+			periodicity = "Q";
+		}
+		else if (frequency.getName().equals("semi-annually")) {
+			periodicity = "SA";
+		}
+		else if (frequency.getName().equals("annually")) {
+			periodicity = "A";
+		}
+		else {
+			return frequency.getName();
+		}
+		return periodicity + id + ": " +  description;
+//				
+//				
+//				
+//				"MaintenanceRequirementCard [id=" + id + ", description=" + description + ", numberOfTechs="
+//				+ numberOfTechs + ", trainingVideoId=" + trainingVideoId + ", estimatedDurationInHours="
+//				+ estimatedDurationInHours + ", frequency=" + frequency + ", equipmentType=" + equipmentType
+//				+ ", safety=" + safety + "]";
 	}
 
 }
