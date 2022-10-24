@@ -8,16 +8,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.cmms.data.EquipmentDAO;
 import com.skilldistillery.cmms.data.ToolDAO;
 import com.skilldistillery.cmms.data.TrainingDAO;
+import com.skilldistillery.cmms.data.UserDAO;
+import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.Tool;
 import com.skilldistillery.cmms.entities.Training;
+import com.skilldistillery.cmms.entities.User;
 
 @Controller
 public class TechnicianController {
 	
-//	@Autowired
 	private ToolDAO toolDao;
+	private EquipmentDAO equipmentDao;
+	private UserDAO userDao;
 	
 	@Autowired
 	private TrainingDAO trainingDao;
@@ -46,8 +51,10 @@ public class TechnicianController {
 	}
 
 	@RequestMapping(path = "technicians.do", method = RequestMethod.GET)
-	public String techniciansView(HttpSession session) {
+	public String techniciansView(HttpSession session, Integer technicianId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
+			User user = userDao.findById(technicianId);
+			model.addAttribute("user", user);
 			return "technicians";
 		} else
 			return "login";
@@ -64,8 +71,10 @@ public class TechnicianController {
 	
 
 	@RequestMapping(path = "equipment.do", method = RequestMethod.GET)
-	public String equipmentView(HttpSession session) {
+	public String equipmentView(HttpSession session, Integer equipmentId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
+			Equipment equipment = equipmentDao.findById(equipmentId);
+			model.addAttribute("equipment",equipment);
 			return "equipment";
 		} else
 			return "login";
