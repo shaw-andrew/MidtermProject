@@ -2,9 +2,14 @@ package com.skilldistillery.cmms.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.cmms.entities.User;
+
+@Controller
 public class SupervisorController {
 	
 	
@@ -14,7 +19,15 @@ public class SupervisorController {
 	@RequestMapping(path = "scheduleMaintenance.do", method = RequestMethod.GET)
 	public String calanderView(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "tools";
+			return "scheduleMaintenance";
+		} else
+			return "login";
+	}
+	
+	@RequestMapping(path = "maintenance.do", method = RequestMethod.GET)
+	public String viewSupervisorMaintenance(HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "maintenance";
 		} else
 			return "login";
 	}
@@ -30,44 +43,43 @@ public class SupervisorController {
 	
 	
 	
-	
 
-	@RequestMapping(path = "tools.do", method = RequestMethod.GET)
-	public String toolView(HttpSession session) {
+	@RequestMapping(path = "supTools.do", method = RequestMethod.GET)
+	public String toolSupervisorView(HttpSession session, Model model, User tech) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "tools";
+			return "supTools";
 		} else
 			return "login";
 	}
 
-	@RequestMapping(path = "training.do", method = RequestMethod.GET)
-	public String trainingView(HttpSession session) {
+	@RequestMapping(path = "supTraining.do", method = RequestMethod.GET)
+	public String trainingSupervisorView(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "training";
+			return "supTraining";
 		} else
 			return "login";
 	}
 
-	@RequestMapping(path = "technicians.do", method = RequestMethod.GET)
-	public String techniciansView(HttpSession session) {
+	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
+	public String techniciansSupervisorView(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "technicians";
+			return "supTechnicians";
 		} else
 			return "login";
 	}
 
-	@RequestMapping(path = "maintenanceDetail.do", method = RequestMethod.GET)
-	public String maintenanceDetailView(HttpSession session) {
+	@RequestMapping(path = "supMaintenanceDetail.do", method = RequestMethod.GET)
+	public String maintenanceDetailSupervisorView(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "maintenanceDetail";
+			return "supMaintenanceDetail";
 		} else
 			return "login";
 	}
 
-	@RequestMapping(path = "equipment.do", method = RequestMethod.GET)
-	public String equipmentView(HttpSession session) {
+	@RequestMapping(path = "supEquipment.do", method = RequestMethod.GET)
+	public String equipmentSupervisorView(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "equipment";
+			return "supEquipment";
 		} else
 			return "login";
 		

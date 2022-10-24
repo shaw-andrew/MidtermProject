@@ -23,15 +23,17 @@
 					<hr>
 					<br>
 					
-					<a href="tools.do" type="button" class="btn btn-secondary">Tools & Material</a><br>
+					<a href="supTools.do" type="button" class="btn btn-secondary">Tools & Material</a><br>
 					
-					<a href="training.do" type="button" class="btn btn-secondary">Training</a><br>
+					<a href="maintenance.do" type="button" class="btn btn-secondary">View Maintenance</a><br>
 					
-					<a href="equipment.do" type="button" class="btn btn-secondary">Equipment</a><br>
+					<a href="supTraining.do" type="button" class="btn btn-secondary">Training</a><br>
 					
-					<a href="maintenanceDetail.do" type="button" class="btn btn-secondary">Maintenance Detail</a><br>
+					<a href="supEquipment.do" type="button" class="btn btn-secondary">Equipment</a><br>
 					
-					<a href="technicians.do" type="button" class="btn btn-secondary">Technicians</a><br>
+					<a href="supMaintenanceDetail.do" type="button" class="btn btn-secondary">Maintenance Detail</a><br>
+					
+					<a href="supTechnicians.do" type="button" class="btn btn-secondary">Technicians</a><br>
 					
 					
 				</div>
