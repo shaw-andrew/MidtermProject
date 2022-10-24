@@ -22,7 +22,6 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User findById(int userId) {
-		// TODO Auto-generated method stub
 		return em.find(User.class, userId);
 	}
 
@@ -43,7 +42,9 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User updateUser(int userId, User user) {
-		// TODO Auto-generated method stub
+		User oldUser = findById(userId);
+		User newUser;
+		
 		return null;
 	}
 
