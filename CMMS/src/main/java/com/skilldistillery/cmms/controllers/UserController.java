@@ -8,16 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.skilldistillery.cmms.data.InMemoryUserDAO;
+import com.skilldistillery.cmms.data.UserDaoImpl;
 import com.skilldistillery.cmms.entities.User;
 
 @Controller
 public class UserController {
 
-//	@Autowired
-//	private UserDAO userDao;
 	@Autowired
-	private InMemoryUserDAO userDao;
+	private UserDaoImpl userDao;
+//	@Autowired
+//	private InMemoryUserDAO userDao;
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {

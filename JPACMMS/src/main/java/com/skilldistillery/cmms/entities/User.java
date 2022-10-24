@@ -23,7 +23,6 @@ public class User {
 	private Staff staff;
 
 	public User() {
-		super();
 	}
 
 	public User(int id, String username, String password, Boolean enabled, String role) {
