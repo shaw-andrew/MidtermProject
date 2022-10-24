@@ -21,15 +21,15 @@
 					<br>
 					<hr>
 					<br>
-					"Inspirational quote about how important maintenance and first time quality are."<br>
+					"Inspirational quote about how important maintenance and first time quality are."<br><br>
 					
-					<a href="tools.do" type="button" class="btn btn-secondary"><img src ="https://ibb.co/Wz19xxp"/><br>Tools & Material</a> 
+					<a href="tools.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/my7sDDF/toolbox.png"/><br>Tools & Material</a> 
 					
-					<a href="training.do" type="button" class="btn btn-secondary"><img src ="https://ibb.co/twGSM87"/><br>Training</a><br><br>
+					<a href="training.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/1Yg3f8D/graduated.png"/><br>Training</a><br><br>
 					
-					<a href="equipment.do" type="button" class="btn btn-secondary"><img src ="https://ibb.co/GvTRx4b"/><br>Equipment</a> 
+					<a href="equipment.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/C52Q13T/conveyor.png"/><br>Equipment</a> 
 					
-					<a href="maintenanceDetail.do" type="button" class="btn btn-secondary"><img src ="https://ibb.co/Wz19xxp"/><br>My To-Do List</a><br>
+					<a href="maintenanceDetail.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/t3HK4fq/to-do-list.png"/><br>My To-Do List</a><br><br><br>
 					
 					<!-- <a href="technicians.do" type="button" class="btn btn-secondary">Technicians</a><br> -->
 					
