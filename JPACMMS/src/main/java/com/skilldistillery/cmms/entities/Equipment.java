@@ -95,7 +95,6 @@ public class Equipment {
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
-	
 
 	public Location getLocation() {
 		return location;

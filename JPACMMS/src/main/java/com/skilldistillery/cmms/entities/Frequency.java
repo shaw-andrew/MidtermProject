@@ -33,7 +33,6 @@ public class Frequency {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		
 	}
 
 	public int getId() {

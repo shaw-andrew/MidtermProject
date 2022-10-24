@@ -14,20 +14,22 @@ import org.junit.jupiter.api.Test;
 
 class LocationTest {
 
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private Location location;
 
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPACMMS");
-
+		
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		emf.close();
-
+		
 	}
 
 	@BeforeEach
@@ -40,14 +42,6 @@ class LocationTest {
 	void tearDown() throws Exception {
 		em.close();
 		location = null;
-
-
-	}
-
-	
-	@Test
-	void test_Location_To_Equipment_entity_mapping() {
-		assertNotNull(location);
 		
 	}
 	
@@ -61,7 +55,6 @@ class LocationTest {
 	void test_Location_to_Staff() {
 		assertNotNull(location);
 		assertTrue( location.getStaff() != null &&location.getStaff().size() >0);
-
 	}
 
 	@Test
