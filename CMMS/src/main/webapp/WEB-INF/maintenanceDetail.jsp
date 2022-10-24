@@ -38,7 +38,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="maintenanceItem" items="${maintenanceItems}">
+				<c:forEach var="maintenanceItem" items="${MaintenanceItems}">
 					<tr>
 						<td>${maintenanceItem.equipmentId}</td>
 						<td><a href="getPark.do?pid=${maintenanceItem.id }">${maintenanceItem.name}</a></td>

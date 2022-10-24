@@ -42,10 +42,13 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User updateUser(int userId, User user) {
-		User oldUser = findById(userId);
-		User newUser;
-		
+
 		return null;
+	}
+	
+	public List<User> findAll(){
+		String jpql = "SELECT user FROM User user";
+		return em.createQuery(jpql, User.class).getResultList();
 	}
 
 }

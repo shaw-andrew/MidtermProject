@@ -114,8 +114,7 @@ public class Equipment {
 
 	@Override
 	public String toString() {
-		return "Equipment [id=" + id + ", name=" + name + ", description=" + description + ", imageURL=" + imageURL
-				+ "]";
+		return name + ": " + description;
 	}
 
 	

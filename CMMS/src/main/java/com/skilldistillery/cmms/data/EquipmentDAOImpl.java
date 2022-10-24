@@ -1,7 +1,7 @@
 package com.skilldistillery.cmms.data;
 
+import java.util.List;
 import java.util.Map;
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,8 +21,13 @@ public class EquipmentDAOImpl implements EquipmentDAO {
 
 	@Override
 	public Equipment findById(int equipmentId) {
-		// TODO Auto-generated method stub
 		return em.find(Equipment.class, equipmentId);
+	}
+	
+	@Override
+	public List<Equipment> findAll() {
+		String jpql = "SELECT eq FROM Equipment eq";
+		return em.createQuery(jpql, Equipment.class).getResultList();
 	}
 
 }

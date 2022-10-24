@@ -42,9 +42,9 @@ public class TechnicianController {
 			if(toolId == null) {
 				toolId = 1;
 			}
-			Tool tool = toolDao.findById(1);
+//			Tool tool = toolDao.findById(1);
 			//FIXME
-			model.addAttribute("tool",tool);
+			model.addAttribute("tool",toolDao.findAll());
 			return "tools";
 		} else
 			return "login";
@@ -53,9 +53,9 @@ public class TechnicianController {
 	@RequestMapping(path = "training.do", method = RequestMethod.GET)
 	public String trainingView(HttpSession session, Integer trainingId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
-			Training training = trainingDao.findById(1);
+//			Training training = trainingDao.findById(1);
 			//FIXME
-			model.addAttribute("training",training);
+			model.addAttribute("training",trainingDao.findAll());
 			return "training";
 		} else
 			return "login";
@@ -64,9 +64,9 @@ public class TechnicianController {
 	@RequestMapping(path = "technicians.do", method = RequestMethod.GET)
 	public String techniciansView(HttpSession session, Integer technicianId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
-			User user = userDao.findById(1);
+//			User user = userDao.findById(1);
 			//FIXME
-			model.addAttribute("user", user);
+			model.addAttribute("user", userDao.findAll());
 			return "technicians";
 		} else
 			return "login";
@@ -75,9 +75,9 @@ public class TechnicianController {
 	@RequestMapping(path = "maintenanceDetail.do", method = RequestMethod.GET)
 	public String maintenanceDetailView(HttpSession session, Model model, Integer id) {
 		if (session.getAttribute("loggedInUser") != null) {
-			MaintenanceRequirementCard mrc = mrcDAO.findById(1);
+//			MaintenanceRequirementCard mrc = mrcDAO.findById(1);
 			//FIXME
-			model.addAttribute("maintenanceItem", mrc);
+			model.addAttribute("MaintenanceItem", mrcDAO.findAll());
 			return "maintenanceDetail";
 		} else
 			return "login";
@@ -88,9 +88,9 @@ public class TechnicianController {
 	@RequestMapping(path = "equipment.do", method = RequestMethod.GET)
 	public String equipmentView(HttpSession session, Integer equipmentId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
-			Equipment equipment = equipmentDao.findById(1);
+//			Equipment equipment = equipmentDao.findById(1);
 			//FIXME
-			model.addAttribute("equipment",equipment);
+			model.addAttribute("equipment",equipmentDao.findAll());
 			return "equipment";
 		} else
 			return "login";

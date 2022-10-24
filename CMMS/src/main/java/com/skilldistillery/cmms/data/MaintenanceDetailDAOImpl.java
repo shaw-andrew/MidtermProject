@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.data;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
 
 @Service
@@ -22,6 +24,12 @@ public class MaintenanceDetailDAOImpl implements MaintenanceDetailDAO {
 	public MaintenanceRequirementCard findById(int id) {
 		
 		return em.find(MaintenanceRequirementCard.class, id);
+	}
+	
+	@Override
+	public List<MaintenanceRequirementCard> findAll() {
+		String jpql = "SELECT mrc FROM MaintenanceRequirementCard mrc";
+		return em.createQuery(jpql, MaintenanceRequirementCard.class).getResultList();
 	}
 
 }
