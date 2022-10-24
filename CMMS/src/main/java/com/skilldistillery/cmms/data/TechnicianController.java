@@ -16,7 +16,7 @@ import com.skilldistillery.cmms.entities.Training;
 @Controller
 public class TechnicianController {
 	
-	@Autowired
+//	@Autowired
 	private ToolDAO toolDao;
 	
 	@Autowired
