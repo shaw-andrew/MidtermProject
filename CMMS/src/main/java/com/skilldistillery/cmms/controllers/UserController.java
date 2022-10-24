@@ -46,7 +46,13 @@ public class UserController {
 		user = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		if (user != null) {
 			session.setAttribute("loggedInUser", user);
-			return "supervisor";
+			if (user.getRole() == "supervisor") {
+				session.setAttribute("supervisor", user);
+				return "supervisor";
+			} else {
+				session.setAttribute("tech", user);
+				return "tech";
+			}
 		} else {
 			return "login";
 		}
@@ -57,5 +63,5 @@ public class UserController {
 		session.removeAttribute("loggedInUser");
 		return "home";
 	}
-	
+
 }
