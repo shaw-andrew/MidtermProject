@@ -51,6 +51,7 @@ class FrequencyTest {
 		assertEquals("daily", frequency.getName());
 	}
 	
+	
 }
 
 

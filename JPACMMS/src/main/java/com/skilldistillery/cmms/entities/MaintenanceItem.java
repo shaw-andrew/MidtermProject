@@ -68,6 +68,8 @@ public class MaintenanceItem {
 		this.staff = staff;
 		this.equipment = equipment;
 	}
+	
+	
 
 	public int getId() {
 		return id;

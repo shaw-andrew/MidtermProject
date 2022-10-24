@@ -17,7 +17,7 @@ class MaintenanceRequirementCardTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private MaintenanceRequirementCard mrc;
 
 	
 	@BeforeAll
@@ -35,20 +35,54 @@ class MaintenanceRequirementCardTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		mrc = em.find(MaintenanceRequirementCard.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		mrc = null;
 		
 	}
 	
 	@Test
-	void test_User_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
+	void test_MaintenanceRequirementCard_entity_mapping() {
+		assertNotNull(mrc);
+		assertEquals("test maintenance", mrc.getDescription());
+	}
+	
+	@Test
+	void test_MRC_to_Frequency() {
+		assertNotNull(mrc);
+		assertEquals("daily", mrc.getFrequency().getName());
+	}
+	
+	@Test
+	void test_mrc_tool_many_to_many_mapping() {
+		assertNotNull(mrc);
+		assertNotNull(mrc.getTools());
+		assertTrue(mrc.getTools().size() > 0);
+	}
+	
+	@Test
+	void test_mrc_part_many_to_many_mapping() {
+		assertNotNull(mrc);
+		assertNotNull(mrc.getParts());
+		assertTrue(mrc.getParts().size() > 0);
 	}
 
+	@Test
+	void test_mrc_safety_many_to_many_mapping() {
+		assertNotNull(mrc);
+		assertNotNull(mrc.getSafety());
+		assertTrue(mrc.getSafety().size() > 0);
+	}
+	
+	@Test
+	void test_mrc_certification_many_to_many_mapping() {
+		assertNotNull(mrc);
+		assertNotNull(mrc.getCertifications());
+		assertTrue(mrc.getCertifications().size() > 0);
+	}
+	
 }

@@ -22,10 +22,17 @@
 					<br>
 					<hr>
 					<br>
-					Schedule functionality
-					upcoming maintenance
-					completed/missed maintenance
-					Staff/staff details
+					
+					<a href="tools.do" type="button" class="btn btn-secondary">Tools & Material</a><br>
+					
+					<a href="training.do" type="button" class="btn btn-secondary">Training</a><br>
+					
+					<a href="equipment.do" type="button" class="btn btn-secondary">Equipment</a><br>
+					
+					<a href="maintenanceDetail.do" type="button" class="btn btn-secondary">Maintenance Detail</a><br>
+					
+					<a href="technicians.do" type="button" class="btn btn-secondary">Technicians</a><br>
+					
 					
 				</div>
 				<div class="col"></div>

@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -69,6 +70,91 @@ public class MaintenanceRequirementCard {
 		// TODO Auto-generated constructor stub
 	}
 
+
+	public MaintenanceRequirementCard(int id, String description, int numberOfTechs, String trainingVideoId,
+			List<Training> trainings, double estimatedDurationInHours, Frequency frequency, EquipmentType equipmentType,
+			List<Certification> certifications, List<Safety> safety, List<Part> parts, List<Tool> tools,
+			List<MaintenanceItem> tasks) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.numberOfTechs = numberOfTechs;
+		this.trainingVideoId = trainingVideoId;
+		this.trainings = trainings;
+		this.estimatedDurationInHours = estimatedDurationInHours;
+		this.frequency = frequency;
+		this.equipmentType = equipmentType;
+		this.certifications = certifications;
+		this.safety = safety;
+		this.parts = parts;
+		this.tools = tools;
+		this.tasks = tasks;
+	}
+	
+	public void addCertification(Certification certification) {
+		if (certifications == null) {
+			certifications = new ArrayList<>();
+		}
+		if (!certifications.contains(certification)) {
+			certifications.add(certification);
+			certification.addMRC(this);
+		}
+	}
+
+	public void removeCertification(Certification certification) {
+		if (certifications != null && certifications.contains(certification)) {
+			certifications.remove(certification);
+			certification.removeMRC(this);
+		}
+	}
+	public void addSafety(Safety safe) {
+		if (safety == null) {
+			safety = new ArrayList<>();
+		}
+		if (!safety.contains(safe)) {
+			safety.add(safe);
+			safe.addMRC(this);
+		}
+	}
+	
+	public void removeSafety(Safety safe) {
+		if (safety != null && safety.contains(safe)) {
+			safety.remove(safe);
+			safe.removeMRC(this);
+		}
+	}
+	public void addPart(Part part) {
+		if (parts == null) {
+			parts = new ArrayList<>();
+		}
+		if (!parts.contains(part)) {
+			parts.add(part);
+			part.addMRC(this);
+		}
+	}
+	
+	public void removePart(Part part) {
+		if (parts != null && parts.contains(part)) {
+			parts.remove(part);
+			part.removeMRC(this);
+		}
+	}
+	public void addTool(Tool tool) {
+		if (tools == null) {
+			tools = new ArrayList<>();
+		}
+		if (!tools.contains(tool)) {
+			tools.add(tool);
+			tool.addMRC(this);
+		}
+	}
+	
+	public void removeTool(Tool tool) {
+		if (tools != null && tools.contains(tool)) {
+			tools.remove(tool);
+			tool.removeMRC(this);
+		}
+	}
 
 
 	public int getId() {

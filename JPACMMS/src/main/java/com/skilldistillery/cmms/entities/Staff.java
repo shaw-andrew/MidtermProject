@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -61,13 +61,12 @@ public class Staff {
 	@ManyToMany(mappedBy = "staff")
 	private List<Certification> certifications;
 	
-	@OneToMany(mappedBy = "staff")
-	private List<Staff> staff;
+//	@OneToMany(mappedBy = "staff")
+//	private List<Staff> staff;
 
 	public Staff() {
 	}
-	
-	
+
 
 
 
@@ -96,46 +95,72 @@ public class Staff {
 
 	}
 
-	public int getId() {
-		return id;
-	}
+public Staff(int id, String firstName, String lastName, Location location, Integer managerId,
+		Location supervisedLocation, User user, List<Certification> certifications) {
+	super();
+	this.id = id;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.location = location;
+	this.managerId = managerId;
+	this.supervisedLocation = supervisedLocation;
+	this.user = user;
+	this.certifications = certifications;
+}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
-	public String getFirstName() {
-		return firstName;
+public void addCertification(Certification certification) {
+	if (certifications == null) {
+		certifications = new ArrayList<>();
 	}
+	if (!certifications.contains(certification)) {
+		certifications.add(certification);
+		certification.addStaff(this);
+	}
+}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+public void removeCertification(Certification certification) {
+	if (certifications != null && certifications.contains(certification)) {
+		certifications.remove(certification);
+		certification.removeStaff(this);
 	}
+}
 
-	public String getLastName() {
-		return lastName;
-	}
+public int getId() {
+	return id;
+}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+public void setId(int id) {
+	this.id = id;
+}
 
-	public Location getLocation() {
-		return location;
-	}
+public String getFirstName() {
+	return firstName;
+}
 
-	public void setLocation(Location location) {
-		this.location = location;
-	}
+public void setFirstName(String firstName) {
+	this.firstName = firstName;
+}
+
+public String getLastName() {
+	return lastName;
+}
+
 
 
 	public Integer getManagerId() {
 		return managerId;
 	}
 
-	public void setManagerId(Integer managerId) {
-		this.managerId = managerId;
-	}
+public void setLastName(String lastName) {
+	this.lastName = lastName;
+}
+
+
+public Location getLocation() {
+	return location;
+}
+
 
 
 	public Integer getSupervisedLocationId() {
@@ -152,21 +177,31 @@ public class Staff {
 
 	}
 
-	public User getUser() {
-		return user;
-	}
+public void setLocation(Location location) {
+	this.location = location;
+}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+public Integer getManagerId() {
+	return managerId;
+}
 
-	public List<Certification> getCertifications() {
-		return certifications;
-	}
 
-	public void setCertifications(List<Certification> certifications) {
-		this.certifications = certifications;
-	}
+public void setManagerId(Integer managerId) {
+	this.managerId = managerId;
+}
+
+public Location getSupervisedLocation() {
+	return supervisedLocation;
+}
+
+public void setSupervisedLocation(Location supervisedLocation) {
+	this.supervisedLocation = supervisedLocation;
+}
+
+public User getUser() {
+	return user;
+}
+
 
 
 	public int getSupervisorId() {
@@ -207,7 +242,25 @@ public class Staff {
 
 	}
 
-	
-	
+public void setUser(User user) {
+	this.user = user;
+}
+
+public List<Certification> getCertifications() {
+	return certifications;
+}
+
+public void setCertifications(List<Certification> certifications) {
+	this.certifications = certifications;
+}
+
+
+@Override
+public String toString() {
+	return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", location=" + location
+			+ ", managerId=" + managerId + ", supervisedLocation=" + supervisedLocation + ", user=" + user
+			+ ", certifications=" + certifications + "]";
+}
 	
 }
+	

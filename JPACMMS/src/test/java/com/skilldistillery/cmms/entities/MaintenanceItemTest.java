@@ -62,4 +62,9 @@ class MaintenanceItemTest {
 		assertEquals("test maintenance", maintenanceItem.getMrc().getDescription());
 	}
 	
+	@Test
+	void test_Maintenance_Item_To_Equipment() {
+		assertNotNull(maintenanceItem);
+		assertEquals("conveyer", maintenanceItem.getEquipment().getName());
+	}
 }

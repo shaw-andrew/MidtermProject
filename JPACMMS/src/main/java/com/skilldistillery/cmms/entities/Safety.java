@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -37,6 +38,23 @@ public class Safety {
 		this.id = id;
 		this.category = category;
 		this.description = description;
+	}
+	
+	public void addMRC(MaintenanceRequirementCard mrc) {
+		if (cards == null) {
+			cards = new ArrayList<>();
+		}
+		if (!cards.contains(mrc)) {
+			cards.add(mrc);
+			mrc.addSafety(this);
+		}
+	}
+
+	public void removeMRC(MaintenanceRequirementCard mrc) {
+		if (cards != null && cards.contains(mrc)) {
+			cards.remove(mrc);
+			mrc.removeSafety(this);
+		}
 	}
 
 	public int getId() {

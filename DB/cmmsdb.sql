@@ -538,11 +538,51 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `card_has_tool`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `cmmsdb`;
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `card_has_safety`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `cmmsdb`;
+INSERT INTO `card_has_safety` (`safety_id`, `maintenance_requirement_card_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `certification`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `certification` (`id`, `name`, `description`) VALUES (1, 'general maintenance', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `card_has_certification`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `cmmsdb`;
+INSERT INTO `card_has_certification` (`certification_id`, `maintenance_requirement_card_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `card_has_part`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `cmmsdb`;
+INSERT INTO `card_has_part` (`maintenance_requirement_card_id`, `part_id`) VALUES (1, 1);
 
 COMMIT;
 

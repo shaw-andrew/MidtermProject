@@ -30,7 +30,7 @@ public class EquipmentType {
 	private List<Equipment> equipment;
 	
 	@OneToMany(mappedBy = "equipmentType")
-	private List<MaintenanceRequirementCard> mrc;
+	private List<MaintenanceRequirementCard> mrcs;
 
 	public EquipmentType() {
 		super();
@@ -38,7 +38,7 @@ public class EquipmentType {
 	}
 
 	public EquipmentType(int id, String name, String model, String manufacturer, int year, List<Equipment> equipment,
-			List<MaintenanceRequirementCard> mrc) {
+			List<MaintenanceRequirementCard> mrcs) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -46,8 +46,9 @@ public class EquipmentType {
 		this.manufacturer = manufacturer;
 		this.year = year;
 		this.equipment = equipment;
-		this.mrc = mrc;
+		this.mrcs = mrcs;
 	}
+
 
 	public int getId() {
 		return id;
@@ -98,17 +99,17 @@ public class EquipmentType {
 	}
 
 	public List<MaintenanceRequirementCard> getMrc() {
-		return mrc;
+		return mrcs;
 	}
 
 	public void setMrc(List<MaintenanceRequirementCard> mrc) {
-		this.mrc = mrc;
+		this.mrcs = mrc;
 	}
 
 	@Override
 	public String toString() {
 		return "EquipmentType [id=" + id + ", name=" + name + ", model=" + model + ", manufacturer=" + manufacturer
-				+ ", year=" + year + ", equipment=" + equipment + ", mrc=" + mrc + "]";
+				+ ", year=" + year + ", equipment=" + equipment + ", mrc=" + mrcs + "]";
 	}
 
 	
