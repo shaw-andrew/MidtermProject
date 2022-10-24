@@ -25,7 +25,7 @@
 					
 					<a href="supTools.do" type="button" class="btn btn-secondary">Tools & Material</a><br>
 					
-					<a href="maintenance.do" type="button" class="btn btn-secondary">View Maintenance</a><br>
+					<a href="supMaintenance.do" type="button" class="btn btn-secondary">View Maintenance</a><br>
 					
 					<a href="supTraining.do" type="button" class="btn btn-secondary">Training</a><br>
 					
