@@ -41,6 +41,7 @@ class FrequencyTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
+		frequency = null;
 		
 	}
 	
@@ -49,5 +50,6 @@ class FrequencyTest {
 		assertNotNull(frequency);
 		assertEquals("daily", frequency.getName());
 	}
-
+	
+	
 }

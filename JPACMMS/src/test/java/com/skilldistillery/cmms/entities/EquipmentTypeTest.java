@@ -12,12 +12,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class LocationTest {
+class EquipmentTypeTest {
 
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Location location;
+	private EquipmentType equipmentType;
 
 	
 	@BeforeAll
@@ -35,32 +35,33 @@ class LocationTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		location = em.find(Location.class, 1);
+		equipmentType = em.find(EquipmentType.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		location = null;
+		equipmentType = null;
 		
 	}
 	
 	@Test
-	void test_Location_entity_mapping() {
-		assertNotNull(location);
-		assertEquals("123 A St.", location.getStreet());
+	void test_Equipment_Type_entity_mapping() {
+		assertNotNull(equipmentType);
+		assertEquals("mechanical", equipmentType.getName());
 	}
 	
 	@Test
-	void test_Location_to_Staff() {
-		assertNotNull(location);
-		assertTrue( location.getStaff() != null &&location.getStaff().size() >0);
+	void test_Equipment_Type_to_Equipment() {
+		assertNotNull(equipmentType);
+		assertTrue( equipmentType.getEquipment() != null &&equipmentType.getEquipment().size() >0);
 	}
 
 	@Test
-	void test_Location_to_Staff_Supervisor() {
-		assertNotNull(location);
-		assertTrue( location.getSupervisingStaff() != null &&location.getSupervisingStaff().size() >0);
+	void test_Equipment_Type_to_MRC() {
+		assertNotNull(equipmentType);
+		assertTrue( equipmentType.getMrc() != null &&equipmentType.getMrc().size() >0);
 	}
 	
+
 }

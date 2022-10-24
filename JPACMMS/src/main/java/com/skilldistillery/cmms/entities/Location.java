@@ -1,10 +1,13 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Location {
@@ -25,10 +28,35 @@ public class Location {
 
 	@Column(name = "zip_code")
 	private int zipCode;
+	
+	@OneToMany (mappedBy = "location")
+	private List<Staff> staff;
+	
+	@OneToMany (mappedBy = "supervisedLocation")
+	private List<Staff> supervisingStaff;
+	
+	@OneToMany (mappedBy = "location")
+	private List<Equipment> equipment;
+
+	public List<Equipment> getEquipment() {
+		return equipment;
+	}
+
+	public void setEquipment(List<Equipment> equipment) {
+		this.equipment = equipment;
+	}
 
 	public Location() {
 		super();
 
+	}
+
+	public List<Staff> getStaff() {
+		return staff;
+	}
+
+	public void setStaff(List<Staff> staff) {
+		this.staff = staff;
 	}
 
 	public Location(int id, String street, String street2, String city, String stateAbbrev, int zipCode) {
@@ -87,6 +115,16 @@ public class Location {
 
 	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
+	}
+	
+	
+
+	public List<Staff> getSupervisingStaff() {
+		return supervisingStaff;
+	}
+
+	public void setSupervisingStaff(List<Staff> supervisingStaff) {
+		this.supervisingStaff = supervisingStaff;
 	}
 
 	@Override

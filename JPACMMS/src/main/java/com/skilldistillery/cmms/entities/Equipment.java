@@ -1,10 +1,15 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Equipment {
@@ -14,31 +19,41 @@ public class Equipment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="equipment_type_id")
-	private int equipmentTypeId;
+	@ManyToOne
+	@JoinColumn(name="equipment_type_id")
+	private EquipmentType equipmentType;
 	
-	@Column(name="location_id")
-	private int locationId;
+	
 	
 	private String name;
 	
 	private String description;
 	
+	@Column (name ="image_url")
 	private String imageURL;
+	
+	@ManyToOne
+	@JoinColumn(name = "location_id")
+	private Location location;
+	
+	@OneToMany (mappedBy = "equipment")
+	private List<MaintenanceItem> task;
 
 	public Equipment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Equipment(int id, int equipmentTypeId, int locationId, String name, String description, String imageURL) {
+	public Equipment(int id, EquipmentType equipmentType, String name, String description, String imageURL,
+			Location location, List<MaintenanceItem> task) {
 		super();
 		this.id = id;
-		this.equipmentTypeId = equipmentTypeId;
-		this.locationId = locationId;
+		this.equipmentType = equipmentType;
 		this.name = name;
 		this.description = description;
 		this.imageURL = imageURL;
+		this.location = location;
+		this.task = task;
 	}
 
 	public int getId() {
@@ -49,20 +64,12 @@ public class Equipment {
 		this.id = id;
 	}
 
-	public int getEquipmentTypeId() {
-		return equipmentTypeId;
+	public EquipmentType getEquipmentType() {
+		return equipmentType;
 	}
 
-	public void setEquipmentTypeId(int equipmentTypeId) {
-		this.equipmentTypeId = equipmentTypeId;
-	}
-
-	public int getLocationId() {
-		return locationId;
-	}
-
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
+	public void setEquipmentType(EquipmentType equipmentType) {
+		this.equipmentType = equipmentType;
 	}
 
 	public String getName() {
@@ -89,11 +96,29 @@ public class Equipment {
 		this.imageURL = imageURL;
 	}
 
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public List<MaintenanceItem> getTask() {
+		return task;
+	}
+
+	public void setTask(List<MaintenanceItem> task) {
+		this.task = task;
+	}
+
 	@Override
 	public String toString() {
-		return "Equipment [id=" + id + ", equipmentTypeId=" + equipmentTypeId + ", locationId=" + locationId + ", name="
-				+ name + ", description=" + description + ", imageURL=" + imageURL + "]";
+		return "Equipment [id=" + id + ", equipmentType=" + equipmentType + ", name=" + name + ", description="
+				+ description + ", imageURL=" + imageURL + ", location=" + location + ", task=" + task + "]";
 	}
+
+	
 	
 	
 }

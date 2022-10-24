@@ -19,7 +19,7 @@
 
 				<c:choose>
 					<c:when test="${not empty loggedInUser }">
-						<li class="nav-item"><a class="nav-link" href="account.do">Account</a>
+						<li class="nav-item"><a class="nav-link" href="supervisor.do">Tasks</a>
 
 						</li>
 

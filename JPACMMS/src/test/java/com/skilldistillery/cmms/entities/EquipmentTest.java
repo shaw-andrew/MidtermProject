@@ -12,12 +12,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class LocationTest {
+class EquipmentTest {
+
 
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Location location;
+	private Equipment equipment;
 
 	
 	@BeforeAll
@@ -35,32 +36,26 @@ class LocationTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		location = em.find(Location.class, 1);
+		equipment = em.find(Equipment.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		location = null;
+		equipment = null;
 		
 	}
 	
 	@Test
 	void test_Location_entity_mapping() {
-		assertNotNull(location);
-		assertEquals("123 A St.", location.getStreet());
+		assertNotNull(equipment);
+		assertEquals("conveyer", equipment.getName());
 	}
 	
 	@Test
-	void test_Location_to_Staff() {
-		assertNotNull(location);
-		assertTrue( location.getStaff() != null &&location.getStaff().size() >0);
+	void test_Equipment_to_Location() {
+		assertNotNull(equipment);
+		assertEquals("123 A St.", equipment.getLocation().getStreet());
 	}
 
-	@Test
-	void test_Location_to_Staff_Supervisor() {
-		assertNotNull(location);
-		assertTrue( location.getSupervisingStaff() != null &&location.getSupervisingStaff().size() >0);
-	}
-	
 }

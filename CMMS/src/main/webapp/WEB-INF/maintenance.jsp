@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +23,41 @@
 					<br>
 					Maybe complete button? 
 					href to view detail
+					
+					<table class="table table-striped table-hover">
+			<thead class="table-dark">
+				<tr>
+						<th>ID</th>
+						<th>Equipment ID</th>
+						<th>Frequency</th>
+						<th>Safety Precautions</th>
+						<th>Certifications</th>
+						<th>Training</th>
+						<th>Parts</th>
+						<th>Tools</th>
+						<th>Tasks</th>
+						<th>Description</th>
+						<th>Estimated Duration(hrs)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="MainItem" items="${MaintenanceItem}">
+					<tr>
+						<td>${MainItem.id}</td>
+						<td>${MainItem.equipmentType}</td>
+						<td>${MainItem.frequency}</td>
+						<td>${MainItem.safety}</td>
+						<td>${MainItem.certifications}</td>
+						<td>${MainItem.trainings}</td>
+						<td>${MainItem.parts}</td>
+						<td>${MainItem.tools}</td>
+						<td>${MainItem.tasks}</td>
+						<td>${MainItem.description}</td>
+						<td>${MainItem.estimatedDurationInHours}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
 				</div>
 				<div class="col"></div>

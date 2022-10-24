@@ -46,7 +46,7 @@ class StaffTest {
 	}
 	
 	@Test
-	void test_User_entity_mapping() {
+	void test_Staff_entity_mapping() {
 		assertNotNull(staff);
 		assertEquals("John", staff.getFirstName());
 	}

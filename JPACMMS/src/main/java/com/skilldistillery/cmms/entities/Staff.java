@@ -1,7 +1,7 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -23,18 +24,20 @@ public class Staff {
 
 	@Column(name = "last_name")
 	private String lastName;
-
-	@Column(name = "location_id")
-	private int locationId;
+	
+	@ManyToOne
+	@JoinColumn(name = "location_id")
+	private Location location;
 
 //	@Column(name = "user_id")
 //	private int userId;
-
+	
 	@Column(name = "manager_id")
-	private int managerId;
-
-	@Column(name = "supervised_location_id")
-	private int supervisedLocationId;
+	private Integer managerId;
+	
+	@ManyToOne
+	@JoinColumn(name = "supervised_location_id")
+	private Location supervisedLocation;
 
 	@OneToOne
 	@JoinColumn
@@ -43,108 +46,113 @@ public class Staff {
 
 	@ManyToMany(mappedBy = "staff")
 	private List<Certification> certifications;
+	
+//	@OneToMany(mappedBy = "staff")
+//	private List<Staff> staff;
 
 	public Staff() {
 	}
 
-	public Staff(int id, String firstName, String lastName, int locationId, int userId, int managerId,
-			int supervisedLocationId) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.locationId = locationId;
-//		this.userId = userId;
-		this.managerId = managerId;
-		this.supervisedLocationId = supervisedLocationId;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public int getLocationId() {
-		return locationId;
-	}
-
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
-	}
-
-//	public int getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(int userId) {
-//		this.userId = userId;
-//	}
-
-	public int getManagerId() {
-		return managerId;
-	}
-
-	public void setManagerId(int managerId) {
-		this.managerId = managerId;
-	}
-
-	public int getSupervisedLocationId() {
-		return supervisedLocationId;
-	}
-
-	public void setSupervisedLocationId(int supervisedLocationId) {
-		this.supervisedLocationId = supervisedLocationId;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public List<Certification> getCertifications() {
-		return certifications;
-	}
-
-	public void setCertifications(List<Certification> certifications) {
-		this.certifications = certifications;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(firstName, id, lastName, locationId, managerId, supervisedLocationId 
-//				, userId
-				);
-	}
-
-	@Override
-	public String toString() {
-		return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", locationId=" + locationId
-				+ 
-//				", userId=" + userId + 
-				", managerId=" + managerId + ", supervisedLocationId=" + supervisedLocationId
-				+ "]";
-	}
-
+public Staff(int id, String firstName, String lastName, Location location, Integer managerId,
+		Location supervisedLocation, User user, List<Certification> certifications) {
+	super();
+	this.id = id;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.location = location;
+	this.managerId = managerId;
+	this.supervisedLocation = supervisedLocation;
+	this.user = user;
+	this.certifications = certifications;
 }
+
+public void addCertification(Certification certification) {
+	if (certifications == null) {
+		certifications = new ArrayList<>();
+	}
+	if (!certifications.contains(certification)) {
+		certifications.add(certification);
+		certification.addStaff(this);
+	}
+}
+
+public void removeCertification(Certification certification) {
+	if (certifications != null && certifications.contains(certification)) {
+		certifications.remove(certification);
+		certification.removeStaff(this);
+	}
+}
+
+public int getId() {
+	return id;
+}
+
+public void setId(int id) {
+	this.id = id;
+}
+
+public String getFirstName() {
+	return firstName;
+}
+
+public void setFirstName(String firstName) {
+	this.firstName = firstName;
+}
+
+public String getLastName() {
+	return lastName;
+}
+
+public void setLastName(String lastName) {
+	this.lastName = lastName;
+}
+
+public Location getLocation() {
+	return location;
+}
+
+public void setLocation(Location location) {
+	this.location = location;
+}
+
+public Integer getManagerId() {
+	return managerId;
+}
+
+public void setManagerId(Integer managerId) {
+	this.managerId = managerId;
+}
+
+public Location getSupervisedLocation() {
+	return supervisedLocation;
+}
+
+public void setSupervisedLocation(Location supervisedLocation) {
+	this.supervisedLocation = supervisedLocation;
+}
+
+public User getUser() {
+	return user;
+}
+
+public void setUser(User user) {
+	this.user = user;
+}
+
+public List<Certification> getCertifications() {
+	return certifications;
+}
+
+public void setCertifications(List<Certification> certifications) {
+	this.certifications = certifications;
+}
+
+@Override
+public String toString() {
+	return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", location=" + location
+			+ ", managerId=" + managerId + ", supervisedLocation=" + supervisedLocation + ", user=" + user
+			+ ", certifications=" + certifications + "]";
+}
+	
+}
+	

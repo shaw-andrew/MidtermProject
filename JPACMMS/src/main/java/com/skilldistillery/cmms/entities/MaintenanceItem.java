@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Table(name ="maintenance_item")
 @Entity
 public class MaintenanceItem {
 
@@ -17,100 +21,138 @@ public class MaintenanceItem {
 	
 	@Column(name="completion_date")
 	private LocalDate completionDate;
+	
 	@Column(name="actual_duration_in_hours")
 	private double actualDurationInHours;
+	
 	@Column(name="tech_notes")
 	private String techNotes;
+	
 	@Column(name="schedule_start_date")
 	private LocalDate scheduleStartDate;
-	@Column(name="maintenance_requirement_card_id")
-	private int maintenanceRequirementCardId;
-	@Column(name="equipment_id")
-	private int equipmentId;
+	
+	
+	
+	@ManyToOne
+	@JoinColumn(name="maintenance_requirement_card_id")
+	private MaintenanceRequirementCard mrc;
+	
+	
 	@Column(name="schedule_end_date")
 	private LocalDate scheduleEndDate;
-	@Column(name="staff_id")
-	private int staffId;
+	
+	@ManyToOne
+	@JoinColumn(name="staff_id")
+	private Staff staff;
+	
+	@ManyToOne
+	@JoinColumn(name = "equipment_id")
+	private Equipment equipment;
+	
 	public MaintenanceItem() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public MaintenanceItem(int id, LocalDate completionDate, double actualDurationInHours, String techNotes,
-			LocalDate scheduleStartDate, int maintenanceRequirementCardId, int equipmentId, LocalDate scheduleEndDate,
-			int staffId) {
+			LocalDate scheduleStartDate, MaintenanceRequirementCard mrc, LocalDate scheduleEndDate, Staff staff,
+			Equipment equipment) {
 		super();
 		this.id = id;
 		this.completionDate = completionDate;
 		this.actualDurationInHours = actualDurationInHours;
 		this.techNotes = techNotes;
 		this.scheduleStartDate = scheduleStartDate;
-		this.maintenanceRequirementCardId = maintenanceRequirementCardId;
-		this.equipmentId = equipmentId;
+		this.mrc = mrc;
 		this.scheduleEndDate = scheduleEndDate;
-		this.staffId = staffId;
+		this.staff = staff;
+		this.equipment = equipment;
 	}
+	
+	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public LocalDate getCompletionDate() {
 		return completionDate;
 	}
+
 	public void setCompletionDate(LocalDate completionDate) {
 		this.completionDate = completionDate;
 	}
+
 	public double getActualDurationInHours() {
 		return actualDurationInHours;
 	}
+
 	public void setActualDurationInHours(double actualDurationInHours) {
 		this.actualDurationInHours = actualDurationInHours;
 	}
+
 	public String getTechNotes() {
 		return techNotes;
 	}
+
 	public void setTechNotes(String techNotes) {
 		this.techNotes = techNotes;
 	}
+
 	public LocalDate getScheduleStartDate() {
 		return scheduleStartDate;
 	}
+
 	public void setScheduleStartDate(LocalDate scheduleStartDate) {
 		this.scheduleStartDate = scheduleStartDate;
 	}
-	public int getMaintenanceRequirementCardId() {
-		return maintenanceRequirementCardId;
+
+	public MaintenanceRequirementCard getMrc() {
+		return mrc;
 	}
-	public void setMaintenanceRequirementCardId(int maintenanceRequirementCardId) {
-		this.maintenanceRequirementCardId = maintenanceRequirementCardId;
+
+	public void setMrc(MaintenanceRequirementCard mrc) {
+		this.mrc = mrc;
 	}
-	public int getEquipmentId() {
-		return equipmentId;
-	}
-	public void setEquipmentId(int equipmentId) {
-		this.equipmentId = equipmentId;
-	}
+
 	public LocalDate getScheduleEndDate() {
 		return scheduleEndDate;
 	}
+
 	public void setScheduleEndDate(LocalDate scheduleEndDate) {
 		this.scheduleEndDate = scheduleEndDate;
 	}
-	public int getStaffId() {
-		return staffId;
+
+	public Staff getStaff() {
+		return staff;
 	}
-	public void setStaffId(int staffId) {
-		this.staffId = staffId;
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
 	}
+
+	public Equipment getEquipment() {
+		return equipment;
+	}
+
+	public void setEquipment(Equipment equipment) {
+		this.equipment = equipment;
+	}
+
 	@Override
 	public String toString() {
 		return "MaintenanceItem [id=" + id + ", completionDate=" + completionDate + ", actualDurationInHours="
 				+ actualDurationInHours + ", techNotes=" + techNotes + ", scheduleStartDate=" + scheduleStartDate
-				+ ", maintenanceRequirementCardId=" + maintenanceRequirementCardId + ", equipmentId=" + equipmentId
-				+ ", scheduleEndDate=" + scheduleEndDate + ", staffId=" + staffId + "]";
+				+ ", mrc=" + mrc + ", scheduleEndDate=" + scheduleEndDate + ", staff=" + staff + ", equipment="
+				+ equipment + "]";
 	}
 	
 	
 	
+	
+
 }

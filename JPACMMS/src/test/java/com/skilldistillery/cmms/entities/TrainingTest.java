@@ -2,6 +2,7 @@ package com.skilldistillery.cmms.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -50,6 +51,12 @@ class TrainingTest {
 	void test_Training_entity_mapping() {
 		assertNotNull(training);
 		assertEquals("general", training.getCategory());
+	}
+	
+	@Test
+	void test_Training_to_mrc() {
+		assertNotNull(training);
+		assertTrue( training.getMrc() != null && training.getMrc().getTrainings().size() > 0);
 	}
 
 }

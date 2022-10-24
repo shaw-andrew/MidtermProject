@@ -24,10 +24,10 @@ public class UserController {
 		return "home";
 	}
 
-	@RequestMapping(path = "account.do", method = RequestMethod.GET)
+	@RequestMapping(path = "supervisor.do", method = RequestMethod.GET)
 	public String accountView(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "account";
+			return "supervisor";
 		} else
 			return "login";
 	}
@@ -46,7 +46,7 @@ public class UserController {
 		user = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		if (user != null) {
 			session.setAttribute("loggedInUser", user);
-			return "account";
+			return "supervisor";
 		} else {
 			return "login";
 		}
@@ -58,4 +58,5 @@ public class UserController {
 		return "home";
 	}
 
+	
 }
