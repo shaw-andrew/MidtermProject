@@ -29,7 +29,12 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User getUserByUserNameAndPassword(String username, String password) {
-		// TODO Auto-generated method stub
+		em.find(User.class, username);
+		em.find(User.class, password);
+		if(em.find(User.class, username).equals(username) && user.getPassword().equals(password)) {
+	        u = user;
+	        break;
+	      }
 		return null;
 	}
 
