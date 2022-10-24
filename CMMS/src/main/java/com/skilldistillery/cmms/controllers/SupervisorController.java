@@ -45,6 +45,7 @@ public class SupervisorController {
 			return "equipment";
 		} else
 			return "login";
+		
 	}
 
 	
