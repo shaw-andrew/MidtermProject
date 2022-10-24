@@ -258,10 +258,9 @@ public class MaintenanceRequirementCard {
 	@Override
 	public String toString() {
 		return "MaintenanceRequirementCard [id=" + id + ", description=" + description + ", numberOfTechs="
-				+ numberOfTechs + ", trainingVideoId=" + trainingVideoId + ", trainings=" + trainings
-				+ ", estimatedDurationInHours=" + estimatedDurationInHours + ", frequency=" + frequency
-				+ ", equipmentType=" + equipmentType + ", certifications=" + certifications + ", safety=" + safety
-				+ ", parts=" + parts + ", tools=" + tools + ", tasks=" + tasks + "]";
+				+ numberOfTechs + ", trainingVideoId=" + trainingVideoId + ", estimatedDurationInHours="
+				+ estimatedDurationInHours + ", frequency=" + frequency + ", equipmentType=" + equipmentType
+				+ ", safety=" + safety + "]";
 	}
 
 }

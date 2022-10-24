@@ -147,8 +147,7 @@ public class MaintenanceItem {
 	public String toString() {
 		return "MaintenanceItem [id=" + id + ", completionDate=" + completionDate + ", actualDurationInHours="
 				+ actualDurationInHours + ", techNotes=" + techNotes + ", scheduleStartDate=" + scheduleStartDate
-				+ ", mrc=" + mrc + ", scheduleEndDate=" + scheduleEndDate + ", staff=" + staff + ", equipment="
-				+ equipment + "]";
+				+ ", scheduleEndDate=" + scheduleEndDate + "]";
 	}
 	
 	

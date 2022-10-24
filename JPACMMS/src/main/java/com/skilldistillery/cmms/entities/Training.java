@@ -81,8 +81,8 @@ public class Training {
 
 	@Override
 	public String toString() {
-		return "Training [id=" + id + ", videoURL=" + videoURL + ", mrcId=" + mrc + ", category=" + category
-				+ ", description=" + description + "]";
+		return "Training [id=" + id + ", videoURL=" + videoURL + ", category=" + category + ", description="
+				+ description + "]";
 	}
 	
 	

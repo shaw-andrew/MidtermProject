@@ -149,9 +149,8 @@ public void setCertifications(List<Certification> certifications) {
 
 @Override
 public String toString() {
-	return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", location=" + location
-			+ ", managerId=" + managerId + ", supervisedLocation=" + supervisedLocation + ", user=" + user
-			+ ", certifications=" + certifications + "]";
+	return "Staff [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", managerId=" + managerId
+			+ ", user=" + user + "]";
 }
 	
 }
