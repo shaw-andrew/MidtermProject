@@ -57,6 +57,5 @@ public class UserController {
 		session.removeAttribute("loggedInUser");
 		return "home";
 	}
-
 	
 }
