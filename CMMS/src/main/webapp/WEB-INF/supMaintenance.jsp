@@ -30,32 +30,28 @@
 			<thead class="table-dark">
 				<tr>
 						<th>ID</th>
-						<th>Equipment ID</th>
-						<th>Frequency</th>
-						<th>Safety Precautions</th>
-						<th>Certifications</th>
-						<th>Training</th>
-						<th>Parts</th>
-						<th>Tools</th>
-						<th>Tasks</th>
-						<th>Description</th>
-						<th>Estimated Duration(hrs)</th>
+						<th>Completion Date</th>
+						<th>Duration</th>
+						<th>Technician Notes</th>
+						<th>Scheduled Start Date</th>
+						<th>MRC</th>
+						<th>Scheduled End Date</th>
+						<th>Staff</th>
+						<th>Equipment</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="MainItem" items="${MaintenanceItem}">
+				<c:forEach var="MaintenanceItem" items="${MaintenanceItems}">
 					<tr>
-						<td>${MainItem.id}</td>
-						<td>${MainItem.equipmentType}</td>
-						<td>${MainItem.frequency}</td>
-						<td>${MainItem.safety}</td>
-						<td>${MainItem.certifications}</td>
-						<td>${MainItem.trainings}</td>
-						<td>${MainItem.parts}</td>
-						<td>${MainItem.tools}</td>
-						<td>${MainItem.tasks}</td>
-						<td>${MainItem.description}</td>
-						<td>${MainItem.estimatedDurationInHours}</td>
+						<td>${MaintenanceItem.id}</td>
+						<td>${MaintenanceItem.completionDate}</td>
+						<td>${MaintenanceItem.actualDurationInHours}</td>
+						<td>${MaintenanceItem.techNotes}</td>
+						<td>${MaintenanceItem.scheduleStartDate}</td>
+						<td>${MaintenanceItem.mrc}</td>
+						<td>${MaintenanceItem.scheduleEndDate}</td>
+						<td>${MaintenanceItem.staff}</td>
+						<td>${MaintenanceItem.equipment}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
