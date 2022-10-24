@@ -1,14 +1,13 @@
 package com.skilldistillery.cmms.data;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.cmms.entities.User;
@@ -16,7 +15,7 @@ import com.skilldistillery.cmms.entities.User;
 @Service
 @Transactional
 public class UserDaoImpl implements UserDAO {
-	
+
 	private Map<Integer, User> users;
 	@PersistenceContext
 	private EntityManager em;
@@ -29,13 +28,17 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User getUserByUserNameAndPassword(String username, String password) {
-		em.find(User.class, username);
-		em.find(User.class, password);
-		if(em.find(User.class, username).equals(username) && user.getPassword().equals(password)) {
-	        u = user;
-	        break;
-	      }
-		return null;
+		User u = null;
+		String sql = "SELECT u FROM User u";
+		List<User> users = new ArrayList<>();
+		users = em.createQuery(sql, User.class).getResultList();
+		for (User user : users) {
+			if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+				u = user;
+				break;
+			}
+		}
+		return u;
 	}
 
 	@Override
