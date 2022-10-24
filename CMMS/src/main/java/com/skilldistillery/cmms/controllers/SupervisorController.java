@@ -6,6 +6,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 public class SupervisorController {
+	
+	
+	
+	
+	
+	@RequestMapping(path = "scheduleMaintenance.do", method = RequestMethod.GET)
+	public String calanderView(HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "tools";
+		} else
+			return "login";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@RequestMapping(path = "tools.do", method = RequestMethod.GET)
 	public String toolView(HttpSession session) {
