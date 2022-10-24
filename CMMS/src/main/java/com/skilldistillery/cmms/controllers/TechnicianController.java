@@ -90,7 +90,7 @@ public class TechnicianController {
 		if (session.getAttribute("loggedInUser") != null) {
 			Equipment equipment = equipmentDao.findById(1);
 			//FIXME
-			model.addAttribute("equipment",equipment);
+			model.addAttribute("equipment",equipmentDao.findAll());
 			return "equipment";
 		} else
 			return "login";
