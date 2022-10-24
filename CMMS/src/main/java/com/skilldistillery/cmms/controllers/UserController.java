@@ -35,7 +35,7 @@ public class UserController {
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String displayLogin(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "home";
+			return "tech";
 		} else {
 			return "login";
 		}
@@ -46,7 +46,7 @@ public class UserController {
 		user = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		if (user != null) {
 			session.setAttribute("loggedInUser", user);
-			if (user.getRole() == "supervisor") {
+			if (user.getRole().equals("supervisor")) {
 				session.setAttribute("supervisor", user);
 				return "supervisor";
 			} else {
