@@ -44,6 +44,7 @@ public class Certification {
 		this.name = name;
 		this.description = description;
 	}
+
 	
 	public void addMRC(MaintenanceRequirementCard mrc) {
 		if (cards == null) {
@@ -78,6 +79,7 @@ public class Certification {
 			emp.removeCertification(this);
 		}
 	}
+
 
 	public int getId() {
 		return id;
