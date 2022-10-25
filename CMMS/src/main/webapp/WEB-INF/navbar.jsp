@@ -16,7 +16,7 @@
 			<ul class="navbar-nav">
 			
 			<c:choose>
-			<c:when test="${loggedInUser.role == 'supervisor' }">
+			<c:when test="${loggedInUser.role == 'Supervisor' }">
 				<li class="nav-item"><a class="nav-link active" href="supervisor.do">Home</a></li>
 				<li class="nav-item"><a class="nav-link active" href="supervisor.do">My Location</a></li>
 			</c:when>

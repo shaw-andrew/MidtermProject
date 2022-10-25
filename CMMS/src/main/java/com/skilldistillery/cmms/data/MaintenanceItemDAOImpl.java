@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
 
 @Service
@@ -39,6 +40,13 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 		updateMainItem.setActualDurationInHours(mainItem.getActualDurationInHours());
 //		em.persist(updateMainItem);
 		return updateMainItem;
+	}
+
+	@Override
+	public List<MaintenanceItem> findAllByLocation(Location location) {
+		String jpql = "SELECT task FROM MaintenanceItem task where task.staff.location.id = :location";
+		List<MaintenanceItem> tasks = em.createQuery(jpql, MaintenanceItem.class).setParameter("location", location.getId()).getResultList();
+		return tasks;
 	}
 		
 }

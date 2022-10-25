@@ -419,18 +419,18 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', 'admin', 1, 'supervisor');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (2, 'tech', 'tech', 1, 'tech');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (3, 'andrew.s', 'andrew.s', 1, 'supervisor');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (4, 'ethan.l', 'ethan.l', 1, 'supervisor');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (5, 'ruben.r', 'ruben.r', 1, 'supervisor');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (6, 'jared.s', 'jared.s', 1, 'tech');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (7, 'kate.r', 'kate.r', 0, 'tech');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (8, 'schuyler.c', 'schuyler.c', 1, 'tech');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (9, 'garrett.f', 'garrett.f', 1, 'tech');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (10, 'ashlee.b', 'ashlee.b', 1, 'tech');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (11, 'matt.j', 'matt.j', 1, 'tech');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (12, 'marina.c', 'marina.c', 1, 'tech');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', 'admin', 1, 'Supervisor');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (2, 'tech', 'tech', 1, 'Technician');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (3, 'andrew.s', 'andrew.s', 1, 'Supervisor');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (4, 'ethan.l', 'ethan.l', 1, 'Supervisor');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (5, 'ruben.r', 'ruben.r', 1, 'Supervisor');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (6, 'jared.s', 'jared.s', 1, 'Technician');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (7, 'kate.r', 'kate.r', 0, 'Technician');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (8, 'schuyler.c', 'schuyler.c', 1, 'Technician');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (9, 'garrett.f', 'garrett.f', 1, 'Technician');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (10, 'ashlee.b', 'ashlee.b', 1, 'Technician');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (11, 'matt.j', 'matt.j', 1, 'Technician');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (12, 'marina.c', 'marina.c', 1, 'Technician');
 
 COMMIT;
 

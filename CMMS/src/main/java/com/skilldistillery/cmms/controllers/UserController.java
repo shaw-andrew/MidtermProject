@@ -46,8 +46,8 @@ public class UserController {
 		user = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		if (user != null) {
 			session.setAttribute("loggedInUser", user);
-			if (user.getRole().equals("supervisor")) {
-				session.setAttribute("supervisor", user);
+			if (user.getRole().equals("Supervisor")) {
+				session.setAttribute("Supervisor", user);
 				return "supervisor";
 			} else {
 				session.setAttribute("tech", user);

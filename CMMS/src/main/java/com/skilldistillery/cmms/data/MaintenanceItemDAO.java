@@ -2,6 +2,7 @@ package com.skilldistillery.cmms.data;
 
 import java.util.List;
 
+import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
 
 
@@ -12,5 +13,7 @@ public interface MaintenanceItemDAO {
 	List<MaintenanceItem> findAll();
 	
 	MaintenanceItem updateAll(int mainItemId, MaintenanceItem mainItem);
+	
+	List<MaintenanceItem> findAllByLocation(Location locationid);
 	
 }
