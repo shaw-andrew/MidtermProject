@@ -67,16 +67,12 @@ public class UserDaoImpl implements UserDAO {
 	}
 	@Override
 	public Staff addUser(User user, Staff staff, int locNumber) {
-		em.persist(user);
 		user.setStaff(staff);
-		em.persist(staff);
-		user.setUsername(user.getUsername());
-		user.setPassword(user.getPassword());
-		user.setRole(user.getRole());
-		staff.setFirstName(staff.getFirstName());
-		staff.setLastName(staff.getLastName());
-//		em.find(Location.class, staff.getLocation().getId());
+		staff.setUser(user);
 		staff.setLocation(em.find(Location.class, locNumber));
+		user.setEnabled(true);
+		em.persist(user);
+		em.persist(staff);
 		return staff;
 	}
 

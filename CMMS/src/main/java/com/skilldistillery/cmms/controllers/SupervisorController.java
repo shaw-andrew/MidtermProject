@@ -95,15 +95,15 @@ public class SupervisorController {
 		
 	}
 	
-	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
-	public String techniciansSupervisorView(HttpSession session, Model model, Location locationId) {
-		if (session.getAttribute("loggedInUser") != null) {
-			List<Staff> staff = techDao.findAllAtLocation(locationId);
-			model.addAttribute(staff);
-			return "supTechnicians";
-		} else
-			return "login";
-	}
+//	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
+//	public String techniciansSupervisorView(HttpSession session, Model model, Location locationId) {
+//		if (session.getAttribute("loggedInUser") != null) {
+//			List<Staff> staff = techDao.findAllAtLocation(locationId);
+//			model.addAttribute(staff);
+//			return "supTechnicians";
+//		} else
+//			return "login";
+//	}
 	
 
 	@RequestMapping(path = "supMaintenanceDetail.do", method = RequestMethod.GET)
@@ -146,9 +146,10 @@ public class SupervisorController {
 	}
 	
 	@RequestMapping(path = "persistUser.do", method = RequestMethod.POST)
-	public String addUser(HttpSession session, RedirectAttributes redir, Staff staff, User user, int locNumber) {
-		if (session.getAttribute("loggedInUser") != null) {
-			Staff newUser = userDao.addUser(user, staff, locNumber);
+	public String addUser(HttpSession session, RedirectAttributes redir, Staff staff, User user) {
+		User currentUser = (User)session.getAttribute("loggedInUser");
+		if (currentUser != null) {
+			Staff newUser = userDao.addUser(user, staff, currentUser.getStaff().getLocation().getId());
 			redir.addFlashAttribute("newUser", newUser);
 			return "redirect:addUserConfirmation.do";
 		} else

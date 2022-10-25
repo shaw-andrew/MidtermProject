@@ -46,14 +46,14 @@
 						<div class="invalid-feedback">Please provide a valid Password.</div>
 					</div>
 					<div class="col-md-3">
-					<label for="locNumber" class="form-label">Location</label>
+					<!-- <label for="locNumber" class="form-label">Location</label>
 						<select class="form-select" name="locNumber" required>
 							<option selected disabled value="">Choose...</option>
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
 						</select> 
-						<div class="invalid-feedback">Please select a valid Location.</div>
+						<div class="invalid-feedback">Please select a valid Location.</div> -->
 					</div>
 					<div class="col-md-3">
 							<label for="role" class="form-label">Role</label>
