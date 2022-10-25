@@ -100,15 +100,15 @@ public class SupervisorController {
 	}
 	
 	
-//	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
-//	public String techniciansSupervisorView(HttpSession session) {
-//		if (session.getAttribute("loggedInUser") != null) {
-//			List<User> techs = userDao.findAll();
+	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
+	public String techniciansSupervisorView(HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			List<User> techs = userDao.findAll();
 //			model.addAttribute("techs", techs);
-//			return "supTechnicians";
-//		} else
-//			return "login";
-//	}
+			return "supTechnicians";
+		} else
+			return "login";
+	}
 	
 
 
@@ -130,10 +130,10 @@ public class SupervisorController {
 			return "login";
 	}
 	
-	@RequestMapping(path = "addOrUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(path = "addUser.do", method = RequestMethod.GET)
 	public String accountManagementView(HttpSession session, User user, Staff staff) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "addOrUpdate";
+			return "addUser";
 		} else
 			return "login";
 	}
@@ -153,5 +153,6 @@ public class SupervisorController {
 		return "updatePasswordConfirmation";
 	}
 
+	
 	
 }
