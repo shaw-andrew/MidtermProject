@@ -27,20 +27,20 @@
 						<thead class="table-dark">
 							<tr>
 								<th>Training ID</th>
-								<th>Training Name</th>
 								<th>Video URL</th>
+								<th>Category</th>
 								<th>Description</th>
 								<th>Related MRC ID</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="training" items="${trainings}">
+							<c:forEach var="training" items="${training}">
 								<tr>
-									<td>${training.trainingId}</td>
-									<td><a href="getPark.do?pid=${training.id }">${training.name}</a></td>
-									<td>${training.videoUrl}</td>
+									<td>${training.id}</td>
+									<td>${training.videoURL}</td>
+									<td>${training.category }</td>
 									<td>${training.description}</td>
-									<td>${training.maintenanceRequirementCardId}</td>
+									<td>${training.mrc}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
