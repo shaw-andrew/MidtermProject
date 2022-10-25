@@ -23,17 +23,17 @@
 					<hr>
 					<br>
 					
-					<a href="supTools.do" type="button" class="btn btn-secondary">Tools & Material</a><br>
+					<a href="supTools.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/my7sDDF/toolbox.png"/><br>Tools & Material</a> 
 					
-					<a href="supMaintenance.do" type="button" class="btn btn-secondary">View Maintenance</a><br>
+					<a href="supMaintenance.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/t3HK4fq/to-do-list.png"/><br>View Maintenance</a><br><br>
 					
-					<a href="supTraining.do" type="button" class="btn btn-secondary">Training</a><br>
+					<a href="supTraining.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/1Yg3f8D/graduated.png"/><br>Training</a> 
 					
-					<a href="supEquipment.do" type="button" class="btn btn-secondary">Equipment</a><br>
+					<a href="supEquipment.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/C52Q13T/conveyor.png"/><br>Equipment</a><br><br>
 					
-					<a href="supMaintenanceDetail.do" type="button" class="btn btn-secondary">Maintenance Detail</a><br>
+					<a href="supMaintenanceDetail.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/QKXgJjR/investigation-1.png"/><br>Maintenance Detail</a> 
 					
-					<a href="supTechnicians.do" type="button" class="btn btn-secondary">Technicians</a><br>
+					<a href="supTechnicians.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/NZSV8xd/support.png"/><br>Technicians</a><br><br><br>
 					
 					
 				</div>
