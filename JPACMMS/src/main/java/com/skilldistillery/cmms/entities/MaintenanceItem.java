@@ -1,6 +1,7 @@
 package com.skilldistillery.cmms.entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class MaintenanceItem {
 	private int id;
 	
 	@Column(name="completion_date")
-	private LocalDate completionDate;
+	private LocalDateTime completionDate;
 	
 	@Column(name="actual_duration_in_hours")
 	private double actualDurationInHours;
@@ -29,7 +30,7 @@ public class MaintenanceItem {
 	private String techNotes;
 	
 	@Column(name="schedule_start_date")
-	private LocalDate scheduleStartDate;
+	private LocalDateTime scheduleStartDate;
 	
 	
 	
@@ -39,7 +40,7 @@ public class MaintenanceItem {
 	
 	
 	@Column(name="schedule_end_date")
-	private LocalDate scheduleEndDate;
+	private LocalDateTime scheduleEndDate;
 	
 	@ManyToOne
 	@JoinColumn(name="staff_id")
@@ -54,8 +55,13 @@ public class MaintenanceItem {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MaintenanceItem(int id, LocalDate completionDate, double actualDurationInHours, String techNotes,
-			LocalDate scheduleStartDate, MaintenanceRequirementCard mrc, LocalDate scheduleEndDate, Staff staff,
+
+	
+
+	
+
+	public MaintenanceItem(int id, LocalDateTime completionDate, double actualDurationInHours, String techNotes,
+			LocalDateTime scheduleStartDate, MaintenanceRequirementCard mrc, LocalDateTime scheduleEndDate, Staff staff,
 			Equipment equipment) {
 		super();
 		this.id = id;
@@ -68,8 +74,11 @@ public class MaintenanceItem {
 		this.staff = staff;
 		this.equipment = equipment;
 	}
-	
-	
+
+
+
+
+
 
 	public int getId() {
 		return id;
@@ -79,11 +88,11 @@ public class MaintenanceItem {
 		this.id = id;
 	}
 
-	public LocalDate getCompletionDate() {
+	public LocalDateTime getCompletionDate() {
 		return completionDate;
 	}
 
-	public void setCompletionDate(LocalDate completionDate) {
+	public void setCompletionDate(LocalDateTime completionDate) {
 		this.completionDate = completionDate;
 	}
 
@@ -103,11 +112,11 @@ public class MaintenanceItem {
 		this.techNotes = techNotes;
 	}
 
-	public LocalDate getScheduleStartDate() {
+	public LocalDateTime getScheduleStartDate() {
 		return scheduleStartDate;
 	}
 
-	public void setScheduleStartDate(LocalDate scheduleStartDate) {
+	public void setScheduleStartDate(LocalDateTime scheduleStartDate) {
 		this.scheduleStartDate = scheduleStartDate;
 	}
 
@@ -119,11 +128,11 @@ public class MaintenanceItem {
 		this.mrc = mrc;
 	}
 
-	public LocalDate getScheduleEndDate() {
+	public LocalDateTime getScheduleEndDate() {
 		return scheduleEndDate;
 	}
 
-	public void setScheduleEndDate(LocalDate scheduleEndDate) {
+	public void setScheduleEndDate(LocalDateTime scheduleEndDate) {
 		this.scheduleEndDate = scheduleEndDate;
 	}
 

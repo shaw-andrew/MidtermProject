@@ -37,7 +37,7 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 		updateMainItem.setTechNotes(mainItem.getTechNotes());
 		updateMainItem.setCompletionDate(mainItem.getCompletionDate());
 		updateMainItem.setActualDurationInHours(mainItem.getActualDurationInHours());
-		em.persist(updateMainItem);
+//		em.persist(updateMainItem);
 		return updateMainItem;
 	}
 		

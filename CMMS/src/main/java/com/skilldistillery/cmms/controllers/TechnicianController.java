@@ -99,9 +99,20 @@ public class TechnicianController {
 	@RequestMapping(path = "update.do", method = RequestMethod.POST)
 	public String completionView(HttpSession session, int mainItemId,RedirectAttributes redir, MaintenanceItem mainItem) {
 		if (session.getAttribute("loggedInUser") != null) {
+			System.out.println(mainItem);
+			MaintenanceItem update = maintenanceItemDAO.updateAll(mainItemId, mainItem);
+//			redir.addFlashAttribute("maintenanceItems",update);
+			return "redirect:maintenanceDetail.do";
+		} else
+			return "login";
+	}
+	
+	@RequestMapping(path = "updateMaintenanceItem.do", method = RequestMethod.POST)
+	public String updateMaintenanceItem(HttpSession session, int mainItemId,RedirectAttributes redir, MaintenanceItem mainItem) {
+		if (session.getAttribute("loggedInUser") != null) {
 			MaintenanceItem update = maintenanceItemDAO.updateAll(mainItemId, mainItem);
 			redir.addFlashAttribute("maintenanceItems",update);
-			return "redirect:updateAllComplete.do";
+			return "redirect:maintenanceDetail.do";
 		} else
 			return "login";
 	}
@@ -110,6 +121,7 @@ public class TechnicianController {
 	public String updateAllComplete() {
 		return "updateAllComplete";
 	}
+	
 
 //	@RequestMapping(path = "submitNotes.do", method = RequestMethod.POST)
 //	public String notesView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
