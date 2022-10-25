@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.User;
 
@@ -65,7 +66,7 @@ public class UserDaoImpl implements UserDAO {
 		return em.createQuery(jpql, User.class).getResultList();
 	}
 	@Override
-	public Staff addUser(User user, Staff staff) {
+	public Staff addUser(User user, Staff staff, int locNumber) {
 		em.persist(user);
 		user.setStaff(staff);
 		em.persist(staff);
@@ -74,7 +75,8 @@ public class UserDaoImpl implements UserDAO {
 		user.setRole(user.getRole());
 		staff.setFirstName(staff.getFirstName());
 		staff.setLastName(staff.getLastName());
-		staff.setLocation(staff.getLocation());
+//		em.find(Location.class, staff.getLocation().getId());
+		staff.setLocation(em.find(Location.class, locNumber));
 		return staff;
 	}
 

@@ -18,6 +18,7 @@ import com.skilldistillery.cmms.data.ToolDAO;
 import com.skilldistillery.cmms.data.TrainingDAO;
 import com.skilldistillery.cmms.data.UserDAO;
 import com.skilldistillery.cmms.entities.Equipment;
+import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
 import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.Tool;
@@ -145,9 +146,9 @@ public class SupervisorController {
 	}
 	
 	@RequestMapping(path = "persistUser.do", method = RequestMethod.POST)
-	public String addUser(HttpSession session, RedirectAttributes redir, Staff staff, User user) {
+	public String addUser(HttpSession session, RedirectAttributes redir, Staff staff, User user, int locNumber) {
 		if (session.getAttribute("loggedInUser") != null) {
-			Staff newUser = userDao.addUser(user, staff);
+			Staff newUser = userDao.addUser(user, staff, locNumber);
 			redir.addFlashAttribute("newUser", newUser);
 			return "redirect:addUserConfirmation.do";
 		} else

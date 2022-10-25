@@ -46,8 +46,8 @@
 						<div class="invalid-feedback">Please provide a valid Password.</div>
 					</div>
 					<div class="col-md-3">
-					<label for="Location" class="form-label">Location</label>
-						<select class="form-select" name="locationId" required>
+					<label for="locNumber" class="form-label">Location</label>
+						<select class="form-select" name="locNumber" required>
 							<option selected disabled value="">Choose...</option>
 							<option>1</option>
 							<option>2</option>
