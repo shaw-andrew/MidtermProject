@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.User;
 @Service
@@ -26,10 +27,10 @@ public class TechnicianDAOImpl implements TechnicianDAO {
 	}
 	
 	@Override
-	public List<Staff> findAllAtLocation(Integer locationId) {
+	public List<Staff> findAllAtLocation(Location location) {
 		
 		String jpql = "SELECT staff FROM Staff staff where staff.location_id = :location";
-		List<Staff> staff = em.createQuery(jpql, Staff.class).setParameter("location", locationId).getResultList();
+		List<Staff> staff = em.createQuery(jpql, Staff.class).setParameter("location", location.getId()).getResultList();
 		return staff;
 		
 	}
