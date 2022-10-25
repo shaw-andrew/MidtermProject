@@ -46,32 +46,24 @@
 						<div class="invalid-feedback">Please provide a valid Password.</div>
 					</div>
 					<div class="col-md-3">
-						<label for="validationCustom04" class="form-label">Location</label>
-						<select class="form-select" name="location" required>
+					<label for="Location" class="form-label">Location</label>
+						<select class="form-select" name="locationId" required>
 							<option selected disabled value="">Choose...</option>
-							<option>Warehouse 1</option>
-							<option>Warehouse 2</option>
-							<option>Warehouse 3</option>
-						</select>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+						</select> 
 						<div class="invalid-feedback">Please select a valid Location.</div>
 					</div>
 					<div class="col-md-3">
-							<label for="roleSelection" class="form-label">Role</label>
-						<select class="form-select" id="roleSelection" required>
+							<label for="role" class="form-label">Role</label>
+						<select class="form-select" name="role" required>
 							<option selected disabled value="">Choose...</option>
 							<option>Supervisor</option>
 							<option>Technician</option>
 							</select>
 							<div class="invalid-feedback">Please select a valid Role.</div>
 					</div>
-					<!-- <div class="col"> -->
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="Information is accurate - value"
-								id="invalidCheck" required> <label
-								class="form-check-label" for="invalidCheck"> Information is accurate.label </label>
-							<div class="invalid-feedback">You must agree before submitting.</div>
-						</div>
-					<!-- </div> -->
 					<div class="col-12">
 						<button class="btn btn-primary" type="submit">Update User</button><br>
 					</div>
