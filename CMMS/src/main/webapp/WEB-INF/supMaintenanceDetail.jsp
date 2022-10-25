@@ -26,29 +26,32 @@
 		<table class="table table-striped table-hover">
 			<thead class="table-dark">
 				<tr>
-					<th>Equipment ID</th>
-					<th>Task Name</th>
-					<th>Scheduled Start Date</th>
-					<th>Scheduled End Date</th>
 					<th>MRC ID</th>
-					<th>Staff ID</th>
-					<th>Completion Date</th>
-					<th>Actual Duration</th>
-					<th>Tech Notes</th>
+					<th>Description</th>
+					<th>Technicians Required</th>
+					<th>Associated Training</th>
+					<th>Est. Duration</th>
+					<th>Periodicity</th>
+					<th>Equipment</th>
+					<th>Required Certifications</th>
+					<th>Safety Section</th>
+					<th>Replacement Parts</th>
+					<th>Required Tools</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="maintenanceItem" items="${maintenanceItem}">
+				<c:forEach var="mrcs" items="${mrcs}">
 					<tr>
-						<td>${maintenanceItem.equipmentId}</td>
-						<td><a href="getPark.do?pid=${maintenanceItem.id }">${maintenanceItem.name}</a></td>
-						<td>${maintenanceItem.scheduledStartDate}</td>
-						<td>${maintenanceItem.scheduledEndDate}</td>
-						<td>${maintenanceItem.mrcId}</td>
-						<td>${maintenanceItem.staffId}</td>
-						<td>${maintenanceItem.completionDate}</td>
-						<td>${maintenanceItem.actualDuration}</td>
-						<td>${maintenanceItem.techNotes}</td>
+						<td>${mrcs.id}</td>
+						<td>${mrcs.description}</td>
+						<td>${mrcs.numberOfTechs}</td>
+						<td>${mrcs.trainings}</td>
+						<td>${mrcs.estimatedDurationInHours}</td>
+						<td>${mrcs.frequency}</td>
+						<td>${mrcs.equipmentType}</td>
+						<td>${mrcs.safety}</td>
+						<td>${mrcs.parts}</td>
+						<td>${mrcs.tools}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
