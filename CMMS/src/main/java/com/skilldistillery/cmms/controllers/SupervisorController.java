@@ -53,10 +53,11 @@ public class SupervisorController {
 	
 	@RequestMapping(path = "supMaintenance.do", method = RequestMethod.GET)
 	public String viewSupervisorMaintenance(HttpSession session, Model model) {
-		MaintenanceItem item = null;
-		if (session.getAttribute("loggedInUser") != null) {
-			List<MaintenanceItem> tasks = taskDao.findAll();
+		User user = (User)session.getAttribute("loggedInUser");
+		if (user != null) {
 			
+			Location locationId = user.getStaff().getSupervisedLocation();
+			List<MaintenanceItem> tasks = taskDao.findAllByLocation(locationId);
 			
 			model.addAttribute("MaintenanceItems", tasks);
 			return "supMaintenance";
