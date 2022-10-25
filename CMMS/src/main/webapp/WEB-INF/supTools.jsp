@@ -23,6 +23,7 @@
 					<br>
 					<hr>
 					<br>
+					<a href="createTool.jsp"><button>Add New Tool To Store Room</button></a>
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
@@ -31,9 +32,9 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="tool" items="${tool}">
+							<c:forEach var="tool" items="${tools}">
 								<tr>
-									<td>${tool.toolId}</td>
+									<td>${tool.id}</td>
 									<td><a href="getPark.do?pid=${tool.id }">${tool.name}</a></td>
 
 								</tr>

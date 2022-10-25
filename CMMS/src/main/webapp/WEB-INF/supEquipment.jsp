@@ -31,14 +31,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${Equipment}">
+				<c:forEach var = "equipment" items="${equipment}">
 					<tr>
-						<td>${Equipment.id}</td>
-						<td>${Equipment.equipmentType}</td>
-						<td>${Equipment.name}</td>
-						<td>${Equipment.description}</td>
-						<td>${Equipment.location}</td>
-						<td>${Equipment.task}</td>
+						<td>${equipment.id}</td>
+						<td>${equipment.equipmentType}</td>
+						<td>${equipment.name}</td>
+						<td>${equipment.description}</td>
+						<td>${equipment.imageURL}</td>
+						<td>${equipment.location}</td>
+						<td>${equipment.task}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

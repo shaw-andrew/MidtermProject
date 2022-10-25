@@ -1,6 +1,5 @@
 package com.skilldistillery.cmms.controllers;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,15 +10,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.cmms.data.EquipmentDAO;
 import com.skilldistillery.cmms.data.MaintenanceItemDAO;
-import com.skilldistillery.cmms.entities.MaintenanceItem;
-import com.skilldistillery.cmms.entities.User;
+import com.skilldistillery.cmms.data.ToolDAO;
+import com.skilldistillery.cmms.data.TrainingDAO;
+import com.skilldistillery.cmms.entities.Equipment;
+import com.skilldistillery.cmms.entities.Tool;
+import com.skilldistillery.cmms.entities.Training;
 
 @Controller
 public class SupervisorController {
 	
 	@Autowired
 	private MaintenanceItemDAO taskDao;
+	@Autowired
+	private ToolDAO toolDao;
+	@Autowired
+	private TrainingDAO trainingDao;
+	@Autowired
+	private EquipmentDAO equipmentDao;
 	
 	
 	
@@ -51,31 +60,44 @@ public class SupervisorController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	@RequestMapping(path = "supTools.do", method = RequestMethod.GET)
-	public String toolSupervisorView(HttpSession session, Model model, User tech) {
+	public String toolSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
+			List<Tool> tools = toolDao.findAll();
+			model.addAttribute("tools", tools);
 			return "supTools";
 		} else
 			return "login";
 	}
-
+	
+	
+	
+	
 	@RequestMapping(path = "supTraining.do", method = RequestMethod.GET)
-	public String trainingSupervisorView(HttpSession session) {
+	public String trainingSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
+			List<Training> trainings = trainingDao.findAll();
+			model.addAttribute("trainings", trainings);
 			return "supTraining";
 		} else
 			return "login";
 	}
+	
+	@RequestMapping(path = "supEquipment.do", method = RequestMethod.GET)
+	public String equipmentSupervisorView(HttpSession session, Model model) {
+		if (session.getAttribute("loggedInUser") != null) {
+			List<Equipment> equipment = equipmentDao.findAll();
+			model.addAttribute("equipment", equipment);
+			return "supEquipment";
+		} else
+			return "login";
+		
+	}
+	
+	
+	
+
+
 
 	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
 	public String techniciansSupervisorView(HttpSession session) {
@@ -93,14 +115,7 @@ public class SupervisorController {
 			return "login";
 	}
 
-	@RequestMapping(path = "supEquipment.do", method = RequestMethod.GET)
-	public String equipmentSupervisorView(HttpSession session) {
-		if (session.getAttribute("loggedInUser") != null) {
-			return "supEquipment";
-		} else
-			return "login";
-		
-	}
+
 
 	
 }
