@@ -10,4 +10,8 @@ public interface MaintenanceItemDAO {
 	MaintenanceItem findById(int maintenanceItemId);
 
 	List<MaintenanceItem> findAll();
+	
+	MaintenanceItem updateText(int mainItemId, MaintenanceItem mainItem);
+	
+	MaintenanceItem updateCompletionDate(int mainItemId, MaintenanceItem mainItem);
 }

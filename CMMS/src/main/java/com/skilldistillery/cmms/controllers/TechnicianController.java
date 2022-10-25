@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.cmms.data.EquipmentDAO;
 import com.skilldistillery.cmms.data.MaintenanceItemDAO;
@@ -18,7 +19,7 @@ import com.skilldistillery.cmms.entities.MaintenanceItem;
 
 @Controller
 public class TechnicianController {
-	
+
 	@Autowired
 	private ToolDAO toolDao;
 	@Autowired
@@ -31,20 +32,20 @@ public class TechnicianController {
 	private TrainingDAO trainingDao;
 	@Autowired
 	private PartDAO partDao;
-	
-	
-	//goes to tools jsp and from there they can view tools needed for job, tasks, and parts
-	//has to find tools using the dao
+
+	// goes to tools jsp and from there they can view tools needed for job, tasks,
+	// and parts
+	// has to find tools using the dao
 	@RequestMapping(path = "tools.do", method = RequestMethod.GET)
 	public String toolView(HttpSession session, Integer toolId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
-			if(toolId == null) {
+			if (toolId == null) {
 				toolId = 1;
 			}
 //			Tool tool = toolDao.findById(1);
-			//FIXME
+			// FIXME
 			model.addAttribute("parts", partDao.findAll());
-			model.addAttribute("tools",toolDao.findAll());
+			model.addAttribute("tools", toolDao.findAll());
 			return "tools";
 		} else
 			return "login";
@@ -54,8 +55,8 @@ public class TechnicianController {
 	public String trainingView(HttpSession session, Integer trainingId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
 //			Training training = trainingDao.findById(1);
-			//FIXME
-			model.addAttribute("training",trainingDao.findAll());
+			// FIXME
+			model.addAttribute("training", trainingDao.findAll());
 			return "training";
 		} else
 			return "login";
@@ -65,7 +66,7 @@ public class TechnicianController {
 	public String techniciansView(HttpSession session, Integer technicianId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
 //			User user = userDao.findById(1);
-			//FIXME
+			// FIXME
 			model.addAttribute("user", userDao.findAll());
 			return "technicians";
 		} else
@@ -76,37 +77,54 @@ public class TechnicianController {
 	public String maintenanceDetailView(HttpSession session, Model model, Integer id) {
 		if (session.getAttribute("loggedInUser") != null) {
 //			MaintenanceRequirementCard mrc = mrcDAO.findById(1);
-			//FIXME
+			// FIXME
 			model.addAttribute("maintenanceItems", maintenanceItemDAO.findAll());
 			return "maintenanceDetail";
 		} else
 			return "login";
 	}
-	
-	
 
 	@RequestMapping(path = "equipment.do", method = RequestMethod.GET)
 	public String equipmentView(HttpSession session, Integer equipmentId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
 //			Equipment equipment = equipmentDao.findById(1);
-			//FIXME
-			
-			model.addAttribute("equipment",equipmentDao.findAll());
+			// FIXME
+
+			model.addAttribute("equipment", equipmentDao.findAll());
 			return "equipment";
 		} else
 			return "login";
 	}
-	
-	@RequestMapping(path = "submitNotes.do", method = RequestMethod.GET)
-	public String notesView(HttpSession session, Model model, String text) {
+
+	@RequestMapping(path = "complete.do", method = RequestMethod.POST)
+	public String completionView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
 		if (session.getAttribute("loggedInUser") != null) {
-			MaintenanceItem mi = new MaintenanceItem();
-			mi.setTechNotes(text);
-			model.addAttribute("text", mi.getTechNotes());
-			return "maintenanceDetail";
-		}else
+			MaintenanceItem update = maintenanceItemDAO.updateCompletionDate(id, mainItem);
+			redir.addFlashAttribute("update", update);
+
+			return "redirect:updateCompletionDate.do";
+		} else
 			return "login";
-		
 	}
-	
+
+	@RequestMapping(path = "updateCompletionDate.do", method = RequestMethod.GET)
+	public String updateCompletionDate() {
+		return "updateCompletionDate";
+	}
+
+	@RequestMapping(path = "submitNotes.do", method = RequestMethod.POST)
+	public String notesView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
+		if (session.getAttribute("loggedInUser") != null) {
+			MaintenanceItem update = maintenanceItemDAO.updateText(id, mainItem);
+			redir.addFlashAttribute("update", update);
+
+			return "redirect:updateNotesConfirmation.do";
+		} else
+			return "login";
+	}
+
+	@RequestMapping(path = "updateNotesConfirmation.do", method = RequestMethod.GET)
+	public String updateNotesConfirmation() {
+		return "updateNotesConfirmation";
+	}
 }

@@ -30,6 +30,22 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 		String jpql = "SELECT item FROM MaintenanceItem item";
 		return em.createQuery(jpql, MaintenanceItem.class).getResultList();
 	}
+
+	@Override
+	public MaintenanceItem updateText(int mainItemId, MaintenanceItem mainItem) {
+		MaintenanceItem updateMainItem = em.find(MaintenanceItem.class, mainItemId);
+		updateMainItem.setTechNotes(mainItem.getTechNotes());
+		return updateMainItem;
+	}
+
+	@Override
+	public MaintenanceItem updateCompletionDate(int mainItemId, MaintenanceItem mainItem) {
+		MaintenanceItem updateMainItem = em.find(MaintenanceItem.class, mainItemId);
+		updateMainItem.setCompletionDate(mainItem.getCompletionDate());
+		return updateMainItem;
+	}
+	
+	
 	
 
 }
