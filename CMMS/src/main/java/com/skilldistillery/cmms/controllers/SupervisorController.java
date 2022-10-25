@@ -139,10 +139,10 @@ public class SupervisorController {
 			return "login";
 	}
 	
-	@RequestMapping(path = "updatePassword.do", method = RequestMethod.GET)
-	public String updatePassword(HttpSession session, RedirectAttributes redir, int id, User user) {
+	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)
+	public String updatePassword(HttpSession session, RedirectAttributes redir, int id, String password) {
 		if (session.getAttribute("loggedInUser") != null) {
-			User update = userDao.updatePassword(id, user);
+			User update = userDao.updatePassword(id, password);
 			redir.addFlashAttribute("update", update);
 			return "redirect:updatePasswordConfirmation.do";
 		} else

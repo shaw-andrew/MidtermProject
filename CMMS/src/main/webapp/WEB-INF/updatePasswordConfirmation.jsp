@@ -15,11 +15,11 @@
 
 		<div>
 		<c:choose>
-		<c:when test="${empty user}">
+		<c:when test="${empty update}">
 		<p>An error occurred. Password was not updated. Please try again.</p>
 		</c:when>
 		<c:otherwise>
-		<p><a href="getPark.do?pid=${user.id }">${user.name}</a> was updated successfully!</p>
+		<p><a href="getPark.do?pid=${update.id }">${update.name}</a> was updated successfully!</p>
 		</c:otherwise>
 		</c:choose>
 	

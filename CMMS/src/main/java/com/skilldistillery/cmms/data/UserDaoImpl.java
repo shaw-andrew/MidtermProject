@@ -51,10 +51,9 @@ public class UserDaoImpl implements UserDAO {
 		return update;
 	}
 	@Override
-	public User updatePassword(int userId, User user) {
+	public User updatePassword(int userId, String password) {
 		User update = em.find(User.class, userId);
-		update.setPassword(user.getPassword());
-		
+		update.setPassword(password);
 		return update;
 	}
 	
