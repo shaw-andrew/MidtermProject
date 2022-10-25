@@ -13,10 +13,8 @@
 		<%--Edit the file nav.jsp to change nav links --%>
 		<div class="container text-center">
 			<div class="row">
-
-
 				<h1>@Autowired - Create/Update User</h1>
-				<form class="row g-3 needs-validation" novalidate action=addOrUpdate.do method="POST">
+				<form class="row g-3 needs-validation" novalidate action=persistUser.do method="POST">
 					<div class="col-md-4">
 						<label for="firstName" class="form-label">First
 							name</label> <input type="text" class="form-control"
@@ -68,14 +66,14 @@
 					</div>
 					<!-- <div class="col"> -->
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
+							<input class="form-check-input" type="checkbox" value="Information is accurate - value"
 								id="invalidCheck" required> <label
-								class="form-check-label" for="invalidCheck"> Information is accurate. </label>
+								class="form-check-label" for="invalidCheck"> Information is accurate.label </label>
 							<div class="invalid-feedback">You must agree before submitting.</div>
 						</div>
 					<!-- </div> -->
 					<div class="col-12">
-						<button class="btn btn-primary" type="submit">Update User</button>
+						<button class="btn btn-primary" type="submit">Update User</button><br>
 					</div>
 				</form>
 

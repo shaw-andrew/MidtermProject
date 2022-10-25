@@ -46,7 +46,7 @@
 				</form>
 
 				<c:if test="${loggedInUser.role == 'supervisor' }">
-					<a class="btn btn-secondary" href="addOrUpdate.do" role="button">Add User</a>
+					<a class="btn btn-secondary" href="addUser.do" role="button">Add User</a>
 				</c:if>
 				<hr>
 				<br>

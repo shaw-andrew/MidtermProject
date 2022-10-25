@@ -34,11 +34,8 @@ public class SupervisorController {
 	private TrainingDAO trainingDao;
 	@Autowired
 	private EquipmentDAO equipmentDao;
-	
 	@Autowired
 	private UserDAO userDao;
-	
-	
 	
 	
 	
@@ -63,8 +60,6 @@ public class SupervisorController {
 			return "login";
 	}
 	
-	
-	
 	@RequestMapping(path = "supTools.do", method = RequestMethod.GET)
 	public String toolSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -74,9 +69,6 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
-	
-	
 	
 	@RequestMapping(path = "supTraining.do", method = RequestMethod.GET)
 	public String trainingSupervisorView(HttpSession session, Model model) {
@@ -99,7 +91,6 @@ public class SupervisorController {
 		
 	}
 	
-	
 	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
 	public String techniciansSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -110,9 +101,6 @@ public class SupervisorController {
 			return "login";
 	}
 	
-
-
-
 
 	@RequestMapping(path = "supMaintenanceDetail.do", method = RequestMethod.GET)
 	public String maintenanceDetailSupervisorView(HttpSession session) {
@@ -152,7 +140,20 @@ public class SupervisorController {
 	public String updatePasswordConfirmation() {
 		return "updatePasswordConfirmation";
 	}
+	
+	@RequestMapping(path = "persistUser.do", method = RequestMethod.POST)
+	public String addUser(HttpSession session, RedirectAttributes redir, Staff staff, User user) {
+		if (session.getAttribute("loggedInUser") != null) {
+			Staff newUser = userDao.addUser(user, staff);
+			redir.addFlashAttribute("newUser", newUser);
+			return "redirect:addUserConfirmation.do";
+		} else
+			return "login";
+	}
+	
+	@RequestMapping(path="addUserConfirmation.do", method = RequestMethod.GET)
+	public String addUserConfirmation() {
+		return "addUserConfirmation";
+	}
 
-	
-	
 }
