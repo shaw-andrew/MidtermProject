@@ -14,9 +14,11 @@ import com.skilldistillery.cmms.data.EquipmentDAO;
 import com.skilldistillery.cmms.data.MaintenanceItemDAO;
 import com.skilldistillery.cmms.data.ToolDAO;
 import com.skilldistillery.cmms.data.TrainingDAO;
+import com.skilldistillery.cmms.data.UserDAO;
 import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.Tool;
 import com.skilldistillery.cmms.entities.Training;
+import com.skilldistillery.cmms.entities.User;
 
 @Controller
 public class SupervisorController {
@@ -29,6 +31,9 @@ public class SupervisorController {
 	private TrainingDAO trainingDao;
 	@Autowired
 	private EquipmentDAO equipmentDao;
+	
+	@Autowired
+	private UserDAO userDao;
 	
 	
 	
@@ -95,17 +100,19 @@ public class SupervisorController {
 	}
 	
 	
+//	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
+//	public String techniciansSupervisorView(HttpSession session) {
+//		if (session.getAttribute("loggedInUser") != null) {
+//			List<User> techs = userDao.findAll();
+//			model.addAttribute("techs", techs);
+//			return "supTechnicians";
+//		} else
+//			return "login";
+//	}
 	
 
 
 
-	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
-	public String techniciansSupervisorView(HttpSession session) {
-		if (session.getAttribute("loggedInUser") != null) {
-			return "supTechnicians";
-		} else
-			return "login";
-	}
 
 	@RequestMapping(path = "supMaintenanceDetail.do", method = RequestMethod.GET)
 	public String maintenanceDetailSupervisorView(HttpSession session) {
