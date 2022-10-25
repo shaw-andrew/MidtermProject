@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.cmms.data.EquipmentDAO;
-import com.skilldistillery.cmms.data.MaintenanceDetailDAO;
+import com.skilldistillery.cmms.data.MaintenanceItemDAO;
 import com.skilldistillery.cmms.data.PartDAO;
 import com.skilldistillery.cmms.data.ToolDAO;
 import com.skilldistillery.cmms.data.TrainingDAO;
@@ -25,7 +25,7 @@ public class TechnicianController {
 	@Autowired
 	private UserDAO userDao;
 	@Autowired
-	private MaintenanceDetailDAO mrcDAO;
+	private MaintenanceItemDAO maintenanceItemDAO;
 	@Autowired
 	private TrainingDAO trainingDao;
 	@Autowired
@@ -76,7 +76,7 @@ public class TechnicianController {
 		if (session.getAttribute("loggedInUser") != null) {
 //			MaintenanceRequirementCard mrc = mrcDAO.findById(1);
 			//FIXME
-			model.addAttribute("MaintenanceItem", mrcDAO.findAll());
+			model.addAttribute("maintenanceItems", maintenanceItemDAO.findAll());
 			return "maintenanceDetail";
 		} else
 			return "login";

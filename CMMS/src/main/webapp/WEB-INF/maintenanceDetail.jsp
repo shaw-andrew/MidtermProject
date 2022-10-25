@@ -18,7 +18,7 @@
 				<div class="col-8">
 					<br>
 					<hr>
-					<h2>@Autowired - Maintenance Item Detail</h2>
+					<h2>@Autowired - My Scheduled Work</h2>
 					<br>
 					<hr>
 					<br>
@@ -26,29 +26,29 @@
 		<table class="table table-striped table-hover">
 			<thead class="table-dark">
 				<tr>
-					<th>Equipment ID</th>
-					<th>Task Name</th>
+					<th>ID</th>
+					<th>Equipment</th>
+					<th>MRC</th>
+					<th>Staff</th>
+					<th>Tech Notes</th>
 					<th>Scheduled Start Date</th>
 					<th>Scheduled End Date</th>
-					<th>MRC ID</th>
-					<th>Staff ID</th>
+					<th>Actual Duration (hrs)</th>
 					<th>Completion Date</th>
-					<th>Actual Duration</th>
-					<th>Tech Notes</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="maintenanceDetail" items="${maintenanceItem}">
+				<c:forEach var="maintenanceItem" items="${maintenanceItems}">
 					<tr>
-						<td>${maintenanceDetail.equipmentId}</td>
-						<td><a href="getPark.do?pid=${maintenanceItem.id }">${maintenanceItem.name}</a></td>
-						<td>${maintenanceDetail.scheduledStartDate}</td>
-						<td>${maintenanceDetail.scheduledEndDate}</td>
-						<td>${maintenanceDetail.mrcId}</td>
-						<td>${maintenanceDetail.staffId}</td>
-						<td>${maintenanceDetail.completionDate}</td>
-						<td>${maintenanceDetail.actualDuration}</td>
-						<td>${maintenanceDetail.techNotes}</td>
+						<td>${maintenanceItem.id}</td>
+						<td>${maintenanceItem.equipment }</td>
+						<td>${maintenanceItem.mrc}</td>
+						<td>${maintenanceItem.staff}</td>
+						<td>${maintenanceItem.techNotes}</td>
+						<td>${maintenanceItem.scheduleStartDate}</td>
+						<td>${maintenanceItem.scheduleEndDate}</td>
+						<td>${maintenanceItem.actualDurationInHours}</td>
+						<td>${maintenanceItem.completionDate}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
