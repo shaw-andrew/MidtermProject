@@ -45,7 +45,7 @@
 					<button class="btn btn-primary" type="submit">Update Password</button>
 				</form>
 
-				<c:if test="${loggedInUser.role == 'supervisor' }">
+				<c:if test="${loggedInUser.role == 'Supervisor' }">
 					<a class="btn btn-secondary" href="addUser.do" role="button">Add User</a>
 				</c:if>
 				<hr>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>@Autowired - Add or Update User</title>
+<title>@Autowired - Add User</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -13,7 +13,7 @@
 		<%--Edit the file nav.jsp to change nav links --%>
 		<div class="container text-center">
 			<div class="row">
-				<h1>@Autowired - Create/Update User</h1>
+				<h1>@Autowired - Add User</h1>
 				<form class="row g-3 needs-validation" novalidate action=persistUser.do method="POST">
 					<div class="col-md-4">
 						<label for="firstName" class="form-label">First
@@ -38,24 +38,8 @@
 							<div class="invalid-feedback">Please choose a username.</div>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<label for="password" class="form-label">Password</label>
-						<input type="text" class="form-control" name="password"
-							required>
-							<div class="valid-feedback">Looks good!</div>
-						<div class="invalid-feedback">Please provide a valid Password.</div>
-					</div>
-					<div class="col-md-3">
-					<!-- <label for="locNumber" class="form-label">Location</label>
-						<select class="form-select" name="locNumber" required>
-							<option selected disabled value="">Choose...</option>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-						</select> 
-						<div class="invalid-feedback">Please select a valid Location.</div> -->
-					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
+					
 							<label for="role" class="form-label">Role</label>
 						<select class="form-select" name="role" required>
 							<option selected disabled value="">Choose...</option>
@@ -63,9 +47,21 @@
 							<option>Technician</option>
 							</select>
 							<div class="invalid-feedback">Please select a valid Role.</div>
+					
+					</div>
+					<div class="col-md-4">
+					</div>
+					<div class="col-md-4">
+					
+						<label for="password" class="form-label">Password</label>
+						<input type="password" class="form-control" name="password"
+							required>
+							<div class="valid-feedback">Looks good!</div>
+						<div class="invalid-feedback">Please provide a valid Password.</div>
+					
 					</div>
 					<div class="col-12">
-						<button class="btn btn-primary" type="submit">Update User</button><br>
+						<button class="btn btn-primary" type="submit">Create New User</button><br>
 					</div>
 				</form>
 
