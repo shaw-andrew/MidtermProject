@@ -17,6 +17,7 @@ import com.skilldistillery.cmms.data.ToolDAO;
 import com.skilldistillery.cmms.data.TrainingDAO;
 import com.skilldistillery.cmms.data.UserDAO;
 import com.skilldistillery.cmms.entities.Equipment;
+import com.skilldistillery.cmms.entities.MaintenanceItem;
 import com.skilldistillery.cmms.entities.Tool;
 import com.skilldistillery.cmms.entities.Training;
 import com.skilldistillery.cmms.entities.User;
@@ -48,21 +49,18 @@ public class SupervisorController {
 			return "login";
 	}
 	
-//	@RequestMapping(path = "supMaintenance.do", method = RequestMethod.GET)
-//	public String viewSupervisorMaintenance(HttpSession session, Model model) {
-//		MaintenanceItem item = null;
-//		if (session.getAttribute("loggedInUser") != null) {
-//			List<MaintenanceItem> tasks = taskDao.findAll();
-//			
-//			Collections.sort(tasks,  item.getCompletionDate() );
-//			for(MaintenanceItem task : tasks) {
-//				
-//			}
-//			model.addAttribute("MaintenanceItems", tasks);
-//			return "supMaintenance";
-//		} else
-//			return "login";
-//	}
+	@RequestMapping(path = "supMaintenance.do", method = RequestMethod.GET)
+	public String viewSupervisorMaintenance(HttpSession session, Model model) {
+		MaintenanceItem item = null;
+		if (session.getAttribute("loggedInUser") != null) {
+			List<MaintenanceItem> tasks = taskDao.findAll();
+			
+			
+			model.addAttribute("MaintenanceItems", tasks);
+			return "supMaintenance";
+		} else
+			return "login";
+	}
 	
 	
 	
