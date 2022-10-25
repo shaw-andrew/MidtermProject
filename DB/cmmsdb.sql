@@ -73,7 +73,6 @@ CREATE TABLE IF NOT EXISTS `maintenance_requirement_card` (
   `frequency_id` INT NOT NULL,
   `equipment_type_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `number_of_techs_UNIQUE` (`number_of_techs` ASC),
   UNIQUE INDEX `training_video_id_UNIQUE` (`training_video_id` ASC),
   INDEX `fk_maintenance_requirement_card_frequency1_idx` (`frequency_id` ASC),
   INDEX `fk_maintenance_requirement_card_equipment_type1_idx` (`equipment_type_id` ASC),
@@ -422,6 +421,16 @@ START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', 'admin', 1, 'supervisor');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (2, 'tech', 'tech', 1, 'tech');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (3, 'anderw.s', 'andrew.s', 1, 'supervisor');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (4, 'ethan.l', 'ethan.l', 1, 'supervisor');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (5, 'ruben.r', 'ruben.r', 1, 'supervisor');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (6, 'jared.s', 'jared.s', 1, 'tech');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (7, 'kate.r', 'kate.r', 0, 'tech');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (8, 'schuyler.c', 'schuyler.c', 1, 'tech');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (9, 'garrett.f', 'garrett.f', 1, 'tech');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (10, 'ashlee.b', 'ashlee.b', 1, 'tech');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (11, 'matt.j', 'matt.j', 1, 'tech');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (12, 'marina.c', 'marina.c', 1, 'tech');
 
 COMMIT;
 
@@ -431,7 +440,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (1, 'mechanical', NULL, NULL, 2000);
+INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (1, 'mechanical', 'conveyer3000', 'conveyers llc.', 2000);
+INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (2, 'vehicle', 'cargo van', 'ford', 2023);
+INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (3, 'misc', '8x11 insulated', 'ankmar', NULL);
 
 COMMIT;
 
@@ -442,6 +453,11 @@ COMMIT;
 START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `frequency` (`id`, `name`, `description`) VALUES (1, 'daily', NULL);
+INSERT INTO `frequency` (`id`, `name`, `description`) VALUES (2, 'weekly', NULL);
+INSERT INTO `frequency` (`id`, `name`, `description`) VALUES (3, 'monthly', NULL);
+INSERT INTO `frequency` (`id`, `name`, `description`) VALUES (4, 'quarterly', NULL);
+INSERT INTO `frequency` (`id`, `name`, `description`) VALUES (5, 'semi-annually', NULL);
+INSERT INTO `frequency` (`id`, `name`, `description`) VALUES (6, 'annually', NULL);
 
 COMMIT;
 
@@ -451,7 +467,15 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (1, 'test maintenance', 1, '1', 2, 1, 1);
+INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (1, 'conveyer belt grip check', 1, '1', .5, 1, 1);
+INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (2, 'roller seizure check', 1, '2', 1, 2, 1);
+INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (3, 'motor oil change', 1, '3', 2, 3, 1);
+INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (4, 'vehicle drivability', 1, '4', .5, 1, 2);
+INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (5, 'tire tred check', 1, '5', .25, 2, 2);
+INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (6, 'oil change', 1, '6', 1, 3, 2);
+INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (7, 'roller lubrication', 1, '7', .5, 1, 3);
+INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (8, 'operator test', 1, '8', .25, 2, 3);
+INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (9, 'door alignment', 1, '9', 2, 3, 3);
 
 COMMIT;
 
@@ -462,6 +486,8 @@ COMMIT;
 START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `location` (`id`, `street`, `street_2`, `city`, `state_abbrev`, `zip_code`) VALUES (1, '123 A St.', NULL, 'Denver', 'CO', 80205);
+INSERT INTO `location` (`id`, `street`, `street_2`, `city`, `state_abbrev`, `zip_code`) VALUES (2, '456 B St.', NULL, 'San Diego', 'CA', 98634);
+INSERT INTO `location` (`id`, `street`, `street_2`, `city`, `state_abbrev`, `zip_code`) VALUES (3, '789 C St.', NULL, 'Austin', 'TX', 78634);
 
 COMMIT;
 
@@ -473,6 +499,16 @@ START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (1, 'John', 'Appleseed', 1, 1, 1, 1);
 INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (2, 'Jane', 'Doe', 1, 2, NULL, NULL);
+INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (3, 'Andrew', 'Shaw', 1, 3, 2, 1);
+INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (4, 'Ethan', 'Lauzon', 2, 4, 3, 2);
+INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (5, 'Ruben', 'Rocha', 3, 5, 4, 3);
+INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (6, 'Jared', 'Salas', 1, 6, NULL, NULL);
+INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (7, 'Kate', 'Ralston', 3, 7, NULL, NULL);
+INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (8, 'Schuyler', 'Carlson', 2, 8, NULL, NULL);
+INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (9, 'Garrett', 'Franklin', 2, 9, NULL, NULL);
+INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (10, 'Ashlee', 'Briggs', 2, 10, NULL, NULL);
+INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (11, 'Matt', 'Jacobo', 3, 11, NULL, NULL);
+INSERT INTO `staff` (`id`, `first_name`, `last_name`, `location_id`, `user_id`, `manager_id`, `supervised_location_id`) VALUES (12, 'Marina', 'Contrearas', 3, 12, NULL, NULL);
 
 COMMIT;
 
@@ -483,6 +519,8 @@ COMMIT;
 START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `equipment` (`id`, `equipment_type_id`, `location_id`, `name`, `description`, `image_url`) VALUES (1, 1, 1, 'conveyer', NULL, NULL);
+INSERT INTO `equipment` (`id`, `equipment_type_id`, `location_id`, `name`, `description`, `image_url`) VALUES (2, 2, 2, 'delivery truck', NULL, NULL);
+INSERT INTO `equipment` (`id`, `equipment_type_id`, `location_id`, `name`, `description`, `image_url`) VALUES (3, 3, 3, 'garage door', NULL, NULL);
 
 COMMIT;
 
@@ -493,6 +531,17 @@ COMMIT;
 START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (1, NULL, 0, NULL, NULL, 1, 1, NULL, 2);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (2, NULL, NULL, NULL, NULL, 2, 2, NULL, 8);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (3, NULL, NULL, NULL, NULL, 3, 3, NULL, 7);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (4, NULL, NULL, NULL, NULL, 4, 1, NULL, 6);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (5, NULL, NULL, NULL, NULL, 5, 2, NULL, 9);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (6, NULL, NULL, NULL, NULL, 6, 3, NULL, 12);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (7, NULL, NULL, NULL, NULL, 7, 1, NULL, 2);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (8, NULL, NULL, NULL, NULL, 8, 2, NULL, 10);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (9, NULL, NULL, NULL, NULL, 9, 3, NULL, 11);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (10, NULL, NULL, NULL, NULL, 1, 1, NULL, 6);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (11, NULL, NULL, NULL, NULL, 2, 2, NULL, 10);
+INSERT INTO `maintenance_item` (`id`, `completion_date`, `actual_duration_in_hours`, `tech_notes`, `schedule_start_date`, `maintenance_requirement_card_id`, `equipment_id`, `schedule_end_date`, `staff_id`) VALUES (12, NULL, NULL, NULL, NULL, 3, 3, NULL, 12);
 
 COMMIT;
 
@@ -503,6 +552,16 @@ COMMIT;
 START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `tool` (`id`, `name`) VALUES (1, 'screwdriver');
+INSERT INTO `tool` (`id`, `name`) VALUES (2, 'flashlight');
+INSERT INTO `tool` (`id`, `name`) VALUES (3, 'gloves');
+INSERT INTO `tool` (`id`, `name`) VALUES (4, 'force resister');
+INSERT INTO `tool` (`id`, `name`) VALUES (5, 'lubricant');
+INSERT INTO `tool` (`id`, `name`) VALUES (6, 'oil (conveyer)');
+INSERT INTO `tool` (`id`, `name`) VALUES (7, 'funnel');
+INSERT INTO `tool` (`id`, `name`) VALUES (8, 'oil filter (conveyer)');
+INSERT INTO `tool` (`id`, `name`) VALUES (9, 'hazardous material container');
+INSERT INTO `tool` (`id`, `name`) VALUES (10, 'socket wrench');
+INSERT INTO `tool` (`id`, `name`) VALUES (11, 'socket set');
 
 COMMIT;
 
@@ -543,6 +602,21 @@ COMMIT;
 START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (1, 1);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (1, 2);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (1, 3);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (1, 4);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (2, 1);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (2, 2);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (2, 3);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (2, 5);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 1);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 2);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 6);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 7);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 8);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 9);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 10);
+INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 11);
 
 COMMIT;
 
