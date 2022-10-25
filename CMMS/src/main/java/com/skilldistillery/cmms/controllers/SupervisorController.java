@@ -101,10 +101,10 @@ public class SupervisorController {
 	
 	
 	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
-	public String techniciansSupervisorView(HttpSession session) {
+	public String techniciansSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
 			List<User> techs = userDao.findAll();
-//			model.addAttribute("techs", techs);
+			model.addAttribute("techs", techs);
 			return "supTechnicians";
 		} else
 			return "login";
