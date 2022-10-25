@@ -421,7 +421,7 @@ START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', 'admin', 1, 'supervisor');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (2, 'tech', 'tech', 1, 'tech');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (3, 'anderw.s', 'andrew.s', 1, 'supervisor');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (3, 'andrew.s', 'andrew.s', 1, 'supervisor');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (4, 'ethan.l', 'ethan.l', 1, 'supervisor');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (5, 'ruben.r', 'ruben.r', 1, 'supervisor');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (6, 'jared.s', 'jared.s', 1, 'tech');
@@ -442,7 +442,7 @@ START TRANSACTION;
 USE `cmmsdb`;
 INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (1, 'mechanical', 'conveyer3000', 'conveyers llc.', 2000);
 INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (2, 'vehicle', 'cargo van', 'ford', 2023);
-INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (3, 'misc', '8x11 insulated', 'ankmar', NULL);
+INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (3, 'misc', '8x11 insulated', 'ankmar', 2021);
 
 COMMIT;
 
