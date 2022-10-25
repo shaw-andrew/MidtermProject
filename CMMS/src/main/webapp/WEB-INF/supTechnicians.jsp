@@ -28,6 +28,8 @@
 					Upcoming schedule
 					Training
 					
+					${staff }
+					
 					
 				</div>
 				<div class="col"></div>

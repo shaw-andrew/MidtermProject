@@ -95,15 +95,17 @@ public class SupervisorController {
 		
 	}
 	
-//	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
-//	public String techniciansSupervisorView(HttpSession session, Model model, Location locationId) {
-//		if (session.getAttribute("loggedInUser") != null) {
-//			List<Staff> staff = techDao.findAllAtLocation(locationId);
-//			model.addAttribute(staff);
-//			return "supTechnicians";
-//		} else
-//			return "login";
-//	}
+	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
+	public String techniciansSupervisorView(HttpSession session, Model model) {
+		User user = (User)session.getAttribute("loggedInUser");
+		if (user != null) {
+			Location locationId = user.getStaff().getSupervisedLocation();
+			List<Staff> staff = techDao.findAllAtLocation(locationId);
+			model.addAttribute("staff", staff);
+			return "supTechnicians";
+		} else
+			return "login";
+	}
 	
 
 	@RequestMapping(path = "supMaintenanceDetail.do", method = RequestMethod.GET)
