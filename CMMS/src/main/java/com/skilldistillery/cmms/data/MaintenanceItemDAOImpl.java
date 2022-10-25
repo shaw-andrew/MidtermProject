@@ -32,20 +32,13 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 	}
 
 	@Override
-	public MaintenanceItem updateText(int mainItemId, MaintenanceItem mainItem) {
+	public MaintenanceItem updateAll(int mainItemId, MaintenanceItem mainItem) {
 		MaintenanceItem updateMainItem = em.find(MaintenanceItem.class, mainItemId);
 		updateMainItem.setTechNotes(mainItem.getTechNotes());
-		return updateMainItem;
-	}
-
-	@Override
-	public MaintenanceItem updateCompletionDate(int mainItemId, MaintenanceItem mainItem) {
-		MaintenanceItem updateMainItem = em.find(MaintenanceItem.class, mainItemId);
 		updateMainItem.setCompletionDate(mainItem.getCompletionDate());
+		updateMainItem.setActualDurationInHours(mainItem.getActualDurationInHours());
+		em.persist(updateMainItem);
 		return updateMainItem;
 	}
-	
-	
-	
-
+		
 }

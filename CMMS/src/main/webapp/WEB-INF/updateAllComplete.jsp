@@ -22,7 +22,8 @@
 					<br>
 					<hr>
 					<br>
-	<form action="update.do" method="post">
+					
+	
 		<table class="table table-striped table-hover">
 			<thead class="table-dark">
 				<tr>
@@ -40,36 +41,25 @@
 				</tr>
 			</thead>
 			<tbody>
+			
 				<c:forEach var="maintenanceItem" items="${maintenanceItems}">
 					<tr>
 						<td>${maintenanceItem.id}</td>
 						<td>${maintenanceItem.equipment }</td>
 						<td>${maintenanceItem.mrc}</td>
 						<td>${maintenanceItem.staff}</td>
-						
-						<td>${maintenanceItem.techNotes}
-							<input type="text" id="notes" name="notes" value = "${maintenanceItem.techNotes}" 
-							maxlength="200"></td>
-							
+						<td>${maintenanceItem.techNotes}</td>
 						<td>${maintenanceItem.scheduleStartDate}</td>
 						<td>${maintenanceItem.scheduleEndDate}</td>
-						
-						<td><input type = "text" id ="actualduration" name = "actualduration" value = 
-							"${maintenanceItem.actualDurationInHours}" maxlength = "10"></td>
+						<td>"${maintenanceItem.actualDurationInHours}"</td>
+						<td>"${maintenanceItem.completionDate }"</td>
 							
-						<td><input type="text" id="completiondate" name="completiondate" 
-							value= "${maintenanceItem.completionDate }" maxlength="10"></td>
-							
-						<td><input type="radio" id="completed" name="option" value="completed">
-							<label for="completed">Completed</label><br>
-							<input type="radio" id="incomplete" name="option" value="incomplete">
-							<label for="incomplete">Incomplete</label><br>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-						<input type="submit" value = "update" class="btn btn-secondary">
-</form>
+						<a href="maintenanceDetail.do" type="button" class="btn btn-secondary">Return</a>
+
 				</div>
 				<div class="col-2"></div>
 			</div>

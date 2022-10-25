@@ -96,35 +96,34 @@ public class TechnicianController {
 			return "login";
 	}
 
-//	@RequestMapping(path = "complete.do", method = RequestMethod.POST)
-//	public String completionView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
-//		if (session.getAttribute("loggedInUser") != null) {
-//			MaintenanceItem update = maintenanceItemDAO.updateCompletionDate(id, mainItem);
-//			redir.addFlashAttribute("update", update);
-//
-//			return "redirect:updateCompletionDate.do";
-//		} else
-//			return "login";
-//	}
-//
-//	@RequestMapping(path = "updateCompletionDate.do", method = RequestMethod.GET)
-//	public String updateCompletionDate() {
-//		return "updateCompletionDate";
-//	}
-
-	@RequestMapping(path = "submitNotes.do", method = RequestMethod.POST)
-	public String notesView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
+	@RequestMapping(path = "update.do", method = RequestMethod.POST)
+	public String completionView(HttpSession session, int mainItemId,RedirectAttributes redir, MaintenanceItem mainItem) {
 		if (session.getAttribute("loggedInUser") != null) {
-			MaintenanceItem update = maintenanceItemDAO.updateText(id, mainItem);
-			redir.addFlashAttribute("update", update);
-
-			return "redirect:updateNotesConfirmation.do";
+			MaintenanceItem update = maintenanceItemDAO.updateAll(mainItemId, mainItem);
+			redir.addFlashAttribute("maintenanceItems",update);
+			return "redirect:updateAllComplete.do";
 		} else
 			return "login";
 	}
 
-	@RequestMapping(path = "updateNotesConfirmation.do", method = RequestMethod.GET)
-	public String updateNotesConfirmation() {
-		return "maintenanceDetail";
+	@RequestMapping(path = "updateAllComplete.do", method = RequestMethod.GET)
+	public String updateAllComplete() {
+		return "updateAllComplete";
 	}
+
+//	@RequestMapping(path = "submitNotes.do", method = RequestMethod.POST)
+//	public String notesView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
+//		if (session.getAttribute("loggedInUser") != null) {
+//			MaintenanceItem update = maintenanceItemDAO.updateText(id, mainItem);
+//			redir.addFlashAttribute("update", update);
+//
+//			return "redirect:updateNotesConfirmation.do";
+//		} else
+//			return "login";
+//	}
+//
+//	@RequestMapping(path = "updateNotesConfirmation.do", method = RequestMethod.GET)
+//	public String updateNotesConfirmation() {
+//		return "maintenanceDetail";
+//	}
 }

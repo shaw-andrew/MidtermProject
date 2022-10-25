@@ -11,7 +11,6 @@ public interface MaintenanceItemDAO {
 
 	List<MaintenanceItem> findAll();
 	
-	MaintenanceItem updateText(int mainItemId, MaintenanceItem mainItem);
+	MaintenanceItem updateAll(int mainItemId, MaintenanceItem mainItem);
 	
-	MaintenanceItem updateCompletionDate(int mainItemId, MaintenanceItem mainItem);
 }
