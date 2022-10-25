@@ -27,7 +27,10 @@ public class TechnicianDAOImpl implements TechnicianDAO {
 	
 	@Override
 	public List<Staff> findAllAtLocation(int locationId) {
-		return null;
+		
+		String jpql = "SELECT staff FROM Staff staff where staff.location_id = :location";
+		List<Staff> staff = em.createQuery(jpql, Staff.class).setParameter("location", locationId).getResultList();
+		return staff;
 		
 	}
 	
