@@ -34,7 +34,7 @@
 						<tbody>
 							<c:forEach var="tool" items="${tools}">
 								<tr>
-									<td>${tool.toolId}</td>
+									<td>${tool.id}</td>
 									<td><a href="getPark.do?pid=${tool.id }">${tool.name}</a></td>
 
 								</tr>
@@ -53,18 +53,18 @@
 						<thead class="table-dark">
 							<tr>
 								<th>Part ID</th>
-								<th>Name</th>
 								<th>Description</th>
 								<th>Cost</th>
+								<th>Part Number</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="part" items="${part}">
+							<c:forEach var="part" items="${parts}">
 								<tr>
-									<td>${part.partId}</td>
-									<td><a href="getPart.do?pid=${part.id }">${part.name}</a></td>
+									<td>${part.id}</td>
 									<td>${part.description}</td>
 									<td>${part.cost}</td>
+									<td>${part.partNumber }</td>
 								</tr>
 							</c:forEach>
 						</tbody>

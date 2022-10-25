@@ -38,17 +38,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="maintenanceItem" items="${MaintenanceItems}">
+				<c:forEach var="maintenanceDetail" items="${maintenanceItem}">
 					<tr>
-						<td>${maintenanceItem.equipmentId}</td>
+						<td>${maintenanceDetail.equipmentId}</td>
 						<td><a href="getPark.do?pid=${maintenanceItem.id }">${maintenanceItem.name}</a></td>
-						<td>${maintenanceItem.scheduledStartDate}</td>
-						<td>${maintenanceItem.scheduledEndDate}</td>
-						<td>${maintenanceItem.mrcId}</td>
-						<td>${maintenanceItem.staffId}</td>
-						<td>${maintenanceItem.completionDate}</td>
-						<td>${maintenanceItem.actualDuration}</td>
-						<td>${maintenanceItem.techNotes}</td>
+						<td>${maintenanceDetail.scheduledStartDate}</td>
+						<td>${maintenanceDetail.scheduledEndDate}</td>
+						<td>${maintenanceDetail.mrcId}</td>
+						<td>${maintenanceDetail.staffId}</td>
+						<td>${maintenanceDetail.completionDate}</td>
+						<td>${maintenanceDetail.actualDuration}</td>
+						<td>${maintenanceDetail.techNotes}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
