@@ -17,6 +17,6 @@ public interface UserDAO {
 
 	List<User> findAll();
 
-	Staff addUser(User user, Staff staff);
+	Staff addUser(User user, Staff staff, int locNumber);
 
 }
