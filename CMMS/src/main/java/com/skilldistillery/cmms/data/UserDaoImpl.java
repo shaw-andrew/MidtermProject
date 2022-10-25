@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.User;
 
@@ -45,7 +46,7 @@ public class UserDaoImpl implements UserDAO {
 	public User updateUser(int userId, User user) {
 		User update = em.find(User.class, userId);
 		update.setPassword(user.getPassword());
-		update.setUsername(update.getUsername());
+		update.setUsername(user.getUsername());
 		update.setRole(update.getRole());
 		update.setStaff(null);
 		return update;
@@ -54,7 +55,9 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public User updatePassword(int userId, String password) {
 		User update = em.find(User.class, userId);
+		if(update != null) {
 		update.setPassword(password);
+		}
 		return update;
 	}
 	
@@ -62,11 +65,15 @@ public class UserDaoImpl implements UserDAO {
 		String jpql = "SELECT user FROM User user";
 		return em.createQuery(jpql, User.class).getResultList();
 	}
-	
-	public Staff addUser(User user, Staff staff) {
-		//persist user first, assign user to staff, persist staff
-		
-		return null;
+	@Override
+	public Staff addUser(User user, Staff staff, int locNumber) {
+		user.setStaff(staff);
+		staff.setUser(user);
+		staff.setLocation(em.find(Location.class, locNumber));
+		user.setEnabled(true);
+		em.persist(user);
+		em.persist(staff);
+		return staff;
 	}
 
 }

@@ -5,21 +5,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add/Update Confirmation</title>
+<title>Add Account Confirmation</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
 <jsp:include page="navbar.jsp" />
 	<main class="container-fluid">
-		<h1>Add/Update Confirmation</h1>
+		<h1>Add Account Confirmation</h1>
 
 		<div>
 		<c:choose>
-		<c:when test="${empty user}">
-		<p>An error occurred. Account was not updated. Please try again.</p>
+		<c:when test="${empty newUser}">
+		<p>An error occurred. Account was not created. Please try again.</p>
 		</c:when>
 		<c:otherwise>
-		<p>${user.username}'s password was updated successfully!</p>
+		<p>${newUser.firstName}'s account was added successfully!</p>
 		</c:otherwise>
 		</c:choose>
 	

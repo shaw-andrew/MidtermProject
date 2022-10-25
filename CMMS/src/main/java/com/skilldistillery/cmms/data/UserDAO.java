@@ -2,6 +2,7 @@ package com.skilldistillery.cmms.data;
 
 import java.util.List;
 
+import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.User;
 
 public interface UserDAO {
@@ -15,5 +16,7 @@ public interface UserDAO {
 	User updatePassword(int userId, String password);
 
 	List<User> findAll();
+
+	Staff addUser(User user, Staff staff, int locNumber);
 
 }

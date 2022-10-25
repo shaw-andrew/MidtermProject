@@ -9,7 +9,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
+import com.skilldistillery.cmms.entities.Location;
+import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.User;
 @Service
 @Transactional
@@ -23,6 +24,15 @@ public class TechnicianDAOImpl implements TechnicianDAO {
 	public User findById(int userId) {
 		
 		return em.find(User.class, userId);
+	}
+	
+	@Override
+	public List<Staff> findAllAtLocation(Location location) {
+		
+		String jpql = "SELECT staff FROM Staff staff where staff.location = :location";
+		List<Staff> staff = em.createQuery(jpql, Staff.class).setParameter("location", location.getId()).getResultList();
+		return staff;
+		
 	}
 	
 	
