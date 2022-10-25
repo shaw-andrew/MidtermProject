@@ -9,7 +9,7 @@ public interface TechnicianDAO {
 	
 	User findById(int userId);
 	
-	List<Staff> findAllAtLocation(int locationId);
+	List<Staff> findAllAtLocation(Integer locationId);
 	
 	
 
