@@ -16,40 +16,40 @@
 
 
 				<h1>@Autowired - Create/Update User</h1>
-				<form class="row g-3 needs-validation" novalidate>
+				<form class="row g-3 needs-validation" novalidate action=addOrUpdate.do method="POST">
 					<div class="col-md-4">
-						<label for="validationCustom01" class="form-label">First
+						<label for="firstName" class="form-label">First
 							name</label> <input type="text" class="form-control"
-							id="validationCustom01" required>
+							name="firstName" required>
 						<div class="valid-feedback">Looks good!</div>
 						<div class="invalid-feedback">Please input a first name.</div>
 					</div>
 					<div class="col-md-4">
-						<label for="validationCustom02" class="form-label">Last
+						<label for="lastName" class="form-label">Last
 							name</label> <input type="text" class="form-control"
-							id="validationCustom02"  required>
+							name="lastName"  required>
 						<div class="valid-feedback">Looks good!</div>
 						<div class="invalid-feedback">Please input a last name.</div>
 					</div>
 					<div class="col-md-4">
-						<label for="validationCustomUsername" class="form-label">Username</label>
+						<label for="username" class="form-label">Username</label>
 						<div class="input-group has-validation">
 							<input type="text" class="form-control"
-								id="validationCustomUsername" required>
+								name="username" required>
 								<div class="valid-feedback">Looks good!</div>
 							<div class="invalid-feedback">Please choose a username.</div>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="validationCustom03" class="form-label">Password</label>
-						<input type="text" class="form-control" id="validationCustom03"
+						<label for="password" class="form-label">Password</label>
+						<input type="text" class="form-control" name="password"
 							required>
 							<div class="valid-feedback">Looks good!</div>
 						<div class="invalid-feedback">Please provide a valid Password.</div>
 					</div>
 					<div class="col-md-3">
 						<label for="validationCustom04" class="form-label">Location</label>
-						<select class="form-select" id="validationCustom04" required>
+						<select class="form-select" name="location" required>
 							<option selected disabled value="">Choose...</option>
 							<option>Warehouse 1</option>
 							<option>Warehouse 2</option>
@@ -71,8 +71,7 @@
 							<input class="form-check-input" type="checkbox" value=""
 								id="invalidCheck" required> <label
 								class="form-check-label" for="invalidCheck"> Information is accurate. </label>
-							<div class="invalid-feedback">You must agree before
-								submitting.</div>
+							<div class="invalid-feedback">You must agree before submitting.</div>
 						</div>
 					<!-- </div> -->
 					<div class="col-12">

@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.User;
 
 @Service
@@ -47,9 +48,9 @@ public class UserDaoImpl implements UserDAO {
 		update.setUsername(update.getUsername());
 		update.setRole(update.getRole());
 		update.setStaff(null);
-		
 		return update;
 	}
+	
 	@Override
 	public User updatePassword(int userId, String password) {
 		User update = em.find(User.class, userId);
@@ -60,6 +61,12 @@ public class UserDaoImpl implements UserDAO {
 	public List<User> findAll(){
 		String jpql = "SELECT user FROM User user";
 		return em.createQuery(jpql, User.class).getResultList();
+	}
+	
+	public Staff addUser(User user, Staff staff) {
+		//persist user first, assign user to staff, persist staff
+		
+		return null;
 	}
 
 }
