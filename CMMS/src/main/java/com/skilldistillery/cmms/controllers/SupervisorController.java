@@ -96,7 +96,7 @@ public class SupervisorController {
 	}
 	
 	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
-	public String techniciansSupervisorView(HttpSession session, Model model, Integer locationId) {
+	public String techniciansSupervisorView(HttpSession session, Model model, Location locationId) {
 		if (session.getAttribute("loggedInUser") != null) {
 			List<Staff> staff = techDao.findAllAtLocation(locationId);
 			model.addAttribute(staff);
