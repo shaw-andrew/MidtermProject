@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDAO {
 	public User updateUser(int userId, User user) {
 		User update = em.find(User.class, userId);
 		update.setPassword(user.getPassword());
-		update.setUsername(update.getUsername());
+		update.setUsername(user.getUsername());
 		update.setRole(update.getRole());
 		update.setStaff(null);
 		return update;
@@ -54,7 +54,9 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public User updatePassword(int userId, String password) {
 		User update = em.find(User.class, userId);
+		if(update != null) {
 		update.setPassword(password);
+		}
 		return update;
 	}
 	
@@ -62,11 +64,18 @@ public class UserDaoImpl implements UserDAO {
 		String jpql = "SELECT user FROM User user";
 		return em.createQuery(jpql, User.class).getResultList();
 	}
-	
+	@Override
 	public Staff addUser(User user, Staff staff) {
-		//persist user first, assign user to staff, persist staff
-		
-		return null;
+		em.persist(user);
+		user.setStaff(staff);
+		em.persist(staff);
+		user.setUsername(user.getUsername());
+		user.setPassword(user.getPassword());
+		user.setRole(user.getRole());
+		staff.setFirstName(staff.getFirstName());
+		staff.setLastName(staff.getLastName());
+		staff.setLocation(staff.getLocation());
+		return staff;
 	}
 
 }
