@@ -42,8 +42,20 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User updateUser(int userId, User user) {
-
-		return null;
+		User update = em.find(User.class, userId);
+		update.setPassword(user.getPassword());
+		update.setUsername(update.getUsername());
+		update.setRole(update.getRole());
+		update.setStaff(null);
+		
+		return update;
+	}
+	@Override
+	public User updatePassword(int userId, User user) {
+		User update = em.find(User.class, userId);
+		update.setPassword(user.getPassword());
+		
+		return update;
 	}
 	
 	public List<User> findAll(){
