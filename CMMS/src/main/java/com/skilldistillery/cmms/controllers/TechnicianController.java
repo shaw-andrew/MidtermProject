@@ -9,15 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.cmms.data.EquipmentDAO;
-import com.skilldistillery.cmms.data.MaintenanceDetailDAO;
+import com.skilldistillery.cmms.data.MaintenanceItemDAO;
+import com.skilldistillery.cmms.data.PartDAO;
 import com.skilldistillery.cmms.data.ToolDAO;
 import com.skilldistillery.cmms.data.TrainingDAO;
 import com.skilldistillery.cmms.data.UserDAO;
-import com.skilldistillery.cmms.entities.Equipment;
-import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
-import com.skilldistillery.cmms.entities.Tool;
-import com.skilldistillery.cmms.entities.Training;
-import com.skilldistillery.cmms.entities.User;
 
 @Controller
 public class TechnicianController {
@@ -29,9 +25,11 @@ public class TechnicianController {
 	@Autowired
 	private UserDAO userDao;
 	@Autowired
-	private MaintenanceDetailDAO mrcDAO;
+	private MaintenanceItemDAO maintenanceItemDAO;
 	@Autowired
 	private TrainingDAO trainingDao;
+	@Autowired
+	private PartDAO partDao;
 	
 	
 	//goes to tools jsp and from there they can view tools needed for job, tasks, and parts
@@ -44,7 +42,8 @@ public class TechnicianController {
 			}
 //			Tool tool = toolDao.findById(1);
 			//FIXME
-			model.addAttribute("tool",toolDao.findAll());
+			model.addAttribute("parts", partDao.findAll());
+			model.addAttribute("tools",toolDao.findAll());
 			return "tools";
 		} else
 			return "login";
@@ -77,7 +76,7 @@ public class TechnicianController {
 		if (session.getAttribute("loggedInUser") != null) {
 //			MaintenanceRequirementCard mrc = mrcDAO.findById(1);
 			//FIXME
-			model.addAttribute("MaintenanceItem", mrcDAO.findAll());
+			model.addAttribute("maintenanceItems", maintenanceItemDAO.findAll());
 			return "maintenanceDetail";
 		} else
 			return "login";
@@ -90,6 +89,7 @@ public class TechnicianController {
 		if (session.getAttribute("loggedInUser") != null) {
 //			Equipment equipment = equipmentDao.findById(1);
 			//FIXME
+			
 			model.addAttribute("equipment",equipmentDao.findAll());
 			return "equipment";
 		} else
@@ -97,7 +97,7 @@ public class TechnicianController {
 	}
 	
 	
-	//tools, training , maintenance , maintenance details
+	//tools, maintenance , maintenance details
 
 	
 }
