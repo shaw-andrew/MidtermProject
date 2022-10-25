@@ -29,7 +29,9 @@
 					
 					<a href="equipment.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/C52Q13T/conveyor.png"/><br>Equipment</a> 
 					
-					<a href="maintenanceDetail.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/t3HK4fq/to-do-list.png"/><br>My To-Do List</a><br><br><br>
+					<a href="maintenanceDetail.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/t3HK4fq/to-do-list.png"/><br>My To-Do List</a><br><br>
+					
+					<a href="account.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/jrbHKtC/account.png"/><br>Account</a><br><br><br><br><br><br>
 					
 					<!-- <a href="technicians.do" type="button" class="btn btn-secondary">Technicians</a><br> -->
 					
