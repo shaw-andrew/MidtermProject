@@ -11,7 +11,7 @@
 	<jsp:include page="navbar.jsp" />
 	<main class="container-fluid">
 		<%--Edit the file nav.jsp to change nav links --%>
-		<div class="container text-center">
+		<div class="container-fluid, text-center">
 			<div class="row">
 				<div class="col"></div>
 				<div class="col-6">
@@ -23,22 +23,28 @@
 					<hr>
 					<br>
 					
-					<a href="supTools.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/my7sDDF/toolbox.png"/><br>Tools & Material</a> 
-					
-					<a href="supMaintenance.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/t3HK4fq/to-do-list.png"/><br>View Maintenance</a><br><br>
-					
-					<a href="supTraining.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/1Yg3f8D/graduated.png"/><br>Training</a> 
-					
-					<a href="supEquipment.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/C52Q13T/conveyor.png"/><br>Equipment</a><br><br>
-					
-					<a href="supMaintenanceDetail.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/QKXgJjR/investigation-1.png"/><br>Maintenance Detail</a> 
-					
-					<a href="supTechnicians.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/NZSV8xd/support.png"/><br>Technicians</a><br><br><br>
 					
 					
 				</div>
 				<div class="col"></div>
 			</div>
+			<div class="row">
+					<div class="col-md-4"><a href="supTools.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/my7sDDF/toolbox.png"/><br>Tools & Material</a> </div>
+					
+					<div class="col-md-4"><a href="supMaintenance.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/t3HK4fq/to-do-list.png"/><br>View Maintenance</a></div>
+					
+					<div class="col-md-4"><a href="supTraining.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/1Yg3f8D/graduated.png"/><br>Training</a> </div>
+				<br><br>
+				</div>
+				<div class="row">
+					
+					<div class="col-md-4"><a href="supEquipment.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/C52Q13T/conveyor.png"/><br>Equipment</a></div>
+					
+					<div class="col-md-4"><a href="supMaintenanceDetail.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/QKXgJjR/investigation-1.png"/><br>Maintenance Detail</a> </div>
+					
+					<div class="col-md-4"><a href="supTechnicians.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/NZSV8xd/support.png"/><br>Technicians</a></div>
+				</div>	<br><br>
+					<a href="account.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/jrbHKtC/account.png"/><br>Account Management</a><br><br><br>
 		</div>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />

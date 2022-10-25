@@ -29,7 +29,18 @@
 					</blockquote>
 					<br>
 					<hr>
-					<br> <br> <br>
+					<br> <br>
+					
+					<form action="login.do" method="POST">
+						<%-- Error messages --%>
+						<label for="userName" class="form-label">Username</label> 
+						<input type="text" id="userName" name="username" required/>
+						<label for="password" class="form-label">Password</label> 
+						<input type="password" id="password" name="password" required/><br> 
+						<input type="submit" class="btn btn-primary" value="Log In">
+					</form>
+					
+					 <br><br>
 					<div id="carouselExampleCaptions" class="carousel slide"
 						data-bs-ride="false">
 						<div class="carousel-indicators">
@@ -86,6 +97,7 @@
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Next</span>
 						</button>
+						<br><br><br><br>
 					</div>
 				</div>
 				<div class="col"></div>
