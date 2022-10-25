@@ -30,11 +30,12 @@
 					<th>Equipment</th>
 					<th>MRC</th>
 					<th>Staff</th>
-					<th>Tech Notes</th>
+					<th>Technician Note</th>
 					<th>Scheduled Start Date</th>
 					<th>Scheduled End Date</th>
 					<th>Actual Duration (hrs)</th>
 					<th>Completion Date</th>
+					<th>Submit Completed Task</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -44,11 +45,16 @@
 						<td>${maintenanceItem.equipment }</td>
 						<td>${maintenanceItem.mrc}</td>
 						<td>${maintenanceItem.staff}</td>
-						<td>${maintenanceItem.techNotes}</td>
+						<td>${maintenanceItem.techNotes}
+							<input type="text" id="notes" name="notes" maxlength="200">
+ 						 	<a href="submitNotes.do" type="button" class="btn btn-secondary">Submit Note</a>
+ 						 	<a href="editNotes.do" type="button" class="btn btn-secondary">Edit Note</a>
+ 						 </td>
 						<td>${maintenanceItem.scheduleStartDate}</td>
 						<td>${maintenanceItem.scheduleEndDate}</td>
 						<td>${maintenanceItem.actualDurationInHours}</td>
 						<td>${maintenanceItem.completionDate}</td>
+						<td><a href="complete.do" type="button" class="btn btn-secondary">Complete Task</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

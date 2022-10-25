@@ -14,6 +14,7 @@ import com.skilldistillery.cmms.data.PartDAO;
 import com.skilldistillery.cmms.data.ToolDAO;
 import com.skilldistillery.cmms.data.TrainingDAO;
 import com.skilldistillery.cmms.data.UserDAO;
+import com.skilldistillery.cmms.entities.MaintenanceItem;
 
 @Controller
 public class TechnicianController {
@@ -96,8 +97,16 @@ public class TechnicianController {
 			return "login";
 	}
 	
-	
-	//tools, maintenance , maintenance details
-
+	@RequestMapping(path = "submitNotes.do", method = RequestMethod.GET)
+	public String notesView(HttpSession session, Model model, String text) {
+		if (session.getAttribute("loggedInUser") != null) {
+			MaintenanceItem mi = new MaintenanceItem();
+			mi.setTechNotes(text);
+			model.addAttribute("text", mi.getTechNotes());
+			return "maintenanceDetail";
+		}else
+			return "login";
+		
+	}
 	
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.cmms.data.EquipmentDAO;
 import com.skilldistillery.cmms.data.MaintenanceItemDAO;
@@ -121,8 +122,37 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
+	
+	@RequestMapping(path = "account.do", method = RequestMethod.GET)
+	public String accountDetailSupView(HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "account";
+		} else
+			return "login";
+	}
+	
+	@RequestMapping(path = "addOrUpdate.do", method = RequestMethod.GET)
+	public String accountManagementView(HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "addOrUpdate";
+		} else
+			return "login";
+	}
+	
+	@RequestMapping(path = "updatePassword.do", method = RequestMethod.GET)
+	public String updatePassword(HttpSession session, RedirectAttributes redir, int id, User user) {
+		if (session.getAttribute("loggedInUser") != null) {
+			User update = userDao.updatePassword(id, user);
+			redir.addFlashAttribute("update", update);
+			return "redirect:updatePasswordConfirmation.do";
+		} else
+			return "login";
+	}
 
-
+	@RequestMapping(path="updatePasswordConfirmation.do", method = RequestMethod.GET)
+	public String updatePasswordConfirmation() {
+		return "updatePasswordConfirmation";
+	}
 
 	
 }

@@ -40,11 +40,11 @@
 					
 					<div class="col-md-4"><a href="supEquipment.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/C52Q13T/conveyor.png"/><br>Equipment</a></div>
 					
-					<div class="col-md-4"><a href="supMaintenanceDetail.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/QKXgJjR/investigation-1.png"/><br>Maintenance Detail</a> </div>
+					<div class="col-md-4"><a href="supMaintenanceDetail.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/QKXgJjR/investigation-1.png"/><br>Maintenance</a> </div>
 					
 					<div class="col-md-4"><a href="supTechnicians.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/NZSV8xd/support.png"/><br>Technicians</a></div>
 				</div>	<br><br>
-					<a href="account.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/jrbHKtC/account.png"/><br>Account Management</a><br><br><br>
+					<a href="account.do" type="button" class="btn btn-secondary"><img src="https://i.ibb.co/jrbHKtC/account.png"/><br>Account</a><br><br><br>
 		</div>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />

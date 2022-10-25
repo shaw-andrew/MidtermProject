@@ -12,5 +12,8 @@ public interface UserDAO {
 	
 	User updateUser(int userId, User user);
 	
+	User updatePassword(int userId, User user);
+
 	List<User> findAll();
+
 }
