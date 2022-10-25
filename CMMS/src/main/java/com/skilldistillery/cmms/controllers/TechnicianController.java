@@ -96,21 +96,21 @@ public class TechnicianController {
 			return "login";
 	}
 
-	@RequestMapping(path = "complete.do", method = RequestMethod.POST)
-	public String completionView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
-		if (session.getAttribute("loggedInUser") != null) {
-			MaintenanceItem update = maintenanceItemDAO.updateCompletionDate(id, mainItem);
-			redir.addFlashAttribute("update", update);
-
-			return "redirect:updateCompletionDate.do";
-		} else
-			return "login";
-	}
-
-	@RequestMapping(path = "updateCompletionDate.do", method = RequestMethod.GET)
-	public String updateCompletionDate() {
-		return "updateCompletionDate";
-	}
+//	@RequestMapping(path = "complete.do", method = RequestMethod.POST)
+//	public String completionView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
+//		if (session.getAttribute("loggedInUser") != null) {
+//			MaintenanceItem update = maintenanceItemDAO.updateCompletionDate(id, mainItem);
+//			redir.addFlashAttribute("update", update);
+//
+//			return "redirect:updateCompletionDate.do";
+//		} else
+//			return "login";
+//	}
+//
+//	@RequestMapping(path = "updateCompletionDate.do", method = RequestMethod.GET)
+//	public String updateCompletionDate() {
+//		return "updateCompletionDate";
+//	}
 
 	@RequestMapping(path = "submitNotes.do", method = RequestMethod.POST)
 	public String notesView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
@@ -125,6 +125,6 @@ public class TechnicianController {
 
 	@RequestMapping(path = "updateNotesConfirmation.do", method = RequestMethod.GET)
 	public String updateNotesConfirmation() {
-		return "updateNotesConfirmation";
+		return "maintenanceDetail";
 	}
 }

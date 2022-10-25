@@ -19,7 +19,7 @@
 		<p>An error occurred. Account was not updated. Please try again.</p>
 		</c:when>
 		<c:otherwise>
-		<p><a href="getPark.do?pid=${user.id }">${user.name}</a> was updated successfully!</p>
+		<p>${user.username}'s password was updated successfully!</p>
 		</c:otherwise>
 		</c:choose>
 	

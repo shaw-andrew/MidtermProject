@@ -48,7 +48,6 @@
 						<td>${maintenanceItem.techNotes}
 							<input type="text" id="notes" name="notes" maxlength="200">
  						 	<a href="submitNotes.do" type="button" class="btn btn-secondary">Submit Note</a>
- 						 	<a href="editNotes.do" type="button" class="btn btn-secondary">Edit Note</a>
  						 </td>
 						<td>${maintenanceItem.scheduleStartDate}</td>
 						<td>${maintenanceItem.scheduleEndDate}</td>
