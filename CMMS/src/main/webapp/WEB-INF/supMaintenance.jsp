@@ -14,18 +14,18 @@
 		<%--Edit the file nav.jsp to change nav links --%>
 		<div class="container text-center">
 			<div class="row">
-				<div class="col"></div>
-				<div class="col-6">
+				<div class="col-2"></div>
+				<div class="col-8">
 					<br>
 					<hr>
-					Maintenance Items
+					<h2>Maintenance Items</h2>
 					<hr>
 					<br> Maybe complete button? href to view detail
 
 					<c:if test="${loggedInUser.role == 'Supervisor' }">
 						<a class="btn btn-secondary" href="scheduleMaintenance.do"
 							role="button">Schedule Maintenance</a>
-					</c:if>
+					</c:if><br>
 
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
@@ -68,7 +68,7 @@
 					</table>
 
 				</div>
-				<div class="col"></div>
+				<div class="col-2"></div>
 			</div>
 		</div>
 	</main>

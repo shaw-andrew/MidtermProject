@@ -21,11 +21,11 @@
 				<form action="updatePassword.do" method="POST">
 					<h4>
 						First Name:
-						<c:out value="First Name" />
+						<c:out value="${loggedInUser.staff.firstName }" />
 					</h4>
 					<h4>
 						Last Name:
-						<c:out value="Last Name" />
+						<c:out value="${loggedInUser.staff.lastName }" />
 					</h4>
 					<br>
 					<h4>
