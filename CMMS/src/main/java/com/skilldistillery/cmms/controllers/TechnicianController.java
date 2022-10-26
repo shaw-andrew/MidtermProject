@@ -17,6 +17,8 @@ import com.skilldistillery.cmms.data.PartDAO;
 import com.skilldistillery.cmms.data.ToolDAO;
 import com.skilldistillery.cmms.data.TrainingDAO;
 import com.skilldistillery.cmms.data.UserDAO;
+import com.skilldistillery.cmms.entities.Equipment;
+import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
 import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.Tool;
@@ -41,35 +43,14 @@ public class TechnicianController {
 	// goes to tools jsp and from there they can view tools needed for job, tasks,
 	// and parts
 	// has to find tools using the dao
-
-//	@RequestMapping(path = "tools.do", method = RequestMethod.GET)
-//	public String toolView(HttpSession session, Integer toolId, Model model) {
-//		User user = (User)session.getAttribute("loggedInUser");
-//		if (user != null) {
-//			
-//			Staff staff = user.getStaff().getId();
-//			List<Tool> tools = toolDao.findallByStaffId(staff);
-//			
-////			if (toolId == null) {
-////				toolId = 1;
-////			}
-////			Tool tool = toolDao.findById(1);
-//			// FIXME
-//			model.addAttribute("parts", partDao.findAll());
-//			model.addAttribute("tools", tools);
-//			return "tools";
-//		} else
-//			return "login";
-//	}
-
 	@RequestMapping(path = "tools.do", method = RequestMethod.GET)
 	public String toolView(HttpSession session, Integer toolId, Model model) {
-		User user = (User)session.getAttribute("loggedInUser");
+		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
-			
+
 			Staff staff = user.getStaff();
 			List<Tool> tools = toolDao.findallByStaffId(staff);
-			
+
 //			if (toolId == null) {
 //				toolId = 1;
 //			}
@@ -81,7 +62,6 @@ public class TechnicianController {
 		} else
 			return "login";
 	}
-
 
 	@RequestMapping(path = "training.do", method = RequestMethod.GET)
 	public String trainingView(HttpSession session, Integer trainingId, Model model) {
@@ -107,10 +87,16 @@ public class TechnicianController {
 
 	@RequestMapping(path = "maintenanceDetail.do", method = RequestMethod.GET)
 	public String maintenanceDetailView(HttpSession session, Model model, Integer id) {
-		if (session.getAttribute("loggedInUser") != null) {
+		User user = (User)session.getAttribute("loggedInUser");
+		if (user != null) {
+			
+			Staff staff = user.getStaff();
+			
+			
+			List<MaintenanceItem> mainItem = maintenanceItemDAO.findAllByStaffId(staff);
 //			MaintenanceRequirementCard mrc = mrcDAO.findById(1);
 			// FIXME
-			model.addAttribute("maintenanceItems", maintenanceItemDAO.findAll());
+			model.addAttribute("maintenanceItems", mainItem);
 			return "maintenanceDetail";
 		} else
 			return "login";
@@ -118,18 +104,20 @@ public class TechnicianController {
 
 	@RequestMapping(path = "equipment.do", method = RequestMethod.GET)
 	public String equipmentView(HttpSession session, Integer equipmentId, Model model) {
-		if (session.getAttribute("loggedInUser") != null) {
-//			Equipment equipment = equipmentDao.findById(1);
-			// FIXME
+		User user = (User) session.getAttribute("loggedInUser");
+		if (user != null) {
+			Location locationId = user.getStaff().getLocation();
+			List<Equipment> equipment = equipmentDao.findAllByLocation(locationId);
+			model.addAttribute("equipment", equipment);
 
-			model.addAttribute("equipment", equipmentDao.findAll());
 			return "equipment";
 		} else
 			return "login";
 	}
 
 	@RequestMapping(path = "update.do", method = RequestMethod.POST)
-	public String completionView(HttpSession session, int mainItemId,RedirectAttributes redir, MaintenanceItem mainItem) {
+	public String completionView(HttpSession session, int mainItemId, RedirectAttributes redir,
+			MaintenanceItem mainItem) {
 		if (session.getAttribute("loggedInUser") != null) {
 			System.out.println(mainItem);
 			MaintenanceItem update = maintenanceItemDAO.updateAll(mainItemId, mainItem);
@@ -138,12 +126,13 @@ public class TechnicianController {
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "updateMaintenanceItem.do", method = RequestMethod.POST)
-	public String updateMaintenanceItem(HttpSession session, int mainItemId,RedirectAttributes redir, MaintenanceItem mainItem) {
+	public String updateMaintenanceItem(HttpSession session, int mainItemId, RedirectAttributes redir,
+			MaintenanceItem mainItem) {
 		if (session.getAttribute("loggedInUser") != null) {
 			MaintenanceItem update = maintenanceItemDAO.updateAll(mainItemId, mainItem);
-			redir.addFlashAttribute("maintenanceItems",update);
+			redir.addFlashAttribute("maintenanceItems", update);
 			return "redirect:maintenanceDetail.do";
 		} else
 			return "login";
@@ -153,7 +142,6 @@ public class TechnicianController {
 	public String updateAllComplete() {
 		return "updateAllComplete";
 	}
-	
 
 //	@RequestMapping(path = "submitNotes.do", method = RequestMethod.POST)
 //	public String notesView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
