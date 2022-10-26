@@ -49,17 +49,28 @@
 									<td>${MaintenanceItem.completionDate}</td>
 									<td>${MaintenanceItem.actualDurationInHours}</td>
 									<td>${MaintenanceItem.techNotes}</td>
-									<td>${MaintenanceItem.scheduleStartDate}</td>
+									<td>
+										<input type="datetime-local" 
+											name="startDate" form="updateItem${maintenanceItem.id}"
+											value="${maintenanceItem.scheduleStartDate }" maxlength="10">${MaintenanceItem.scheduleStartDate}
+									</td>
 									<td>${MaintenanceItem.mrc}</td>
-									<td>${MaintenanceItem.scheduleEndDate}</td>
+									<td>
+										<input type="datetime-local" 
+												name="startDate" form="updateItem${maintenanceItem.id}"
+												value="${maintenanceItem.scheduleStartDate }" maxlength="10">
+									</td>
 									<td>${MaintenanceItem.staff}</td>
 									<td>${MaintenanceItem.equipment}</td>
 									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
 											<a class="btn btn-secondary" href="deleteMRC.do"
 												role="button">Delete Maintenance Item</a>
 										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
-											<a class="btn btn-secondary" href="updateMRC.do"
-												role="button">Edit Maintenance Item</a>
+											<form action="update.do" id="updateItem${maintenanceItem.id}"
+											method="POST" > 
+											<input type="hidden" name="mainItemId" value="${maintenanceItem.id}">
+											<input type="submit" name="submit" value="submit">
+										</form>
 										</c:if>
 									</td>
 								</tr>

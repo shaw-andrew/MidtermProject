@@ -15,6 +15,8 @@ public interface MaintenanceItemDAO {
 	
 	MaintenanceItem updateAll(int mainItemId, MaintenanceItem mainItem);
 	
+	MaintenanceItem supUpdateAll(int mainItemId, MaintenanceItem mainItem);
+	
 	List<MaintenanceItem> findAllByLocation(Location locationid);
 	public List<MaintenanceItem> findAllByStaffId(Staff staff);
 	
