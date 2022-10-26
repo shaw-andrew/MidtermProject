@@ -41,25 +41,25 @@ public class TechnicianController {
 	// goes to tools jsp and from there they can view tools needed for job, tasks,
 	// and parts
 	// has to find tools using the dao
-	@RequestMapping(path = "tools.do", method = RequestMethod.GET)
-	public String toolView(HttpSession session, Integer toolId, Model model) {
-		User user = (User)session.getAttribute("loggedInUser");
-		if (user != null) {
-			
-			Staff staff = user.getStaff().getId();
-			List<Tool> tools = toolDao.findallByStaffId(staff);
-			
-//			if (toolId == null) {
-//				toolId = 1;
-//			}
-//			Tool tool = toolDao.findById(1);
-			// FIXME
-			model.addAttribute("parts", partDao.findAll());
-			model.addAttribute("tools", tools);
-			return "tools";
-		} else
-			return "login";
-	}
+//	@RequestMapping(path = "tools.do", method = RequestMethod.GET)
+//	public String toolView(HttpSession session, Integer toolId, Model model) {
+//		User user = (User)session.getAttribute("loggedInUser");
+//		if (user != null) {
+//			
+//			Staff staff = user.getStaff().getId();
+//			List<Tool> tools = toolDao.findallByStaffId(staff);
+//			
+////			if (toolId == null) {
+////				toolId = 1;
+////			}
+////			Tool tool = toolDao.findById(1);
+//			// FIXME
+//			model.addAttribute("parts", partDao.findAll());
+//			model.addAttribute("tools", tools);
+//			return "tools";
+//		} else
+//			return "login";
+//	}
 
 	@RequestMapping(path = "training.do", method = RequestMethod.GET)
 	public String trainingView(HttpSession session, Integer trainingId, Model model) {

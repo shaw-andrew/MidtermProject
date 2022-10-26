@@ -36,7 +36,7 @@ public class MaintenanceDetailDAOImpl implements MaintenanceDetailDAO {
 	public List<MaintenanceRequirementCard> findAllByLocation(Location location) {
 //		String jpql = "SELECT mrcs FROM Equipment e JOIN e.maintenanceItem where e.location.id = :location";
 //		String jpql = "SELECT m FROM MaintenanceRequirementCard m JOIN m.equipmentType et JOIN Equipment e where e.location.id = :location";
-		String jpql = "SELECT mrc FROM MaintenanceRequirementCard mrc JOIN mrc.tasks t where t.equipment.location.id = :location";
+		String jpql = "SELECT mrc FROM MaintenanceRequirementCard mrc JOIN mrc.equipmentType et JOIN et.equipment eq where eq.location.id = :location";
 		
 		
 		List<MaintenanceRequirementCard>  mrcs = em.createQuery(jpql, MaintenanceRequirementCard.class).setParameter("location", location.getId()).getResultList();
