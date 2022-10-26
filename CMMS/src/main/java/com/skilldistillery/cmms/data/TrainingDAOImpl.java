@@ -39,4 +39,10 @@ public class TrainingDAOImpl implements TrainingDAO {
 		return training;
 	}
 
+	@Override
+	public boolean deleteTraining(int trainingId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

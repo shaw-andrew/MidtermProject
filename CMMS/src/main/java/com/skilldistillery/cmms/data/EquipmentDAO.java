@@ -10,6 +10,8 @@ public interface EquipmentDAO {
 	public Equipment findById(int equipmentId);
 	
 	public Equipment createEquipment(Equipment equipment);
+	
+	public boolean deleteEquipment(int equipmentId);
 
 	public List<Equipment> findAll();
 

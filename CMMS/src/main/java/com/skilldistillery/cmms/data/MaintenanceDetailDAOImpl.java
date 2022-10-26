@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
 
@@ -35,10 +34,25 @@ public class MaintenanceDetailDAOImpl implements MaintenanceDetailDAO {
 
 	@Override
 	public List<MaintenanceRequirementCard> findAllByLocation(Location location) {
-		String jpql = "SELECT mrc FROM MaintenanceRequirementCard mrc where mrc.equipmentType.equipment.location.id = :location";
+//		String jpql = "SELECT mrcs FROM Equipment e JOIN e.maintenanceItem where e.location.id = :location";
+//		String jpql = "SELECT m FROM MaintenanceRequirementCard m JOIN m.equipmentType et JOIN Equipment e where e.location.id = :location";
+		String jpql = "SELECT mrc FROM MaintenanceRequirementCard mrc JOIN mrc.tasks t where t.equipment.location.id = :location";
 		
-		List<MaintenanceRequirementCard> mrcs = em.createQuery(jpql, MaintenanceRequirementCard.class).setParameter("location", location.getId()).getResultList();
+		
+		List<MaintenanceRequirementCard>  mrcs = em.createQuery(jpql, MaintenanceRequirementCard.class).setParameter("location", location.getId()).getResultList();
 		return mrcs;
+	}
+	
+	@Override
+	public MaintenanceRequirementCard createMRC(MaintenanceRequirementCard mrc) {
+		em.persist(mrc);
+		return mrc;
+	}
+
+	@Override
+	public boolean deleteMRC(int mrcId) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

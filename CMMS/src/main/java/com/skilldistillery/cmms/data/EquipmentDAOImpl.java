@@ -71,4 +71,20 @@ public class EquipmentDAOImpl implements EquipmentDAO {
 		return equipment;
 	}
 
+	@Override
+	public boolean deleteEquipment(int equipmentId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+//	@Override
+//	public boolean deleteEquipment(int equipmentId) {
+//		Equipment deleteEquipment = em.find(Equipment.class, equipmentId          ); //find player we're deleting
+//        if (deletePlayer != null) { //if player exists
+//            em.remove(deletePlayer); //removes player from database
+//        }
+//        return em.contains(deletePlayer); //returns true if delete player is still in persistence mngr
+//        //returns false if not
+//	}
+
 }

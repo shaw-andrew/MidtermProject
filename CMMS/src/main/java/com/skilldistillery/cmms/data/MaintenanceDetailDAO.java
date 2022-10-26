@@ -10,6 +10,10 @@ public interface MaintenanceDetailDAO {
 	MaintenanceRequirementCard findById(int id);
 	public List<MaintenanceRequirementCard> findAll();
 	public List<MaintenanceRequirementCard> findAllByLocation(Location location);
+	public MaintenanceRequirementCard createMRC(MaintenanceRequirementCard mrc);
+	public boolean deleteMRC(int mrcId);
+
+	
 	
 
 }

@@ -11,5 +11,8 @@ public interface TrainingDAO {
 	public Training findById(int trainingId);
 
 	public List<Training> findAll();
+	
+	public boolean deleteTraining(int trainingId);
+
 
 }

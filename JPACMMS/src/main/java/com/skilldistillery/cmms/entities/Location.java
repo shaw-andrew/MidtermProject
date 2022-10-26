@@ -129,8 +129,8 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [id=" + id + ", street=" + street + ", street2=" + street2 + ", city=" + city
-				+ ", stateAbbrev=" + stateAbbrev + ", zipCode=" + zipCode + "]";
+		return "ID: " + id + " Street: " + street + " Street 2: " + street2 + " City: " + city
+				+ " State: " + stateAbbrev + " Zip Code: " + zipCode;
 	}
 
 	
