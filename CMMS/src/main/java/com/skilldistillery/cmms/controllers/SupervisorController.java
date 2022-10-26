@@ -81,9 +81,14 @@ public class SupervisorController {
 			System.out.println(mainItem);
 			MaintenanceItem update = taskDao.supUpdateAll(mainItemId, mainItem);
 //			redir.addFlashAttribute("maintenanceItems",update);
-			return "redirect:maintenanceDetail.do";
+			return "redirect:supMaintenanceDetail.do";
 		} else
 			return "login";
+	}
+	
+	@RequestMapping(path = "supUpdateAllComplete.do", method = RequestMethod.GET)
+	public String updateAllComplete() {
+		return "updateAllComplete";
 	}
 	
 	@RequestMapping(path = "supTools.do", method = RequestMethod.GET)

@@ -43,30 +43,30 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="MaintenanceItem" items="${MaintenanceItems}">
+							<c:forEach var="maintenanceItem" items="${MaintenanceItems}">
 								<tr>
-									<td>${MaintenanceItem.id}</td>
-									<td>${MaintenanceItem.completionDate}</td>
-									<td>${MaintenanceItem.actualDurationInHours}</td>
-									<td>${MaintenanceItem.techNotes}</td>
+									<td>${maintenanceItem.id}</td>
+									<td>${maintenanceItem.completionDate}</td>
+									<td>${maintenanceItem.actualDurationInHours}</td>
+									<td>${maintenanceItem.techNotes}</td>
 									<td>
 										<input type="datetime-local" 
-											name="startDate" form="updateItem${maintenanceItem.id}"
-											value="${maintenanceItem.scheduleStartDate }" maxlength="10">${MaintenanceItem.scheduleStartDate}
+											name="scheduleStartDate" form="updateItem${maintenanceItem.id}"
+											value="${maintenanceItem.scheduleStartDate }" maxlength="10">${maintenanceItem.scheduleStartDate}
 									</td>
-									<td>${MaintenanceItem.mrc}</td>
+									<td>${maintenanceItem.mrc}</td>
 									<td>
 										<input type="datetime-local" 
-												name="startDate" form="updateItem${maintenanceItem.id}"
-												value="${maintenanceItem.scheduleStartDate }" maxlength="10">
+												name="scheduleEndDate" form="updateItem${maintenanceItem.id}"
+												value="${maintenanceItem.scheduleEndDate }" maxlength="10">
 									</td>
-									<td>${MaintenanceItem.staff}</td>
-									<td>${MaintenanceItem.equipment}</td>
+									<td>${maintenanceItem.staff}</td>
+									<td>${maintenanceItem.equipment}</td>
 									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
 											<a class="btn btn-secondary" href="deleteMRC.do"
 												role="button">Delete Maintenance Item</a>
 										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
-											<form action="update.do" id="updateItem${maintenanceItem.id}"
+											<form action="supUpdateTask.do" id="updateItem${maintenanceItem.id}"
 											method="POST" > 
 											<input type="hidden" name="mainItemId" value="${maintenanceItem.id}">
 											<input type="submit" name="submit" value="submit">
