@@ -8,8 +8,10 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
+import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
 import com.skilldistillery.cmms.entities.Staff;
 
 @Service
@@ -31,6 +33,16 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 		String jpql = "SELECT item FROM MaintenanceItem item";
 		return em.createQuery(jpql, MaintenanceItem.class).getResultList();
 	}
+	
+	@Override
+	public MaintenanceItem createTask(MaintenanceRequirementCard mrc, Equipment equip, 
+			Staff staff) {
+		
+		
+		
+				return null;
+		
+	}
 
 	@Override
 	public MaintenanceItem updateAll(int mainItemId, MaintenanceItem mainItem) {
@@ -47,7 +59,7 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 		MaintenanceItem updateMainItem = em.find(MaintenanceItem.class, mainItemId);
 		updateMainItem.setScheduleStartDate(mainItem.getScheduleStartDate());
 		updateMainItem.setScheduleEndDate(mainItem.getScheduleEndDate());
-		updateMainItem.setStaff(mainItem.getStaff());
+		//updateMainItem.setStaff(mainItem.getStaff());
 //		em.persist(updateMainItem);
 		return updateMainItem;
 	}
