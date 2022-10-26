@@ -44,7 +44,7 @@
 								<tr>
 
 									<td>${maintenanceItem.id}</td>
-									<td>${maintenanceItem.equipment }</td>
+									<td>${maintenanceItem.equipment}</td>
 									<td>${maintenanceItem.mrc}</td>
 									<td>${maintenanceItem.staff}</td>
 

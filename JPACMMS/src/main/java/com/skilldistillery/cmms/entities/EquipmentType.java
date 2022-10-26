@@ -108,7 +108,7 @@ public class EquipmentType {
 
 	@Override
 	public String toString() {
-		return  "ID: " + id + 
+		return  "\nID: " + id + 
 				"\nName: " + name + 
 				"\nModel: " + model + 
 				"\nManufacturer: " + manufacturer

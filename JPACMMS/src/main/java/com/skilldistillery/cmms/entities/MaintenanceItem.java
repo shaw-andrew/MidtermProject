@@ -154,9 +154,9 @@ public class MaintenanceItem {
 
 	@Override
 	public String toString() {
-		return "Maintenance Item ID: " + id + " Completion Date: " + completionDate + " Actual Duration In Hours: "
-				+ actualDurationInHours + " Tech Notes: " + techNotes + " Schedule Start Date: " + scheduleStartDate
-				+ " Schedule End Date: " + scheduleEndDate;
+		return "Maintenance Item ID: " + id + " \nCompletion Date: " + completionDate + " \nActual Duration In Hours: "
+				+ actualDurationInHours + " \nTech Notes: " + techNotes + " \nSchedule Start Date: " + scheduleStartDate
+				+ " \nSchedule End Date: " + scheduleEndDate;
 	}
 	
 	

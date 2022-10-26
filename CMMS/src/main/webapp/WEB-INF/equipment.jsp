@@ -15,40 +15,32 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col"></div>
-				
-				
-
-					<h2>Equipment and Details</h2>
-
-					<table class="table table-striped table-hover table-responsive w-auto">
-						<thead class="table-dark">
+				<h2>Equipment and Details</h2>
+				<table
+					class="table table-striped table-hover table-responsiveo w-aut">
+					<thead class="table-dark">
+						<tr>
+							<th>ID</th>
+							<th class="col-lg-2">Type</th>
+							<th class="col-lg-1">Name</th>
+							<th class="col-lg-2">Description</th>
+							<th class="col-lg-3">Location ID</th>
+							<th class="col-lg-4">Task</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="equipment" items="${equipment}">
 							<tr>
-								<th>ID</th>
-								<th class="col-2">Type</th>
-								<th class="col-2">Name</th>
-								<th class="col-2">Description</th>
-								<th class="col-2">Location ID</th>
-								<th class="col-4">Task</th>
+								<td>${equipment.id}</td>
+								<td>${equipment.equipmentType}</td>
+								<td>${equipment.name}</td>
+								<td>${equipment.description}</td>
+								<td>${equipment.location}</td>
+								<td>${equipment.task}</td>
 							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="equipment" items="${equipment}">
-								<tr>
-									<td>${equipment.id}</td>
-									<td>${equipment.equipmentType}</td>
-									<td>${equipment.name}</td>
-									<td>${equipment.description}</td>
-									<td>${equipment.location}</td>
-									<td>${equipment.task}</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-
-
-
-				
-				
+						</c:forEach>
+					</tbody>
+				</table>
 				<div class="col"></div>
 			</div>
 		</div>
