@@ -41,7 +41,18 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 //		em.persist(updateMainItem);
 		return updateMainItem;
 	}
+	
+	@Override
+	public MaintenanceItem supUpdateAll(int mainItemId, MaintenanceItem mainItem) {
+		MaintenanceItem updateMainItem = em.find(MaintenanceItem.class, mainItemId);
+		updateMainItem.setScheduleStartDate(mainItem.getScheduleStartDate());
+		updateMainItem.setScheduleEndDate(mainItem.getScheduleEndDate());
+		updateMainItem.setStaff(mainItem.getStaff());
+//		em.persist(updateMainItem);
+		return updateMainItem;
+	}
 
+	
 	@Override
 	public List<MaintenanceItem> findAllByLocation(Location location) {
 		String jpql = "SELECT task FROM MaintenanceItem task where task.staff.location.id = :location";

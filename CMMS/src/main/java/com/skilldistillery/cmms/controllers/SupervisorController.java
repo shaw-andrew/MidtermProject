@@ -74,6 +74,18 @@ public class SupervisorController {
 			return "login";
 	}
 	
+	@RequestMapping(path = "supUpdateTask.do", method = RequestMethod.POST)
+	public String completionView(HttpSession session, int mainItemId, RedirectAttributes redir,
+			MaintenanceItem mainItem) {
+		if (session.getAttribute("loggedInUser") != null) {
+			System.out.println(mainItem);
+			MaintenanceItem update = taskDao.supUpdateAll(mainItemId, mainItem);
+//			redir.addFlashAttribute("maintenanceItems",update);
+			return "redirect:maintenanceDetail.do";
+		} else
+			return "login";
+	}
+	
 	@RequestMapping(path = "supTools.do", method = RequestMethod.GET)
 	public String toolSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
