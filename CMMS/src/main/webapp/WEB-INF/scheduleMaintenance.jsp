@@ -21,12 +21,10 @@
 					<h2>Schedule Item</h2>
 					<hr>
 					<br>
-
 					<c:if test="${loggedInUser.role == 'Supervisor' }">
 						<a class="btn btn-secondary" href="scheduleMaintenance.do"
 							role="button">Schedule Maintenance</a>
 					</c:if><br>
-
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
@@ -41,34 +39,30 @@
 							</tr>
 						</thead>
 						<tbody>
-							
-								<tr>
-									<td>${MaintenanceItem.id}</td>
-									<td>${MaintenanceItem.mrc}</td>
-									<td>${MaintenanceItem.equipment}</td>
-									<td><input type="datetime-local" 
-										name="scheduleStartDate" form="updateItem${maintenanceItem.id}"
-										value="${maintenanceItem.scheduleStartDate }" maxlength="10"></td>
-									<td><input type="datetime-local" 
-										name="scheduleEndDate" form="updateItem${maintenanceItem.id}"
-										value="${maintenanceItem.scheduleEndDate }" maxlength="10"></td>
-									<td><select class="form-select" name="role" required>
-										<option selected disabled value="">Assign Staff</option>
-											<option>${MaintenanceItem.staff}</option>
-											<option>Technician</option>
-										</select></td>
-									<td>${MaintenanceItem.estimatedDurationInHours}</td>
-									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
-											<a class="btn btn-secondary" href="scheduleMRC.do" 
-												role="button">Schedule Item</a><!-- Update me -->
-										</c:if>
-									</td>
-								</tr>
-						
+							<tr>
+								<td>${MaintenanceItem.id}</td>
+								<td>${MaintenanceItem.mrc}</td>
+								<td>${MaintenanceItem.equipment}</td>
+								<td><input type="datetime-local" 
+									name="scheduleStartDate" form="updateItem${maintenanceItem.id}"
+									value="${maintenanceItem.scheduleStartDate }" maxlength="10"></td>
+								<td><input type="datetime-local" 
+									name="scheduleEndDate" form="updateItem${maintenanceItem.id}"
+									value="${maintenanceItem.scheduleEndDate }" maxlength="10"></td>
+								<td><select class="form-select" name="role" required>
+									<option selected disabled value="">Assign Staff</option>
+										<option>${MaintenanceItem.staff}</option>
+										<option>Technician</option>
+									</select></td>
+								<td>${MaintenanceItem.estimatedDurationInHours}</td>
+								<td><c:if test="${loggedInUser.role == 'Supervisor' }">
+										<button class="btn btn-secondary" type="submit">Schedule Item</button><!-- Update me -->
+									</c:if>
+								</td>
+							</tr>
 						</tbody>
 					</table>
-
-				</div>
+					</div>
 				<div class="col-2"></div>
 			</div>
 		</div>
