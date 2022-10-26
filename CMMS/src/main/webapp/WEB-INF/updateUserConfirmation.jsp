@@ -19,7 +19,7 @@
 		<p>An error occurred. Account was not created. Please try again.</p>
 		</c:when>
 		<c:otherwise>
-		<p>${updatedUser.firstName}'s account was added successfully!</p>
+		<p>${updatedUser.staff.firstName}'s account was added successfully!</p>
 		</c:otherwise>
 		</c:choose>
 	

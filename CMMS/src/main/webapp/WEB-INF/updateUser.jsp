@@ -15,18 +15,19 @@
 			<div class="row">
 				<h1>@Autowired - Create/Update User</h1>
 				<form class="row g-3 needs-validation" novalidate
-					action=persistUser.do method="POST">
+					action="updateUser.do" method="POST">
+					<input type = "hidden" value = "${updatedUser.id} " name = "id">
 					<div class="col-md-4">
 						<label for="firstName" class="form-label">First name</label> <input
-							type="text" class="form-control" name="firstName"
-							value="${updatedUser.firstName}" required>
+							type="text" class="form-control" name="staff.firstName"
+							value="${updatedUser.staff.firstName}" required>
 						<div class="valid-feedback">Looks good!</div>
 						<div class="invalid-feedback">Please input a first name.</div>
 					</div>
 					<div class="col-md-4">
 						<label for="lastName" class="form-label">Last name</label> <input
-							type="text" class="form-control" name="lastName"
-							value="${updatedStaff.lastName}" required>
+							type="text" class="form-control" name="staff.lastName"
+							value="${updatedUser.staff.lastName}" required>
 						<div class="valid-feedback">Looks good!</div>
 						<div class="invalid-feedback">Please input a last name.</div>
 					</div>
@@ -34,7 +35,7 @@
 						<label for="username" class="form-label">Username</label>
 						<div class="input-group has-validation">
 							<input type="text" class="form-control"
-								value="${updatedStaff.userName}" name="username" required>
+								value="${updatedUser.username}" name="username" required>
 							<div class="valid-feedback">Looks good!</div>
 							<div class="invalid-feedback">Please choose a username.</div>
 						</div>
