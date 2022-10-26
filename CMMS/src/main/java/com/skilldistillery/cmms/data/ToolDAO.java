@@ -12,5 +12,8 @@ public interface ToolDAO {
 	public Tool createTool(Tool tool);
 
 	public List<Tool> findAll();
+	
+	public boolean deleteTool(int toolId);
+
 
 }

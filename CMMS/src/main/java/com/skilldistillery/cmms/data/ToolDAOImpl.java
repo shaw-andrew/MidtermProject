@@ -36,4 +36,10 @@ public class ToolDAOImpl implements ToolDAO {
 		em.flush();
 		return tool;
 	}
+
+	@Override
+	public boolean deleteTool(int toolId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
