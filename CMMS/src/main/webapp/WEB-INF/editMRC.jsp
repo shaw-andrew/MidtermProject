@@ -1,0 +1,82 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>@Autowired - Schedule or Edit Work</title>
+<jsp:include page="bootstrapHead.jsp" />
+</head>
+<body>
+	<jsp:include page="navbar.jsp" />
+	<main class="container-fluid">
+		<%--Edit the file nav.jsp to change nav links --%>
+		<div class="container text-center">
+			<div class="row">
+				<h1>@Autowired - Schedule or Edit Work</h1>
+				<form class="row g-3 needs-validation" novalidate
+					action=updateWork.do method="POST">
+					<div class="col-md-4">
+						<label for="id" class="form-label">Maintenance Item ID</label> <input
+							type="text" class="form-control" name="id"
+							value="${MaintenanceItem.id}" required>
+						<div class="valid-feedback">Looks good!</div>
+						<div class="invalid-feedback">Please input a first name.</div>
+					</div>
+					<div class="col-md-4">
+						<label for="lastName" class="form-label">Last name</label> <input
+							type="text" class="form-control" name="lastName"
+							value="${updatedStaff.lastName}" required>
+						<div class="valid-feedback">Looks good!</div>
+						<div class="invalid-feedback">Please input a last name.</div>
+					</div>
+					<div class="col-md-4">
+						<label for="username" class="form-label">Username</label>
+						<div class="input-group has-validation">
+							<input type="text" class="form-control"
+								value="${updatedStaff.userName}" name="username" required>
+							<div class="valid-feedback">Looks good!</div>
+							<div class="invalid-feedback">Please choose a username.</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<label for="role" class="form-label">Role</label> <select
+							class="form-select" name="role" required>
+							<option selected disabled value="">Choose...</option>
+							<option>Supervisor</option>
+							<option>Technician</option>
+						</select>
+						<div class="invalid-feedback">Please select a valid Role.</div>
+					</div>
+					<div class="col-md-4">
+						<!-- <label for="locNumber" class="form-label">Location</label>
+						<select class="form-select" name="locNumber" required>
+							<option selected disabled value="">Choose...</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+						</select> 
+						<div class="invalid-feedback">Please select a valid Location.</div> -->
+					</div>
+					<div class="col-md-4">
+						<label for="password" class="form-label">Password</label> <input
+							type="text" class="form-control" name="password"
+							value="${updatedUser.password}" required>
+						<div class="valid-feedback">Looks good!</div>
+						<div class="invalid-feedback">Please provide a valid
+							Password.</div>
+					</div>
+					<div class="col-12">
+						<button class="btn btn-primary" type="submit">Update User</button>
+						<br>
+					</div>
+				</form>
+
+
+			</div>
+		</div>
+	</main>
+	<jsp:include page="bootstrapFoot.jsp" />
+</body>
+</html>
