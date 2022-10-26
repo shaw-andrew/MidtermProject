@@ -1,4 +1,5 @@
 package com.skilldistillery.cmms.data;
+
 import java.util.List;
 import java.util.Map;
 
@@ -10,12 +11,13 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.Tool;
+
 @Service
 @Transactional
 public class ToolDAOImpl implements ToolDAO {
 
 	private Map<Integer, Tool> tool;
-	
+
 	@PersistenceContext
 	private EntityManager em;
 
@@ -29,7 +31,15 @@ public class ToolDAOImpl implements ToolDAO {
 		String jpql = "SELECT tool FROM Tool tool";
 		return em.createQuery(jpql, Tool.class).getResultList();
 	}
-	
+
+	@Override
+	public Tool createTool(Tool tool) {
+		em.persist(tool);
+		em.flush();
+		return tool;
+
+	}
+
 	@Override
 	public List<Tool> findallByStaffId(Staff staff) {
 		String jpql = "SELECT tool FROM Tools tool WHERE tool.staff.id = :id";

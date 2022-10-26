@@ -6,9 +6,17 @@ import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.Location;
 
 public interface EquipmentDAO {
+
+	public Equipment findById(int equipmentId);
 	
-	Equipment findById(int equipmentId);
+	public Equipment createEquipment(Equipment equipment);
+
 	public List<Equipment> findAll();
+
 	public List<Equipment> findAllByLocation(Location location);
+
+	Equipment createEquipment(Equipment equipment, int eqpType);
+
+	Equipment createEquipment(Equipment equipment, int eqpType, int locatoinId);
 
 }
