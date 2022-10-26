@@ -46,7 +46,7 @@ public class TechnicianController {
 		User user = (User)session.getAttribute("loggedInUser");
 		if (user != null) {
 			
-			Staff staff = user.getStaff().getId();
+			Staff staff = user.getStaff();
 			List<Tool> tools = toolDao.findallByStaffId(staff);
 			
 //			if (toolId == null) {

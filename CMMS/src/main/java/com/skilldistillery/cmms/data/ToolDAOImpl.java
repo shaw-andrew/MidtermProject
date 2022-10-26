@@ -42,7 +42,7 @@ public class ToolDAOImpl implements ToolDAO {
 
 	@Override
 	public List<Tool> findallByStaffId(Staff staff) {
-		String jpql = "SELECT tool FROM Tools tool WHERE tool.staff.id = :id";
+		String jpql = "SELECT tool FROM Tool tool JOIN tool.cards mrc JOIN mrc.tasks t WHERE t.staff.id = :id";
 		List<Tool> tools = em.createQuery(jpql, Tool.class).setParameter("id", staff.getId()).getResultList();
 		return tools;
 	}
@@ -53,3 +53,4 @@ public class ToolDAOImpl implements ToolDAO {
 		return false;
 	}
 }
+
