@@ -32,4 +32,11 @@ public class TrainingDAOImpl implements TrainingDAO {
 			return em.createQuery(jpql, Training.class).getResultList();
 	}
 
+	@Override
+	public Training createTraining(Training training) {
+		em.persist(training);
+		em.flush();
+		return training;
+	}
+
 }
