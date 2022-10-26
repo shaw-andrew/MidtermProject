@@ -1,7 +1,6 @@
 package com.skilldistillery.cmms.data;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
+import com.skilldistillery.cmms.entities.Staff;
 
 @Service
 @Transactional
@@ -46,6 +46,12 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 	public List<MaintenanceItem> findAllByLocation(Location location) {
 		String jpql = "SELECT task FROM MaintenanceItem task where task.staff.location.id = :location";
 		List<MaintenanceItem> tasks = em.createQuery(jpql, MaintenanceItem.class).setParameter("location", location.getId()).getResultList();
+		return tasks;
+	}
+	@Override
+	public List<MaintenanceItem> findAllByStaffId(Staff staff) {
+		String jpql = "SELECT task FROM MaintenanceItem task where task.staff.id = :id";
+		List<MaintenanceItem> tasks = em.createQuery(jpql, MaintenanceItem.class).setParameter("id", staff.getId()).getResultList();
 		return tasks;
 	}
 		

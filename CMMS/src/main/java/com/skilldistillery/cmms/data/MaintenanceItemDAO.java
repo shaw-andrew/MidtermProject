@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
+import com.skilldistillery.cmms.entities.Staff;
 
 
 public interface MaintenanceItemDAO {
@@ -15,5 +16,6 @@ public interface MaintenanceItemDAO {
 	MaintenanceItem updateAll(int mainItemId, MaintenanceItem mainItem);
 	
 	List<MaintenanceItem> findAllByLocation(Location locationid);
+	public List<MaintenanceItem> findAllByStaffId(Staff staff);
 	
 }
