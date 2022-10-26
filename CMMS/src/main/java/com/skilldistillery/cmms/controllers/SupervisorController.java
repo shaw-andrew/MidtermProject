@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.skilldistillery.cmms.data.EquipmentDAO;
 import com.skilldistillery.cmms.data.MaintenanceDetailDAO;
 import com.skilldistillery.cmms.data.MaintenanceItemDAO;
+import com.skilldistillery.cmms.data.PartDAO;
 import com.skilldistillery.cmms.data.TechnicianDAO;
 import com.skilldistillery.cmms.data.ToolDAO;
 import com.skilldistillery.cmms.data.TrainingDAO;
@@ -23,6 +24,7 @@ import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
 import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
+import com.skilldistillery.cmms.entities.Part;
 import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.Tool;
 import com.skilldistillery.cmms.entities.Training;
@@ -45,6 +47,8 @@ public class SupervisorController {
 	private TechnicianDAO techDao;
 	@Autowired
 	private MaintenanceDetailDAO mrcDao;
+	@Autowired
+	private PartDAO partDao;
 	
 	
 	
@@ -207,6 +211,21 @@ public class SupervisorController {
 			return "supMaintenanceDetail";
 		} else
 			return "login";
+	}
+	
+	@RequestMapping(path = "persistPart.do", method = RequestMethod.POST)
+	public String addPart(HttpSession session, RedirectAttributes redir, Part part) {
+		if (session.getAttribute("loggedInUser") != null) {
+			Part newPart = partDao.createPart(part);
+			redir.addFlashAttribute("newPart", newPart);
+			return "redirect:addPartConfirmation.do";
+		} else
+			return "login";
+	}
+	
+	@RequestMapping(path="addPartConfirmation.do", method = RequestMethod.GET)
+	public String addPartConfirmation() {
+		return "addPartConfirmation";
 	}
 	
 	@RequestMapping(path = "account.do", method = RequestMethod.GET)
