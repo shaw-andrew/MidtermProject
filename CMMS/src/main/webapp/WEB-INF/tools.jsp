@@ -35,7 +35,7 @@
 							<c:forEach var="tool" items="${tools}">
 								<tr>
 									<td>${tool.id}</td>
-									<td><a href="getPark.do?pid=${tool.id }">${tool.name}</a></td>
+									<td>${tool.name}</td>
 
 								</tr>
 							</c:forEach>
