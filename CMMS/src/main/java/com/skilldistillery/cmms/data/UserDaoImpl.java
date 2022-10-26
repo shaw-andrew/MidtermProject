@@ -65,6 +65,7 @@ public class UserDaoImpl implements UserDAO {
 		String jpql = "SELECT user FROM User user";
 		return em.createQuery(jpql, User.class).getResultList();
 	}
+	
 	@Override
 	public Staff addUser(User user, Staff staff, int locNumber) {
 		user.setStaff(staff);
@@ -75,5 +76,4 @@ public class UserDaoImpl implements UserDAO {
 		em.persist(staff);
 		return staff;
 	}
-
 }

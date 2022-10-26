@@ -16,7 +16,6 @@ public interface ToolDAO {
 	
 	public boolean deleteTool(int toolId);
 
-
 	public List<Tool> findallByStaffId(Staff staff);
 
 

@@ -31,4 +31,11 @@ public class PartDAOImpl implements PartDAO {
 		return em.createQuery(jpql, Part.class).getResultList();
 	}
 
+	@Override
+	public Part createPart(Part part) {
+		em.persist(part);
+		em.flush();
+		return part;
+	}
+
 }
