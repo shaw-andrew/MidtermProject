@@ -1,5 +1,7 @@
 package com.skilldistillery.cmms.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ import com.skilldistillery.cmms.data.ToolDAO;
 import com.skilldistillery.cmms.data.TrainingDAO;
 import com.skilldistillery.cmms.data.UserDAO;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
+import com.skilldistillery.cmms.entities.Staff;
+import com.skilldistillery.cmms.entities.Tool;
+import com.skilldistillery.cmms.entities.User;
 
 @Controller
 public class TechnicianController {
@@ -38,14 +43,19 @@ public class TechnicianController {
 	// has to find tools using the dao
 	@RequestMapping(path = "tools.do", method = RequestMethod.GET)
 	public String toolView(HttpSession session, Integer toolId, Model model) {
-		if (session.getAttribute("loggedInUser") != null) {
-			if (toolId == null) {
-				toolId = 1;
-			}
+		User user = (User)session.getAttribute("loggedInUser");
+		if (user != null) {
+			
+			Staff staff = user.getStaff().getId();
+			List<Tool> tools = toolDao.findallByStaffId(staff);
+			
+//			if (toolId == null) {
+//				toolId = 1;
+//			}
 //			Tool tool = toolDao.findById(1);
 			// FIXME
 			model.addAttribute("parts", partDao.findAll());
-			model.addAttribute("tools", toolDao.findAll());
+			model.addAttribute("tools", tools);
 			return "tools";
 		} else
 			return "login";

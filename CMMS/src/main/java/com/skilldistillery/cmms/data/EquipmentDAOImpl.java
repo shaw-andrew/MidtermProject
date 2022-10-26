@@ -10,7 +10,9 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.cmms.entities.Equipment;
+import com.skilldistillery.cmms.entities.EquipmentType;
 import com.skilldistillery.cmms.entities.Location;
+import com.skilldistillery.cmms.entities.Staff;
 
 @Service
 @Transactional
@@ -24,7 +26,7 @@ public class EquipmentDAOImpl implements EquipmentDAO {
 	public Equipment findById(int equipmentId) {
 		return em.find(Equipment.class, equipmentId);
 	}
-	
+
 	@Override
 	public List<Equipment> findAll() {
 		String jpql = "SELECT eq FROM Equipment eq";
@@ -34,8 +36,31 @@ public class EquipmentDAOImpl implements EquipmentDAO {
 	@Override
 	public List<Equipment> findAllByLocation(Location location) {
 		String jpql = "SELECT equip FROM Equipment equip where equip.location.id = :location";
-		
-		List<Equipment> equipment = em.createQuery(jpql, Equipment.class).setParameter("location", location.getId()).getResultList();
+
+		List<Equipment> equipment = em.createQuery(jpql, Equipment.class).setParameter("location", location.getId())
+				.getResultList();
+		return equipment;
+	}
+
+	@Override
+	public Equipment createEquipment(Equipment equipment, int eqpType) {
+		EquipmentType eType = new EquipmentType();
+		eType.setId(eqpType);
+		equipment.setEquipmentType(eType);
+		em.persist(equipment);
+		em.flush();
+		return equipment;
+	}
+	@Override
+	public Equipment createEquipment(Equipment equipment, int eqpType, int locationId) {
+		EquipmentType eType = new EquipmentType();
+		Location location = new Location();
+		eType.setId(eqpType);
+		equipment.setEquipmentType(eType);
+		location.setId(locationId);
+		equipment.setLocation(location);
+		em.persist(equipment);
+		em.flush();
 		return equipment;
 	}
 

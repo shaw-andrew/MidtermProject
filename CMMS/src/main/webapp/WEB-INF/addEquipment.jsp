@@ -15,7 +15,7 @@
 		<div class="container text-center">
 			<div class="row">
 				<h1>@Autowired - Equipment</h1>
-				<form class="row g-3 needs-validation" novalidate action=persistUser.do method="POST">
+				<form class="row g-3 needs-validation" novalidate action=persistEquipment.do method="POST">
 					<div class="col-md-4">
 						<label for="name" class="form-label">Equipment Name</label> <input type="text" class="form-control"
 							name="name" required>
@@ -29,10 +29,10 @@
 						<div class="invalid-feedback">Please describe your equipment.</div>
 					</div>
 					<div class="col-md-4">
-						<label for="equipmentType" class="form-label">Type of Equipment</label>
+						<label for="eqpType" class="form-label">Type of Equipment</label>
 						<div class="input-group has-validation">
 							<input type="text" class="form-control"
-								name="equipmentType" required>
+								name="eqpType" required>
 								<div class="valid-feedback">Looks good!</div>
 							<div class="invalid-feedback">Please choose a username.</div>
 						</div>
