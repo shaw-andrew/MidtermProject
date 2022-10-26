@@ -160,9 +160,11 @@ public class SupervisorController {
 	}
 	
 	@RequestMapping(path = "persistEquipment.do", method = RequestMethod.POST)
-	public String addEquipment(HttpSession session, RedirectAttributes redir, Equipment equipment) {
-		if (session.getAttribute("loggedInUser") != null) {
-			Equipment newEquipment = equipmentDao.createEquipment(equipment);
+	public String addEquipment(HttpSession session, RedirectAttributes redir, Equipment equipment, int eqpType) {
+		User currentUser = (User)session.getAttribute("loggedInUser");
+		if (currentUser != null) {
+			int newLocationId = currentUser.getStaff().getLocation().getId();
+			Equipment newEquipment = equipmentDao.createEquipment(equipment, eqpType, newLocationId);
 			redir.addFlashAttribute("newEquipment", newEquipment);
 			return "redirect:addEquipmentConfirmation.do";
 		} else

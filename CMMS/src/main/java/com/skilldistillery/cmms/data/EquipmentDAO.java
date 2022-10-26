@@ -15,4 +15,8 @@ public interface EquipmentDAO {
 
 	public List<Equipment> findAllByLocation(Location location);
 
+	Equipment createEquipment(Equipment equipment, int eqpType);
+
+	Equipment createEquipment(Equipment equipment, int eqpType, int locatoinId);
+
 }
