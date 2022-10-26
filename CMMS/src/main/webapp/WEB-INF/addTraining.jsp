@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Tool</title>
+<title>Insert title here</title>
 </head>
 <body>
-<h2>Create New Tool</h2>
 
-
+Add Training Landing Page
 
 </body>
 </html>

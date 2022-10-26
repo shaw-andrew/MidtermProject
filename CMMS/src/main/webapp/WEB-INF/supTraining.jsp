@@ -23,10 +23,15 @@
 					<br>
 					<hr>
 					<br>
+					<c:if test="${loggedInUser.role == 'Supervisor' }">
+						<a class="btn btn-secondary" href="addTraining.do" role="button">Add
+							Training</a>
+					</c:if>
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
 								<th>Training ID</th>
+								<th>Category</th>
 								<th>Video URL</th>
 								<th>Description</th>
 								<th>Related MRC ID</th>

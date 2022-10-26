@@ -80,6 +80,15 @@ public class SupervisorController {
 			return "login";
 	}
 	
+	
+	@RequestMapping(path = "addTool.do", method = RequestMethod.GET)
+	public String addToolBySup(HttpSession session, User user, Tool tool) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "addTool";
+		} else
+			return "login";
+	}
+	
 	@RequestMapping(path = "supTraining.do", method = RequestMethod.GET)
 	public String trainingSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -89,6 +98,15 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
+	
+	@RequestMapping(path = "addTraining.do", method = RequestMethod.GET)
+	public String addTrainingBySup(HttpSession session, User user, Training training) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "addTraining";
+		} else
+			return "login";
+	}
+	
 	
 	@RequestMapping(path = "supEquipment.do", method = RequestMethod.GET)
 	public String equipmentSupervisorView(HttpSession session, Model model) {
@@ -101,6 +119,14 @@ public class SupervisorController {
 		} else
 			return "login";
 		
+	}
+	
+	@RequestMapping(path = "addEquipment.do", method = RequestMethod.GET)
+	public String addEquipmentBySup(HttpSession session, User user, Equipment equipment) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "addEquipment";
+		} else
+			return "login";
 	}
 	
 	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)

@@ -23,12 +23,16 @@
 					<br>
 					<hr>
 					<br>
-					<a href="createTool.jsp"><button>Add New Tool To Store Room</button></a>
+					<c:if test="${loggedInUser.role == 'Supervisor' }">
+						<a class="btn btn-secondary" href="addTool.do" role="button">Add
+							Tool</a>
+					</c:if>
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
 								<th>Tool ID</th>
 								<th>Tool Name</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -36,6 +40,13 @@
 								<tr>
 									<td>${tool.id}</td>
 									<td><a href="getPark.do?pid=${tool.id }">${tool.name}</a></td>
+									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
+											<a class="btn btn-secondary" href="deleteTool.do"
+												role="button">Delete Tool</a>
+										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
+											<a class="btn btn-secondary" href="updateTool.do" role="button">Edit
+												Tool</a>
+										</c:if></td>
 
 								</tr>
 							</c:forEach>

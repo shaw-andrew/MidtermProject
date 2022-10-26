@@ -23,9 +23,6 @@
 					<br>
 					Maybe complete button? 
 					href to view detail
-					
-					<a href="scheduleMaintenance.jsp"><button>Schedule Maintenance</button></a>
-					
 					<table class="table table-striped table-hover">
 			<thead class="table-dark">
 				<tr>

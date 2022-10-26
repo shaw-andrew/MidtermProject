@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Tool</title>
+<title>Add Equipment</title>
 </head>
 <body>
-<h2>Create New Tool</h2>
 
-
+<h2>Add Equipment Landing Page</h2>
 
 </body>
 </html>

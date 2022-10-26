@@ -16,37 +16,51 @@
 			<div class="row">
 				<div class="col"></div>
 				<div class="col-6">
-					
+
 					<h2>Equipment and Details</h2>
 
+					<c:if test="${loggedInUser.role == 'Supervisor' }">
+						<a class="btn btn-secondary" href="addEquipment.do" role="button">Add
+							Equipment</a>
+					</c:if>
 					<table class="table table-striped table-hover">
-			<thead class="table-dark">
-				<tr>
-						<th>ID</th>
-						<th>Type</th>
-						<th>Name</th>
-						<th>Description</th>
-						<th>Location ID</th>
-						<th>Task</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var = "equipment" items="${equipment}">
-					<tr>
-						<td>${equipment.id}</td>
-						<td>${equipment.equipmentType}</td>
-						<td>${equipment.name}</td>
-						<td>${equipment.description}</td>
-						<td>${equipment.imageURL}</td>
-						<td>${equipment.location}</td>
-						<td>${equipment.task}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-					
-					
-					
+						<thead class="table-dark">
+							<tr>
+								<th>ID</th>
+								<th>Type</th>
+								<th>Name</th>
+								<th>Description</th>
+								<th>Image</th>
+								<th>Location ID</th>
+								<th>Task</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="equipment" items="${equipment}">
+								<tr>
+									<td>${equipment.id}</td>
+									<td>${equipment.equipmentType}</td>
+									<td>${equipment.name}</td>
+									<td>${equipment.description}</td>
+									<td>${equipment.imageURL}</td>
+									<td>${equipment.location}</td>
+									<td>${equipment.task}</td>
+									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
+											<a class="btn btn-secondary" href="deleteEquipment.do"
+												role="button">Delete Equipment</a>
+										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
+											<a class="btn btn-secondary" href="updateEquipment.do"
+												role="button">Edit Equipment</a>
+										</c:if>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+
+
+
 				</div>
 				<div class="col"></div>
 			</div>
