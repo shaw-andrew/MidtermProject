@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.apache.log4j.chainsaw.Main;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.cmms.entities.Location;
@@ -51,8 +52,12 @@ public class MaintenanceDetailDAOImpl implements MaintenanceDetailDAO {
 
 	@Override
 	public boolean deleteMRC(int mrcId) {
-		// TODO Auto-generated method stub
-		return false;
+		 MaintenanceRequirementCard deleteMRC = em.find(MaintenanceRequirementCard.class, mrcId); //find player we're deleting
+	        if (deleteMRC != null) { //if player exists
+	            em.remove(deleteMRC); //removes player from database
+	        }
+	        return em.contains(deleteMRC); //returns true if delete player is still in persistence mngr
+	        //returns false if not
 	}
 
 }

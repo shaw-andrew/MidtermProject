@@ -43,10 +43,7 @@
 									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
 											<a class="btn btn-secondary" href="deleteTool.do"
 												role="button">Remove Tool</a>
-										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
-											<a class="btn btn-secondary" href="updateTool.do" role="button">Edit
-												Tool</a>
-										</c:if></td>
+										</c:if><br> </td>
 
 								</tr>
 							</c:forEach>

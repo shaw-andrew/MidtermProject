@@ -212,6 +212,18 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
+//	
+//	@RequestMapping(path = "deleteMaintenanceDetail.do", method = RequestMethod.POST)
+//	public String deleteMRC(MaintenanceRequirementCard mrc, Model model) {
+//		boolean playerExistsInDb = mrcDao.deleteMRC(mrc); //delete player returns false if not in db
+//		if(playerExistsInDb == false) {
+//			return "showDeletedSuccess";
+//		}else {
+//			return "unsuccessful";
+//		}
+//	}
+//	
+	
 	
 	@RequestMapping(path = "persistPart.do", method = RequestMethod.POST)
 	public String addPart(HttpSession session, RedirectAttributes redir, Part part) {
