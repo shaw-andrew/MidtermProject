@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>@Autowired - Add or Update User</title>
+<title>@Autowired - Update User</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -13,7 +13,7 @@
 		<%--Edit the file nav.jsp to change nav links --%>
 		<div class="container text-center">
 			<div class="row">
-				<h1>@Autowired - Create/Update User</h1>
+				<h1>@Autowired - Update User</h1>
 				<form class="row g-3 needs-validation" novalidate
 					action="updateUser.do" method="POST">
 					<input type = "hidden" value = "${updatedUser.id} " name = "id">
