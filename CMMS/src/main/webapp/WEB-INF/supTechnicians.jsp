@@ -22,16 +22,14 @@
 					<h2>@Autowired - Technician landing page</h2>
 					<br>
 					<hr>
-					<br>
-					My To-Do list
-					Manager Priorities
-					Missed work
-					Upcoming schedule
-					Training
-					
-					
-					
-					<a href="addUser.jsp"><button>Add New Staff Member</button></a>
+					<br> Supervised Staff <br>
+
+
+
+					<c:if test="${loggedInUser.role == 'Supervisor' }">
+						<a class="btn btn-secondary" href="addUser.do" role="button">Add
+							Technician</a>
+					</c:if>
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
@@ -51,15 +49,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					
-					
-					
-					
-					
-					
-					${staff }
-					
-					
+
 				</div>
 				<div class="col"></div>
 			</div>

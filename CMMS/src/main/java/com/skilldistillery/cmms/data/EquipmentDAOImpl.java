@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.cmms.entities.Equipment;
+import com.skilldistillery.cmms.entities.Location;
 
 @Service
 @Transactional
@@ -28,6 +29,14 @@ public class EquipmentDAOImpl implements EquipmentDAO {
 	public List<Equipment> findAll() {
 		String jpql = "SELECT eq FROM Equipment eq";
 		return em.createQuery(jpql, Equipment.class).getResultList();
+	}
+
+	@Override
+	public List<Equipment> findAllByLocation(Location location) {
+		String jpql = "SELECT equip FROM Equipment equip where equip.location.id = :location";
+		
+		List<Equipment> equipment = em.createQuery(jpql, Equipment.class).setParameter("location", location.getId()).getResultList();
+		return equipment;
 	}
 
 }

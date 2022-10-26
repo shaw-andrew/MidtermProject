@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.controllers;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.cmms.data.EquipmentDAO;
+import com.skilldistillery.cmms.data.MaintenanceDetailDAO;
 import com.skilldistillery.cmms.data.MaintenanceItemDAO;
 import com.skilldistillery.cmms.data.TechnicianDAO;
 import com.skilldistillery.cmms.data.ToolDAO;
@@ -20,6 +22,7 @@ import com.skilldistillery.cmms.data.UserDAO;
 import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
+import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
 import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.Tool;
 import com.skilldistillery.cmms.entities.Training;
@@ -40,6 +43,8 @@ public class SupervisorController {
 	private UserDAO userDao;
 	@Autowired
 	private TechnicianDAO techDao;
+	@Autowired
+	private MaintenanceDetailDAO mrcDao;
 	
 	
 	
@@ -87,8 +92,10 @@ public class SupervisorController {
 	
 	@RequestMapping(path = "supEquipment.do", method = RequestMethod.GET)
 	public String equipmentSupervisorView(HttpSession session, Model model) {
-		if (session.getAttribute("loggedInUser") != null) {
-			List<Equipment> equipment = equipmentDao.findAll();
+		User user = (User)session.getAttribute("loggedInUser");
+		if (user != null) {
+			Location locationId = user.getStaff().getSupervisedLocation();
+			List<Equipment> equipment = equipmentDao.findAllByLocation(locationId);
 			model.addAttribute("equipment", equipment);
 			return "supEquipment";
 		} else
@@ -110,8 +117,20 @@ public class SupervisorController {
 	
 
 	@RequestMapping(path = "supMaintenanceDetail.do", method = RequestMethod.GET)
-	public String maintenanceDetailSupervisorView(HttpSession session) {
-		if (session.getAttribute("loggedInUser") != null) {
+	public String maintenanceDetailSupervisorView(HttpSession session, Model model) {
+		User user = (User)session.getAttribute("loggedInUser");
+		if (user != null) {
+			
+			
+			Location locationId = user.getStaff().getSupervisedLocation();
+			
+			List<MaintenanceRequirementCard> mrcs = mrcDao.findAllByLocation(locationId);
+			
+			
+			model.addAttribute("mrcs", mrcs);
+			
+			
+			
 			return "supMaintenanceDetail";
 		} else
 			return "login";
