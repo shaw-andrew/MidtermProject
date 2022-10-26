@@ -89,6 +89,21 @@ public class SupervisorController {
 			return "login";
 	}
 	
+	@RequestMapping(path = "persistTool.do", method = RequestMethod.POST)
+	public String addTool(HttpSession session, RedirectAttributes redir, Tool tool) {
+		if (session.getAttribute("loggedInUser") != null) {
+			Tool newTool = toolDao.createTool(tool);
+			redir.addFlashAttribute("newTool", newTool);
+			return "redirect:addToolConfirmation.do";
+		} else
+			return "login";
+	}
+	
+	@RequestMapping(path="addToolConfirmation.do", method = RequestMethod.GET)
+	public String addToolConfirmation() {
+		return "addToolConfirmation";
+	}
+	
 	@RequestMapping(path = "supTraining.do", method = RequestMethod.GET)
 	public String trainingSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -105,6 +120,21 @@ public class SupervisorController {
 			return "addTraining";
 		} else
 			return "login";
+	}
+	
+	@RequestMapping(path = "persistTraining.do", method = RequestMethod.POST)
+	public String addTraining(HttpSession session, RedirectAttributes redir, Training training) {
+		if (session.getAttribute("loggedInUser") != null) {
+			Training newTraining = trainingDao.createTraining(training);
+			redir.addFlashAttribute("newTraining", newTraining);
+			return "redirect:addTrainingConfirmation.do";
+		} else
+			return "login";
+	}
+	
+	@RequestMapping(path="addTrainingConfirmation.do", method = RequestMethod.GET)
+	public String addTrainingConfirmation() {
+		return "addTrainingConfirmation";
 	}
 	
 	
@@ -127,6 +157,21 @@ public class SupervisorController {
 			return "addEquipment";
 		} else
 			return "login";
+	}
+	
+	@RequestMapping(path = "persistEquipment.do", method = RequestMethod.POST)
+	public String addEquipment(HttpSession session, RedirectAttributes redir, Equipment equipment) {
+		if (session.getAttribute("loggedInUser") != null) {
+			Equipment newEquipment = equipmentDao.createEquipment(equipment);
+			redir.addFlashAttribute("newEquipment", newEquipment);
+			return "redirect:addEquipmentConfirmation.do";
+		} else
+			return "login";
+	}
+	
+	@RequestMapping(path="addEquipmentConfirmation.do", method = RequestMethod.GET)
+	public String addEquipmentConfirmation() {
+		return "addEquipmentConfirmation";
 	}
 	
 	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)

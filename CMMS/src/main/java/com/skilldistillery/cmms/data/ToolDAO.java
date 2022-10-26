@@ -7,7 +7,10 @@ import com.skilldistillery.cmms.entities.User;
 
 public interface ToolDAO {
 
-	Tool findById(int toolId);
+	public Tool findById(int toolId);
+	
+	public Tool createTool(Tool tool);
+
 	public List<Tool> findAll();
 
 }

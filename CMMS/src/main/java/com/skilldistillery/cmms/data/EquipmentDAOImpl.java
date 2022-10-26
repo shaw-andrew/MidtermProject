@@ -39,4 +39,11 @@ public class EquipmentDAOImpl implements EquipmentDAO {
 		return equipment;
 	}
 
+	@Override
+	public Equipment createEquipment(Equipment equipment) {
+		em.persist(equipment);
+		em.flush();
+		return equipment;
+	}
+
 }

@@ -29,4 +29,11 @@ public class ToolDAOImpl implements ToolDAO {
 		String jpql = "SELECT tool FROM Tool tool";
 		return em.createQuery(jpql, Tool.class).getResultList();
 	}
+
+	@Override
+	public Tool createTool(Tool tool) {
+		em.persist(tool);
+		em.flush();
+		return tool;
+	}
 }
