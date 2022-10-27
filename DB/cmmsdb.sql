@@ -66,7 +66,7 @@ DROP TABLE IF EXISTS `maintenance_requirement_card` ;
 
 CREATE TABLE IF NOT EXISTS `maintenance_requirement_card` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `description` VARCHAR(100) NULL,
+  `description` VARCHAR(1500) NULL,
   `number_of_techs` INT NULL,
   `training_video_id` VARCHAR(250) NULL,
   `estimated_duration_in_hours` DOUBLE NULL,
