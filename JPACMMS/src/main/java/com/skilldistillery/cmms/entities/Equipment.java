@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -55,6 +56,23 @@ public class Equipment {
 		this.location = location;
 		this.task = task;
 	}
+	
+//	public void addTask(MaintenanceItem mainItem) {
+//		if (task == null) {
+//			task = new ArrayList<>();
+//		}
+//		if (!task.contains(mainItem)) {
+//			task.add(mainItem);
+//			task.addEquipment(this);
+//		}
+//	}
+//
+//	public void removeTask(MaintenanceItem mainItem) {
+//		if (task != null && task.contains(mainItem)) {
+//			task.remove(mainItem);
+//			task.remove(this);
+//		}
+//	}
 
 	public int getId() {
 		return id;

@@ -33,7 +33,7 @@
 							<tr>
 								<th>Tool ID</th>
 								<th>Tool Name</th>
-								<th>Action</th>
+								<!-- <th>Action</th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -41,11 +41,11 @@
 								<tr>
 									<td>${tool.id}</td>
 									<td><a href="getPark.do?pid=${tool.id }">${tool.name}</a></td>
-									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
+									<%-- <td><c:if test="${loggedInUser.role == 'Supervisor' }">
 										<input type="hidden" name="toolId" value="${tool.id }" />
 											<a class="btn btn-secondary" href="deleteTool.do"
 												role="button">Remove Tool</a>
-										</c:if><br> </td>
+										</c:if><br> </td> --%>
 
 								</tr>
 							</c:forEach>

@@ -57,6 +57,7 @@
 									<input type="hidden" name="id" value="${mrcs.id }" />
 											<a class="btn btn-secondary" href="deleteMRC.do"
 												role="button">Delete Maintenance Card</a>
+												 
 									</c:if><br> <br>
 												
 

@@ -1,7 +1,7 @@
 package com.skilldistillery.cmms.entities;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -54,12 +54,7 @@ public class MaintenanceItem {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
 	
-
-	
-
 	public MaintenanceItem(int id, LocalDateTime completionDate, double actualDurationInHours, String techNotes,
 			LocalDateTime scheduleStartDate, MaintenanceRequirementCard mrc, LocalDateTime scheduleEndDate, Staff staff,
 			Equipment equipment) {
@@ -74,6 +69,25 @@ public class MaintenanceItem {
 		this.staff = staff;
 		this.equipment = equipment;
 	}
+	
+//	public void addEquipment(Equipment equipmentStuff) {
+//		if (equipment == null) {
+//			equipment= new ArrayList<>();
+//		}
+//		if (!equipment.contains(equipmentStuff)) {
+//			equipment.add(equipmentStuff);
+//			equipment.addTask(this);
+//		}
+//	}
+//
+//	public void removeTask(MaintenanceItem mainItem) {
+//		if (equipment != null && equipment.contains(mainItem)) {
+//			equipment.remove(mainItem);
+//			equipment.remove(this);
+//		}
+//	}
+//	
+
 
 
 
