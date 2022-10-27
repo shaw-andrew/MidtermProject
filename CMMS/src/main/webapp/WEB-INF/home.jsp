@@ -15,17 +15,12 @@
 			<div class="row">
 				<div class="col"></div>
 				<div class="col-6">
-					<h2>Welcome to the site</h2>
+					<h2>Welcome to @Autowired</h2>
+					<h4>Leaders in Enterprise level Asset Management</h4>
 					<hr>
 					<blockquote>
-						<strong>Our company is the best!</strong>Lorem ipsum dolor sit
-						amet, consectetur adipiscing elit, sed do eiusmod tempor
-						incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-						veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla p ariatur.
-						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-						officia deserunt mollit anim id est laborum.
+						<strong>Our company will save you money!</strong> Maintenance is an important factor in quality assurance and in some cases determines the long-term success of a company. Poorly maintained resources can cause instability and partially or completely pause the production. Malfunctioning machines or complete breakdowns can become a costly process for most companies.
+						<br><br>Here at @Autowired we are committed to bringing modern technological services and data retention to your team in a useable and convenient format. Our computer based maintenance management platform will allow you to easily schedule work for your team, check your inventory and even run reports on recent work to ensure peace of mind and maximize reliability.
 					</blockquote>
 					<br>
 					<hr>

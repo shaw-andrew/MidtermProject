@@ -17,8 +17,8 @@
 				<div class="col-6">
 					<br>
 					<hr>
+					
 					<h2>@Autowired - Technician table</h2>
-					<br>
 					<hr>
 					<br>
 					"Inspirational quote about how important maintenance and first time quality are."<br><br>

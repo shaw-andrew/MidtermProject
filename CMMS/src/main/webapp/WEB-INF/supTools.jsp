@@ -19,7 +19,7 @@
 					<br>
 					<hr>
 					<br>
-					<h2>@Autowired - Required Tool(s) for the job</h2>
+					<h2>@Autowired - Tool Inventory</h2>
 					<br>
 					<hr>
 					<br>
@@ -27,12 +27,13 @@
 						<a class="btn btn-secondary" href="addTool.do" role="button">Add
 							Tool</a>
 					</c:if>
+					<br><br>
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
 								<th>Tool ID</th>
 								<th>Tool Name</th>
-								<th>Action</th>
+								<!-- <th>Action</th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -40,11 +41,11 @@
 								<tr>
 									<td>${tool.id}</td>
 									<td><a href="getPark.do?pid=${tool.id }">${tool.name}</a></td>
-									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
+									<%-- <td><c:if test="${loggedInUser.role == 'Supervisor' }">
 										<input type="hidden" name="toolId" value="${tool.id }" />
 											<a class="btn btn-secondary" href="deleteTool.do"
 												role="button">Remove Tool</a>
-										</c:if><br> </td>
+										</c:if><br> </td> --%>
 
 								</tr>
 							</c:forEach>
@@ -53,7 +54,7 @@
 					<br>
 					<hr>
 					<br>
-					<h2>@Autowired - Required Part(s) for the job</h2>
+					<h2>@Autowired - Part Inventory</h2>
 					<br>
 					<hr>
 					<br>
@@ -78,6 +79,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
+					<br><br><br><br><br><br><br><br><br><br><br>
 				</div>
 				<div class="col-2"></div>
 			</div>

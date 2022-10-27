@@ -10,22 +10,17 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
-	<main class="container-fluid">
-		<%--Edit the file nav.jsp to change nav links --%>
-		<div class="container text-center">
-			<div class="row">
-				<div class="col-2"></div>
-				<div class="col-8">
+	<main class="container-fluid text-center">
 					<br>
 					<hr>
 					<h2>Maintenance Items</h2>
 					<hr>
-					<br> Maybe complete button? href to view detail
+					<br> 
 
 					<c:if test="${loggedInUser.role == 'Supervisor' }">
 						<a class="btn btn-secondary" href="supMaintenanceDetail.do"
 							role="button">Schedule Maintenance</a>
-					</c:if><br>
+					</c:if><br><br>
 
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
@@ -69,7 +64,7 @@
 											<form action="supUpdateTask.do" id="updateItem${maintenanceItem.id}"
 											method="POST" > 
 											<input type="hidden" name="mainItemId" value="${maintenanceItem.id}">
-											<input type="submit" name="submit" value="submit">
+											<input type="submit" class="btn btn-seconday" role="button" value="submit">
 										</form>
 										</c:if>
 									</td>
@@ -77,12 +72,8 @@
 							</c:forEach>
 						</tbody>
 					</table>
-
-				</div>
-				<div class="col-2"></div>
-			</div>
-		</div>
-	</main>
+<br><br><br><br><br><br><br><br><br><br><br>
+			</main>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>
