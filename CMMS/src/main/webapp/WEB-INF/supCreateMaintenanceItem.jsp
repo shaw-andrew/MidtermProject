@@ -16,44 +16,58 @@
 			<div class="row">
 				<h1>@Autowired - Add Maintenance Item</h1>
 				<form class="row g-3 needs-validation" novalidate action=createMaintenance.do method="POST">
-					<div class="col-md-4">
-						<label for="completionDate" class="form-label">Completion Date
-							</label> <input type="datetime-local" class="form-control"
-							name="completionDate" placeholder = "Completion Date">
-						<!-- <div class="valid-feedback">Looks good!</div>
-						<div class="invalid-feedback">Please input a first name.</div> -->
-					</div>
 					
 					
 					
 					
 					
-					<label for="taskId" class="form-label-lg">Maintenance Id</label>			
-						 <input class="form-control form-control-lg" id="taskId" type="number" placeholder="${MaintenanceItem.id}"  disabled>
+				
 						 
 						 <label for="completionDate" class="form-label-lg">Completion Date</label>			
-						 <input class="form-control form-control-lg" id="completionDate" type="datetime-local" placeholder="${MaintenanceItem.completionDate}"  disabled>
+						 <input class="form-control form-control-lg" id="completionDate" type="datetime-local" placeholder="Completion Date"  disabled>
 						
 						 <label for="duration" class="form-label-lg">Duration</label>			
-						 <input class="form-control form-control-lg" id="duration" type="number" step = "0.01" placeholder="${MaintenanceItem.duration}"  disabled>
+						 <input class="form-control form-control-lg" id="duration" type="number" step = "0.01" placeholder="Duration"  disabled>
 						 
 						 <label for="techNotes" class="form-label-lg">Technician Notes</label>			
-						 <input class="form-control form-control-lg" id="techNotes" type="text" placeholder="${MaintenanceItem.techNotes}"disabled>
+						 <input class="form-control form-control-lg" id="techNotes" type="text" placeholder="Technician Notes}"disabled>
 						 
 						 <label for="scheduleStartDate" class="form-label-lg">Scheduled Start Date</label>			
-					   	 <input type="datetime-local" class="form-control form-control-lg" name="scheduleStartDate" value="${MaintenanceItem.scheduleStartDate }" required> <br><hr>
+					   	 <input type="datetime-local" class="form-control form-control-lg" name="scheduleStartDate" value="Scheduled Start Date " required> <br>
 					   	 
 						 <label for="mrcId" class="form-label-lg">MRC Id</label>			
-						 <input type="number" name="mrcId" value="${MaintenanceItem.mrcId }" disabled /><br><br>
+						 <input type="number" name="mrcId" value="${mrc.id }" disabled /><br><br>
 						 
 						 <label for="scheduleEndDate" class="form-label-lg">Scheduled End Date</label>			
-					   	 <input type="datetime-local" class="form-control form-control-lg" name="scheduleEndDate" value="${MaintenanceItem.scheduleEndDate }" required> <br><hr>
+					   	 <input type="datetime-local" class="form-control form-control-lg" name="scheduleEndDate" value="Scheduled End Date }" required> <br>
 						 
-						 <label for="staff" class="form-label-lg">Staff</label>			
-						 <input type="text" name="staff" value="${MaintenanceItem.staff.firstName }"  /><br><br>
 						 
-						 <label for="equipment" class="form-label-lg">Equipment</label>			
-						 <input type="text" name="equipment" value="${MaintenanceItem.equipment.equipmentType}"  /><br><br>
+						<div class="dropdown">
+						<button type="button" class="btn btn-primary dropdown-toggle"
+							data-bs-toggle="dropdown">Select Staff Member</button>
+						<ul class="dropdown-menu">
+						
+							<li><a class="dropdown-item" href="maintenanceDetail.do">View All Staff</a></li>
+							
+							<c:forEach var="staff" items="${staff}">
+								<li><a class="dropdown-item" href="viewStaffMember.do?id=${staff.id}">${staff}</a>
+								</li>
+
+							</c:forEach>
+
+						</ul>
+					</div>
+					</div>
+						 
+						 
+						 
+						 
+						 
+						 <label for="staff" class="form-label-lg">Staff / Needs a Dropdown</label>			
+						 <input type="text" name="staff" value="Staff"  /><br><br>
+						 
+						 <label for="equipment" class="form-label-lg">Equipment / update to string</label>			
+						 <input type="text" name="equipment" value="${mrc.equipmentType}"  /><br><br>
 						 
 					<button class="btn btn-primary" type="submit">Create Maintenance Item</button><br><br>
 				</form>

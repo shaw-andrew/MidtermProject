@@ -61,10 +61,11 @@ public class SupervisorController {
 	
 	@RequestMapping(path = "createMaintenance.do", method = RequestMethod.GET)
 	public String createNewMaintenance(HttpSession session, int mrcId, Model model) {
-		if (session.getAttribute("loggedInUser") != null) {
-			MaintenanceItem task = null;
-			task = taskDao.createTask(task, mrcId, task.getEquipment(), task.getStaff());
-			model.addAttribute(mrcId);
+		User user = (User)session.getAttribute("loggedInUser");
+		if (user != null) {
+			
+			model.addAttribute("mrc", mrcDao.findById(mrcId));
+			model.addAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
 			return "supCreateMaintenanceItem";
 		} else
 			return "login";
@@ -314,5 +315,6 @@ public class SupervisorController {
 	public String addUserConfirmation() {
 		return "addUserConfirmation";
 	}
+
 
 }

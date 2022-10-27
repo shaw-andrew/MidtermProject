@@ -13,6 +13,7 @@ import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
 import com.skilldistillery.cmms.entities.Part;
 import com.skilldistillery.cmms.entities.Tool;
+import com.skilldistillery.cmms.entities.User;
 
 
 @Service
@@ -54,12 +55,11 @@ public class MaintenanceDetailDAOImpl implements MaintenanceDetailDAO {
 
 	@Override
 	public boolean deleteMRC(int mrcId) {
-		 MaintenanceRequirementCard deleteMRC = em.find(MaintenanceRequirementCard.class, mrcId); //find player we're deleting
-	        if (deleteMRC != null) { //if player exists
-	            em.remove(deleteMRC); //removes player from database
+		 MaintenanceRequirementCard deleteMRC = em.find(MaintenanceRequirementCard.class, mrcId);
+	        if (deleteMRC != null) { 
+	            em.remove(deleteMRC); 
 	        }
-	        return em.contains(deleteMRC); //returns true if delete player is still in persistence mngr
-	        //returns false if not
+	        return em.contains(deleteMRC); 
 	}
 	
 	@Override
@@ -82,4 +82,14 @@ public class MaintenanceDetailDAOImpl implements MaintenanceDetailDAO {
 //		MaintenanceRequirementCard updateMrc = em.find(MaintenanceRequirementCard.class, mrcId);
 //		updateMrc.addTraining(training);
 //	}
+	
+	@Override
+	public MaintenanceRequirementCard updateMrc(int mrcId, MaintenanceRequirementCard mrc) {
+		MaintenanceRequirementCard updateMrc = em.find(MaintenanceRequirementCard.class, mrcId);
+		updateMrc.setFrequency(mrc.getFrequency());
+		updateMrc.setDescription(mrc.getDescription());
+		updateMrc.setEquipmentType(mrc.getEquipmentType());
+		updateMrc.setEstimatedDurationInHours(mrc.getEstimatedDurationInHours());
+		return updateMrc;
+	}
 }
