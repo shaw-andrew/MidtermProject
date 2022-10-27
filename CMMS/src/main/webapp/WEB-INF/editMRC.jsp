@@ -13,8 +13,7 @@
 	<main class="container-fluid">
 		<%--Edit the file nav.jsp to change nav links --%>
 		<!-- <div class="container text-center"> -->
-		<br>
-		<hr>
+	
 		<h2>@Autowired - Edit Maintenance</h2>
 		<br>
 		<hr>
