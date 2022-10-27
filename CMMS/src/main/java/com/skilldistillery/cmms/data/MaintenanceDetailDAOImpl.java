@@ -9,6 +9,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+
+import com.skilldistillery.cmms.entities.EquipmentType;
+import com.skilldistillery.cmms.entities.Frequency;
 import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
@@ -86,13 +89,27 @@ public class MaintenanceDetailDAOImpl implements MaintenanceDetailDAO {
 //		updateMrc.addTraining(training);
 //	}
 	
+	
+	
 	@Override
 	public MaintenanceRequirementCard updateMrc(int mrcId, MaintenanceRequirementCard mrc) {
 		MaintenanceRequirementCard updateMrc = em.find(MaintenanceRequirementCard.class, mrcId);
 		updateMrc.setFrequency(mrc.getFrequency());
 		updateMrc.setDescription(mrc.getDescription());
-		updateMrc.setEquipmentType(mrc.getEquipmentType());
 		updateMrc.setEstimatedDurationInHours(mrc.getEstimatedDurationInHours());
+		updateMrc.setEquipmentType(mrc.getEquipmentType());
 		return updateMrc;
+	}
+
+	@Override
+	public List<Frequency> findAllFrequencies() {
+		String jpql = "SELECT f FROM Frequency f";
+		return em.createQuery(jpql, Frequency.class).getResultList();
+	}
+
+	@Override
+	public List<EquipmentType> findAllEquipmentTypes() {
+		String jpql = "SELECT et FROM EquipmentType et";
+		return em.createQuery(jpql, EquipmentType.class).getResultList();
 	}
 }
