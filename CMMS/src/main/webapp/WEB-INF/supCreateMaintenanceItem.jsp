@@ -25,23 +25,29 @@
 				<form class="row g-3 needs-validation" novalidate
 					action="createMaintenance.do" method="POST">
 					<label for="completionDate" class="form-label-lg">Completion
-						Date</label> <input class="form-control form-control-lg"
-						id="completionDate" type="datetime-local"
+						Date</label> 
+						<input class="form-control form-control-lg"
+						name="completionDate" type="datetime-local"
 						placeholder="Completion Date" disabled> <label
-						for="duration" class="form-label-lg">Duration</label> <input
-						class="form-control form-control-lg" id="duration" type="number"
+						for="duration" class="form-label-lg">Duration</label> 
+						<input
+						class="form-control form-control-lg" name="duration" type="number"
 						step="0.01" placeholder="Duration" disabled> <label
-						for="techNotes" class="form-label-lg">Technician Notes</label> <input
-						class="form-control form-control-lg" id="techNotes" type="text"
-						placeholder="Technician Notes}" disabled> <label
+						for="techNotes" class="form-label-lg">Technician Notes</label> 
+						<input
+						class="form-control form-control-lg" name="techNotes" type="text"
+						placeholder="Technician Notes" disabled> <label
 						for="scheduleStartDate" class="form-label-lg">Scheduled
-						Start Date</label> <input type="datetime-local"
+						Start Date</label> 
+						<input type="datetime-local"
 						class="form-control form-control-lg" name="scheduleStartDate"
 						value="Scheduled Start Date " required> <br> <label
-						for="mrcId" class="form-label-lg">MRC Id</label> <input
+						for="mrcId" class="form-label-lg">MRC Id</label> 
+						<input
 						type="number" name="mrcId" value="${mrc.id }" disabled /><br>
 					<br> <label for="scheduleEndDate" class="form-label-lg">Scheduled
-						End Date</label> <input type="datetime-local"
+						End Date</label> 
+						<input type="datetime-local"
 						class="form-control form-control-lg" name="scheduleEndDate"
 						value="Scheduled End Date }" required> <br> <label
 						for="staff" class="form-label-lg">Staff</label>
@@ -60,13 +66,11 @@
 					</div>
 					<label for="equipment" class="form-label-lg">Equipment Type</label>
 					<br> <input type="text" name="equipment"
-						value="${mrc.equipmentType.name}" disabled /><br>
-					<br>
+						value="${mrc.equipmentType.name}" disabled /><br> <br>
 
 					<button class="btn btn-primary" type="submit">Create
 						Maintenance Item</button>
-					<br>
-					<br>
+					<br> <br>
 				</form>
 			</div>
 
@@ -115,10 +119,10 @@
 					<div class="col-12">
 						<button class="btn btn-primary" type="submit">Create New User</button><br>
 					</div> --%>
-				</form>
+			</form>
 
 
-			</div>
+		</div>
 		</div>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />

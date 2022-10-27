@@ -70,6 +70,19 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
+	@RequestMapping(path = "createMaintenance.do", method = RequestMethod.POST)
+	public String createNewMaintenancePost(HttpSession session, int mrcId, Model model) {
+		User user = (User) session.getAttribute("loggedInUser");
+		if (user != null) {
+			
+			model.addAttribute("mrc", mrcDao.findById(mrcId));
+			model.addAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
+			// model.addAttribute("equipment",
+			// equipmentDao.findAllByLocation(user.getStaff().getLocation()));
+			return "supCreateMaintenanceItem";
+		} else
+			return "login";
+	}
 
 	@RequestMapping(path = "supMaintenance.do", method = RequestMethod.GET)
 	public String viewSupervisorMaintenance(HttpSession session, Model model) {
