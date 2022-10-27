@@ -43,35 +43,24 @@
 						 
 						 
 						 
-						<label for="staff" class="form-label-lg">Staff / Needs a Dropdown</label>		
+						<label for="staff" class="form-label-lg">Staff</label>		
 						<div class="dropdown">
-						<button type="button" class="btn btn-primary dropdown-toggle"
-							data-bs-toggle="dropdown">Select Staff Member</button>
-						<ul class="dropdown-menu">
+						<!-- <button type="button" class="btn btn-primary dropdown-toggle"
+							data-bs-toggle="dropdown">Select Staff Member</button> -->
 						
-							<li><a class="dropdown-item" href="maintenanceDetail.do">View All Staff</a></li>
-							<select name = "staff.id">
+							<select class = "form-select" name = "staff.id">
 							<c:forEach var="staff" items="${staff}">
-								<li><option class="dropdown-item" value = "${staff.id}" > ${staff}</option>
+								<li><option value = "${staff.id}" > ${staff}</option>
 								</li>
 
 							</c:forEach>
 							</select>
 							
 
-						</ul>
 					</div>
 					</div>
-						 
-						 
-						 
-						 
-						 
-						 	
-						<!--  <input type="text" name="staff" value="Staff"  /><br><br> -->
-						 
-						 <label for="equipment" class="form-label-lg">Equipment / update to string</label>	
-						 <input type="text" name="equipment" placeholder="${mrc.equipmentType.name}"  /><br><br>
+						 <label for="equipment" class="form-label-lg">Equipment Type</label>	<br>
+						 <input type="text" name="equipment" value="${mrc.equipmentType.name}" disabled  /><br><br>
 						 
 					<button class="btn btn-primary" type="submit">Create Maintenance Item</button><br><br>
 				</form>

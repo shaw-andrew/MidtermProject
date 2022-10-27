@@ -23,7 +23,7 @@
 					<br> Maybe complete button? href to view detail
 
 					<c:if test="${loggedInUser.role == 'Supervisor' }">
-						<a class="btn btn-secondary" href="scheduleMaintenance.do"
+						<a class="btn btn-secondary" href="supMaintenanceDetail.do"
 							role="button">Schedule Maintenance</a>
 					</c:if><br>
 
