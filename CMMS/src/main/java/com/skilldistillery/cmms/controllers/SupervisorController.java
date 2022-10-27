@@ -66,7 +66,7 @@ public class SupervisorController {
 			model.addAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
 			// model.addAttribute("equipment",
 			// equipmentDao.findAllByLocation(user.getStaff().getLocation()));
-			return "supMaintenance";
+			return "supCreateMaintenanceItem";
 		} else
 			return "login";
 	}
