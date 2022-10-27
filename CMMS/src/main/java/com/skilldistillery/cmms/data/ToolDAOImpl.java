@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.Tool;
 
@@ -49,8 +50,13 @@ public class ToolDAOImpl implements ToolDAO {
 
 	@Override
 	public boolean deleteTool(int toolId) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean successfullyDeleted = false;
+		Tool deletedTool = em.find(Tool.class, toolId);
+		if(deletedTool != null) {
+			em.remove(deletedTool);
+			successfullyDeleted = !em.contains(deletedTool);
+		}
+		return successfullyDeleted;
 	}
 }
 
