@@ -57,7 +57,7 @@
 											<a class="btn btn-secondary" href="deleteMRC.do"
 												role="button">Delete Maintenance Card</a>
 										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
-											<a class="btn btn-secondary" href="updateMRC.do"
+											<a class="btn btn-secondary" href="editMrcPage.do?id=${mrcs.id}"
 												role="button">Edit Maintenance Card</a>
 										</c:if>
 									</td>

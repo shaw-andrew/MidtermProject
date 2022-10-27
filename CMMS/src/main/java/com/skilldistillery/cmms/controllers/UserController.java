@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.cmms.data.UserDaoImpl;
+import com.skilldistillery.cmms.entities.Staff;
 import com.skilldistillery.cmms.entities.User;
 
 @Controller
@@ -30,6 +32,34 @@ public class UserController {
 			return "supervisor";
 		} else
 			return "login";
+	}
+	
+	
+	@RequestMapping(path = "updateUserPage.do", method = RequestMethod.GET)
+	public String modify(HttpSession session, int id, Model model) {
+		model.addAttribute("updatedUser", userDao.findById(id));
+		return "updateUser";
+	}
+	
+	
+	@RequestMapping(path = "updateUser.do", method = RequestMethod.POST)
+	public String updateUser(HttpSession session, User user, Staff staff, int id, RedirectAttributes redir) {
+		if(session.getAttribute("loggedInUser") != null) {
+			User updatedUser = userDao.updateUser(id, user);
+			redir.addFlashAttribute("updatedUser", updatedUser);
+			return "redirect:updateUserConfirmation.do";
+		}
+		else {
+			return "login";
+		}
+	}
+	
+	@RequestMapping(path = "updateUserConfirmation.do", method = RequestMethod.GET)
+	public String updateUserConfirmation(HttpSession session) {
+		if(session.getAttribute("loggedInUser") != null) {
+			return "updateUserConfirmation";
+		}
+		return "login";
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
