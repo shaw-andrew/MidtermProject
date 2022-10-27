@@ -15,7 +15,7 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col"></div>
-				<div class="col-6">
+				
 
 					<h2>Equipment and Details</h2>
 
@@ -27,12 +27,12 @@
 						<thead class="table-dark">
 							<tr>
 								<th>ID</th>
-								<th>Type</th>
-								<th>Name</th>
-								<th>Description</th>
+								<th class="col-lg-2">Type</th>
+								<th class="col-lg-1">Name</th>
+								<th class="col-lg-2">Description</th>
 								<th>Image</th>
-								<th>Location ID</th>
-								<th>Task</th>
+								<th class="col-lg-3">Location ID</th>
+								<th class="col-lg-4">Task</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -64,7 +64,6 @@
 				</div>
 				<div class="col"></div>
 			</div>
-		</div>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>

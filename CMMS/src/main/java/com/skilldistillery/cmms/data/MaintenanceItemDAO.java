@@ -20,7 +20,7 @@ public interface MaintenanceItemDAO {
 	MaintenanceItem supUpdateAll(int mainItemId, MaintenanceItem mainItem);
 	
 	List<MaintenanceItem> findAllByLocation(Location locationid);
-	public List<MaintenanceItem> findAllByStaffId(Staff staff);
+	public List<MaintenanceItem> findAllByStaffId(int id);
 	
 	MaintenanceItem createTask(MaintenanceItem task, MaintenanceRequirementCard mrc, Equipment equip, 
 			Staff staff);
