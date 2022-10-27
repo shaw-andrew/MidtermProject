@@ -70,6 +70,7 @@ public class SupervisorController {
 			return "login";
 	}
 	
+	
 	@RequestMapping(path = "supMaintenance.do", method = RequestMethod.GET)
 	public String viewSupervisorMaintenance(HttpSession session, Model model) {
 		User user = (User)session.getAttribute("loggedInUser");

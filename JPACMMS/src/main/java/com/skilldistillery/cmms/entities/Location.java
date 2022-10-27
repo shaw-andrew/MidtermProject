@@ -129,12 +129,11 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return " \nID: " + id + 
-				" \nStreet: " + street + 
-				" \nStreet 2: " + street2 + 
-				" \nCity: " + city +
-				 " \nState: " + stateAbbrev + 
-				" \nZip Code: " + zipCode;
+		return 
+				 street + " "
+				  + city + ", " +
+				   stateAbbrev + ", "  
+				 + zipCode;
 	}
 
 	
