@@ -24,5 +24,7 @@ public interface MaintenanceItemDAO {
 	
 	MaintenanceItem createTask(MaintenanceItem task, MaintenanceRequirementCard mrc, Equipment equip, 
 			Staff staff);
+
+	List<Staff> findStaffByLocation(Location location);
 	
 }

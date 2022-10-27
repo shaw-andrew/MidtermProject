@@ -77,6 +77,7 @@ public class TechnicianController {
 		if (user != null) {
 			Location locationId = user.getStaff().getLocation();
 			model.addAttribute("maintenanceItems", maintenanceItemDAO.findAllByLocation(locationId));
+			model.addAttribute("staffMembers", maintenanceItemDAO.findStaffByLocation(locationId));
 			return "maintenanceDetail";
 		} else
 			return "login";

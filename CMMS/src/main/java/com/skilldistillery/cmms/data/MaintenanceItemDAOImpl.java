@@ -65,13 +65,20 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 		return updateMainItem;
 	}
 
-	
 	@Override
 	public List<MaintenanceItem> findAllByLocation(Location location) {
 		String jpql = "SELECT task FROM MaintenanceItem task where task.staff.location.id = :location";
 		List<MaintenanceItem> tasks = em.createQuery(jpql, MaintenanceItem.class).setParameter("location", location.getId()).getResultList();
 		return tasks;
 	}
+	
+	@Override
+	public List<Staff> findStaffByLocation(Location location) {
+		String jpql = "SELECT DISTINCT task.staff FROM MaintenanceItem task where task.staff.location.id = :location";
+		List<Staff> tasks = em.createQuery(jpql, Staff.class).setParameter("location", location.getId()).getResultList();
+		return tasks;
+	}
+	
 	@Override
 	public List<MaintenanceItem> findAllByStaffId(int id) {
 		String jpql = "SELECT task FROM MaintenanceItem task where task.staff.id = :id";
