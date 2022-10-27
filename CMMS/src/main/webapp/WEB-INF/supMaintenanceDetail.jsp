@@ -60,9 +60,9 @@
 											<a class="btn btn-secondary" href="editMrcPage.do?id=${mrcs.id}"
 												role="button">Edit Maintenance Card</a>
 												
-										<form action="editMrcPage.do" method="GET">
+									<%-- 	<form action="editMrcPage.do" method="GET">
 										<input type="hidden" name="id" value="${mrcs.id }" /> 
-										<input type="submit" value="Edit Maintenance Card form button" /></form>
+										<input type="submit" value="Edit Maintenance Card form button" /></form> --%>
 										
 										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
 											<a class="btn btn-secondary" href="createMaintenance.do?mrcId=${mrcs.id}"
