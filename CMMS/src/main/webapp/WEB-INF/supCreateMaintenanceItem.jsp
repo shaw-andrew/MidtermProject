@@ -49,8 +49,8 @@
 						
 							<li><a class="dropdown-item" href="maintenanceDetail.do">View All Staff</a></li>
 							
-							<c:forEach var="staffMember" items="${staffMembers}">
-								<li><a class="dropdown-item" href="viewStaffMember.do?id=${staffMember.id}">${staffMember}</a>
+							<c:forEach var="staff" items="${staff}">
+								<li><a class="dropdown-item" href="viewStaffMember.do?id=${staff.id}">${staff}</a>
 								</li>
 
 							</c:forEach>
