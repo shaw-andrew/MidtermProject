@@ -60,7 +60,7 @@
 												
 
 									<form action="editMrcPage.do" method="GET">
-										<input type="hidden" name="id" value="${mrcs.id }" /> 
+										<input type="hidden"class="btn btn-secondary" name="id" value="${mrcs.id }" /> 
 										<input type="submit" value="Edit Maintenance Card" /></form> 
 
 										
