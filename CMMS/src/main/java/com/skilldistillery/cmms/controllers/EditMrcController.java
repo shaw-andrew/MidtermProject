@@ -70,6 +70,16 @@ public class EditMrcController {
 		} else
 			return "login";
 	}
+	
+	@RequestMapping(path = "updateMrc.do", method = RequestMethod.POST)
+	public String updateMrcController(HttpSession session, int mrcId, Model model) {
+		if (session.getAttribute("loggedInUser") != null) {
+			
+			
+		return "updateAllComplete";
+	} else
+		return "login";
+	}
 
 //	@RequestMapping(path = "addCardTraining.do", method = RequestMethod.POST)
 //	public String addTrainingToCardController(HttpSession session, int mrcId, int trainingId, Model model) {
