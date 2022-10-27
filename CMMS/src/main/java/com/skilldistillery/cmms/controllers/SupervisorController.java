@@ -66,7 +66,7 @@ public class SupervisorController {
 			model.addAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
 			// model.addAttribute("equipment",
 			// equipmentDao.findAllByLocation(user.getStaff().getLocation()));
-			return "supMaintenance";
+			return "supCreateMaintenanceItem";
 		} else
 			return "login";
 	}
@@ -254,8 +254,9 @@ public class SupervisorController {
 	}
 
 	@RequestMapping(path = "deleteMRC.do", method = RequestMethod.POST)
-	public String deleteMRC(int mrcId) {
-		if (mrcDao.deleteMRC(mrcId) == true) {
+	public String deleteMRC(int mrcId, MaintenanceRequirementCard mrc) {
+		
+		if (mrcDao.deleteMRC(mrc.getId()) == true) {
 			return "deleteMaintenanceDetail";
 		} else {
 			return "unsuccessful";
