@@ -67,13 +67,13 @@
 						
 						<h3>Associated Part Reqs</h3>
 						<c:forEach var="part" items="${mrc.parts}"> 
-							<li> ${parts.partNumber}</li>
+							<li> ${parts.name}</li>
 						</c:forEach>
 						<form action="addCardPart.do">
 							<input type="hidden" name="mrcId" value="${mrc.id}">
 							<select name="partId">
 							<c:forEach var="part" items="${parts}">
-							<option value="part.id"> ${part.partNumber}</option>
+							<option value="part.id"> ${part.name}</option>
 							</c:forEach>
 							</select>
 							<button type="submit" value="submit">Add Part</button>
