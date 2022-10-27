@@ -22,7 +22,7 @@ public interface MaintenanceItemDAO {
 	List<MaintenanceItem> findAllByLocation(Location locationid);
 	public List<MaintenanceItem> findAllByStaffId(Staff staff);
 	
-	MaintenanceItem createTask(MaintenanceRequirementCard mrc, Equipment equip, 
+	MaintenanceItem createTask(MaintenanceItem task, MaintenanceRequirementCard mrc, Equipment equip, 
 			Staff staff);
 	
 }

@@ -60,9 +60,10 @@ public class SupervisorController {
 	}
 	
 	@RequestMapping(path = "createMaintenance.do", method = RequestMethod.GET)
-	public String createNewMaintenance(HttpSession session) {
+	public String createNewMaintenance(HttpSession session, int mrcId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
-			return "scheduleMaintenance";
+			model.addAttribute(mrcId);
+			return "supCreateMaintenanceItem";
 		} else
 			return "login";
 	}
