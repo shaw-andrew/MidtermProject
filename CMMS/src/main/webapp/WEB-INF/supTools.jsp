@@ -19,7 +19,7 @@
 					<br>
 					<hr>
 					<br>
-					<h2>@Autowired - Required Tool(s) for the job</h2>
+					<h2>@Autowired - Tool Inventory</h2>
 					<br>
 					<hr>
 					<br>
@@ -54,7 +54,7 @@
 					<br>
 					<hr>
 					<br>
-					<h2>@Autowired - Required Part(s) for the job</h2>
+					<h2>@Autowired - Part Inventory</h2>
 					<br>
 					<hr>
 					<br>
