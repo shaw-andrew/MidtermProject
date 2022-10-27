@@ -30,9 +30,8 @@
 								<th class="col-lg-2">Type</th>
 								<th class="col-lg-1">Name</th>
 								<th class="col-lg-2">Description</th>
-								<th>Image</th>
 								<th class="col-lg-3">Location ID</th>
-								<th class="col-lg-4">Task</th>
+								<th class="col-lg-4">Image</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -40,12 +39,11 @@
 							<c:forEach var="equipment" items="${equipment}">
 								<tr>
 									<td>${equipment.id}</td>
-									<td>${equipment.equipmentType}</td>
+									<td>${equipment.equipmentType.name}</td>
 									<td>${equipment.name}</td>
 									<td>${equipment.description}</td>
-									<td>${equipment.imageURL}</td>
 									<td>${equipment.location}</td>
-									<td>${equipment.task}</td>
+									<td>${equipment.imageURL}</td>
 									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
 											<a class="btn btn-secondary" href="deleteEquipment.do"
 												role="button">Delete Equipment</a>
