@@ -1,6 +1,5 @@
 package com.skilldistillery.cmms.controllers;
 
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -56,6 +55,15 @@ public class SupervisorController {
 	public String calanderView(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
 			return "scheduleMaintenance";
+		} else
+			return "login";
+	}
+	
+	@RequestMapping(path = "createMaintenance.do", method = RequestMethod.GET)
+	public String createNewMaintenance(HttpSession session, int mrcId, Model model) {
+		if (session.getAttribute("loggedInUser") != null) {
+			model.addAttribute(mrcId);
+			return "supCreateMaintenanceItem";
 		} else
 			return "login";
 	}

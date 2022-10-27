@@ -5,76 +5,131 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>@Autowired - Schedule or Edit Work</title>
+<title>@Autowired - Edit Work</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
-	<main class="container-fluid">
+		<main class="container-fluid">
 		<%--Edit the file nav.jsp to change nav links --%>
-		<div class="container text-center">
-			<div class="row">
-				<h1>@Autowired - Schedule or Edit Work</h1>
-				<form class="row g-3 needs-validation" novalidate
-					action=updateWork.do method="POST">
-					<div class="col-md-4">
-						<label for="id" class="form-label">Maintenance Item ID</label> <input
-							type="text" class="form-control" name="id"
-							value="${MaintenanceItem.id}" required>
-						<div class="valid-feedback">Looks good!</div>
-						<div class="invalid-feedback">Please input a first name.</div>
+			<!-- <div class="container text-center"> -->
+			<br>
+				<hr>
+				<h2>@Autowired - Edit Maintenance</h2>
+				<br>
+				<hr>
+				<br>
+				<form>
+					<div class="mb-3">
+					  <label for="id" class="form-label">Maintenance Item</label>
+ 					 <input type="text" class="form-control" id="id" placeholder="${mrc.id}" disabled readonly>
 					</div>
-					<div class="col-md-4">
-						<label for="lastName" class="form-label">Last name</label> <input
-							type="text" class="form-control" name="lastName"
-							value="${updatedStaff.lastName}" required>
-						<div class="valid-feedback">Looks good!</div>
-						<div class="invalid-feedback">Please input a last name.</div>
+					<div class="mb-3">
+					  <label for="frequency" class="form-label">Periodicity</label>
+ 					 <input type="text" class="form-control" id="frequency" placeholder="${mrc.frequency}">
 					</div>
-					<div class="col-md-4">
-						<label for="username" class="form-label">Username</label>
-						<div class="input-group has-validation">
-							<input type="text" class="form-control"
-								value="${updatedStaff.userName}" name="username" required>
-							<div class="valid-feedback">Looks good!</div>
-							<div class="invalid-feedback">Please choose a username.</div>
-						</div>
+					<div class="mb-3">
+ 					 <label for="equipment" class="form-label">Equipment</label>
+ 					 <input type="text" class="form-control" id="equipment" placeholder="${mrc.equipmentType.equipment}">
 					</div>
-					<div class="col-md-4">
-						<label for="role" class="form-label">Role</label> <select
-							class="form-select" name="role" required>
-							<option selected disabled value="">Choose...</option>
-							<option>Supervisor</option>
-							<option>Technician</option>
+					<div class="mb-3">
+ 					 <label for="description" class="form-label">Description</label>
+ 					 <textarea class="form-control" id="description" placeholder="${id.description}" rows="4"></textarea>
+					</div>
+					<div class="mb-3">
+ 					 <label for="estimatedDurationInHours" class="form-label">Estimated Work Duration (hrs)</label>
+					  <input type="number" class="form-control" id="estimatedDurationInHours" placeholder="${mrc.estimatedDurationInHours}">
+					</div>
+<!-- 					<div class="mb-3">
+ 					 <label for="tool" class="form-label">Tool</label>
+						<select class="form-select" id="tool" multiple aria-label="Associated Tools">
+ 					 		<option selected>Associated Tools</option>
+					  		<option value="1">One</option>
+  							<option value="2">Two</option>
+ 					 		<option value="3">Three</option>
+						</select> -->
+							</form>
+						
+						
+						<h3>Associated Tool Reqs</h3>
+						<c:forEach var="tool" items="${mrc.tools}"> 
+							<li> ${tools.name}</li>
+						</c:forEach>
+						<form action="addCardTool.do">
+							<input type="hidden" name="mrcId" value="${mrc.id}">
+							<select name="toolId">
+							<c:forEach var="tool" items="${tools}">
+							<option value="tool.id"> ${tool.name}</option>
+							</c:forEach>
+							</select>
+							<button type="submit" value="submit">Add Tool</button>
+						</form>
+						
+						<h3>Associated Part Reqs</h3>
+						<c:forEach var="part" items="${mrc.parts}"> 
+							<li> ${parts.name}</li>
+						</c:forEach>
+						<form action="addCardPart.do">
+							<input type="hidden" name="mrcId" value="${mrc.id}">
+							<select name="partId">
+							<c:forEach var="part" items="${parts}">
+							<option value="part.id"> ${part.name}</option>
+							</c:forEach>
+							</select>
+							<button type="submit" value="submit">Add Part</button>
+						</form>
+						
+						<h3>Associated Training Reqs</h3>
+						<c:forEach var="training" items="${mrc.trainings}"> 
+							<li> ${trainings.category}</li>
+						</c:forEach>
+						<form action="addCardtraining.do">
+							<input type="hidden" name="mrcId" value="${mrc.id}">
+							<select name="trainingId">
+							<c:forEach var="training" items="${trainings}">
+							<option value="training.id"> ${training.category}</option>
+							</c:forEach>
+							</select>
+							<button type="submit" value="submit">Add Training</button>
+						</form>
+						
+						
+						
+						
+						
+						
+						
+						
+				
+					<!-- <div class="mb-3">
+ 					 <label for="tools" class="form-label">Tools</label>
+ 					 	<select class="form-select" id="tools" multiple aria-label="Required Tools">
+  							<option selected>Required Tools</option>
+  							<option value="1">One</option>
+  							<option value="2">Two</option>
+  							<option value="3">Three</option>
 						</select>
-						<div class="invalid-feedback">Please select a valid Role.</div>
 					</div>
-					<div class="col-md-4">
-						<!-- <label for="locNumber" class="form-label">Location</label>
-						<select class="form-select" name="locNumber" required>
-							<option selected disabled value="">Choose...</option>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-						</select> 
-						<div class="invalid-feedback">Please select a valid Location.</div> -->
+					<div class="mb-3">
+ 					 <label for="parts" class="form-label">Parts</label>
+						<select class="form-select" id="parts" multiple aria-label="Required Parts">
+  							<option selected>Required Parts</option>
+  							<option value="1">One</option>
+  							<option value="2">Two</option>
+  							<option value="3">Three</option>
+						</select>
 					</div>
-					<div class="col-md-4">
-						<label for="password" class="form-label">Password</label> <input
-							type="text" class="form-control" name="password"
-							value="${updatedUser.password}" required>
-						<div class="valid-feedback">Looks good!</div>
-						<div class="invalid-feedback">Please provide a valid
-							Password.</div>
+					<div class="mb-3">
+					  <label for="certifications" class="form-label">Certifications</label>
+							<select class="form-select" id="certificaitons" multiple aria-label="Required Certifications">
+  							<option selected>Required Certifications</option>
+  							<option value="1">One</option>
+  							<option value="2">Two</option>
+  							<option value="3">Three</option>
+						</select>
 					</div>
-					<div class="col-12">
-						<button class="btn btn-primary" type="submit">Update User</button>
-						<br>
-					</div>
-				</form>
-
-
-			</div>
+		 -->
+				<input type="submit" name="submit" value="submit">
 		</div>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />

@@ -42,7 +42,7 @@
 							<c:forEach var="staff" items="${staff}">
 								<tr>
 									<td>${staff.id}</td>
-									<td><a href="getPark.do?pid=${staff.firstName }">${staff.firstName}</a></td>
+									<td><a href="updateUserPage.do?id=${staff.user.id}">${staff.firstName}</a></td>
 									<td>${staff.lastName}</td>
 
 								</tr>

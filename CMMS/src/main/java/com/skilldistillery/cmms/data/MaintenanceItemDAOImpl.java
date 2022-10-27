@@ -13,6 +13,7 @@ import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceItem;
 import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
 import com.skilldistillery.cmms.entities.Staff;
+import com.skilldistillery.cmms.entities.User;
 
 @Service
 @Transactional
@@ -35,14 +36,14 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 	}
 	
 	@Override
-	public MaintenanceItem createTask(MaintenanceRequirementCard mrc, Equipment equip, 
+	public MaintenanceItem createTask(MaintenanceItem task, MaintenanceRequirementCard mrc, Equipment equip, 
 			Staff staff) {
-		
-		
-		
-				return null;
-		
-	}
+			task.setStaff(staff);
+			task.setMrc(mrc);
+			task.setEquipment(equip);
+			em.persist(task);
+			return task;
+		}
 
 	@Override
 	public MaintenanceItem updateAll(int mainItemId, MaintenanceItem mainItem) {

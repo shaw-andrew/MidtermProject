@@ -66,7 +66,7 @@ DROP TABLE IF EXISTS `maintenance_requirement_card` ;
 
 CREATE TABLE IF NOT EXISTS `maintenance_requirement_card` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `description` VARCHAR(100) NULL,
+  `description` VARCHAR(1500) NULL,
   `number_of_techs` INT NULL,
   `training_video_id` VARCHAR(250) NULL,
   `estimated_duration_in_hours` DOUBLE NULL,
@@ -267,6 +267,7 @@ CREATE TABLE IF NOT EXISTS `part` (
   `description` VARCHAR(45) NULL,
   `id` INT NOT NULL AUTO_INCREMENT,
   `cost` DOUBLE NULL,
+  `name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -591,7 +592,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `part` (`part_number`, `description`, `id`, `cost`) VALUES (1, NULL, 1, 5.99);
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (1, NULL, 1, 5.99, 'roller');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (2, NULL, 2, 79.95, 'photoeye');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (3, NULL, 3, 50.99, 'belt');
 
 COMMIT;
 
