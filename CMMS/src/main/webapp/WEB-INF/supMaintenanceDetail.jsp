@@ -12,10 +12,9 @@
 	<jsp:include page="navbar.jsp" />
 	<main class="container-fluid">
 		<%--Edit the file nav.jsp to change nav links --%>
-		<div class="container text-center">
+		<div class="container-fluid text-center">
 			<div class="row">
-				<div class="col-2"></div>
-				<div class="col-8">
+				
 					<br>
 					<hr>
 					<h2>@Autowired - Maintenance Item Detail</h2>
@@ -33,7 +32,6 @@
 								<th>Est. Duration</th>
 								<th>Periodicity</th>
 								<th>Equipment</th>
-								<th>Required Certifications</th>
 								<th>Safety Section</th>
 								<th>Replacement Parts</th>
 								<th>Required Tools</th>
@@ -48,23 +46,25 @@
 									<td>${mrcs.numberOfTechs}</td>
 									<td>${mrcs.trainings}</td>
 									<td>${mrcs.estimatedDurationInHours}</td>
-									<td>${mrcs.frequency}</td>
+									<td>${mrcs.frequency.name}</td>
 									<td>${mrcs.equipmentType}</td>
 									<td>${mrcs.safety}</td>
 									<td>${mrcs.parts}</td>
 									<td>${mrcs.tools}</td>
-									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
+									<td>
+									
+									<c:if test="${loggedInUser.role == 'Supervisor' }">
 											<a class="btn btn-secondary" href="deleteMRC.do"
 												role="button">Delete Maintenance Card</a>
-										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
-											<a class="btn btn-secondary" href="editMrcPage.do?id=${mrcs.id}"
-												role="button">Edit Maintenance Card</a>
+									</c:if><br> 
 												
 									<%-- 	<form action="editMrcPage.do" method="GET">
 										<input type="hidden" name="id" value="${mrcs.id }" /> 
+<<<<<<< HEAD
 										<input type="submit" value="Edit Maintenance Card form button" /></form> --%>
+										<input type="submit" class="btn btn-secondary" value="Edit Maintenance Card" /></form>
 										
-										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
+										<br> <c:if test="${loggedInUser.role == 'Supervisor' }">
 											<a class="btn btn-secondary" href="createMaintenance.do?mrcId=${mrcs.id}"
 												role="button">Create Maintenance Item</a>
 										</c:if>
@@ -75,9 +75,9 @@
 					</table>
 
 				</div>
-				<div class="col-2"></div>
+				
 			</div>
-		</div>
+		
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>

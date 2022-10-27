@@ -20,6 +20,8 @@
 		<hr>
 		<br>
 		  <form action="updateMrc.do" action="POST">
+		  <input type="hidden" name="id" value="${mrcs.id}"> 
+		  
 			<div class="mb-3">
 				<label for="id" class="form-label">Maintenance Item</label> 
 				<input type="text" class="form-control" id="id" value="${mrcs.id}" disabled readonly>
@@ -39,7 +41,7 @@
 			<div class="mb-3">
 				<label for="estimatedDurationInHours" class="form-label">Estimated Work Duration (hrs)</label> 
 				<input type="number" class="form-control" id="estimatedDurationInHours" value="${mrcs.estimatedDurationInHours}">
-				<input type="hidden" name="id" value="${mrcs.id }" /> 
+				
 				<button type="submit" class="btn btn-secondary" value="submit">Update Requirements</button>
 			</div>
 
@@ -74,7 +76,7 @@
 			<button type="submit" class="btn btn-secondary" value="submit">Add Part</button>
 		</form>
 
-		<h3>Associated Training Required</h3>
+<%-- 		<h3>Associated Training Required</h3>
 		<c:forEach var="training" items="${mrcs.trainings}">
 			<li>${training.category}</li>
 		</c:forEach>
@@ -86,8 +88,8 @@
 				</c:forEach>
 			</select>
 			<button type="submit" class="btn btn-secondary" value="submit">Add Training</button>
-		</form>
-		
+		</form> --%>
+		<br><br><br><br><br><br><br><br>
 		
 	  </main>
 	<jsp:include page="bootstrapFoot.jsp" />

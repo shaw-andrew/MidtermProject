@@ -72,12 +72,12 @@ public class TechnicianController {
 	}
 
 	@RequestMapping(path = "maintenanceDetail.do", method = RequestMethod.GET)
-	public String maintenanceDetailView(HttpSession session, Model model, Integer id) {
+	public String maintenanceDetailView(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
 			Location locationId = user.getStaff().getLocation();
 			model.addAttribute("maintenanceItems", maintenanceItemDAO.findAllByLocation(locationId));
-			model.addAttribute("staffMembers", maintenanceItemDAO.findStaffByLocation(locationId));
+			model.addAttribute("staffMembers", maintenanceItemDAO.findStaffByLocation(locationId.getId()));
 			return "maintenanceDetail";
 		} else
 			return "login";
