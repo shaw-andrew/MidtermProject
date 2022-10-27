@@ -9,8 +9,10 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+
 import com.skilldistillery.cmms.entities.EquipmentType;
 import com.skilldistillery.cmms.entities.Frequency;
+import com.skilldistillery.cmms.entities.Equipment;
 import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
 import com.skilldistillery.cmms.entities.Part;
@@ -57,11 +59,13 @@ public class MaintenanceDetailDAOImpl implements MaintenanceDetailDAO {
 
 	@Override
 	public boolean deleteMRC(int mrcId) {
-		 MaintenanceRequirementCard deleteMRC = em.find(MaintenanceRequirementCard.class, mrcId);
-	        if (deleteMRC != null) { 
-	            em.remove(deleteMRC); 
-	        }
-	        return em.contains(deleteMRC); 
+		boolean successfullyDeleted = false;
+		MaintenanceRequirementCard deletedMRC = em.find(MaintenanceRequirementCard.class, mrcId);
+		if(deletedMRC != null) {
+			em.remove(deletedMRC);
+			successfullyDeleted = !em.contains(deletedMRC);
+		}
+		return successfullyDeleted;
 	}
 	
 	@Override

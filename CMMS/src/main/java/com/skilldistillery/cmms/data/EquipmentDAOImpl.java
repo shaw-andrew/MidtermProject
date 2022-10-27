@@ -73,8 +73,13 @@ public class EquipmentDAOImpl implements EquipmentDAO {
 
 	@Override
 	public boolean deleteEquipment(int equipmentId) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean successfullyDeleted = false;
+		Equipment deletedEquipment = em.find(Equipment.class, equipmentId);
+		if(deletedEquipment != null) {
+			em.remove(deletedEquipment);
+			successfullyDeleted = !em.contains(deletedEquipment);
+		}
+		return successfullyDeleted;
 	}
 
 //	@Override

@@ -25,18 +25,18 @@
 							<th class="col-lg-1">Name</th>
 							<th class="col-lg-2">Description</th>
 							<th class="col-lg-3">Location ID</th>
-							<th class="col-lg-4">Task</th>
+							<th class="col-lg-4">Image</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="equipment" items="${equipment}">
 							<tr>
 								<td>${equipment.id}</td>
-								<td>${equipment.equipmentType}</td>
+								<td>${equipment.equipmentType.name}</td>
 								<td>${equipment.name}</td>
 								<td>${equipment.description}</td>
 								<td>${equipment.location}</td>
-								<td>${equipment.task}</td>
+								<td>${equipment.imageURL}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
