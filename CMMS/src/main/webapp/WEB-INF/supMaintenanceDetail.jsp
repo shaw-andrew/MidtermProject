@@ -59,6 +59,9 @@
 										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
 											<a class="btn btn-secondary" href="editMrcPage.do?id=${mrcs.id}"
 												role="button">Edit Maintenance Card</a>
+										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
+											<a class="btn btn-secondary" href="createMaintenance.do?id=${mrcs.id}"
+												role="button">Create Maintenance Item</a>
 										</c:if>
 									</td>
 								</tr>
