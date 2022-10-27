@@ -67,7 +67,7 @@ public class SupervisorController {
 			model.addAttribute("mrc", mrcDao.findById(mrcId));
 			model.addAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
 			//model.addAttribute("equipment", equipmentDao.findAllByLocation(user.getStaff().getLocation()));
-			return "supCreateMaintenanceItem";
+			return "scheduleMaintenance";
 		} else
 			return "login";
 	}
@@ -113,6 +113,13 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
+	
+	@RequestMapping(path = "deleteTool.do", method = RequestMethod.POST)
+	public String deleteTool(int ToolId) {
+		toolDao.deleteTool(ToolId);
+		return "deleteToolConfirmation";
+		}
+	
 	
 	
 	@RequestMapping(path = "addTool.do", method = RequestMethod.GET)
@@ -185,6 +192,14 @@ public class SupervisorController {
 		
 	}
 	
+	@RequestMapping(path = "deleteEquipment.do", method = RequestMethod.POST)
+	public String deleteEquipment(int equipmentId) {
+		equipmentDao.deleteEquipment(equipmentId);
+		
+		return "deleteEquipmentConfirmation";	
+		}
+	
+	
 	@RequestMapping(path = "addEquipment.do", method = RequestMethod.GET)
 	public String addEquipmentBySup(HttpSession session, User user, Equipment equipment) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -242,17 +257,17 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-//	
-//	@RequestMapping(path = "deleteMaintenanceDetail.do", method = RequestMethod.POST)
-//	public String deleteMRC(MaintenanceRequirementCard mrc, Model model) {
-//		boolean playerExistsInDb = mrcDao.deleteMRC(mrc); //delete player returns false if not in db
-//		if(playerExistsInDb == false) {
-//			return "showDeletedSuccess";
-//		}else {
-//			return "unsuccessful";
-//		}
-//	}
-//	
+	
+	@RequestMapping(path = "deleteMaintenanceDetail.do", method = RequestMethod.POST)
+	public String deleteMRC(MaintenanceRequirementCard mrc, int mrcId) {
+		boolean playerExistsInDb = mrcDao.deleteMRC(mrcId); //delete player returns false if not in db
+		if(playerExistsInDb == false) {
+			return "showDeletedSuccess";
+		}else {
+			return "unsuccessful";
+		}
+	}
+	
 	
 	
 	@RequestMapping(path = "persistPart.do", method = RequestMethod.POST)
