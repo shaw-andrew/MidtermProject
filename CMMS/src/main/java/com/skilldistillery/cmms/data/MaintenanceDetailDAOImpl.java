@@ -13,7 +13,6 @@ import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
 import com.skilldistillery.cmms.entities.Part;
 import com.skilldistillery.cmms.entities.Tool;
-import com.skilldistillery.cmms.entities.Training;
 
 
 @Service
