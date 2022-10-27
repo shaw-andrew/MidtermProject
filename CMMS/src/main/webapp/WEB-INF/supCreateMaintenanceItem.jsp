@@ -15,61 +15,66 @@
 		<div class="container text-center">
 			<div class="row">
 				<h1>@Autowired - Add Maintenance Item</h1>
-				<form class="row g-3 needs-validation" novalidate action=createMaintenance.do method="POST">
-					
-					
-					
-					
-					
-				
-						 
-						 <label for="completionDate" class="form-label-lg">Completion Date</label>			
-						 <input class="form-control form-control-lg" id="completionDate" type="datetime-local" placeholder="Completion Date"  disabled>
-						
-						 <label for="duration" class="form-label-lg">Duration</label>			
-						 <input class="form-control form-control-lg" id="duration" type="number" step = "0.01" placeholder="Duration"  disabled>
-						 
-						 <label for="techNotes" class="form-label-lg">Technician Notes</label>			
-						 <input class="form-control form-control-lg" id="techNotes" type="text" placeholder="Technician Notes}"disabled>
-						 
-						 <label for="scheduleStartDate" class="form-label-lg">Scheduled Start Date</label>			
-					   	 <input type="datetime-local" class="form-control form-control-lg" name="scheduleStartDate" value="Scheduled Start Date " required> <br>
-					   	 
-						 <label for="mrcId" class="form-label-lg">MRC Id</label>			
-						 <input type="number" name="mrcId" value="${mrc.id }" disabled /><br><br>
-						 
-						 <label for="scheduleEndDate" class="form-label-lg">Scheduled End Date</label>			
-					   	 <input type="datetime-local" class="form-control form-control-lg" name="scheduleEndDate" value="Scheduled End Date }" required> <br>
-						 
-						 
-						 
-						<label for="staff" class="form-label-lg">Staff</label>		
-						<div class="dropdown">
+
+
+
+
+
+
+
+				<form class="row g-3 needs-validation" novalidate
+					action="createMaintenance.do" method="POST">
+					<label for="completionDate" class="form-label-lg">Completion
+						Date</label> <input class="form-control form-control-lg"
+						id="completionDate" type="datetime-local"
+						placeholder="Completion Date" disabled> <label
+						for="duration" class="form-label-lg">Duration</label> <input
+						class="form-control form-control-lg" id="duration" type="number"
+						step="0.01" placeholder="Duration" disabled> <label
+						for="techNotes" class="form-label-lg">Technician Notes</label> <input
+						class="form-control form-control-lg" id="techNotes" type="text"
+						placeholder="Technician Notes}" disabled> <label
+						for="scheduleStartDate" class="form-label-lg">Scheduled
+						Start Date</label> <input type="datetime-local"
+						class="form-control form-control-lg" name="scheduleStartDate"
+						value="Scheduled Start Date " required> <br> <label
+						for="mrcId" class="form-label-lg">MRC Id</label> <input
+						type="number" name="mrcId" value="${mrc.id }" disabled /><br>
+					<br> <label for="scheduleEndDate" class="form-label-lg">Scheduled
+						End Date</label> <input type="datetime-local"
+						class="form-control form-control-lg" name="scheduleEndDate"
+						value="Scheduled End Date }" required> <br> <label
+						for="staff" class="form-label-lg">Staff</label>
+					<div class="dropdown">
 						<!-- <button type="button" class="btn btn-primary dropdown-toggle"
 							data-bs-toggle="dropdown">Select Staff Member</button> -->
-						
-							<select class = "form-select" name = "staff.id">
+
+						<select class="form-select" name="staff.id">
 							<c:forEach var="staff" items="${staff}">
-								<li><option value = "${staff.id}" > ${staff}</option>
-								</li>
+								<li><option value="${staff.id}">${staff}</option></li>
 
 							</c:forEach>
-							</select>
-							
+						</select>
+
 
 					</div>
-					</div>
-						 <label for="equipment" class="form-label-lg">Equipment Type</label>	<br>
-						 <input type="text" name="equipment" value="${mrc.equipmentType.name}" disabled  /><br><br>
-						 
-					<button class="btn btn-primary" type="submit">Create Maintenance Item</button><br><br>
+					<label for="equipment" class="form-label-lg">Equipment Type</label>
+					<br> <input type="text" name="equipment"
+						value="${mrc.equipmentType.name}" disabled /><br>
+					<br>
+
+					<button class="btn btn-primary" type="submit">Create
+						Maintenance Item</button>
+					<br>
+					<br>
 				</form>
-					
-					
-					
-					
-					
-					<%-- <div class="col-md-4">
+			</div>
+
+
+
+
+
+			<%-- <div class="col-md-4">
 						<label for="duration" class="form-label">Duration
 							</label> <input type="number" class="form-control"
 							name="duration" step = "0.01">

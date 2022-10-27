@@ -2,10 +2,10 @@ package com.skilldistillery.cmms.data;
 
 import java.util.List;
 
+import com.skilldistillery.cmms.entities.EquipmentType;
+import com.skilldistillery.cmms.entities.Frequency;
 import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
-
-import antlr.build.Tool;
 
 public interface MaintenanceDetailDAO {
 
@@ -24,6 +24,10 @@ public interface MaintenanceDetailDAO {
 	void addPartToCard(int partId, int mrcId);
 
 	MaintenanceRequirementCard updateMrc(int mrcId, MaintenanceRequirementCard mrc);
+	
+	public List<Frequency> findAllFrequencies();
+	
+	public List<EquipmentType> findAllEquipmentTypes();
 
 //	void addTrainingToCard(int trainingId, int mrcId);
 
