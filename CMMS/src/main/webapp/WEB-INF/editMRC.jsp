@@ -22,47 +22,47 @@
 				<form>
 					<div class="mb-3">
 					  <label for="id" class="form-label">Maintenance Item</label>
- 					 <input type="text" class="form-control" id="id" placeholder="${maintenanceItem.id}" disabled readonly>
+ 					 <input type="text" class="form-control" id="id" placeholder="${mrc.id}" disabled readonly>
 					</div>
 					<div class="mb-3">
-					  <label for="mrc" class="form-label">Requirement Card</label>
- 					 <input type="text" class="form-control" id="mrc" placeholder="${maintenanceItem.mrc}">
+					  <label for="frequency" class="form-label">Periodicity</label>
+ 					 <input type="text" class="form-control" id="frequency" placeholder="${mrc.frequency}">
 					</div>
 					<div class="mb-3">
  					 <label for="equipment" class="form-label">Equipment</label>
- 					 <input type="text" class="form-control" id="equipment" placeholder="${maintenanceItem.equipment}">
+ 					 <input type="text" class="form-control" id="equipment" placeholder="${mrc.equipmentType.equipment}">
 					</div>
 					<div class="mb-3">
  					 <label for="description" class="form-label">Description</label>
- 					 <textarea class="form-control" id="description" placeholder="${maintenanceItem.description }" rows="4"></textarea>
+ 					 <textarea class="form-control" id="description" placeholder="${mrc.description}" rows="4"></textarea>
 					</div>
 					<div class="mb-3">
  					 <label for="estimatedDurationInHours" class="form-label">Estimated Work Duration (hrs)</label>
-					  <input type="number" class="form-control" id="estimatedDurationInHours" placeholder="${maintenanceItem.estimatedDurationInHours}">
+					  <input type="number" class="form-control" id="estimatedDurationInHours" placeholder="${mrc.estimatedDurationInHours}">
 					</div>
-					<div class="mb-3">
- 					 <label for="safety" class="form-label">Safety</label>
-						<select class="form-select" id="safety" multiple aria-label="Associated Safety Requirements">
- 					 		<option selected>Associated Safety Requirements</option>
+<!-- 					<div class="mb-3">
+ 					 <label for="tool" class="form-label">Tool</label>
+						<select class="form-select" id="tool" multiple aria-label="Associated Tools">
+ 					 		<option selected>Associated Tools</option>
 					  		<option value="1">One</option>
   							<option value="2">Two</option>
  					 		<option value="3">Three</option>
-						</select>
+						</select> -->
 							</form>
 						
 						
-						<h3>Associated Safety Reqs</h3>
-						<c:forEach var="safetyItem" items="${maintenanceRequirementCard.safety}"> 
-							<li> ${safetyItem.category}</li>
+						<h3>Associated Tool Reqs</h3>
+						<c:forEach var="tool" items="${mrc.tool}"> 
+							<li> ${tool.name}</li>
 						</c:forEach>
-						<form action="addCardSafety.do">
-							<input type="hidden" name="mrcId" value="${maintenanceRequirementCard.id}">
-							<select name="safetyId">
-							<c:forEach var="safety" items="${safeties}">
-							<option value="safety.id"> ${safety.category}</option>
+						<form action="addCardTool.do">
+							<input type="hidden" name="mrcId" value="${mrc.id}">
+							<select name="toolId">
+							<c:forEach var="tool" items="${tools}">
+							<option value="tool.id"> ${tool.name}</option>
 							</c:forEach>
 							</select>
-							<button type="submit" value="submit">Add Safety</button>
+							<button type="submit" value="submit">Add Tool</button>
 						</form>
 						
 						
