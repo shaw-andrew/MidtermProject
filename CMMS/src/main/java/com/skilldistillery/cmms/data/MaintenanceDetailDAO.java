@@ -23,6 +23,8 @@ public interface MaintenanceDetailDAO {
 
 	void addPartToCard(int partId, int mrcId);
 
+	MaintenanceRequirementCard updateMrc(int mrcId, MaintenanceRequirementCard mrc);
+
 //	void addTrainingToCard(int trainingId, int mrcId);
 
 }
