@@ -19,37 +19,31 @@
 		<c:choose>
 			<c:when test="${not empty sessionScope.loggedInUser}">
 				<form action="updatePassword.do" method="POST">
-					<h4>
-						First Name:
-						<c:out value="${loggedInUser.staff.firstName }" />
-					</h4>
-					<h4>
-						Last Name:
-						<c:out value="${loggedInUser.staff.lastName }" />
-					</h4>
-					<br>
-					<h4>
-						Role:
-						<c:out value="${loggedInUser.role}" />
-					</h4>
-					<br>
-					<h4>
-						Username:
-						<c:out value="${loggedInUser.username}" />
-					</h4>
-					<h4>Password:</h4>
-					
-					<input type="password" class="form-control" name="password"
-						value="${loggedInUser.password }" required> 
-						<input type="hidden" name="id" value="${loggedInUser.id }" />
-					<button class="btn btn-primary" type="submit">Update Password</button>
+				
+						 <label for="firstName" class="form-label-lg">First Name</label>			
+						 <input class="form-control form-control-lg" id="firstName" type="text" placeholder="${loggedInUser.staff.firstName}"  disabled>
+						 
+						 <label for="lastName" class="form-label-lg">Last Name</label>			
+						 <input class="form-control form-control-lg" id="lastName" type="text" placeholder="${loggedInUser.staff.lastName}"  disabled>
+						
+						 <label for="role" class="form-label-lg">Role</label>			
+						 <input class="form-control form-control-lg" id="role" type="text" placeholder="${loggedInUser.role}"  disabled>
+						 
+						 <label for="username" class="form-label-lg">Username</label>			
+						 <input class="form-control form-control-lg" id="username" type="text" placeholder="${loggedInUser.username}"  disabled>
+						 
+						 <label for="password" class="form-label-lg">Password</label>			
+					   	 <input type="password" class="form-control form-control-lg" name="password" value="${loggedInUser.password }" required> <br><hr>
+					   	 
+						<input type="hidden" name="id" value="${loggedInUser.id }" /><br><br>
+					<button class="btn btn-primary" type="submit">Update Password</button><br><br>
 				</form>
 
 				<c:if test="${loggedInUser.role == 'Supervisor' }">
 					<a class="btn btn-secondary" href="addUser.do" role="button">Add User</a>
-				</c:if>
+				</c:if><br><br><br>
 				<hr>
-				<br>
+				<br><br><br>
 
 			</c:when>
 			<c:otherwise>

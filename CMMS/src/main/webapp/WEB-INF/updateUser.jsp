@@ -67,6 +67,32 @@
 							Password.</div>
 					</div>
 					<div class="col-12">
+					
+					
+					
+					
+					 <label for="firstName" class="form-label-lg">First Name</label>			
+						 <input class="form-control form-control-lg" id="firstName" type="text" placeholder="${updatedUser.staff.firstName}"  required>
+						 
+						 <label for="lastName" class="form-label-lg">Last Name</label>			
+						 <input class="form-control form-control-lg" id="lastName" type="text" placeholder="${updatedUser.staff.lastName}"  required>
+						
+						 <label for="role" class="form-label-lg">Role</label>			
+						 <input class="form-control form-control-lg" id="role" type="text" placeholder="${updatedUser.role}"  required>
+						 
+						 <label for="role" class="form-label">Role</label> <select class="form-select" name="role" required>
+							<option selected disabled value="">Choose Role</option>
+							<option>Supervisor</option>
+							<option>Technician</option>
+						</select>
+						 
+						 <label for="username" class="form-label-lg">Username</label>			
+						 <input class="form-control form-control-lg" id="username" type="text" placeholder="${updatedUser.username}"  required>
+						 
+						 <label for="password" class="form-label-lg">Password</label>			
+					   	 <input type="password" class="form-control form-control-lg" name="password" value="${updatedUser.password }" required> <br><hr>
+					
+					
 						<button class="btn btn-primary" type="submit">Update User</button>
 						<br>
 					</div>
