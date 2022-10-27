@@ -72,9 +72,9 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 		return tasks;
 	}
 	@Override
-	public List<MaintenanceItem> findAllByStaffId(Staff staff) {
+	public List<MaintenanceItem> findAllByStaffId(int id) {
 		String jpql = "SELECT task FROM MaintenanceItem task where task.staff.id = :id";
-		List<MaintenanceItem> tasks = em.createQuery(jpql, MaintenanceItem.class).setParameter("id", staff.getId()).getResultList();
+		List<MaintenanceItem> tasks = em.createQuery(jpql, MaintenanceItem.class).setParameter("id", id).getResultList();
 		return tasks;
 	}
 		

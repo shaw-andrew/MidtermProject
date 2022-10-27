@@ -40,22 +40,12 @@ public class TechnicianController {
 	@Autowired
 	private PartDAO partDao;
 
-	// goes to tools jsp and from there they can view tools needed for job, tasks,
-	// and parts
-	// has to find tools using the dao
 	@RequestMapping(path = "tools.do", method = RequestMethod.GET)
 	public String toolView(HttpSession session, Integer toolId, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
-
 			Staff staff = user.getStaff();
 			List<Tool> tools = toolDao.findallByStaffId(staff);
-
-//			if (toolId == null) {
-//				toolId = 1;
-//			}
-//			Tool tool = toolDao.findById(1);
-			// FIXME
 			model.addAttribute("parts", partDao.findAll());
 			model.addAttribute("tools", tools);
 			return "tools";
@@ -66,8 +56,6 @@ public class TechnicianController {
 	@RequestMapping(path = "training.do", method = RequestMethod.GET)
 	public String trainingView(HttpSession session, Integer trainingId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
-//			Training training = trainingDao.findById(1);
-			// FIXME
 			model.addAttribute("training", trainingDao.findAll());
 			return "training";
 		} else
@@ -77,8 +65,6 @@ public class TechnicianController {
 	@RequestMapping(path = "technicians.do", method = RequestMethod.GET)
 	public String techniciansView(HttpSession session, Integer technicianId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
-//			User user = userDao.findById(1);
-			// FIXME
 			model.addAttribute("user", userDao.findAll());
 			return "technicians";
 		} else
@@ -87,15 +73,21 @@ public class TechnicianController {
 
 	@RequestMapping(path = "maintenanceDetail.do", method = RequestMethod.GET)
 	public String maintenanceDetailView(HttpSession session, Model model, Integer id) {
-		User user = (User)session.getAttribute("loggedInUser");
+		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
-			
+			Location locationId = user.getStaff().getLocation();
+			model.addAttribute("maintenanceItems", maintenanceItemDAO.findAllByLocation(locationId));
+			return "maintenanceDetail";
+		} else
+			return "login";
+	}
+
+	@RequestMapping(path = "viewStaffMember.do", method = RequestMethod.GET)
+	public String viewStaffMember(HttpSession session, Model model, int id) {
+		User user = (User) session.getAttribute("loggedInUser");
+		if (user != null) {
 			Staff staff = user.getStaff();
-			
-			
-			List<MaintenanceItem> mainItem = maintenanceItemDAO.findAllByStaffId(staff);
-//			MaintenanceRequirementCard mrc = mrcDAO.findById(1);
-			// FIXME
+			List<MaintenanceItem> mainItem = maintenanceItemDAO.findAllByStaffId(id);
 			model.addAttribute("maintenanceItems", mainItem);
 			return "maintenanceDetail";
 		} else
@@ -109,7 +101,6 @@ public class TechnicianController {
 			Location locationId = user.getStaff().getLocation();
 			List<Equipment> equipment = equipmentDao.findAllByLocation(locationId);
 			model.addAttribute("equipment", equipment);
-
 			return "equipment";
 		} else
 			return "login";
@@ -121,7 +112,6 @@ public class TechnicianController {
 		if (session.getAttribute("loggedInUser") != null) {
 			System.out.println(mainItem);
 			MaintenanceItem update = maintenanceItemDAO.updateAll(mainItemId, mainItem);
-//			redir.addFlashAttribute("maintenanceItems",update);
 			return "redirect:maintenanceDetail.do";
 		} else
 			return "login";
@@ -143,19 +133,4 @@ public class TechnicianController {
 		return "updateAllComplete";
 	}
 
-//	@RequestMapping(path = "submitNotes.do", method = RequestMethod.POST)
-//	public String notesView(HttpSession session, RedirectAttributes redir, int id, MaintenanceItem mainItem) {
-//		if (session.getAttribute("loggedInUser") != null) {
-//			MaintenanceItem update = maintenanceItemDAO.updateText(id, mainItem);
-//			redir.addFlashAttribute("update", update);
-//
-//			return "redirect:updateNotesConfirmation.do";
-//		} else
-//			return "login";
-//	}
-//
-//	@RequestMapping(path = "updateNotesConfirmation.do", method = RequestMethod.GET)
-//	public String updateNotesConfirmation() {
-//		return "maintenanceDetail";
-//	}
 }
