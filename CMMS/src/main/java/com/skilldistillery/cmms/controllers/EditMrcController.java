@@ -43,6 +43,8 @@ public class EditMrcController {
 
 		if (session.getAttribute("loggedInUser") != null) {
 			MaintenanceRequirementCard mrc = mrcDao.findById(id);
+			model.addAttribute("equipmentTypes", mrcDao.findAllEquipmentTypes());
+			model.addAttribute("frequencies", mrcDao.findAllFrequencies());
 			model.addAttribute("mrcs", mrc);
 			model.addAttribute("tools", toolDao.findAll());
 			model.addAttribute("parts", partDao.findAll());
@@ -57,7 +59,16 @@ public class EditMrcController {
 	public String addToolToCardController(HttpSession session, int mrcId, int toolId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
 			mrcDao.addToolToCard(toolId, mrcId);
-			return "updateAllComplete";
+			
+			MaintenanceRequirementCard mrc = mrcDao.findById(mrcId);
+			model.addAttribute("equipmentTypes", mrcDao.findAllEquipmentTypes());
+			model.addAttribute("frequencies", mrcDao.findAllFrequencies());
+			model.addAttribute("mrcs", mrc);
+			model.addAttribute("tools", toolDao.findAll());
+			model.addAttribute("parts", partDao.findAll());
+			model.addAttribute("trainings", trainingDao.findAll());
+
+			return "editMRC";
 		} else
 			return "login";
 	}
@@ -66,17 +77,36 @@ public class EditMrcController {
 	public String addPartToCardController(HttpSession session, int mrcId, int partId, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
 			mrcDao.addPartToCard(partId, mrcId);
-			return "updateAllComplete";
+			
+			MaintenanceRequirementCard mrc = mrcDao.findById(mrcId);
+			model.addAttribute("equipmentTypes", mrcDao.findAllEquipmentTypes());
+			model.addAttribute("frequencies", mrcDao.findAllFrequencies());
+			model.addAttribute("mrcs", mrc);
+			model.addAttribute("tools", toolDao.findAll());
+			model.addAttribute("parts", partDao.findAll());
+			model.addAttribute("trainings", trainingDao.findAll());
+
+			return "editMRC";
 		} else
 			return "login";
 	}
 	
 	@RequestMapping(path = "updateMrc.do", method = RequestMethod.POST)
-	public String updateMrcController(HttpSession session, int mrcId, Model model) {
+	public String updateMrcController(HttpSession session, int mrcId, Model model, MaintenanceRequirementCard mrc) {
 		if (session.getAttribute("loggedInUser") != null) {
+			System.out.println("**************************************************************************************************************************************************************");
 			
+			System.out.println(mrc);
+			mrcDao.updateMrc(mrcId, mrc);
 			
-		return "updateAllComplete";
+			MaintenanceRequirementCard newMrc = mrcDao.findById(mrcId);
+			model.addAttribute("equipmentTypes", mrcDao.findAllEquipmentTypes());
+			model.addAttribute("frequencies", mrcDao.findAllFrequencies());
+			model.addAttribute("mrcs", newMrc);
+			model.addAttribute("tools", toolDao.findAll());
+			model.addAttribute("parts", partDao.findAll());
+			model.addAttribute("trainings", trainingDao.findAll());
+		return "editMRC";
 	} else
 		return "login";
 	}

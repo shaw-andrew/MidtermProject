@@ -29,11 +29,9 @@ public class MaintenanceRequirementCard {
 
 	@Column(name = "training_video_id")
 	private String trainingVideoId;
-	
-	@OneToMany(mappedBy= "mrc")
-	private List <Training> trainings;
-	
-	
+
+	@OneToMany(mappedBy = "mrc")
+	private List<Training> trainings;
 
 	@Column(name = "estimated_duration_in_hours")
 	private double estimatedDurationInHours;
@@ -48,19 +46,19 @@ public class MaintenanceRequirementCard {
 
 	@ManyToMany(mappedBy = "cards")
 	private List<Certification> certifications;
-	
+
 	@ManyToMany(mappedBy = "cards")
 	private List<Safety> safety;
-	
+
 	@ManyToMany(mappedBy = "cards")
 	private List<Part> parts;
-	
+
 	@ManyToMany(mappedBy = "cards")
 	private List<Tool> tools;
-	
+
 	@OneToMany(mappedBy = "mrc")
 	private List<MaintenanceItem> tasks;
-	
+
 	public MaintenanceRequirementCard() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -85,7 +83,7 @@ public class MaintenanceRequirementCard {
 		this.tools = tools;
 		this.tasks = tasks;
 	}
-	
+
 	public void addCertification(Certification certification) {
 		if (certifications == null) {
 			certifications = new ArrayList<>();
@@ -102,6 +100,7 @@ public class MaintenanceRequirementCard {
 			certification.removeMRC(this);
 		}
 	}
+
 	public void addSafety(Safety safe) {
 		if (safety == null) {
 			safety = new ArrayList<>();
@@ -111,13 +110,14 @@ public class MaintenanceRequirementCard {
 			safe.addMRC(this);
 		}
 	}
-	
+
 	public void removeSafety(Safety safe) {
 		if (safety != null && safety.contains(safe)) {
 			safety.remove(safe);
 			safe.removeMRC(this);
 		}
 	}
+
 	public void addPart(Part part) {
 		if (parts == null) {
 			parts = new ArrayList<>();
@@ -127,13 +127,14 @@ public class MaintenanceRequirementCard {
 			part.addMRC(this);
 		}
 	}
-	
+
 	public void removePart(Part part) {
 		if (parts != null && parts.contains(part)) {
 			parts.remove(part);
 			part.removeMRC(this);
 		}
 	}
+
 	public void addTool(Tool tool) {
 		if (tools == null) {
 			tools = new ArrayList<>();
@@ -143,7 +144,7 @@ public class MaintenanceRequirementCard {
 			tool.addMRC(this);
 		}
 	}
-	
+
 	public void removeTool(Tool tool) {
 		if (tools != null && tools.contains(tool)) {
 			tools.remove(tool);
@@ -257,30 +258,40 @@ public class MaintenanceRequirementCard {
 
 	@Override
 	public String toString() {
-		String periodicity;
-		if(frequency.getName().equals("daily")) {
-			periodicity = "D";
-		}
-		else if (frequency.getName().equals("weekly")) {
-			periodicity = "W";
-		}
-		else if (frequency.getName().equals("monthly")) {
-			periodicity = "M";
-		}
-		else if (frequency.getName().equals("quarterly")) {
-			periodicity = "Q";
-		}
-		else if (frequency.getName().equals("semi-annually")) {
-			periodicity = "SA";
-		}
-		else if (frequency.getName().equals("annually")) {
-			periodicity = "A";
-		}
-		else {
-			return frequency.getName();
-		}
-		return periodicity + id + ": " +  description;
+		return "MaintenanceRequirementCard [id=" + id + ", description=" + description + ", numberOfTechs="
+				+ numberOfTechs + ", trainingVideoId=" + trainingVideoId + ", estimatedDurationInHours="
+				+ estimatedDurationInHours + ", frequency=" + frequency + "]";
+	}
+	
+	
+
+//	@Override
+//	public String toString() {
+//		return "MaintenanceRequirementCard [id=" + id + ", description=" + description + "]";
+//	}
+//	@Override
+//	public String toString() {
+//		String periodicity = null;
+//		if (frequency != null && frequency.getName() != null) {
+//			if (frequency.getName().equals("daily")) {
+//				periodicity = "D";
+//			} else if (frequency.getName().equals("weekly")) {
+//				periodicity = "W";
+//			} else if (frequency.getName().equals("monthly")) {
+//				periodicity = "M";
+//			} else if (frequency.getName().equals("quarterly")) {
+//				periodicity = "Q";
+//			} else if (frequency.getName().equals("semi-annually")) {
+//				periodicity = "SA";
+//			} else if (frequency.getName().equals("annually")) {
+//				periodicity = "A";
+//			} else {
+//				return frequency.getName();
+//			}
+//		}
+//		return periodicity + id + ": " + description;
 //				
+	
 //				
 //				
 //				"MaintenanceRequirementCard [id=" + id + ", description=" + description + ", numberOfTechs="
@@ -289,4 +300,3 @@ public class MaintenanceRequirementCard {
 //				+ ", safety=" + safety + "]";
 	}
 
-}
