@@ -31,7 +31,7 @@ import com.skilldistillery.cmms.entities.User;
 
 @Controller
 public class SupervisorController {
-	
+
 	@Autowired
 	private MaintenanceItemDAO taskDao;
 	@Autowired
@@ -48,9 +48,7 @@ public class SupervisorController {
 	private MaintenanceDetailDAO mrcDao;
 	@Autowired
 	private PartDAO partDao;
-	
-	
-	
+
 	@RequestMapping(path = "scheduleMaintenance.do", method = RequestMethod.GET)
 	public String calanderView(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -58,35 +56,35 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "createMaintenance.do", method = RequestMethod.GET)
 	public String createNewMaintenance(HttpSession session, int mrcId, Model model) {
-		User user = (User)session.getAttribute("loggedInUser");
+		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
-			
+
 			model.addAttribute("mrc", mrcDao.findById(mrcId));
 			model.addAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
-			//model.addAttribute("equipment", equipmentDao.findAllByLocation(user.getStaff().getLocation()));
-			return "scheduleMaintenance";
+			// model.addAttribute("equipment",
+			// equipmentDao.findAllByLocation(user.getStaff().getLocation()));
+			return "supMaintenance";
 		} else
 			return "login";
 	}
-	
-	
+
 	@RequestMapping(path = "supMaintenance.do", method = RequestMethod.GET)
 	public String viewSupervisorMaintenance(HttpSession session, Model model) {
-		User user = (User)session.getAttribute("loggedInUser");
+		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
-			
+
 			Location locationId = user.getStaff().getSupervisedLocation();
 			List<MaintenanceItem> tasks = taskDao.findAllByLocation(locationId);
-			
+
 			model.addAttribute("MaintenanceItems", tasks);
 			return "supMaintenance";
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "supUpdateTask.do", method = RequestMethod.POST)
 	public String completionView(HttpSession session, int mainItemId, RedirectAttributes redir,
 			MaintenanceItem mainItem) {
@@ -98,12 +96,12 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "supUpdateAllComplete.do", method = RequestMethod.GET)
 	public String updateAllComplete() {
 		return "updateAllComplete";
 	}
-	
+
 	@RequestMapping(path = "supTools.do", method = RequestMethod.GET)
 	public String toolSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -113,15 +111,16 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "deleteTool.do", method = RequestMethod.POST)
 	public String deleteTool(int ToolId) {
-		toolDao.deleteTool(ToolId);
+		if(toolDao.deleteTool(ToolId) == true) {
 		return "deleteToolConfirmation";
+		}else {
+			return "unsuccessful";
 		}
-	
-	
-	
+	}
+
 	@RequestMapping(path = "addTool.do", method = RequestMethod.GET)
 	public String addToolBySup(HttpSession session, User user, Tool tool) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -129,7 +128,7 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "persistTool.do", method = RequestMethod.POST)
 	public String addTool(HttpSession session, RedirectAttributes redir, Tool tool) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -139,12 +138,12 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
-	@RequestMapping(path="addToolConfirmation.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "addToolConfirmation.do", method = RequestMethod.GET)
 	public String addToolConfirmation() {
 		return "addToolConfirmation";
 	}
-	
+
 	@RequestMapping(path = "supTraining.do", method = RequestMethod.GET)
 	public String trainingSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -154,7 +153,7 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "addTraining.do", method = RequestMethod.GET)
 	public String addTrainingBySup(HttpSession session, User user, Training training) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -162,7 +161,7 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "persistTraining.do", method = RequestMethod.POST)
 	public String addTraining(HttpSession session, RedirectAttributes redir, Training training) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -172,16 +171,15 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
-	@RequestMapping(path="addTrainingConfirmation.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "addTrainingConfirmation.do", method = RequestMethod.GET)
 	public String addTrainingConfirmation() {
 		return "addTrainingConfirmation";
 	}
-	
-	
+
 	@RequestMapping(path = "supEquipment.do", method = RequestMethod.GET)
 	public String equipmentSupervisorView(HttpSession session, Model model) {
-		User user = (User)session.getAttribute("loggedInUser");
+		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
 			Location locationId = user.getStaff().getSupervisedLocation();
 			List<Equipment> equipment = equipmentDao.findAllByLocation(locationId);
@@ -189,17 +187,19 @@ public class SupervisorController {
 			return "supEquipment";
 		} else
 			return "login";
-		
+
 	}
-	
+
 	@RequestMapping(path = "deleteEquipment.do", method = RequestMethod.POST)
 	public String deleteEquipment(int equipmentId) {
-		equipmentDao.deleteEquipment(equipmentId);
-		
-		return "deleteEquipmentConfirmation";	
+		if (equipmentDao.deleteEquipment(equipmentId) == true) {
+			return "deleteEquipmentConfirmation";
+		} else {
+			return "unsuccessful";
 		}
-	
-	
+
+	}
+
 	@RequestMapping(path = "addEquipment.do", method = RequestMethod.GET)
 	public String addEquipmentBySup(HttpSession session, User user, Equipment equipment) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -207,10 +207,10 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "persistEquipment.do", method = RequestMethod.POST)
 	public String addEquipment(HttpSession session, RedirectAttributes redir, Equipment equipment, int eqpType) {
-		User currentUser = (User)session.getAttribute("loggedInUser");
+		User currentUser = (User) session.getAttribute("loggedInUser");
 		if (currentUser != null) {
 			int newLocationId = currentUser.getStaff().getLocation().getId();
 			Equipment newEquipment = equipmentDao.createEquipment(equipment, eqpType, newLocationId);
@@ -219,15 +219,15 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
-	@RequestMapping(path="addEquipmentConfirmation.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "addEquipmentConfirmation.do", method = RequestMethod.GET)
 	public String addEquipmentConfirmation() {
 		return "addEquipmentConfirmation";
 	}
-	
+
 	@RequestMapping(path = "supTechnicians.do", method = RequestMethod.GET)
 	public String techniciansSupervisorView(HttpSession session, Model model) {
-		User user = (User)session.getAttribute("loggedInUser");
+		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
 			Location locationId = user.getStaff().getSupervisedLocation();
 			List<Staff> staff = techDao.findAllAtLocation(locationId);
@@ -236,40 +236,32 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
 
 	@RequestMapping(path = "supMaintenanceDetail.do", method = RequestMethod.GET)
 	public String maintenanceDetailSupervisorView(HttpSession session, Model model) {
-		User user = (User)session.getAttribute("loggedInUser");
+		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
-			
-			
+
 			Location locationId = user.getStaff().getSupervisedLocation();
-			
+
 			List<MaintenanceRequirementCard> mrcs = mrcDao.findAllByLocation(locationId);
-			
-			
+
 			model.addAttribute("mrcs", mrcs);
-			
-			
-			
+
 			return "supMaintenanceDetail";
 		} else
 			return "login";
 	}
-	
-	@RequestMapping(path = "deleteMaintenanceDetail.do", method = RequestMethod.POST)
-	public String deleteMRC(MaintenanceRequirementCard mrc, int mrcId) {
-		boolean playerExistsInDb = mrcDao.deleteMRC(mrcId); //delete player returns false if not in db
-		if(playerExistsInDb == false) {
-			return "showDeletedSuccess";
-		}else {
+
+	@RequestMapping(path = "deleteMRC.do", method = RequestMethod.POST)
+	public String deleteMRC(int mrcId) {
+		if (mrcDao.deleteMRC(mrcId) == true) {
+			return "deleteMaintenanceDetail";
+		} else {
 			return "unsuccessful";
 		}
 	}
-	
-	
-	
+
 	@RequestMapping(path = "persistPart.do", method = RequestMethod.POST)
 	public String addPart(HttpSession session, RedirectAttributes redir, Part part) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -279,12 +271,12 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
-	@RequestMapping(path="addPartConfirmation.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "addPartConfirmation.do", method = RequestMethod.GET)
 	public String addPartConfirmation() {
 		return "addPartConfirmation";
 	}
-	
+
 	@RequestMapping(path = "account.do", method = RequestMethod.GET)
 	public String accountDetailSupView(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -292,7 +284,7 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "addUser.do", method = RequestMethod.GET)
 	public String accountManagementView(HttpSession session, User user, Staff staff) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -300,7 +292,7 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
+
 	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)
 	public String updatePassword(HttpSession session, RedirectAttributes redir, int id, String password) {
 		if (session.getAttribute("loggedInUser") != null) {
@@ -311,14 +303,14 @@ public class SupervisorController {
 			return "login";
 	}
 
-	@RequestMapping(path="updatePasswordConfirmation.do", method = RequestMethod.GET)
+	@RequestMapping(path = "updatePasswordConfirmation.do", method = RequestMethod.GET)
 	public String updatePasswordConfirmation() {
 		return "updatePasswordConfirmation";
 	}
-	
+
 	@RequestMapping(path = "persistUser.do", method = RequestMethod.POST)
 	public String addUser(HttpSession session, RedirectAttributes redir, Staff staff, User user) {
-		User currentUser = (User)session.getAttribute("loggedInUser");
+		User currentUser = (User) session.getAttribute("loggedInUser");
 		if (currentUser != null) {
 			Staff newUser = userDao.addUser(user, staff, currentUser.getStaff().getLocation().getId());
 			redir.addFlashAttribute("newUser", newUser);
@@ -326,11 +318,10 @@ public class SupervisorController {
 		} else
 			return "login";
 	}
-	
-	@RequestMapping(path="addUserConfirmation.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "addUserConfirmation.do", method = RequestMethod.GET)
 	public String addUserConfirmation() {
 		return "addUserConfirmation";
 	}
-
 
 }
