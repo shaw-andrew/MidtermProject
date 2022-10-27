@@ -79,6 +79,19 @@
 							<button type="submit" value="submit">Add Part</button>
 						</form>
 						
+						<h3>Associated Training Reqs</h3>
+						<c:forEach var="training" items="${mrc.trainings}"> 
+							<li> ${trainings.category}</li>
+						</c:forEach>
+						<form action="addCardtraining.do">
+							<input type="hidden" name="mrcId" value="${mrc.id}">
+							<select name="trainingId">
+							<c:forEach var="training" items="${trainings}">
+							<option value="training.id"> ${training.category}</option>
+							</c:forEach>
+							</select>
+							<button type="submit" value="submit">Add Training</button>
+						</form>
 						
 						
 						
