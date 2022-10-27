@@ -58,10 +58,10 @@
 												role="button">Delete Maintenance Card</a>
 									</c:if><br> 
 												
-									<%-- 	<form action="editMrcPage.do" method="GET">
-										<input type="hidden" name="id" value="${mrcs.id }" /> 
-<<<<<<< HEAD
-										<input type="submit" value="Edit Maintenance Card form button" /></form> --%>
+					<%-- 				<	<form action="editMrcPage.do" method="GET">
+										<input type="hidden" name="id" value="${mrcs.id }" />  --%>
+
+										<input type="submit" value="Edit Maintenance Card form button" /></form> 
 										<input type="submit" class="btn btn-secondary" value="Edit Maintenance Card" /></form>
 										
 										<br> <c:if test="${loggedInUser.role == 'Supervisor' }">
