@@ -65,7 +65,7 @@
 										<input type="submit" value="Edit Maintenance Card form button" /></form>
 										
 										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
-											<a class="btn btn-secondary" href="createMaintenance.do?id=${mrcs.id}"
+											<a class="btn btn-secondary" href="createMaintenance.do?mrcId=${mrcs.id}"
 												role="button">Create Maintenance Item</a>
 										</c:if>
 									</td>

@@ -22,6 +22,23 @@
 					<br>
 					<hr>
 					<br>
+
+					<div class="dropdown">
+						<button type="button" class="btn btn-primary dropdown-toggle"
+							data-bs-toggle="dropdown">Select Staff Member</button>
+						<ul class="dropdown-menu">
+						
+							<li><a class="dropdown-item" href="maintenanceDetail.do">View All Staff</a></li>
+							
+							<c:forEach var="maintenanceItem" items="${maintenanceItems}">
+								<li><a class="dropdown-item" href="viewStaffMember.do?id=${maintenanceItem.staff.id}">${maintenanceItem.staff}</a>
+								</li>
+
+							</c:forEach>
+
+						</ul>
+					</div>
+
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
@@ -49,27 +66,28 @@
 									<td>${maintenanceItem.staff}</td>
 
 									<td><input type="text"
-										form="updateItem${maintenanceItem.id}"  name="techNotes"
+										form="updateItem${maintenanceItem.id}" name="techNotes"
 										value="${maintenanceItem.techNotes}" maxlength="200"></td>
 
 									<td>${maintenanceItem.scheduleStartDate}</td>
 									<td>${maintenanceItem.scheduleEndDate}</td>
 
-									<td><input type="text" 
-										name="actualDurationInHours" form="updateItem${maintenanceItem.id}"
+									<td><input type="text" name="actualDurationInHours"
+										form="updateItem${maintenanceItem.id}"
 										value="${maintenanceItem.actualDurationInHours}"
 										maxlength="10"></td>
 
 
-									<td><input type="datetime-local" 
-										name="completionDate" form="updateItem${maintenanceItem.id}"
+									<td><input type="datetime-local" name="completionDate"
+										form="updateItem${maintenanceItem.id}"
 										value="${maintenanceItem.completionDate }" maxlength="10">
 									</td>
 									<td>
 										<form action="update.do" id="updateItem${maintenanceItem.id}"
-											method="POST" > 
-											<input type="hidden" name="mainItemId" value="${maintenanceItem.id}">
-											<input type="submit" name="submit" value="submit">
+											method="POST">
+											<input type="hidden" name="mainItemId"
+												value="${maintenanceItem.id}"> <input type="submit"
+												name="submit" value="submit">
 										</form>
 									</td>
 
