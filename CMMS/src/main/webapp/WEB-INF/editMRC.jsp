@@ -34,7 +34,7 @@
 					</div>
 					<div class="mb-3">
  					 <label for="description" class="form-label">Description</label>
- 					 <textarea class="form-control" id="description" placeholder="${mrc.description}" rows="4"></textarea>
+ 					 <textarea class="form-control" id="description" placeholder="${id.description}" rows="4"></textarea>
 					</div>
 					<div class="mb-3">
  					 <label for="estimatedDurationInHours" class="form-label">Estimated Work Duration (hrs)</label>
@@ -52,8 +52,8 @@
 						
 						
 						<h3>Associated Tool Reqs</h3>
-						<c:forEach var="tool" items="${mrc.tool}"> 
-							<li> ${tool.name}</li>
+						<c:forEach var="tool" items="${mrc.tools}"> 
+							<li> ${tools.name}</li>
 						</c:forEach>
 						<form action="addCardTool.do">
 							<input type="hidden" name="mrcId" value="${mrc.id}">
@@ -65,6 +65,20 @@
 							<button type="submit" value="submit">Add Tool</button>
 						</form>
 						
+						<h3>Associated Part Reqs</h3>
+						<c:forEach var="part" items="${mrc.parts}"> 
+							<li> ${parts.partNumber}</li>
+						</c:forEach>
+						<form action="addCardPart.do">
+							<input type="hidden" name="mrcId" value="${mrc.id}">
+							<select name="partId">
+							<c:forEach var="part" items="${parts}">
+							<option value="part.id"> ${part.partNumber}</option>
+							</c:forEach>
+							</select>
+							<button type="submit" value="submit">Add Part</button>
+						</form>
+						
 						
 						
 						
@@ -74,7 +88,7 @@
 						
 						
 				
-					<div class="mb-3">
+					<!-- <div class="mb-3">
  					 <label for="tools" class="form-label">Tools</label>
  					 	<select class="form-select" id="tools" multiple aria-label="Required Tools">
   							<option selected>Required Tools</option>
@@ -101,8 +115,8 @@
   							<option value="3">Three</option>
 						</select>
 					</div>
+		 -->
 				<input type="submit" name="submit" value="submit">
-		
 		</div>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />
