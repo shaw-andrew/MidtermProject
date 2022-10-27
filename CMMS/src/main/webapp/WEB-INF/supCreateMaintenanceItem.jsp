@@ -42,18 +42,22 @@
 					   	 <input type="datetime-local" class="form-control form-control-lg" name="scheduleEndDate" value="Scheduled End Date }" required> <br>
 						 
 						 
+						 
+						<label for="staff" class="form-label-lg">Staff / Needs a Dropdown</label>		
 						<div class="dropdown">
 						<button type="button" class="btn btn-primary dropdown-toggle"
 							data-bs-toggle="dropdown">Select Staff Member</button>
 						<ul class="dropdown-menu">
 						
 							<li><a class="dropdown-item" href="maintenanceDetail.do">View All Staff</a></li>
-							
+							<select name = "staff.id">
 							<c:forEach var="staff" items="${staff}">
-								<li><a class="dropdown-item" href="viewStaffMember.do?id=${staff.id}">${staff}</a>
+								<li><option class="dropdown-item" value = "${staff.id}" > ${staff}</option>
 								</li>
 
 							</c:forEach>
+							</select>
+							
 
 						</ul>
 					</div>
@@ -63,11 +67,11 @@
 						 
 						 
 						 
-						 <label for="staff" class="form-label-lg">Staff / Needs a Dropdown</label>			
-						 <input type="text" name="staff" value="Staff"  /><br><br>
+						 	
+						<!--  <input type="text" name="staff" value="Staff"  /><br><br> -->
 						 
-						 <label for="equipment" class="form-label-lg">Equipment / update to string</label>			
-						 <input type="text" name="equipment" value="${mrc.equipmentType}"  /><br><br>
+						 <label for="equipment" class="form-label-lg">Equipment / update to string</label>	
+						 <input type="text" name="equipment" placeholder="${mrc.equipmentType.name}"  /><br><br>
 						 
 					<button class="btn btn-primary" type="submit">Create Maintenance Item</button><br><br>
 				</form>
