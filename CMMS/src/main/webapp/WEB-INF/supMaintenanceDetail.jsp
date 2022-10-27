@@ -57,12 +57,12 @@
 									<input type="hidden" name="id" value="${mrcs.id }" />
 											<a class="btn btn-secondary" href="deleteMRC.do"
 												role="button">Delete Maintenance Card</a>
-									</c:if><br> 
+									</c:if><br> <br>
 												
 
 									<form action="editMrcPage.do" method="GET">
 										<input type="hidden"class="btn btn-secondary" name="id" value="${mrcs.id }" /> 
-										<input type="submit" value="Edit Maintenance Card" /></form> 
+										<input type="submit" class="btn btn-secondary" value="Edit Maintenance Card" /></form> 
 
 										
 										<br> <c:if test="${loggedInUser.role == 'Supervisor' }">

@@ -22,14 +22,13 @@
 					<h2>@Autowired - Technician landing page</h2>
 					<br>
 					<hr>
-					<br> Supervised Staff <br>
-
+					<br><h4>Supervised Staff </h4><br>
 
 
 					<c:if test="${loggedInUser.role == 'Supervisor' }">
 						<a class="btn btn-secondary" href="addUser.do" role="button">Add
 							Technician</a>
-					</c:if>
+					</c:if><br><hr><br>
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
@@ -54,6 +53,7 @@
 				<div class="col"></div>
 			</div>
 		</div>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>

@@ -11,11 +11,11 @@
 <body>
 	<jsp:include page="navbar.jsp" />
 	<main class="container-fluid">
+	<br><br>
 		<%--Edit the file nav.jsp to change nav links --%>
 		<div class="container text-center">
 			<div class="row">
-				<div class="col-2"></div>
-				<div class="col-8">
+				
 					<br>
 					<hr>
 					<h2>@Autowired - My Scheduled Work</h2>
@@ -38,7 +38,7 @@
 
 						</ul>
 					</div>
-
+<br><br>
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
@@ -99,8 +99,7 @@
 					</table>
 
 				</div>
-				<div class="col-2"></div>
-			</div>
+				
 		</div>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />

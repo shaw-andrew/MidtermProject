@@ -22,7 +22,7 @@
 					<br>
 					<hr>
 					<br>
-					
+					<br>
 					
 					
 				</div>
@@ -34,8 +34,9 @@
 					<div class="col-md-4"><a href="supMaintenance.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/t3HK4fq/to-do-list.png"/><br>View Maintenance</a></div>
 					
 					<div class="col-md-4"><a href="supTraining.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/1Yg3f8D/graduated.png"/><br>Training</a> </div>
-				<br><br>
+				
 				</div>
+				<br><br>
 				<div class="row">
 					
 					<div class="col-md-4"><a href="supEquipment.do" type="button" class="btn btn-secondary"><img src ="https://i.ibb.co/C52Q13T/conveyor.png"/><br>Equipment</a></div>

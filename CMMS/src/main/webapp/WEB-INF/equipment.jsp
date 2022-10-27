@@ -14,8 +14,9 @@
 		<%--Edit the file nav.jsp to change nav links --%>
 		<div class="container text-center">
 			<div class="row">
-				<div class="col"></div>
+				<div class="col"></div><br><hr>
 				<h2>Equipment and Details</h2>
+				<br><hr><br>
 				<table
 					class="table table-striped table-hover table-responsiveo w-aut">
 					<thead class="table-dark">
@@ -44,6 +45,7 @@
 				<div class="col"></div>
 			</div>
 		</div>
+		<br><br><br><br><br>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>

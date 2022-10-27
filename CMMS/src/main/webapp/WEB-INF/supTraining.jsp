@@ -27,6 +27,8 @@
 						<a class="btn btn-secondary" href="addTraining.do" role="button">Add
 							Training</a>
 					</c:if>
+					
+					<br><br><br>
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
@@ -49,7 +51,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-
+<br><br><br><br><br><br><br><br><br>
 
 				</div>
 				<div class="col"></div>
