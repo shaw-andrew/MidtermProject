@@ -45,7 +45,7 @@
 									<td>${equipment.location}</td>
 									<td>${equipment.imageURL}</td>
 									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
-									
+										<input type="hidden" name="equipmentId" value="${equipment.id }" />
 											<a class="btn btn-secondary" href="deleteEquipment.do"
 												role="button">Delete Equipment</a>
 									

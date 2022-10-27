@@ -54,6 +54,7 @@
 									<td>
 									
 									<c:if test="${loggedInUser.role == 'Supervisor' }">
+									<input type="hidden" name="id" value="${mrcs.id }" />
 											<a class="btn btn-secondary" href="deleteMRC.do"
 												role="button">Delete Maintenance Card</a>
 									</c:if><br> 

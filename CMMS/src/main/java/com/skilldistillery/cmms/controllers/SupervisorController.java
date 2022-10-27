@@ -254,8 +254,9 @@ public class SupervisorController {
 	}
 
 	@RequestMapping(path = "deleteMRC.do", method = RequestMethod.POST)
-	public String deleteMRC(int mrcId) {
-		if (mrcDao.deleteMRC(mrcId) == true) {
+	public String deleteMRC(int mrcId, MaintenanceRequirementCard mrc) {
+		
+		if (mrcDao.deleteMRC(mrc.getId()) == true) {
 			return "deleteMaintenanceDetail";
 		} else {
 			return "unsuccessful";
