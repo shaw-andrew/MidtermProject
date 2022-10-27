@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.cmms.entities.Location;
 import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
+import com.skilldistillery.cmms.entities.Part;
+import com.skilldistillery.cmms.entities.Tool;
+import com.skilldistillery.cmms.entities.Training;
+
 
 @Service
 @Transactional
@@ -58,5 +62,25 @@ public class MaintenanceDetailDAOImpl implements MaintenanceDetailDAO {
 	        return em.contains(deleteMRC); //returns true if delete player is still in persistence mngr
 	        //returns false if not
 	}
-
+	
+	@Override
+	public void addToolToCard(int toolId, int mrcId) {
+		Tool tool = em.find(Tool.class, toolId);
+		MaintenanceRequirementCard updateMrc = em.find(MaintenanceRequirementCard.class, mrcId);
+		updateMrc.addTool(tool);
+	}
+	
+	@Override
+	public void addPartToCard(int partId, int mrcId) {
+		Part part = em.find(Part.class, partId);
+		MaintenanceRequirementCard updateMrc = em.find(MaintenanceRequirementCard.class, mrcId);
+		updateMrc.addPart(part);
+	}
+	
+//	@Override
+//	public void addTrainingToCard(int trainingId, int mrcId) {
+//		Training training = em.find(Training.class, trainingId);
+//		MaintenanceRequirementCard updateMrc = em.find(MaintenanceRequirementCard.class, mrcId);
+//		updateMrc.addTraining(training);
+//	}
 }

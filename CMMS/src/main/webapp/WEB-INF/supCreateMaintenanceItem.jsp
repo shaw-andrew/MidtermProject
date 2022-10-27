@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,7 +23,46 @@
 						<!-- <div class="valid-feedback">Looks good!</div>
 						<div class="invalid-feedback">Please input a first name.</div> -->
 					</div>
-					<div class="col-md-4">
+					
+					
+					
+					
+					
+					<label for="taskId" class="form-label-lg">Maintenance Id</label>			
+						 <input class="form-control form-control-lg" id="taskId" type="number" placeholder="${MaintenanceItem.id}"  disabled>
+						 
+						 <label for="completionDate" class="form-label-lg">Completion Date</label>			
+						 <input class="form-control form-control-lg" id="completionDate" type="datetime-local" placeholder="${MaintenanceItem.completionDate}"  disabled>
+						
+						 <label for="duration" class="form-label-lg">Duration</label>			
+						 <input class="form-control form-control-lg" id="duration" type="number" step = "0.01" placeholder="${MaintenanceItem.duration}"  disabled>
+						 
+						 <label for="techNotes" class="form-label-lg">Technician Notes</label>			
+						 <input class="form-control form-control-lg" id="techNotes" type="text" placeholder="${MaintenanceItem.techNotes}"disabled>
+						 
+						 <label for="scheduleStartDate" class="form-label-lg">Scheduled Start Date</label>			
+					   	 <input type="datetime-local" class="form-control form-control-lg" name="scheduleStartDate" value="${MaintenanceItem.scheduleStartDate }" required> <br><hr>
+					   	 
+						 <label for="mrcId" class="form-label-lg">MRC Id</label>			
+						 <input type="number" name="mrcId" value="${MaintenanceItem.mrcId }" disabled /><br><br>
+						 
+						 <label for="scheduleEndDate" class="form-label-lg">Scheduled End Date</label>			
+					   	 <input type="datetime-local" class="form-control form-control-lg" name="scheduleEndDate" value="${MaintenanceItem.scheduleEndDate }" required> <br><hr>
+						 
+						 <label for="staff" class="form-label-lg">Staff</label>			
+						 <input type="text" name="staff" value="${MaintenanceItem.staff.firstName }"  /><br><br>
+						 
+						 <label for="equipment" class="form-label-lg">Equipment</label>			
+						 <input type="text" name="equipment" value="${MaintenanceItem.equipment.equipmentType}"  /><br><br>
+						 
+					<button class="btn btn-primary" type="submit">Create Maintenance Item</button><br><br>
+				</form>
+					
+					
+					
+					
+					
+					<%-- <div class="col-md-4">
 						<label for="duration" class="form-label">Duration
 							</label> <input type="number" class="form-control"
 							name="duration" step = "0.01">
@@ -66,7 +102,7 @@
 					</div>
 					<div class="col-12">
 						<button class="btn btn-primary" type="submit">Create New User</button><br>
-					</div>
+					</div> --%>
 				</form>
 
 

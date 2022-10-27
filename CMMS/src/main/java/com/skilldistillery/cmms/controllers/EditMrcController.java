@@ -20,7 +20,7 @@ import com.skilldistillery.cmms.entities.MaintenanceRequirementCard;
 
 @Controller
 public class EditMrcController {
-	
+
 	@Autowired
 	private MaintenanceItemDAO taskDao;
 	@Autowired
@@ -37,20 +37,47 @@ public class EditMrcController {
 	private MaintenanceDetailDAO mrcDao;
 	@Autowired
 	private PartDAO partDao;
-	
+
 	@RequestMapping(path = "editMrcPage.do", method = RequestMethod.GET)
-	public String viewMRCToEdit(HttpSession session, int id, Model model ) {
-		
+	public String viewMRCToEdit(HttpSession session, int id, Model model) {
+
 		if (session.getAttribute("loggedInUser") != null) {
 			MaintenanceRequirementCard mrc = mrcDao.findById(id);
 			model.addAttribute("mrcs", mrc);
 			model.addAttribute("tools", toolDao.findAll());
 			model.addAttribute("parts", partDao.findAll());
 			model.addAttribute("trainings", trainingDao.findAll());
-			
+
 			return "editMRC";
 		} else
 			return "login";
 	}
+
+	@RequestMapping(path = "addCardTool.do", method = RequestMethod.POST)
+	public String addToolToCardController(HttpSession session, int mrcId, int toolId, Model model) {
+		if (session.getAttribute("loggedInUser") != null) {
+			mrcDao.addToolToCard(toolId, mrcId);
+			return "updateAllComplete";
+		} else
+			return "login";
+	}
+
+	@RequestMapping(path = "addCardPart.do", method = RequestMethod.POST)
+	public String addPartToCardController(HttpSession session, int mrcId, int partId, Model model) {
+		if (session.getAttribute("loggedInUser") != null) {
+			mrcDao.addPartToCard(partId, mrcId);
+			return "updateAllComplete";
+		} else
+			return "login";
+	}
+
+//	@RequestMapping(path = "addCardTraining.do", method = RequestMethod.POST)
+//	public String addTrainingToCardController(HttpSession session, int mrcId, int trainingId, Model model) {
+//		if (session.getAttribute("loggedInUser") != null) {
+//			mrcDao.addTrainingToCard(trainingId, mrcId);
+//			return "updateAllComplete";
+//		} else
+//			return "login";
+//	}
 
 }
