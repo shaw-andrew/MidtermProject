@@ -440,7 +440,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (1, 'Mechanical', 'Conveyer3000', 'Conveyers llc.', 2000);
+INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (1, 'Mechanical', 'Conveyor3000', 'Conveyers llc.', 2000);
 INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (2, 'Vehicle', 'Cargo Van', 'Mercedes Benz', 2023);
 INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (3, 'Misc', '8x11 Insulated', 'Ankmar', 2021);
 
@@ -467,7 +467,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (1, 'Conveyer Belt Grip Check', 1, '1', .5, 1, 1);
+INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (1, 'Conveyor Belt Grip Check', 1, '1', .5, 1, 1);
 INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (2, 'Roller Seizure Check', 1, '1', 1, 2, 1);
 INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (3, 'Motor Oil Change', 1, '1', 2, 3, 1);
 INSERT INTO `maintenance_requirement_card` (`id`, `description`, `number_of_techs`, `training_video_id`, `estimated_duration_in_hours`, `frequency_id`, `equipment_type_id`) VALUES (4, 'Vehicle Drivability', 1, '2', .5, 1, 2);
@@ -518,7 +518,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `equipment` (`id`, `equipment_type_id`, `location_id`, `name`, `description`, `image_url`) VALUES (1, 1, 1, 'Conveyer', NULL, 'https://www.westernstorageandhandling.com/wp-content/uploads/2015/12/conveyor-systems1.jpg');
+INSERT INTO `equipment` (`id`, `equipment_type_id`, `location_id`, `name`, `description`, `image_url`) VALUES (1, 1, 1, 'Conveyor', NULL, 'https://www.westernstorageandhandling.com/wp-content/uploads/2015/12/conveyor-systems1.jpg');
 INSERT INTO `equipment` (`id`, `equipment_type_id`, `location_id`, `name`, `description`, `image_url`) VALUES (2, 2, 2, 'Delivery Truck', NULL, 'https://www.mbvans.com/etc/designs/mb-vans/images/Twitter_og_tagged_image_MB.jpg');
 INSERT INTO `equipment` (`id`, `equipment_type_id`, `location_id`, `name`, `description`, `image_url`) VALUES (3, 3, 3, 'Garage Door', NULL, 'https://cpgdgs.com/wp-content/uploads/2021/03/112934.jpg');
 
@@ -556,9 +556,8 @@ INSERT INTO `tool` (`id`, `name`) VALUES (2, 'Flashlight');
 INSERT INTO `tool` (`id`, `name`) VALUES (3, 'Gloves');
 INSERT INTO `tool` (`id`, `name`) VALUES (4, 'Force Resister');
 INSERT INTO `tool` (`id`, `name`) VALUES (5, 'Lubricant');
-INSERT INTO `tool` (`id`, `name`) VALUES (6, 'Oil (Conveyer)');
+INSERT INTO `tool` (`id`, `name`) VALUES (6, 'Oil (Conveyor)');
 INSERT INTO `tool` (`id`, `name`) VALUES (7, 'Funnel');
-INSERT INTO `tool` (`id`, `name`) VALUES (8, 'Oil Filter (Conveyer)');
 INSERT INTO `tool` (`id`, `name`) VALUES (9, 'Hazardous Material Container');
 INSERT INTO `tool` (`id`, `name`) VALUES (10, 'Socket Wrench');
 INSERT INTO `tool` (`id`, `name`) VALUES (11, 'Socket Set');
@@ -593,9 +592,13 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (1, NULL, 1, 5.99, 'Roller');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (1, NULL, 1, 115.99, 'Roller');
 INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (2, NULL, 2, 79.95, 'Photoeye');
 INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (3, NULL, 3, 50.99, 'Belt');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (4, 'STP', 4, 10.99, 'Oil Filter (Conveyor)');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (5, 'STP', 5, 7.99, 'Oil Filter (Delivery Truck)');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (6, '235/75 R15', 6, 129.99, 'Tire');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (7, 'LiftMaster: 84505R', 7, 225.99, 'Operator');
 
 COMMIT;
 
@@ -617,7 +620,6 @@ INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUE
 INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 2);
 INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 6);
 INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 7);
-INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 8);
 INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 9);
 INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 10);
 INSERT INTO `card_has_tool` (`maintenance_requirement_card_id`, `tool_id`) VALUES (3, 11);
@@ -660,7 +662,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `card_has_part` (`maintenance_requirement_card_id`, `part_id`) VALUES (1, 1);
+INSERT INTO `card_has_part` (`maintenance_requirement_card_id`, `part_id`) VALUES (2, 1);
+INSERT INTO `card_has_part` (`maintenance_requirement_card_id`, `part_id`) VALUES (3, 4);
+INSERT INTO `card_has_part` (`maintenance_requirement_card_id`, `part_id`) VALUES (5, 6);
+INSERT INTO `card_has_part` (`maintenance_requirement_card_id`, `part_id`) VALUES (1, 3);
+INSERT INTO `card_has_part` (`maintenance_requirement_card_id`, `part_id`) VALUES (8, 7);
 
 COMMIT;
 
