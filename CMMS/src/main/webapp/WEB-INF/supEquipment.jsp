@@ -16,8 +16,10 @@
 			<div class="row">
 				<div class="col"></div>
 				
-
+<br>
+<hr>
 					<h2>Equipment and Details</h2>
+					<hr><br>
 
 					<c:if test="${loggedInUser.role == 'Supervisor' }">
 						<a class="btn btn-secondary" href="addEquipment.do" role="button">Add
@@ -52,7 +54,7 @@
 									</form>
 											<a class="btn btn-secondary" href="deleteEquipment.do"
 												role="button">Delete Equipment</a> -->
-										<br> <c:if test="${loggedInUser.role == 'Supervisor' }">
+										 <c:if test="${loggedInUser.role == 'Supervisor' }">
 											<a class="btn btn-secondary" href="updateEquipment.do?equipmentId=${equipment.id}"
 												role="button">Edit Equipment</a>
 										</c:if>

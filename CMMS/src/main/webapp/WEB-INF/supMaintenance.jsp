@@ -57,16 +57,12 @@
 									</td>
 									<td>${maintenanceItem.staff}</td>
 									<td>${maintenanceItem.equipment.name}</td>
-									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
-											<!-- <a class="btn btn-secondary" href="deleteMRC.do"
-												role="button">Delete Maintenance Item</a> -->
-										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
+									<td> 
 											<form action="supUpdateTask.do" id="updateItem${maintenanceItem.id}"
 											method="POST" > 
 											<input type="hidden" name="mainItemId" value="${maintenanceItem.id}">
-											<button type="submit" class="btn btn-seconday">Submit Changes</button>
+											<button class="btn btn-seconday" type="submit">Submit Changes</button>
 										</form>
-										</c:if>
 									</td>
 								</tr>
 							</c:forEach>
