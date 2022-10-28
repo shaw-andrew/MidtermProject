@@ -17,10 +17,10 @@
 					<hr>
 					<br> 
 
-					<c:if test="${loggedInUser.role == 'Supervisor' }">
+					<%-- <c:if test="${loggedInUser.role == 'Supervisor' }">
 						<a class="btn btn-secondary" href="supMaintenanceDetail.do"
 							role="button">Schedule Maintenance</a>
-					</c:if><br><br>
+					</c:if> --%><br><br>
 
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">

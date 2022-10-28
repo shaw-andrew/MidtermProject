@@ -62,12 +62,9 @@ public class SupervisorController {
 	public String createNewMaintenance(HttpSession session, Integer mrcId,Integer equipmentId, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
-
 			model.addAttribute("mrc", mrcDao.findById(mrcId));
 			model.addAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
 			model.addAttribute("equipment", equipmentDao.findById(equipmentId));
-			// model.addAttribute("equipment",
-			// equipmentDao.findAllByLocation(user.getStaff().getLocation()));
 			return "supCreateMaintenanceItem";
 		} else
 			return "login";
@@ -76,16 +73,12 @@ public class SupervisorController {
 	public String createNewMaintenancePost(HttpSession session, MaintenanceItem task, Integer mrcId, Integer equipmentId, RedirectAttributes redir) {
 		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
-			System.out.println(mrcId);
-			System.out.println(equipmentId);
-			System.out.println(task.getStaff().getId());
 			Staff staff = userDao.findStaffById(task.getStaff().getId());
 			Equipment eq = equipmentDao.findById(equipmentId);
 			taskDao.createTask(task, mrcId, eq, staff);
 			redir.addFlashAttribute("mrc", mrcDao.findById(mrcId));
 			redir.addFlashAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
 			redir.addFlashAttribute("equipment", eq);
-			// equipmentDao.findAllByLocation(user.getStaff().getLocation()));
 			return "redirect:updateEquipment.do?equipmentId="+equipmentId;
 		} else
 			return "login";

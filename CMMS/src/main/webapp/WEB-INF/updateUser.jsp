@@ -41,13 +41,11 @@
 					   	 <input type="password" class="form-control form-control-lg" name="password" value="${updatedUser.password}" required> <br><hr><br>
 					
 						<button class="btn btn-secondary" type="submit">Update User</button><br><br>
-						
 						<br>
 					</form>
 					<br><br><br><br><br><br>
 					<br><br><br><br><br><br>
 			</div>
-		
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>

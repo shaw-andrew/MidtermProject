@@ -94,19 +94,18 @@ public class EditMrcController {
 	@RequestMapping(path = "updateMrc.do", method = RequestMethod.POST)
 	public String updateMrcController(HttpSession session, int mrcId, Model model, MaintenanceRequirementCard mrc) {
 		if (session.getAttribute("loggedInUser") != null) {
-			System.out.println("**************************************************************************************************************************************************************");
 			
-			System.out.println(mrc);
 			mrcDao.updateMrc(mrcId, mrc);
-			
 			MaintenanceRequirementCard newMrc = mrcDao.findById(mrcId);
+			
 			model.addAttribute("equipmentTypes", mrcDao.findAllEquipmentTypes());
 			model.addAttribute("frequencies", mrcDao.findAllFrequencies());
 			model.addAttribute("mrcs", newMrc);
 			model.addAttribute("tools", toolDao.findAll());
 			model.addAttribute("parts", partDao.findAll());
 			model.addAttribute("trainings", trainingDao.findAll());
-		return "editMRC";
+		
+			return "editMRC";
 	} else
 		return "login";
 	}

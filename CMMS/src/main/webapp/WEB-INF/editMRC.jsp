@@ -27,7 +27,6 @@
 					disabled readonly>
 			</div>
 			<div class="mb-3">
-
 				<label for="frequency" class="form-label">Periodicity</label> <select
 					name="frequency.id" class="form-select">
 					<c:forEach var="frequency" items="${frequencies}">
@@ -39,11 +38,10 @@
 								<option value="${frequency.id}">${frequency.name}</option>
 							</c:otherwise>
 						</c:choose>
-
 					</c:forEach>
 				</select>
-
 			</div>
+			
 			<div class="mb-3">
 				<label for="equipment" class="form-label">Equipment</label> <select
 					name="equipmentType.id" class="form-select">
@@ -59,6 +57,7 @@
 					</c:forEach>
 				</select>
 			</div>
+			
 			<div class="mb-3">
 				<label for="description" class="form-label">Description</label>
 				<textarea class="form-control" name="description" rows="4">${mrcs.description}</textarea>
@@ -75,8 +74,8 @@
 
 		</form>
 
-
 		<h3>Associated Tools Required</h3>
+		
 		<c:forEach var="tool" items="${mrcs.tools}">
 			<li>${tool.name}</li>
 		</c:forEach>
@@ -90,7 +89,8 @@
 			<button type="submit" class="btn btn-secondary" value="submit">Add
 				Tool</button>
 		</form>
-
+		
+		
 		<h3>Associated Parts Required</h3>
 		<c:forEach var="part" items="${mrcs.parts}">
 			<li>${part.name}</li>
