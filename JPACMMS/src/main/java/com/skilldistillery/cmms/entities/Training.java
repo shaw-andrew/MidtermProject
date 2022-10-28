@@ -79,10 +79,14 @@ public class Training {
 		this.description = description;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Training [id=" + id + ", videoURL=" + videoURL + ", category=" + category + ", description="
+//				+ description + "]";
+//	}
 	@Override
 	public String toString() {
-		return "Training [id=" + id + ", videoURL=" + videoURL + ", category=" + category + ", description="
-				+ description + "]";
+		return description ;
 	}
 	
 	

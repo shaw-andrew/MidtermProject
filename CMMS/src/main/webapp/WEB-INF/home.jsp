@@ -16,7 +16,7 @@
 				<div class="col"></div>
 				<div class="col-6">
 					<h2>Welcome to @Autowired</h2>
-					<h4>Leaders in Enterprise level Asset Management</h4>
+					<h4>Leaders in Enterprise Level Asset Management</h4>
 					<hr>
 					<blockquote>
 						<strong>Our company will save you money!</strong> Maintenance is an important factor in quality assurance and in some cases determines the long-term success of a company. Poorly maintained resources can cause instability and partially or completely pause the production. Malfunctioning machines or complete breakdowns can become a costly process for most companies.

@@ -64,7 +64,7 @@
 											<form action="supUpdateTask.do" id="updateItem${maintenanceItem.id}"
 											method="POST" > 
 											<input type="hidden" name="mainItemId" value="${maintenanceItem.id}">
-											<input type="submit" class="btn btn-seconday" role="button" value="submit">
+											<button type="submit" class="btn btn-seconday">Submit Changes</button>
 										</form>
 										</c:if>
 									</td>
