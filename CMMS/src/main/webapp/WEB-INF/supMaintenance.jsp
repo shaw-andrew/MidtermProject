@@ -56,10 +56,10 @@
 												value="${maintenanceItem.scheduleEndDate }" maxlength="10">
 									</td>
 									<td>${maintenanceItem.staff}</td>
-									<td>${maintenanceItem.equipment}</td>
+									<td>${maintenanceItem.equipment.name}</td>
 									<td><c:if test="${loggedInUser.role == 'Supervisor' }">
-											<a class="btn btn-secondary" href="deleteMRC.do"
-												role="button">Delete Maintenance Item</a>
+											<!-- <a class="btn btn-secondary" href="deleteMRC.do"
+												role="button">Delete Maintenance Item</a> -->
 										</c:if><br> <c:if test="${loggedInUser.role == 'Supervisor' }">
 											<form action="supUpdateTask.do" id="updateItem${maintenanceItem.id}"
 											method="POST" > 
