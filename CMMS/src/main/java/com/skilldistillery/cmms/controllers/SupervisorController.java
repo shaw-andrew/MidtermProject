@@ -1,5 +1,6 @@
 package com.skilldistillery.cmms.controllers;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -58,12 +59,13 @@ public class SupervisorController {
 	}
 
 	@RequestMapping(path = "createMaintenance.do", method = RequestMethod.GET)
-	public String createNewMaintenance(HttpSession session, int mrcId, Model model) {
+	public String createNewMaintenance(HttpSession session, Integer mrcId,Integer equipmentId, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
 
 			model.addAttribute("mrc", mrcDao.findById(mrcId));
 			model.addAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
+			model.addAttribute("equipment", equipmentDao.findById(equipmentId));
 			// model.addAttribute("equipment",
 			// equipmentDao.findAllByLocation(user.getStaff().getLocation()));
 			return "supCreateMaintenanceItem";
@@ -71,15 +73,20 @@ public class SupervisorController {
 			return "login";
 	}
 	@RequestMapping(path = "createMaintenance.do", method = RequestMethod.POST)
-	public String createNewMaintenancePost(HttpSession session, int mrcId, Model model) {
+	public String createNewMaintenancePost(HttpSession session, MaintenanceItem task, Integer mrcId, Integer equipmentId, RedirectAttributes redir) {
 		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
-			
-			model.addAttribute("mrc", mrcDao.findById(mrcId));
-			model.addAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
-			// model.addAttribute("equipment",
+			System.out.println(mrcId);
+			System.out.println(equipmentId);
+			System.out.println(task.getStaff().getId());
+			Staff staff = userDao.findStaffById(task.getStaff().getId());
+			Equipment eq = equipmentDao.findById(equipmentId);
+			taskDao.createTask(task, mrcId, eq, staff);
+			redir.addFlashAttribute("mrc", mrcDao.findById(mrcId));
+			redir.addFlashAttribute("staff", taskDao.findStaffByLocation(user.getStaff().getLocation().getId()));
+			redir.addFlashAttribute("equipment", eq);
 			// equipmentDao.findAllByLocation(user.getStaff().getLocation()));
-			return "supCreateMaintenanceItem";
+			return "redirect:updateEquipment.do?equipmentId="+equipmentId;
 		} else
 			return "login";
 	}
@@ -337,5 +344,26 @@ public class SupervisorController {
 	public String addUserConfirmation() {
 		return "addUserConfirmation";
 	}
+	
+	@RequestMapping(path = "updateEquipment.do", method = RequestMethod.GET)
+	public String updateEquipment(Integer equipmentId, HttpSession session, Model model) {
+		User currentUser = (User) session.getAttribute("loggedInUser");
+		if(currentUser != null) {
+			
+			Equipment eq = equipmentDao.findById(equipmentId);
+			if (eq != null) {
+				model.addAttribute("equipment", eq);
+				eq.getEquipmentType().getMrc().size();
+				model.addAttribute("staff", taskDao.findStaffByLocation(currentUser.getStaff().getLocation().getId()));
+				return "supEquipmentDetail";
+			}
+			else {
+				return "redirect:supEquipment.do";
+			}
+		}else {
+			return "login";
+		}
+	}
+	
 
 }

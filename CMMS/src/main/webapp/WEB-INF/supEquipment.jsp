@@ -46,14 +46,14 @@
 									<td>${equipment.imageURL}</td>
 									<td><%-- <c:if test="${loggedInUser.role == 'Supervisor' }"> --%>
 <%-- 										</c:if> --%>
-										<<!-- form action=“deleteEquipment.do” method="POST">
+										<!-- form action=“deleteEquipment.do” method="POST">
 										<input type="hidden" name=“equipment” value=“${equipment.id}”/>
 										<input type="submit" class="btn btn-secondary" value=“delete”/>
 									</form>
 											<a class="btn btn-secondary" href="deleteEquipment.do"
 												role="button">Delete Equipment</a> -->
 										<br> <c:if test="${loggedInUser.role == 'Supervisor' }">
-											<a class="btn btn-secondary" href="updateEquipment.do"
+											<a class="btn btn-secondary" href="updateEquipment.do?equipmentId=${equipment.id}"
 												role="button">Edit Equipment</a>
 										</c:if>
 									</td>

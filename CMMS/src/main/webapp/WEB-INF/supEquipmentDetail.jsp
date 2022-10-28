@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>@Autowired - Maintenance Item Detail</title>
+<title>@Autowired - Equipment Detail</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -17,11 +17,14 @@
 				
 					<br>
 					<hr>
-					<h2>@Autowired - Maintenance Item Detail</h2>
+					<h2>@Autowired - Equipment Detail</h2>
 					<br>
 					<hr>
 					<br>
-
+					<h4>${equipment.name}</h4>
+					<p>Type: ${equipment.equipmentType.name}, Model: ${equipment.equipmentType.model}</p>
+					<p>${equipment.description}</p>
+					<p><img src="${equipment.imageURL}"/></p>
 					<table class="table table-striped table-hover">
 						<thead class="table-dark">
 							<tr>
@@ -39,7 +42,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="mrcs" items="${mrcs}">
+							<c:forEach var="mrcs" items="${equipment.equipmentType.mrc}">
 								<tr>
 									<td>${mrcs.id}</td>
 									<td>${mrcs.description}</td>
@@ -66,10 +69,31 @@
 										<input type="submit" class="btn btn-secondary" value="Edit Maintenance Card" /></form> 
 
 										
-										<br> 
+										<br> <c:if test="${loggedInUser.role == 'Supervisor' }">
+											<a class="btn btn-secondary" href="createMaintenance.do?mrcId=${mrcs.id}&equipmentId=${equipment.id}"
+												role="button">Create Maintenance Item</a>
+										</c:if>
 									</td>
 								</tr>
+								<c:if test="${loggedInUser.role == 'Supervisor' }">
+								
+								<tr>
+									<td colspan="11">
+									<h6> Tasks</h6>
+									<ul>
+									<c:forEach var = "t" items = "${equipment.task}">
+									<c:if test = "${t.mrc.id == mrcs.id}">
+										<li>${t.staff.firstName} ${t.staff.lastName} ${t.scheduleStartDate }</li>
+									</c:if>
+									</c:forEach>
+										
+									</ul>
+									</td>
+								
+								</tr>
+								</c:if>
 							</c:forEach>
+							
 						</tbody>
 					</table>
 

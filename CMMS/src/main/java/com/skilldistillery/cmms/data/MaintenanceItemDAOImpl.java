@@ -40,7 +40,7 @@ public class MaintenanceItemDAOImpl implements MaintenanceItemDAO {
 			Staff staff) {
 			task.setStaff(staff);
 			task.setMrc(em.find(MaintenanceRequirementCard.class, mrcId));
-			task.setEquipment(em.find(Equipment.class, staff));
+			task.setEquipment(equip);
 			em.persist(task);
 			return task;
 		}

@@ -19,4 +19,6 @@ public interface UserDAO {
 
 	Staff addUser(User user, Staff staff, int locNumber);
 
+	Staff findStaffById(int staffId);
+
 }

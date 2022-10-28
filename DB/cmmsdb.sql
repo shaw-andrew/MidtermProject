@@ -180,7 +180,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `maintenance_item` ;
 
 CREATE TABLE IF NOT EXISTS `maintenance_item` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `completion_date` DATETIME NULL,
   `actual_duration_in_hours` DOUBLE NULL DEFAULT 0.0,
   `tech_notes` VARCHAR(200) NULL,

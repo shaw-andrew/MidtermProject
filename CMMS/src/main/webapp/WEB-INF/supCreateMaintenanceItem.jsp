@@ -41,19 +41,17 @@
 						Start Date</label> 
 						<input type="datetime-local"
 						class="form-control form-control-lg" name="scheduleStartDate"
-						value="Scheduled Start Date " required> <br> <label
+						required> <br> <label
 						for="mrcId" class="form-label-lg">MRC Id</label> 
 						<input
-						type="number" name="mrcId" value="${mrc.id }" disabled /><br>
+						type="number" name="mrcId" value="${mrc.id}" disabled /><br>
 					<br> <label for="scheduleEndDate" class="form-label-lg">Scheduled
 						End Date</label> 
 						<input type="datetime-local"
 						class="form-control form-control-lg" name="scheduleEndDate"
-						value="Scheduled End Date }" required> <br> <label
+						required> <br> <label
 						for="staff" class="form-label-lg">Staff</label>
 					<div class="dropdown">
-						<!-- <button type="button" class="btn btn-primary dropdown-toggle"
-							data-bs-toggle="dropdown">Select Staff Member</button> -->
 
 						<select class="form-select" name="staff.id">
 							<c:forEach var="staff" items="${staff}">
@@ -67,7 +65,8 @@
 					<label for="equipment" class="form-label-lg">Equipment Type</label>
 					<br> <input type="text" name="equipment"
 						value="${mrc.equipmentType.name}" disabled /><br> <br>
-
+					<input type = "hidden" name = "equipmentId" value = "${equipment.id}"/>
+					<input type = "hidden" name = "mrcId" value = "${mrc.id}"/>
 					<button class="btn btn-primary" type="submit">Create
 						Maintenance Item</button>
 					<br> <br>

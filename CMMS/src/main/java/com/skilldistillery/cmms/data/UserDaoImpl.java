@@ -77,4 +77,11 @@ public class UserDaoImpl implements UserDAO {
 		em.persist(staff);
 		return staff;
 	}
+	
+	@Override
+	public Staff findStaffById(int staffId) {
+		
+		return em.find(Staff.class, staffId);
+		
+	}
 }
