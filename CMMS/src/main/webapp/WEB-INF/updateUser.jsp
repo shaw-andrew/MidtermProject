@@ -40,7 +40,7 @@
 						 <label for="password" class="form-label-lg">Password</label>			
 					   	 <input type="password" class="form-control form-control-lg" name="password" value="${updatedUser.password}" required> <br><hr><br>
 					
-						<button class="btn btn-primary" type="submit">Update User</button><br><br>
+						<button class="btn btn-secondary" type="submit">Update User</button><br><br>
 						
 						<br>
 					</form>

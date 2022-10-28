@@ -25,35 +25,33 @@
 				<form class="row g-3 needs-validation" novalidate
 					action="createMaintenance.do" method="POST">
 					<label for="completionDate" class="form-label-lg">Completion
-						Date</label> 
-						<input class="form-control form-control-lg"
+						Date</label> <input class="form-control form-control-lg"
 						name="completionDate" type="datetime-local"
 						placeholder="Completion Date" disabled> <label
-						for="duration" class="form-label-lg">Duration</label> 
-						<input
+						for="duration" class="form-label-lg">Duration</label> <input
 						class="form-control form-control-lg" name="duration" type="number"
 						step="0.01" placeholder="Duration" disabled> <label
-						for="techNotes" class="form-label-lg">Technician Notes</label> 
-						<input
+						for="techNotes" class="form-label-lg">Technician Notes</label> <input
 						class="form-control form-control-lg" name="techNotes" type="text"
 						placeholder="Technician Notes" disabled> <label
 						for="scheduleStartDate" class="form-label-lg">Scheduled
-						Start Date</label> 
-						<input type="datetime-local"
+						Start Date</label> <input type="datetime-local"
 						class="form-control form-control-lg" name="scheduleStartDate"
-						required> <br> <label
-						for="mrcId" class="form-label-lg">MRC Id</label> 
-						<input
-						type="number" name="mrcId" value="${mrc.id}" disabled /><br>
-					<br> <label for="scheduleEndDate" class="form-label-lg">Scheduled
-						End Date</label> 
-						<input type="datetime-local"
-						class="form-control form-control-lg" name="scheduleEndDate"
-						required> <br> <label
+						required> <br> 
+						
+						<label for="mrcId" class="form-label-lg" >MRC Id</label> 
+						<input type="number" name="mrcId" class="form-control form-control-lg" value="${mrc.id}"
+						disabled />
+						
+						
+						<br> <br> <label for="scheduleEndDate"
+						class="form-label-lg">Scheduled End Date</label> <input
+						type="datetime-local" class="form-control form-control-lg"
+						name="scheduleEndDate" required> <br> <label
 						for="staff" class="form-label-lg">Staff</label>
 					<div class="dropdown">
 
-						<select class="form-select" name="staff.id">
+						<select class="form-select form-control-lg" name="staff.id">
 							<c:forEach var="staff" items="${staff}">
 								<li><option value="${staff.id}">${staff}</option></li>
 
@@ -65,13 +63,23 @@
 					<label for="equipment" class="form-label-lg">Equipment Type</label>
 					<br> <input type="text" name="equipment"
 						value="${mrc.equipmentType.name}" disabled /><br> <br>
-					<input type = "hidden" name = "equipmentId" value = "${equipment.id}"/>
-					<input type = "hidden" name = "mrcId" value = "${mrc.id}"/>
+					<input type="hidden" class="form-control form-control-lg"
+						name="equipmentId" value="${equipment.id}" /> <input type="hidden"
+						name="mrcId" value="${mrc.id}" />
 					<button class="btn btn-primary" type="submit">Create
 						Maintenance Item</button>
 					<br> <br>
 				</form>
 			</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 
 
 

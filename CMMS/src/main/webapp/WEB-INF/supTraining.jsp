@@ -13,9 +13,7 @@
 	<main class="container-fluid">
 		<%--Edit the file nav.jsp to change nav links --%>
 		<div class="container text-center">
-			<div class="row">
-				<div class="col"></div>
-				<div class="col-6">
+			
 					<br>
 					<hr>
 					<br>
@@ -46,7 +44,7 @@
 									<td>${training.category}</td>
 									<td>${training.videoURL}</td>
 									<td>${training.description}</td>
-									<td>${training.mrc}</td>
+									<td>${training.mrc.description}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -54,9 +52,7 @@
 <br><br><br><br><br><br><br><br><br>
 
 				</div>
-				<div class="col"></div>
-			</div>
-		</div>
+	
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
