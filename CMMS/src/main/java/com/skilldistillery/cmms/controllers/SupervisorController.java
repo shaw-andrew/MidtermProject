@@ -126,7 +126,9 @@ public class SupervisorController {
 	public String toolSupervisorView(HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
 			List<Tool> tools = toolDao.findAll();
+			model.addAttribute("parts", partDao.findAll());
 			model.addAttribute("tools", tools);
+			
 			return "supTools";
 		} else
 			return "login";

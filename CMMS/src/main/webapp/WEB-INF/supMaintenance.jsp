@@ -49,7 +49,7 @@
 											name="scheduleStartDate" form="updateItem${maintenanceItem.id}"
 											value="${maintenanceItem.scheduleStartDate }" maxlength="10">${maintenanceItem.scheduleStartDate}
 									</td>
-									<td>${maintenanceItem.mrc}</td>
+									<td>${maintenanceItem.mrc.frequency.description}${maintenanceItem.mrc.id}: ${maintenanceItem.mrc.description}</td>
 									<td>
 										<input type="datetime-local" 
 												name="scheduleEndDate" form="updateItem${maintenanceItem.id}"

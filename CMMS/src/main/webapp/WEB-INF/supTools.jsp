@@ -69,12 +69,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="part" items="${part}">
+							<c:forEach var="parts" items="${parts}">
 								<tr>
-									<td>${part.partId}</td>
-									<td><a href="getPart.do?pid=${part.id }">${part.name}</a></td>
-									<td>${part.description}</td>
-									<td>${part.cost}</td>
+									<td>${parts.id}</td>
+									<td><a href="getPart.do?pid=${parts.id }">${parts.name}</a></td>
+									<td>${parts.description}</td>
+									<td>${parts.cost}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
