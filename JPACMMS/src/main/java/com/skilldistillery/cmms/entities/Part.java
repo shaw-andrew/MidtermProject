@@ -134,8 +134,7 @@ public class Part {
 
 	@Override
 	public String toString() {
-		return "Part [id=" + id + ", description=" + description + ", cost=" + cost + ", name=" + name + ", partNumber="
-				+ partNumber + ", cards=" + cards + "]";
+		return  name + " Part Number: " + partNumber;
 	}
 	
 }

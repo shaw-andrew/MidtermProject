@@ -73,7 +73,7 @@ public class Tool {
 
 	@Override
 	public String toString() {
-		return "Tool [id=" + id + ", name=" + name + "]";
+		return name;
 	}
 	
 	
