@@ -15,7 +15,7 @@
 		<div class="container-fluid text-center">
 			<div class="row">
 				
-					<br>
+					<p> </p>
 					<hr>
 					<h2>@Autowired - Equipment Detail</h2>
 					<br>
@@ -35,7 +35,7 @@
 								<th>Est. Duration</th>
 								<th>Periodicity</th>
 								<th>Equipment</th>
-								<th>Safety Section</th>
+								<!-- <th>Safety Section</th> -->
 								<th>Replacement Parts</th>
 								<th>Required Tools</th>
 								<th>Action</th>
@@ -51,7 +51,7 @@
 									<td>${mrcs.estimatedDurationInHours}</td>
 									<td>${mrcs.frequency.name}</td>
 									<td>${mrcs.equipmentType}</td>
-									<td>${mrcs.safety}</td>
+									<%-- <td>${mrcs.safety}</td> --%>
 									<td>${mrcs.parts}</td>
 									<td>${mrcs.tools}</td>
 									<td>
@@ -100,7 +100,7 @@
 				</div>
 				
 			</div>
-		
+		<br><br><br><br><br><br><br><br>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>

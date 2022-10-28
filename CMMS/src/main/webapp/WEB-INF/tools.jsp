@@ -73,6 +73,7 @@
 				<div class="col-2"></div>
 			</div>
 		</div>
+		<br><br><br><br><br><br><br><br><br><br>
 	</main>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>

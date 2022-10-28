@@ -42,7 +42,7 @@
 								<tr>
 									<td>${training.id}</td>
 									<td>${training.category}</td>
-									<td>${training.videoURL}</td>
+									<td><a href="${training.videoURL}">View Training Video</a></td>
 									<td>${training.description}</td>
 									<td>${training.mrc.description}</td>
 								</tr>

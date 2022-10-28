@@ -35,10 +35,10 @@
 							<c:forEach var="training" items="${training}">
 								<tr>
 									<td>${training.id}</td>
-									<td>${training.videoURL}</td>
+									<td><a href="${training.videoURL}">View Video</a></td>
 									<td>${training.category }</td>
 									<td>${training.description}</td>
-									<td>${training.mrc}</td>
+									<td>${training.mrc.description}</td>
 								</tr>
 							</c:forEach>
 						</tbody>

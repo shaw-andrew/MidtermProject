@@ -12,9 +12,11 @@
 	<jsp:include page="navbar.jsp" />
 	<main class="container-fluid">
 		<div class="container text-center">
+		<br>
 			<div class="row">
 				<div class="col"></div>
-				<div class="col-6">
+				<div class="col-6"><p> </p>
+					<hr><br>
 					<h2>Welcome to @Autowired</h2>
 					<h4>Leaders in Enterprise Level Asset Management</h4>
 					<hr>
@@ -35,7 +37,7 @@
 						<input type="submit" class="btn btn-primary" value="Log In">
 					</form>
 					
-					 <br><br>
+					 <br><hr><br>
 					<div id="carouselExampleCaptions" class="carousel slide"
 						data-bs-ride="false">
 						<div class="carousel-indicators">

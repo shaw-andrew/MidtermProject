@@ -45,7 +45,10 @@
 									<td>${equipment.name}</td>
 									<td>${equipment.description}</td>
 									<td>${equipment.location}</td>
-									<td>${equipment.imageURL}</td>
+									<td><img src = "${equipment.imageURL}"  
+										style="object-fit:scale-down;
+            							width:200px;
+            							height:200px"/></td>
 									<td><%-- <c:if test="${loggedInUser.role == 'Supervisor' }"> --%>
 <%-- 										</c:if> --%>
 										<!-- form action=“deleteEquipment.do” method="POST">

@@ -40,7 +40,7 @@
 								<td>${equipment.location}</td>
 								<td><img src = "${equipment.imageURL}"  style="object-fit:scale-down;
             width:200px;
-            height:300px"/>
+            height:200px"/>
             </td>
 							</tr>
 						</c:forEach>

@@ -61,7 +61,7 @@
 
 					</div>
 					<label for="equipment" class="form-label-lg">Equipment Type</label>
-					<br> <input type="text" name="equipment"
+					<br> <input type="text" class="form-control form-control-lg" name="equipment"
 						value="${mrc.equipmentType.name}" disabled /><br> <br>
 					<input type="hidden" class="form-control form-control-lg"
 						name="equipmentId" value="${equipment.id}" /> <input type="hidden"
