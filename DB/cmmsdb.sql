@@ -263,7 +263,7 @@ DROP TABLE IF EXISTS `part` ;
 
 CREATE TABLE IF NOT EXISTS `part` (
   `part_number` INT UNSIGNED NOT NULL,
-  `description` VARCHAR(45) NULL,
+  `description` VARCHAR(500) NULL,
   `id` INT NOT NULL AUTO_INCREMENT,
   `cost` DOUBLE NULL,
   `name` VARCHAR(45) NULL,
@@ -592,9 +592,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (1, NULL, 1, 115.99, 'Roller');
-INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (2, NULL, 2, 79.95, 'Photoeye');
-INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (3, NULL, 3, 50.99, 'Belt');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (1, '1.5″ Dia. Galvanized Steel Replacement | 10″ Long\n1.5″ Dia. Galvanized Steel Replacement | 10″ Long\n1.5\" Dia - Galvanized Steel', 1, 115.99, 'Roller');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (2, 'On/Off, Light/Dark 110AC', 2, 79.95, 'Photoeye');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (3, '10\"W x 46.25\" LG', 3, 50.99, 'Belt');
 INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (4, 'STP', 4, 10.99, 'Oil Filter (Conveyor)');
 INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (5, 'STP', 5, 7.99, 'Oil Filter (Delivery Truck)');
 INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (6, '235/75 R15', 6, 129.99, 'Tire');
