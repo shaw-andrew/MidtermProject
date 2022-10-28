@@ -17,6 +17,7 @@
 				<div class="col"></div><br><hr>
 				<h2>Equipment and Details</h2>
 				<br><hr><br>
+				
 				<table
 					class="table table-striped table-hover table-responsiveo w-aut">
 					<thead class="table-dark">
@@ -37,7 +38,10 @@
 								<td>${equipment.name}</td>
 								<td>${equipment.description}</td>
 								<td>${equipment.location}</td>
-								<td>${equipment.imageURL}</td>
+								<td><img src = "${equipment.imageURL}"  style="object-fit:scale-down;
+            width:200px;
+            height:300px"/>
+            </td>
 							</tr>
 						</c:forEach>
 					</tbody>
