@@ -440,9 +440,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (1, 'mechanical', 'conveyer3000', 'conveyers llc.', 2000);
-INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (2, 'vehicle', 'cargo van', 'ford', 2023);
-INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (3, 'misc', '8x11 insulated', 'ankmar', 2021);
+INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (1, 'Mechanical', 'Conveyer3000', 'Conveyers llc.', 2000);
+INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (2, 'Vehicle', 'Cargo Van', 'Mercedes Benz', 2023);
+INSERT INTO `equipment_type` (`id`, `name`, `model`, `manufacturer`, `year`) VALUES (3, 'Misc', '8x11 Insulated', 'Ankmar', 2021);
 
 COMMIT;
 
@@ -551,17 +551,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `tool` (`id`, `name`) VALUES (1, 'screwdriver');
-INSERT INTO `tool` (`id`, `name`) VALUES (2, 'flashlight');
-INSERT INTO `tool` (`id`, `name`) VALUES (3, 'gloves');
-INSERT INTO `tool` (`id`, `name`) VALUES (4, 'force resister');
-INSERT INTO `tool` (`id`, `name`) VALUES (5, 'lubricant');
-INSERT INTO `tool` (`id`, `name`) VALUES (6, 'oil (conveyer)');
-INSERT INTO `tool` (`id`, `name`) VALUES (7, 'funnel');
-INSERT INTO `tool` (`id`, `name`) VALUES (8, 'oil filter (conveyer)');
-INSERT INTO `tool` (`id`, `name`) VALUES (9, 'hazardous material container');
-INSERT INTO `tool` (`id`, `name`) VALUES (10, 'socket wrench');
-INSERT INTO `tool` (`id`, `name`) VALUES (11, 'socket set');
+INSERT INTO `tool` (`id`, `name`) VALUES (1, 'Screwdriver');
+INSERT INTO `tool` (`id`, `name`) VALUES (2, 'Flashlight');
+INSERT INTO `tool` (`id`, `name`) VALUES (3, 'Gloves');
+INSERT INTO `tool` (`id`, `name`) VALUES (4, 'Force Resister');
+INSERT INTO `tool` (`id`, `name`) VALUES (5, 'Lubricant');
+INSERT INTO `tool` (`id`, `name`) VALUES (6, 'Oil (Conveyer)');
+INSERT INTO `tool` (`id`, `name`) VALUES (7, 'Funnel');
+INSERT INTO `tool` (`id`, `name`) VALUES (8, 'Oil Filter (Conveyer)');
+INSERT INTO `tool` (`id`, `name`) VALUES (9, 'Hazardous Material Container');
+INSERT INTO `tool` (`id`, `name`) VALUES (10, 'Socket Wrench');
+INSERT INTO `tool` (`id`, `name`) VALUES (11, 'Socket Set');
 
 COMMIT;
 
@@ -583,7 +583,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `safety` (`id`, `category`, `description`) VALUES (1, 'general', NULL);
+INSERT INTO `safety` (`id`, `category`, `description`) VALUES (1, 'General', NULL);
 
 COMMIT;
 
@@ -593,9 +593,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (1, NULL, 1, 5.99, 'roller');
-INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (2, NULL, 2, 79.95, 'photoeye');
-INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (3, NULL, 3, 50.99, 'belt');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (1, NULL, 1, 5.99, 'Roller');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (2, NULL, 2, 79.95, 'Photoeye');
+INSERT INTO `part` (`part_number`, `description`, `id`, `cost`, `name`) VALUES (3, NULL, 3, 50.99, 'Belt');
 
 COMMIT;
 
@@ -640,7 +640,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cmmsdb`;
-INSERT INTO `certification` (`id`, `name`, `description`) VALUES (1, 'general maintenance', NULL);
+INSERT INTO `certification` (`id`, `name`, `description`) VALUES (1, 'General Maintenance', NULL);
 
 COMMIT;
 
